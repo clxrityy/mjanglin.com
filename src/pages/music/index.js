@@ -1,6 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
+import Equipment from './components/Equipment';
+import SoundCloudIcon from './components/SoundCloudIcon';
 import musicBg from '/public/assets/images/music-bg.jpg';
+import SpotifyIcon from './components/SpotifyIcon';
+
 
 const music = () => {
     return (
@@ -19,12 +23,30 @@ const music = () => {
                         </span>
                         rity
                     </h3>
+                    <div className='sm:absolute xl:absolute right-15 bottom-0 lg:right-50 p-5 2xl:right-10 xl:right-40'>
+                        <div className='grid grid-cols-2 right-0 space-x-4'>
+                            <SoundCloudIcon />
+                            <SpotifyIcon />
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
             <div className='max-w-[1240px] mx-auto p-2 grid md:grid-cols-5 gap-8 pt-8'>
                 <div className='col-span-4'>
+                    <p className='uppercase tracking-widest py-4 text-[#4b9084]'>
+                        Music
+                    </p>
+                    <h2 className='py-2'>Recording Equipment</h2>
+                    <div className='rounded-xl max-w-[1240px]w-auto shadow-gray-600 p-4 mt-4'>
+                        <div>
+                            <Equipment />
+                        </div>
+                    </div>
+                </div>
+
+                <div>
 
                 </div>
             </div>

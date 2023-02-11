@@ -19,7 +19,7 @@ const ProjectItem = ({title, backgroundImg, projectUrl, tool, description}) => {
                 <p className='pb-4 pt-2 text-gray-200 text-center font-bold -tracking-normal'>
                     {tool}
                 </p>
-                <Link href={projectUrl}>
+                <Link href={`${projectUrl}`}>
                     <p className='text-center p-3 rounded-lg bg-white text-gray-700 font-bold text-lg cursor-pointer hover:bg-gray-400 ease-in duration-100 hover:text-white'>
                         Take a look
                     </p>

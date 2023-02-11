@@ -4,12 +4,11 @@ import Image from 'next/image';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 import Link from 'next/link';
-import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
-import Connect from './Connect';
+import SnakePreview from './SnakePreview';
 
 const Contact = () => {
     return (
-        <div id='contact' className='w-full lg:h-screen'>
+        <div id='connect' className='w-full lg:h-screen'>
             <div className='max-w-[1240px] m-auto px-2 py-16 w-full'>
                 <p className='text-xl tracking-widest uppercase text-[#4b9084]'>
                     Contact
@@ -26,7 +25,7 @@ const Contact = () => {
                             <div>
                                 <Image src={contactImg} alt='Connect'
 
-                                    className='rounded-xl hover:scale-105 ease-in duration-300'
+                                    className='rounded-xl hover:scale-105 ease-in-out duration-[10s] animate-pulse opacity-60 hover:opacity-100'
                                     width={200}
                                     height={200}
                                 />
@@ -69,7 +68,7 @@ const Contact = () => {
                     <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-500 rounded-xl lg:p-4'>
                         <div className='p-4'>
 
-                            <Connect />
+                            <SnakePreview />
                             
                         </div>
                     </div>
