@@ -1,10 +1,12 @@
 import React from 'react'
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
+import Image from 'next/image';
+import webDevGif from '/public/assets/images/web-dev.gif';
 
 const Hero = () => {
     return (
-        <div id='home' className='w-full h-screen text-center'>
+        <div id='home' className='w-full h-screen text-center flex flex-row'>
             <div className='max-w-[1240px] w-full h-full max-auto p-2 flex justify-center items-center'>
                 <div>
                     <p className='uppercase text-sm tracking-widest text-gray-300'>
@@ -39,6 +41,11 @@ const Hero = () => {
                             <AiOutlineMail />
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className='hidden 2xl:block max-w-[1240px] w-full h-full mt-28 p-2'>
+                <div className='rounded-full opacity-80 max-w-fit'>
+                    <Image src={webDevGif} alt='web development' className='opacity-90' />
                 </div>
             </div>
         </div>

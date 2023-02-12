@@ -34,7 +34,7 @@ const Contact = () => {
                                 <h2 className='py-2'>
                                     MJ Anglin
                                 </h2>
-                                <p>
+                                <p className='font-semibold'>
                                     Web Developer
                                 </p>
                                 <p className='py-4'>
@@ -65,7 +65,7 @@ const Contact = () => {
 
                     {/* right */}
 
-                    <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-500 rounded-xl lg:p-4'>
+                    <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-500 rounded-xl lg:p-4 hidden lg:block'>
                         <div className='p-4'>
 
                             <SnakePreview />

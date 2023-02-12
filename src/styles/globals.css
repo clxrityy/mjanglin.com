@@ -9,6 +9,10 @@ html {
   scroll-behavior: smooth;
 }
 
+#game-body {
+  background-color: black;
+}
+
 @layer base {
   body {
     @apply bg-[#2b2a2a] text-[#F9F6EE] tracking-wide font-['Nunito']

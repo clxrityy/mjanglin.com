@@ -122,7 +122,60 @@ const Skills = () => {
                             </div>
                         </div>
                     </div>
+                    
+                    <div className='p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-400'>
+                        <div className='grid grid-cols-2 gap-4 justify-center items-center'>
+                            <div className='m-auto'>
+                                <Image
+                                    src='/../public/assets/skills/typescript.png'
+                                    width='64'
+                                    height='64'
+                                    alt='TypeScript'
+                                />
+                            </div>
+                            <div className='flex flex-col items-center justify-center'>
+                                <h3>
+                                    TypeScript
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div className='p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-400'>
+                        <div className='grid grid-cols-2 gap-4 justify-center items-center'>
+                            <div className='m-auto'>
+                                <Image
+                                    src='/../public/assets/skills/cpp.png'
+                                    width='64'
+                                    height='64'
+                                    alt='C++'
+                                />
+                            </div>
+                            <div className='flex flex-col items-center justify-center'>
+                                <h3>
+                                    C++
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-400'>
+                        <div className='grid grid-cols-2 gap-4 justify-center items-center'>
+                            <div className='m-auto'>
+                                <Image
+                                    src='/../public/assets/skills/php.png'
+                                    width='64'
+                                    height='64'
+                                    alt='php'
+                                />
+                            </div>
+                            <div className='flex flex-col items-center justify-center'>
+                                <h3>
+                                    PHP
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
