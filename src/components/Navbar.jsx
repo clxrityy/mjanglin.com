@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
-import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
+import signature from '../assets/images/signature.png';
+import clxrity from '../assets/images/clxrity.png';
 
 const Navbar = () => {
 
@@ -30,7 +32,7 @@ const Navbar = () => {
             <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
                 <Link href='/#home' scroll={false}>
                     <Image
-                        src='/../public/assets/images/signature.png' alt='signature-ma'
+                        src={signature} alt='signature-ma'
                         width='200'
                         height='100'
                         className='cursor-pointer hover:scale-110 ease-in duration-500'
@@ -82,7 +84,7 @@ const Navbar = () => {
                     <div>
                         <div className='flex w-full items-center justify-between'>
                             <Link href='/'>
-                                <Image src='/../public/assets/images/clxrity.png' alt='mj-circle-gazing-off' width='87' height='34' />
+                                <Image src={clxrity} alt='mj-circle-gazing-off' width='87' height='34' />
                             </Link>
                             <div className='rounded-full shadow-lg shadow-gray-600 cursor-pointer p-3'
                                 onClick={handleNav}

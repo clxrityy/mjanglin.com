@@ -1,6 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import laptopCode from '../assets/images/laptop-code.png';
+import mjSmiling from '../assets/images/mj-smile.png';
+import laptopDog from '../assets/images/laptop-dog.png';
 
 const About = () => {
     return (
@@ -37,15 +40,15 @@ const About = () => {
                     </div>
                 </div>
                 <div className='w-full sm:max-w-lg h-auto m-auto shadow-xl shadow-gray-600 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300 lg:flex-row'>
-                    <Image src='/../public/assets/images/laptop-dog.png' alt='laptop-dog' width={150} height={150}
+                    <Image src={laptopDog} alt='laptop-dog' width={150} height={150}
 
                         className='rounded-xl p-2'
                     />
-                    <Image src='/../public/assets/images/mj-smile.png' alt='mj-smiling' width={200} height={200}
+                    <Image src={mjSmiling} alt='mj-smiling' width={200} height={200}
 
                         className='rounded-xl p-2'
                     />
-                    <Image src='/../public/assets/images/laptop-code.png' alt='mj-smiling' width={140} height={200}
+                    <Image src={laptopCode} alt='mj-smiling' width={140} height={200}
 
                         className='rounded-xl p-2'
                     />
