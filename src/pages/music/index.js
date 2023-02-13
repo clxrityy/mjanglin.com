@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import Equipment from './components/Equipment';
 import SoundCloudIcon from './components/SoundCloudIcon';
-import musicBg from '/public/assets/images/music-bg.jpg';
+import musicBg from './assets/music-bg.jpg';
 import SpotifyIcon from './components/SpotifyIcon';
 
 
