@@ -5,12 +5,26 @@ import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 import signature from '../assets/images/signature.png';
 import clxrity from '../assets/images/clxrity.png';
+import { useRouter } from 'next/router';
 
 const Navbar = () => {
 
     const [nav, setNav] = useState(false);
-
     const [shadow, setShadow] = useState(false);
+    const [navBg, setNavBg] = useState('#2b2a2a');
+    const router = useRouter();
+
+    useEffect(() => {
+
+        if (router.asPath === '/music') {
+            setNavBg('transparent')
+        } else {
+            setNavBg('#2b2a2a')
+        }
+
+    }, [router])
+
+
 
     const handleNav = () => {
         setNav(!nav)
@@ -28,14 +42,16 @@ const Navbar = () => {
     }, [])
 
     return (
-        <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100]' : 'fixed w-full h-20 z-[100]'}>
+        <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100]' : 'fixed w-full h-20 z-[100]'}
+            style={{backgroundColor: `${navBg}`}}
+        >
             <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
                 <Link href='/#home' scroll={false}>
                     <Image
                         src={signature} alt='signature-ma'
                         width='200'
                         height='100'
-                        className='cursor-pointer hover:scale-110 ease-in duration-500'
+                        className='cursor-pointer hover:scale-110 ease-in duration-500 hidden md:block'
                     />
                 </Link>
                 <div>
