@@ -76,7 +76,7 @@ const Navbar = () => {
                     : ''}>
                 <div className={
                     nav
-                        ? 'fixed left-0 top-0 w-[75%%] sm:w-[60%] md:w-[45%] h-screen bg-[#7c7c7c] p-10 ease-in duration-500'
+                        ? 'fixed left-0 top-0 w-[75%%] sm:w-[60%] md:w-[45%] h-screen bg-[#2b2a2a] p-10 ease-in duration-500'
 
                         : 'fixed left-[-100%] top-0 ease-in p-10 duration-500'}>
                     <div>
@@ -90,7 +90,7 @@ const Navbar = () => {
                                 <AiOutlineClose />
                             </div>
                         </div>
-                        <div className='border-b border-gray-800 my-4'>
+                        <div className='border-b border-gray-600 my-4'>
                             <p className='text-gray-100 font-semibold w-[85%] md:w-[90%] py-4'>
                                 Let&#39;s create something cool and have fun in the process.
                             </p>
@@ -119,34 +119,42 @@ const Navbar = () => {
                                 </Link>
                             </ul>
                             <div className='pt-40'>
-                                <p className='uppercase tracking-widest font-extrabold pb-4 text-[#0f443b]'>
+                                <p className='uppercase tracking-widest font-extrabold pb-4 text-[#4b9084]'>
                                     Connect with me
                                 </p>
                                 <div className='flex items-center justify-between my-4 w-full sm:w-[80%]'>
                                     <div className='rounded-full shadow-lg shadow-gray-600 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                                        <FaTwitter
+                                        <a href='https://twitter.com/yourclxrity' target='_blank' rel="noreferrer">
+                                            <FaTwitter
 
-                                            color='#0f443b'
-                                        />
+                                                color='#4b9084'
+                                            />
+                                        </a>
                                     </div>
                                     <div className='rounded-full shadow-lg shadow-gray-600 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                                        <FaInstagram
+                                        <a href='https://instagram.com/mjxnglin' target='_blank' rel='noreferrer'>
+                                            <FaInstagram
 
-                                            color='#0f443b'
-                                        />
+                                                color='#4b9084'
+                                            />
+                                        </a>
                                     </div>
                                     <div className='rounded-full shadow-lg shadow-gray-600 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                                        <FaGithub
+                                        <a href='https://github.com/clxrityy' target='_blank' rel='noreferrer'>
+                                            <FaGithub
 
-                                            color='#0f443b'
-                                        />
+                                                color='#4b9084'
+                                            />
+                                        </a>
                                     </div>
                                     <div className='rounded-full shadow-lg shadow-gray-600 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                                        <AiOutlineMail
+                                        <a href='mailto:mj@mjanglin.com'>
+                                            <AiOutlineMail
 
-                                            color='#0f443b'
+                                                color='#4b9084'
 
-                                        />
+                                            />
+                                        </a>
                                     </div>
                                 </div>
                             </div>

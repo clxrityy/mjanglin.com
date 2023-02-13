@@ -29,16 +29,24 @@ const Hero = () => {
                     </p>
                     <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
                         <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                            <FaTwitter />
+                            <a href='https://twitter.com/yourclxrity' target='_blank' rel="noreferrer">
+                                <FaTwitter />
+                            </a>
                         </div>
                         <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                            <FaInstagram />
+                            <a href='https://instagram.com/mjxnglin' target='_blank' rel='noreferrer'>
+                                <FaInstagram />
+                            </a>
                         </div>
                         <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                            <FaGithub />
+                            <a href='https://github.com/clxrityy' target='_blank' rel='noreferrer'>
+                                <FaGithub />
+                            </a>
                         </div>
                         <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                            <AiOutlineMail />
+                            <a href='mailto:mj@mjanglin.com'>
+                                <AiOutlineMail />
+                            </a>
                         </div>
                     </div>
                 </div>

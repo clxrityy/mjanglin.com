@@ -34,29 +34,45 @@ const Contact = () => {
                                 <h2 className='py-2'>
                                     MJ Anglin
                                 </h2>
-                                <p className='font-semibold'>
-                                    Web Developer
-                                </p>
+                                <div className='flex flex-row space-x-3 items-stretch content-center'>
+                                    <p className='font-semibold'>
+                                        Web Developer
+                                    </p>
+                                    <p>
+                                        |
+                                    </p>
+                                    <a href='mailto:mj@mjanglin.com' className='text-sm mt-[2px] text-[#4b9084] underline'>
+                                        mj@mjanglin.com
+                                    </a>
+                                </div>
                                 <p className='py-4'>
                                     Reach out - see if I can be useful for your project.
                                 </p>
                             </div>
                             <div>
-                                <p className='uppercase pt-8'>
+                                <p className='uppercase pt-6 pb-2 text-lg font-semibold'>
                                     Connect With Me
                                 </p>
                                 <div className='flex items-center justify-between py-4'>
                                     <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                                        <FaTwitter />
+                                        <a href='https://twitter.com/yourclxrity' target='_blank' rel="noreferrer">
+                                            <FaTwitter />
+                                        </a>
                                     </div>
                                     <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                                        <FaInstagram />
+                                        <a href='https://instagram.com/mjxnglin' target='_blank' rel='noreferrer'>
+                                            <FaInstagram />
+                                        </a>
                                     </div>
                                     <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                                        <FaGithub />
+                                        <a href='https://github.com/clxrityy' target='_blank' rel='noreferrer'>
+                                            <FaGithub />
+                                        </a>
                                     </div>
                                     <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                                        <AiOutlineMail />
+                                        <a href='mailto:mj@mjanglin.com'>
+                                            <AiOutlineMail />
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -69,12 +85,12 @@ const Contact = () => {
                         <div className='p-4'>
 
                             <SnakePreview />
-                            
+
                         </div>
                     </div>
                 </div>
 
-                
+
 
             </div>
         </div>
