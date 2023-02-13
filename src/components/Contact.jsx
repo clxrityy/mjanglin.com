@@ -1,9 +1,8 @@
 import React from 'react';
-import contactImg from '/public/assets/images/contact.png';
+import contactImg from '../assets/images/contact.png';
 import Image from 'next/image';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
-import Link from 'next/link';
 import SnakePreview from './SnakePreview';
 
 const Contact = () => {

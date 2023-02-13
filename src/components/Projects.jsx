@@ -1,8 +1,8 @@
 import React from 'react';
-import collabrity from '/public/assets/projects/collabrity.gif';
-import uoraty from '/public/assets/projects/uoraty.gif';
-import clxrityxyz from '/public/assets/projects/clxrityxyz.gif';
-import pacman from '/public/assets/projects/pacman.gif';
+import collabrity from '../assets/projects/collabrity.gif';
+import uoraty from '../assets/projects/uoraty.gif';
+import clxrityxyz from '../assets/projects/clxrityxyz.gif';
+import pacman from '../assets/projects/pacman.gif';
 import ProjectItem from './ProjectItem';
 
 const Projects = () => {

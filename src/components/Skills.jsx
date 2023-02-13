@@ -1,6 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-
+import html from '../assets/skills/html.png';
+import javascript from '../assets/skills/javascript.png';
+import css from '../assets/skills/css.png';
+import react from '../assets/skills/react.png';
+import python from '../assets/skills/python.png';
+import java from '../assets/skills/java.png';
 
 const Skills = () => {
     return (
@@ -19,7 +24,7 @@ const Skills = () => {
                         <div className='grid grid-cols-2 gap-4 justify-center items-center'>
                             <div className='m-auto'>
                                 <Image
-                                    src='/../public/assets/skills/html.png'
+                                    src={html}
                                     width='64'
                                     height='64'
                                     alt='HTML'
@@ -37,7 +42,7 @@ const Skills = () => {
                         <div className='grid grid-cols-2 gap-4 justify-center items-center'>
                             <div className='m-auto'>
                                 <Image
-                                    src='/../public/assets/skills/javascript.png'
+                                    src={javascript}
                                     width='64'
                                     height='64'
                                     alt='JavaScript'
@@ -55,7 +60,7 @@ const Skills = () => {
                         <div className='grid grid-cols-2 gap-4 justify-center items-center'>
                             <div className='m-auto'>
                                 <Image
-                                    src='/../public/assets/skills/css.png'
+                                    src={css}
                                     width='64'
                                     height='64'
                                     alt='CSS'
@@ -73,7 +78,7 @@ const Skills = () => {
                         <div className='grid grid-cols-2 gap-4 justify-center items-center'>
                             <div className='m-auto'>
                                 <Image
-                                    src='/../public/assets/skills/react.png'
+                                    src={react}
                                     width='64'
                                     height='64'
                                     alt='React'
@@ -91,7 +96,7 @@ const Skills = () => {
                         <div className='grid grid-cols-2 gap-4 justify-center items-center'>
                             <div className='m-auto'>
                                 <Image
-                                    src='/../public/assets/skills/python.png'
+                                    src={python}
                                     width='64'
                                     height='64'
                                     alt='Python'
@@ -109,7 +114,7 @@ const Skills = () => {
                         <div className='grid grid-cols-2 gap-4 justify-center items-center'>
                             <div className='m-auto'>
                                 <Image
-                                    src='/../public/assets/skills/java.png'
+                                    src={java}
                                     width='64'
                                     height='64'
                                     alt='Java'
@@ -118,60 +123,6 @@ const Skills = () => {
                             <div className='flex flex-col items-center justify-center'>
                                 <h3>
                                     Java
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div className='p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-400'>
-                        <div className='grid grid-cols-2 gap-4 justify-center items-center'>
-                            <div className='m-auto'>
-                                <Image
-                                    src='/../public/assets/skills/typescript.png'
-                                    width='64'
-                                    height='64'
-                                    alt='TypeScript'
-                                />
-                            </div>
-                            <div className='flex flex-col items-center justify-center'>
-                                <h3>
-                                    TypeScript
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-400'>
-                        <div className='grid grid-cols-2 gap-4 justify-center items-center'>
-                            <div className='m-auto'>
-                                <Image
-                                    src='/../public/assets/skills/cpp.png'
-                                    width='64'
-                                    height='64'
-                                    alt='C++'
-                                />
-                            </div>
-                            <div className='flex flex-col items-center justify-center'>
-                                <h3>
-                                    C++
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-400'>
-                        <div className='grid grid-cols-2 gap-4 justify-center items-center'>
-                            <div className='m-auto'>
-                                <Image
-                                    src='/../public/assets/skills/php.png'
-                                    width='64'
-                                    height='64'
-                                    alt='php'
-                                />
-                            </div>
-                            <div className='flex flex-col items-center justify-center'>
-                                <h3>
-                                    PHP
                                 </h3>
                             </div>
                         </div>

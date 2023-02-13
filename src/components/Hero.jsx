@@ -2,7 +2,7 @@ import React from 'react'
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 import Image from 'next/image';
-import webDevGif from '/public/assets/images/web-dev.gif';
+import webDevGif from '../assets/images/web-dev.gif';
 
 const Hero = () => {
     return (
