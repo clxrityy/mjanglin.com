@@ -20,6 +20,7 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@types/node": "^18.13.0",
     "@types/react": "18.0.28",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
