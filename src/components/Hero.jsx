@@ -7,7 +7,7 @@ import webDevGif from '../assets/images/web-dev.gif';
 const Hero = () => {
     return (
         <div id='home' className='w-full h-screen text-center flex flex-row'>
-            <div className='max-w-[1240px] w-full h-full max-auto p-2 flex justify-center items-center'>
+            <div className='max-w-[1240px] w-full h-full max-auto p-2 flex justify-center items-center sm:p-28 mt-40 md:mt-0'>
                 <div>
                     <p className='uppercase text-sm tracking-widest text-gray-300'>
                         LET&#39;S HAVE SOME FUN
