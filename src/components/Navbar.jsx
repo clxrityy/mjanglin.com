@@ -142,7 +142,7 @@ const Navbar = () => {
                                     </li>
                                 </Link>
                             </ul>
-                            <div className='pt-40'>
+                            <div className='pt-40 hidden md:flex'>
                                 <p className='uppercase tracking-widest font-extrabold pb-4 text-[#4b9084]'>
                                     Connect with me
                                 </p>
