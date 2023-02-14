@@ -7,7 +7,7 @@ import laptopDog from '../assets/images/laptop-dog.png';
 
 const About = () => {
     return (
-        <div id='about' className='w-full md:h-screen p-2 flex items-center py-16'>
+        <div id='about' className='w-full md:h-screen flex items-center py-16 p-10'>
             <div className='mx-w-[1240px] m-auto lg:grid grid-cols-3 gap-8 p-2'>
                 <div className='col-span-2'>
                     <div>

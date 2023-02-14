@@ -16,7 +16,7 @@ const Navbar = () => {
 
     useEffect(() => {
 
-        if (router.asPath !== '/') {
+        if (router.asPath !== '/' || '/#home' || '/#about' || '#projects' || '/#contact' | '/#skills') {
             setNavBg('transparent')
         } else {
             setNavBg('#2b2a2a')
@@ -34,7 +34,7 @@ const Navbar = () => {
         const handleShadow = () => {
             if (window.scrollY >= 90) {
                 setShadow(true)
-                if (router.asPath === '/') {
+                if (router.asPath === '/' || '/#home' || '/#about' || '#projects' || '/#contact' | '/#skills') {
                     setNavBg('#2b2a2a')
                 } else {
                     setNavBg('transparent')
