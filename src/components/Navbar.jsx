@@ -34,7 +34,11 @@ const Navbar = () => {
         const handleShadow = () => {
             if (window.scrollY >= 90) {
                 setShadow(true)
-                setNavBg('#2b2a2a')
+                if (router.asPath !== '/music') {
+                    setNavBg('#2b2a2a')
+                } else {
+                    setNavBg('transparent')
+                }
             } else {
                 setShadow(false)
                 setNavBg('transparent')
