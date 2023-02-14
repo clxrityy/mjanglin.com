@@ -54,7 +54,7 @@ const Navbar = () => {
                         className='cursor-pointer hover:scale-110 ease-in duration-500 hidden md:block'
                     />
                 </Link>
-                <div>
+                <div className=''>
                     <ul className='hidden md:flex'>
                         <Link href='/#home' scroll={false}>
                             <li className='ml-10 text-sm uppercase hover:border-b'>
@@ -82,7 +82,7 @@ const Navbar = () => {
                             </li>
                         </Link>
                     </ul>
-                    <div className='md:hidden' onClick={handleNav}>
+                    <div className='md:hidden flex p-4 py-12' onClick={handleNav}>
                         <AiOutlineMenu size={25} />
                     </div>
                 </div>
