@@ -43,7 +43,7 @@ const Navbar = () => {
 
     return (
         <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100]' : 'fixed w-full h-20 z-[100]'}
-            style={{backgroundColor: `${navBg}`}}
+            style={{backgroundColor: 'transparent'}}
         >
             <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
                 <Link href='/#home' scroll={false}>
@@ -83,7 +83,7 @@ const Navbar = () => {
                         </Link>
                     </ul>
                     <div className='md:hidden flex p-4 py-12' onClick={handleNav}>
-                        <AiOutlineMenu size={25} />
+                        <AiOutlineMenu size={25} className={nav ? 'hidden' : 'flex'} />
                     </div>
                 </div>
             </div>
@@ -102,7 +102,7 @@ const Navbar = () => {
                             <Link href='/'>
                                 <Image src={clxrity} alt='mj-circle-gazing-off' width='87' height='34' />
                             </Link>
-                            <div className='rounded-full shadow-lg shadow-gray-600 cursor-pointer p-3'
+                            <div className={ nav ? 'rounded-full shadow-lg shadow-gray-600 cursor-pointer p-3' : 'hidden'}
                                 onClick={handleNav}
                             >
                                 <AiOutlineClose />
