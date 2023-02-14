@@ -16,7 +16,7 @@ const Navbar = () => {
 
     useEffect(() => {
 
-        if (router.asPath === '/music') {
+        if (router.asPath !== '/') {
             setNavBg('transparent')
         } else {
             setNavBg('#2b2a2a')
@@ -34,7 +34,7 @@ const Navbar = () => {
         const handleShadow = () => {
             if (window.scrollY >= 90) {
                 setShadow(true)
-                if (router.asPath !== '/music') {
+                if (router.asPath === '/') {
                     setNavBg('#2b2a2a')
                 } else {
                     setNavBg('transparent')
@@ -45,7 +45,7 @@ const Navbar = () => {
             }
         }
         window.addEventListener('scroll', handleShadow);
-    }, [])
+    }, [router])
 
     return (
         <div className={shadow ? 'fixed w-full h-20 shadow-xl z-[100]' : 'fixed w-full h-20 z-[100]'}
