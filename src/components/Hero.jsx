@@ -6,8 +6,8 @@ import webDevGif from '../assets/images/web-dev.gif';
 
 const Hero = () => {
     return (
-        <div id='home' className='w-full h-screen text-center flex flex-row'>
-            <div className='max-w-[1240px] w-full h-full max-auto p-2 flex justify-center items-center sm:p-28'>
+        <div id='home' className='w-fit md:w-full h-screen text-center flex flex-row'>
+            <div className='max-w-[1240px] w-full h-full max-auto lg:p-2 flex justify-center items-center p-8'>
                 <div>
                     <p className='uppercase text-sm tracking-widest text-gray-300'>
                         LET&#39;S HAVE SOME FUN
@@ -44,7 +44,7 @@ const Hero = () => {
                             </a>
                         </div>
                         <div className='rounded-full shadow-md shadow-gray-600 p-6 cursor-pointer hover:scale-110 ease-in duration-300'>
-                            <a href='mailto:mj@mjanglin.com'>
+                            <a href='mailto:contact@mjanglin.com'>
                                 <AiOutlineMail />
                             </a>
                         </div>

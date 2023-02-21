@@ -40,8 +40,8 @@ const Contact = () => {
                                     <p>
                                         |
                                     </p>
-                                    <a href='mailto:mj@mjanglin.com' className='text-sm mt-[2px] text-[#4b9084] underline'>
-                                        mj@mjanglin.com
+                                    <a href='mailto:contact@mjanglin.com' className='text-sm mt-[2px] text-[#4b9084] underline'>
+                                        contact@mjanglin.com
                                     </a>
                                 </div>
                                 <p className='py-4'>

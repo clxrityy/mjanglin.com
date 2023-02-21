@@ -106,7 +106,7 @@ const Navbar = () => {
                     <div>
                         <div className='flex w-full items-center justify-between'>
                             <Link href='/'>
-                                <Image src={clxrity} alt='mj-circle-gazing-off' width='87' height='34' />
+                                <Image src={clxrity} alt='mj-circle-gazing-off' width='87' height='34' className='rounded-full shadow-md shadow-white hover:shadow-none' />
                             </Link>
                             <div className={ nav ? 'rounded-full shadow-lg shadow-gray-600 cursor-pointer p-3' : 'hidden'}
                                 onClick={handleNav}
@@ -172,7 +172,7 @@ const Navbar = () => {
                                         </a>
                                     </div>
                                     <div className='rounded-full shadow-lg shadow-gray-600 p-3 cursor-pointer hover:scale-105 ease-in duration-300'>
-                                        <a href='mailto:mj@mjanglin.com'>
+                                        <a href='mailto:contact@mjanglin.com'>
                                             <AiOutlineMail
 
                                                 color='#4b9084'
