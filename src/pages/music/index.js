@@ -4,11 +4,16 @@ import Equipment from './components/Equipment';
 import SoundCloudIcon from './components/SoundCloudIcon';
 import musicBg from './assets/music-bg.jpg';
 import SpotifyIcon from './components/SpotifyIcon';
-
+import Head from 'next/head';
 
 const music = () => {
     return (
         <div className='w-full'>
+            <Head>
+                <title>
+                    MJ Anglin | Music
+                </title>
+            </Head>
             <div className='w-screen h-[30vh] lg:h-[40vh] relative'>
                 <div className='absolute top-0 left-0 w-full h-[30vh] lg:h-[40vh] bg-black/80 z-10' />
                 <Image src={musicBg} alt='music' className='absolute z-1' style={{ objectFit: 'cover' }} fill />

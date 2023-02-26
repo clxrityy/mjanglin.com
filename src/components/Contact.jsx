@@ -3,7 +3,7 @@ import contactImg from '../assets/images/contact.png';
 import Image from 'next/image';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
-import SnakePreview from './SnakePreview';
+import SnakePreview from './GamePreview';
 
 const Contact = () => {
     return (
@@ -48,7 +48,7 @@ const Contact = () => {
                                     Reach out - see if I can be useful for your project.
                                 </p>
                             </div>
-                            <div>
+                            <div className='bottom-0'>
                                 <p className='uppercase pt-6 pb-2 text-lg font-semibold'>
                                     Connect With Me
                                 </p>
