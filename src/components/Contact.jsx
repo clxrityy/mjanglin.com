@@ -3,7 +3,7 @@ import contactImg from '../assets/images/contact.png';
 import Image from 'next/image';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
-import SnakePreview from './GamePreview';
+import GamePreview from './GamePreview';
 
 const Contact = () => {
     return (
@@ -80,10 +80,10 @@ const Contact = () => {
 
                     {/* right */}
 
-                    <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-500 rounded-xl lg:p-4 hidden lg:block'>
+                    <div className='col-span-3 w-full h-auto shadow-xl shadow-gray-500 rounded-xl flex flex-col lg:flex-row'>
                         <div className='p-4'>
 
-                            <SnakePreview />
+                            <GamePreview />
 
                         </div>
                     </div>

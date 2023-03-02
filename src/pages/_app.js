@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
 
-    if (router.asPath.includes('/articles/article') || router.asPath.includes('/tictactoe')) {
+    if (router.asPath.includes('/articles/article') || router.asPath.includes('/games')) {
       setShowNav(false);
     } else {
       setShowNav(true);

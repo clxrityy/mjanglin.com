@@ -5,9 +5,16 @@ import gifOne from './images/gif1.gif';
 import Internet from './components/Internet';
 import internetGif from './images/internet.gif';
 import FunFacts from './components/FunFacts';
+import Head from 'next/head';
+
 const ai = () => {
     return (
         <div className='w-full p-10'>
+            <Head>
+                <title>
+                    MJ Anglin | Articles | AI
+                </title>
+            </Head>
             <div className='w-full text-center space-y-4'>
                 <h1 className='text-3xl lg:text-4xl uppercase tracking-widest text-[#4b9084]'>
                     Artificial Intelligence

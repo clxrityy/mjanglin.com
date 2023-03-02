@@ -114,7 +114,7 @@ const Navbar = () => {
                                 <AiOutlineClose />
                             </div>
                         </div>
-                        <div className='border-b border-gray-600 my-4'>
+                        <div className={nav ? 'border-b border-gray-600 my-4' : 'hidden'}>
                             <p className='text-gray-100 font-semibold w-[85%] md:w-[90%] py-4'>
                                 Let&#39;s create something cool and have fun in the process.
                             </p>
