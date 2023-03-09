@@ -4,6 +4,7 @@ import Avatar from './Avatar';
 import Login from '../../login';
 import Head from 'next/head';
 import styles from './ProfileCard.module.css';
+import ProfileNav from './ProfileNav';
 
 export default function UserProfile() {
     const [profile, setProfile] = useState(null);
@@ -37,21 +38,26 @@ export default function UserProfile() {
 
 
     return (
-        <div className='w-full grid justify-items-stretch'>
+        <div className='w-full'>
             <Head>
                 <title>
                     {profile.name}&#39;s Profile
                 </title>
             </Head>
-            <div className='w-fit h-fit bg-[#4b9084] p-9 flex flex-col justify-self-end rounded-md justify-center'>
-                <div className='space-y-2 flex flex-col justify-center items-center'>
-                    <Avatar url={profile.avatar} />
-                    <h4 className='text-center text-black font-bold'>
-                        {profile.name}
-                    </h4>
-                    <button onClick={logout} className={styles.logoutBtn}>
-                        Log Out
-                    </button>
+            <div className='absolute'>
+                <ProfileNav />
+            </div>
+            <div className='w-full grid justify-items-stretch'>
+                <div className='w-fit h-fit bg-[#4b9084] p-9 flex flex-col justify-self-end rounded-md justify-center'>
+                    <div className='space-y-2 flex flex-col justify-center items-center'>
+                        <Avatar url={profile.avatar} />
+                        <h4 className='text-center text-black font-bold'>
+                            {profile.name}
+                        </h4>
+                        <button onClick={logout} className={styles.logoutBtn}>
+                            Log Out
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
