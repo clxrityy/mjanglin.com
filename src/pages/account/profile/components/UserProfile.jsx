@@ -20,7 +20,7 @@ export default function UserProfile() {
                     setProfile(result.data[0]);
                 }
             })
-    }, [supabase, session.user.id])
+    }, [])
 
     if (!profile) {
         return (
