@@ -48,7 +48,7 @@ export default function UserProfile() {
                 <ProfileNav />
             </div>
             <div className='w-full grid justify-items-stretch'>
-                <div className='w-fit h-fit bg-[#4b9084] p-9 flex flex-col justify-self-end rounded-md justify-center'>
+                <div className='w-fit h-fit bg-[#7da7c9] p-9 flex flex-col justify-self-end rounded-md justify-center shadow-lg shadow-black'>
                     <div className='space-y-2 flex flex-col justify-center items-center'>
                         <Avatar url={profile.avatar} />
                         <h4 className='text-center text-black font-bold'>

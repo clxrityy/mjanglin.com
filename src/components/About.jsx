@@ -39,18 +39,18 @@ const About = () => {
                         </p>
                     </div>
                 </div>
-                <div className='w-full sm:max-w-lg h-auto m-auto shadow-xl shadow-gray-600 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300 lg:flex-row'>
-                    <Image src={laptopDog} alt='laptop-dog' width={150} height={150}
+                <div className='w-full sm:max-w-md h-auto m-auto shadow-xl shadow-gray-600 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300 lg:flex-row'>
+                    <Image src={laptopDog} alt='laptop-dog'
 
-                        className='rounded-xl p-2'
+                        className='rounded-xl p-2 w-[100px] md:w-[150px]'
                     />
-                    <Image src={mjSmiling} alt='mj-smiling' width={200} height={200}
+                    <Image src={mjSmiling} alt='mj-smiling'
 
-                        className='rounded-xl p-2'
+                        className='rounded-xl p-2 w-[100px] md:w-[150px]'
                     />
-                    <Image src={laptopCode} alt='mj-smiling' width={140} height={200}
+                    <Image src={laptopCode} alt='laptop'
 
-                        className='rounded-xl p-2'
+                        className='rounded-xl p-2 w-[100px] md:w-[150px]'
                     />
                 </div>
             </div>
