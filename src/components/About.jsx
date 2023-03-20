@@ -4,6 +4,7 @@ import Link from 'next/link';
 import laptopCode from '../assets/images/laptop-code.png';
 import mjSmiling from '../assets/images/mj-smile.png';
 import laptopDog from '../assets/images/laptop-dog.png';
+import { motion } from 'framer-motion';
 
 const About = () => {
     return (
@@ -40,18 +41,24 @@ const About = () => {
                     </div>
                 </div>
                 <div className='w-full sm:max-w-md h-auto m-auto shadow-xl shadow-gray-600 rounded-xl flex items-center justify-center p-4 hover:scale-105 ease-in duration-300 lg:flex-row'>
-                    <Image src={laptopDog} alt='laptop-dog'
+                    <motion.div whileTap={{ scale: 2, transition: { duration: 0.5 } }}>
+                        <Image src={laptopDog} alt='laptop-dog'
 
-                        className='rounded-xl p-2 w-[100px] md:w-[150px]'
-                    />
-                    <Image src={mjSmiling} alt='mj-smiling'
+                            className='rounded-xl p-2 w-[100px] md:w-[150px]'
+                        />
+                    </motion.div>
+                    <motion.div whileTap={{ scale: 2, transition: { duration: 0.5 } }}>
+                        <Image src={mjSmiling} alt='mj-smiling'
 
-                        className='rounded-xl p-2 w-[100px] md:w-[150px]'
-                    />
-                    <Image src={laptopCode} alt='laptop'
+                            className='rounded-xl p-2 w-[100px] md:w-[150px]'
+                        />
+                    </motion.div>
+                    <motion.div whileTap={{ scale: 2, transition: { duration: 0.5 } }}>
+                        <Image src={laptopCode} alt='laptop'
 
-                        className='rounded-xl p-2 w-[100px] md:w-[150px]'
-                    />
+                            className='rounded-xl p-2 w-[100px] md:w-[150px]'
+                        />
+                    </motion.div>
                 </div>
             </div>
         </div>

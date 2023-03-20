@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { AiOutlineMail } from 'react-icons/ai';
 import { FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 import GamePreview from './GamePreview';
+import { motion } from 'framer-motion';
 
 const Contact = () => {
     return (
@@ -21,14 +22,14 @@ const Contact = () => {
 
                     <div className='col-span-3 lg:col-span-2 w-full h-full shadow-xl shadow-gray-500 rounded-xl p-4'>
                         <div className='lg:p-4 h-full'>
-                            <div>
+                            <motion.div whileTap={{ scale: 1.2 }}>
                                 <Image src={contactImg} alt='Connect'
 
                                     className='rounded-xl hover:scale-105 ease-in-out duration-[10s] animate-pulse opacity-60 hover:opacity-100'
                                     width={200}
                                     height={200}
                                 />
-                            </div>
+                            </motion.div>
                             <div>
                                 <h2 className='py-2'>
                                     MJ Anglin

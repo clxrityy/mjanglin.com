@@ -8,7 +8,6 @@ const Summary = () => {
 
     const [rotate, setRotate] = useState(false);
 
-
     return (
         <div>
             <h1 className='uppercase tracking-wider text-3xl md:text-4xl flex'>
@@ -22,9 +21,8 @@ const Summary = () => {
                     animate={{ scale: 1, rotate: rotate ? 360 : 0 }}
                     initial={{ scale: 0 }}
                     transition={{ type: "spring", duration: 1.5 }}
-                    onClick={() => {
-                        setRotate(!rotate);
-                    }}
+                    whileTap={{ scale: 1.1, transition: { duration: 0.5 } }}
+                    whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}
                 >
                     <Image src={headshot} alt='MJ face' className='w-[150px] md:w-[275px]' />
                 </motion.div>
