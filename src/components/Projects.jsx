@@ -1,7 +1,7 @@
 import React from 'react';
 import collabrity from '../assets/projects/collabrity.gif';
 import uoraty from '../assets/projects/uoraty.gif';
-import clxrityxyz from '../assets/projects/clxrityxyz.gif';
+import chatgptx from '../assets/projects/chatgptx.gif';
 import pacman from '../assets/projects/pacman.gif';
 import ProjectItem from './ProjectItem';
 
@@ -18,11 +18,11 @@ const Projects = () => {
                 <div className='grid md:grid-cols-2 gap-8'>
                     <ProjectItem
 
-                        title='collabrity.xyz'
-                        backgroundImg={collabrity}
-                        projectUrl='https://www.collabrity.xyz'
-                        tool='Vite JS'
-                        description='A concept for the homepage of a collaborative music site.'
+                        title='ChatGPTx'
+                        backgroundImg={chatgptx}
+                        projectUrl='https://chatgptx-gold.vercel.app/'
+                        tool='Next.js 13'
+                        description="A replication of ChatGPT with Typescript."
                     />
                     <ProjectItem
 
@@ -34,19 +34,19 @@ const Projects = () => {
                     />
                     <ProjectItem
 
-                        title='clxrity.xyz'
-                        backgroundImg={clxrityxyz}
-                        projectUrl='https://www.clxrity.xyz'
-                        tool='React JS'
-                        description="A simple mobile-friendly site with small animations to link my social platforms."
-                    />
-                    <ProjectItem
-
                         title='Pac-Man'
                         backgroundImg={pacman}
                         projectUrl='https://clxrityy.github.io/pacman/'
                         tool='JavaScript'
                         description="A replication of the classic Pac-Man game. Play using the arrow keys."
+                    />
+                    <ProjectItem
+
+                        title='collabrity.xyz'
+                        backgroundImg={collabrity}
+                        projectUrl='https://www.collabrity.xyz'
+                        tool='Vite JS'
+                        description='A concept for the homepage of a collaborative music site.'
                     />
 
                 </div>
