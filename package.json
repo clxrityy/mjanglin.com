@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://mjanglin.com",
+  "author": {
+    "name": "MJ Anglin",
+    "email": "contact@mjanglin.com",
+    "url": "https://mjanglin.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
