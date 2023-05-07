@@ -1,9 +1,0 @@
-.logoutBtn {
-    width: 200px;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.658);
-    box-shadow: 2px 1px 1px 1px #000000;
-}
-.logoutBtn:hover {
-    background: #000000;
-}
