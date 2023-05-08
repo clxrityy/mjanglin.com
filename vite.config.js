@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        "styled-components",
+        "../styled-components",
         "react-icons/ai",
         "react-icons/si",
         "react-icons/bs",
