@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import MQ from '../lib/utils';
-import css from 'styled-components';
+
 
 
 const Section = styled.div`

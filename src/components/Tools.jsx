@@ -16,15 +16,23 @@ const Container = styled.div`
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+    }
 `;
 
 const Title = styled.h1`
     font-size: 74px;
+
+    @media screen and (max-width: 600px) {
+        text-align: center;
+    }
 `;
 
-const Right = styled.div`
-
-`;
 
 const Grid = styled.div`
     display: grid;
@@ -33,6 +41,12 @@ const Grid = styled.div`
     border-radius: 5px;
     grid-template-columns: auto auto auto;
     padding: 10px;
+
+    @media screen and (max-width: 768px) {
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+        background-color: transparent;
+    }
 `;
 
 const GridItem = styled.div`
@@ -55,6 +69,17 @@ const Box = styled.div`
         background-color: rgba(0, 0, 0, 0.1);
         transition: 500ms;
         box-shadow: 5px 8px 18px #fff;
+    }
+
+    @media screen and (max-width: 768px) {
+        background-color: rgba(0, 0, 0, 0);
+
+        &:hover {
+            transform: scale(1.3);
+            background-color: transparent;
+            transition: 300ms;
+            box-shadow: none;
+        }
     }
 `;
 

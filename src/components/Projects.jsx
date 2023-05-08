@@ -6,6 +6,12 @@ const Section = styled.div`
     scroll-snap-align: center;
     display: flex;
     justify-content: center;
+
+    @media only screen and (max-width: 768px) {
+        height: 200vh;
+        align-items: center;
+        margin-top: 50px;
+    }
 `;
 
 const Container = styled.div`
@@ -14,11 +20,22 @@ const Container = styled.div`
     width: 1400px;
     display: flex;
     justify-content: space-around;
+    
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
 `;
 
 const Title = styled.h1`
     font-size: 74px;
     margin-top: 50px;
+
+    @media screen and (max-width: 768px) {
+        text-align: center;
+    }
 `;
 
 const Grid = styled.div`
@@ -28,6 +45,17 @@ const Grid = styled.div`
     padding: 10px;
     grid-template-rows: repeat(2, 1fr);
     grid-template-columns: repeat(2, 1fr);
+
+    @media only screen and (max-width: 768px) {
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+
+    @media screen and (max-width: 480px) {
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+    }
 `;
 
 const GridItem = styled.div`
@@ -46,6 +74,10 @@ const Parent = styled.div`
     &:hover {
         background: linear-gradient(#56d1ac, #56b0d1);
     }
+
+    @media only screen and (max-width: 768px) {
+        background: linear-gradient(#56d1ac, #56b0d1);
+    }
 `;
 
 const Child = styled.div`
@@ -56,6 +88,13 @@ const Child = styled.div`
     transform: translate(-50%, -50%);
     ${GridItem}&:hover {
         display: block;
+    }
+
+    @media only screen and (max-width: 768px) {
+        display: block;
+        transform: none;
+        top: 0;
+        left: 0;
     }
 `;
 
@@ -74,6 +113,11 @@ const Txt = styled.p`
     &:hover {
         background-color: rgba(0, 0, 0, 0.7);
         opacity: 0.95;
+    }
+
+    @media only screen and (max-width: 768px) {
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.6);
     }
 `;
 
@@ -116,6 +160,11 @@ const Img = styled.img`
     &:hover {
         opacity: 1;
         cursor: pointer;
+    }
+
+    @media only screen and (max-width: 768px) {
+        width: 300px;
+        height: 200px;
     }
 `;
 
