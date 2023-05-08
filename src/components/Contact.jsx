@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from '../styled-components';
-import { AiOutlineMail } from 'react-icons/ai';
-import { AiFillInstagram, AiFillGithub } from 'react-icons/ai';
-import { SiTwitter } from 'react-icons/si';
-import { ImSoundcloud2, ImSpotify } from 'react-icons/im';
-import { BsLinkedin } from 'react-icons/bs';
+import { AiOutlineMail } from '../react-icons/ai';
+import { AiFillInstagram, AiFillGithub } from '../react-icons/ai';
+import { SiTwitter } from '../react-icons/si';
+import { ImSoundcloud2, ImSpotify } from '../react-icons/im';
+import { BsLinkedin } from '../react-icons/bs';
 
 const Section = styled.div`
     height: 100vh;

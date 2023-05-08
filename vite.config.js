@@ -8,10 +8,10 @@ export default defineConfig({
     rollupOptions: {
       external: [
         "../styled-components",
-        "react-icons/ai",
-        "react-icons/si",
-        "react-icons/bs",
-        "react-icons/im",
+        "../react-icons/ai",
+        "../react-icons/si",
+        "../react-icons/bs",
+        "../react-icons/im",
         "@react-three/fiber",
         "@react-three/drei",
       ]
