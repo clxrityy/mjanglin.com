@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '../styled-components';
 import { AiOutlineMail } from 'react-icons/ai';
 import { AiFillInstagram, AiFillGithub } from 'react-icons/ai';
 import { SiTwitter } from 'react-icons/si';

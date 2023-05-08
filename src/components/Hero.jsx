@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '../styled-components';
 import Navbar from './Navbar';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { Canvas } from '@react-three/fiber';
