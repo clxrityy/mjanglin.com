@@ -8,7 +8,7 @@ Title: Saturn
 */
 
 import React, { useRef } from 'react';
-import { useGLTF } from '../@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 
 export function Saturn(props) {
   const { nodes, materials } = useGLTF('./assets/saturn-transformed.glb')
