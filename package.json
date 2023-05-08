@@ -12,7 +12,12 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0"
+    "react-icons": "^4.8.0",
+    "styled-components": "^5.3.6",
+    "@react-three/drei": "^9.56.28",
+    "@react-three/fiber": "^8.11.5",
+    "@react-three/postprocessing": "^2.7.0",
+    "three": "^0.150.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

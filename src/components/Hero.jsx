@@ -2,8 +2,8 @@ import React from 'react';
 import styled from '../styled-components';
 import Navbar from './Navbar';
 import { AiOutlineArrowDown } from '../react-icons/ai';
-import { Canvas } from '@react-three/fiber';
-import { MeshDistortMaterial, OrbitControls, Sphere } from '@react-three/drei';
+import { Canvas } from '../@react-three/fiber';
+import { MeshDistortMaterial, OrbitControls, Sphere } from '../@react-three/drei';
 
 const Section = styled.div`
     height: 100vh;

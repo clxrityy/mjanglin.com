@@ -1,5 +1,5 @@
-import { OrbitControls, Stage } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Stage } from '../@react-three/drei';
+import { Canvas } from '../@react-three/fiber';
 import React from 'react';
 import { Controller } from './models/Controller';
 
