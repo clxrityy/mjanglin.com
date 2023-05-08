@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-import { device } from '../lib/utils';
+import styled from '/styled-components';
 
 const Section = styled.div`
     display: flex;

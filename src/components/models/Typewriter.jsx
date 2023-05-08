@@ -8,7 +8,7 @@ Title: Typewriter
 */
 
 import React, { useRef } from 'react';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF } from '/@react-three/drei';
 
 export function Typewriter(props) {
   const { nodes, materials } = useGLTF('./assets/typewriter-transformed.glb')

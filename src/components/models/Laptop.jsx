@@ -8,7 +8,7 @@ Title: Laptop
 */
 
 import React, { useRef } from 'react';
-import { useGLTF } from '@react-three/drei';
+import { useGLTF } from '/@react-three/drei';
 
 export function Laptop(props) {
   const { nodes, materials } = useGLTF('./assets/laptop-transformed.glb')
