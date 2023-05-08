@@ -2,7 +2,7 @@ import Hero from './components/Hero';
 import Contact from './components/Contact';
 import About from './components/About';
 import Tools from './components/Tools';
-import styled from '/styled-components';
+import styled from 'styled-components';
 import Projects from './components/Projects';
 import Interests from './components/Interests';
 

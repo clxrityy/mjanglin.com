@@ -7,13 +7,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       external: [
-        "/styled-components",
-        "/react-icons/ai",
-        "/react-icons/si",
-        "/react-icons/bs",
-        "/react-icons/im",
-        "/@react-three/fiber",
-        "/@react-three/drei",
+        "styled-components",
+        "react-icons/ai",
+        "react-icons/si",
+        "react-icons/bs",
+        "react-icons/im",
+        "@react-three/fiber",
+        "@react-three/drei",
       ]
     }
   },

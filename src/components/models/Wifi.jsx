@@ -8,7 +8,7 @@ Title: WiFI Antenna
 */
 
 import React, { useRef } from 'react'
-import { useGLTF } from '/@react-three/drei'
+import { useGLTF } from '@react-three/drei'
 
 export function Wifi(props) {
   const { nodes, materials } = useGLTF('./assets/wifi-transformed.glb')

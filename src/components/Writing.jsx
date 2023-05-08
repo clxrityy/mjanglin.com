@@ -1,6 +1,6 @@
 import React from 'react';
-import { OrbitControls, Stage } from '/@react-three/drei';
-import { Canvas } from '/@react-three/fiber';
+import { OrbitControls, Stage } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import { Typewriter } from './models/Typewriter';
 
 const Writing = () => {

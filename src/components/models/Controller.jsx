@@ -8,7 +8,7 @@ Title: AKAI MIDI Controller
 */
 
 import React, { useRef } from 'react';
-import { useGLTF } from '/@react-three/drei';
+import { useGLTF } from '@react-three/drei';
 
 export function Controller(props) {
   const { nodes, materials } = useGLTF('./assets/controller-transformed.glb')
