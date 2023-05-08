@@ -1,3 +1,11 @@
+import MqInit from 'styled-components-media-query';
+
+const sizes = { xs2: 320, xs: 375, s: 425, m: 768, lg: 1024, xl: 1440, xl2: 2560 };
+
+const MQ = MqInit({ sizes });
+
+export default MQ;
+
 const size = {
     mobileS: '320px',
     mobileM: '375px',

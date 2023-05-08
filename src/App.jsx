@@ -18,6 +18,10 @@ const Container = styled.div`
   &::-webkit-scrollbar{
     display: none;
   }
+
+  @media only screen and (max-width: 768px) {
+      scroll-snap-type: none;
+    }
 `
 
 function App() {

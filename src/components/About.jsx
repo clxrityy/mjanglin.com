@@ -9,6 +9,9 @@ const Section = styled.div`
     scroll-snap-align: center;
     display: flex;
     justify-content: center;
+    @media only screen and (max-width: 768px) {
+        margin-top: 50px;
+    }
 `;
 
 const Container = styled.div`
@@ -21,6 +24,10 @@ const Container = styled.div`
 
 const Left = styled.div`
     flex: 1;
+
+    @media only screen and (max-width: 768px) {
+        display: none;
+    }
 `;
 
 const Title = styled.h1`
@@ -31,6 +38,10 @@ const Txt = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;
+
+    @media only screen and (max-width: 768px) {
+        display: inline-block;
+    }
 `;
 
 const Subtitle = styled.h2`
@@ -40,6 +51,10 @@ const Subtitle = styled.h2`
 const Desc = styled.p`
     font-size: 24px;
     color: lightgray;
+
+    @media only screen and (max-width: 768px) {
+        padding: 5px 10px;
+    }
 `;
 
 const Heading = styled.h4`
@@ -73,6 +88,11 @@ const Right = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 20px;
+
+    @media only screen and (max-width: 768px) {
+        align-items: center;
+        text-align: center;
+    }
 `;
 
 const About = () => {
