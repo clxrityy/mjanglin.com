@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import IMAGES from '../lib/images';
 
 
 const Section = styled.div`
@@ -101,7 +101,7 @@ const Navbar = () => {
         <Section>
             <Container>
                 <Links>
-                    <Logo src='./img/signature.png' />
+                    <Logo src={IMAGES.signature} />
                     <List>
                         <Link href='#home'>
                             <ListItem>
@@ -131,7 +131,7 @@ const Navbar = () => {
                     </List>
                 </Links>
                 <Icons>
-                    <Icon src='./img/search.png' />
+                    <Icon src={IMAGES.search} />
                     <Button>
                         Unknown
                     </Button>

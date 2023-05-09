@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import IMAGES from '../lib/images';
 
 const Section = styled.div`
     height: 100vh;
@@ -210,7 +211,7 @@ const Projects = () => {
                 <Grid>
                     <GridItem>
                         <Parent>
-                            <Img src='./img/projects/chatgptx.gif' />
+                            <Img src={IMAGES.PROJECTS.chatgptx} />
                             <Child>
                                 <Txt>
                                     <TxtTitle>
@@ -233,7 +234,7 @@ const Projects = () => {
                     </GridItem>
                     <GridItem>
                         <Parent>
-                            <Img src='./img/projects/talkn.gif' />
+                            <Img src={IMAGES.PROJECTS.talkn} />
                             <Child>
                                 <Txt>
                                     <TxtTitle>
@@ -256,7 +257,7 @@ const Projects = () => {
                     </GridItem>
                     <GridItem>
                     <Parent>
-                            <Img src='./img/projects/buan.gif' />
+                            <Img src={IMAGES.PROJECTS.buan} />
                             <Child>
                                 <Txt>
                                     <TxtTitle>
@@ -279,7 +280,7 @@ const Projects = () => {
                     </GridItem>
                     <GridItem>
                     <Parent>
-                            <Img src='./img/projects/uoraty.gif' />
+                            <Img src={IMAGES.PROJECTS.uoraty} />
                             <Child>
                                 <Txt>
                                     <TxtTitle>

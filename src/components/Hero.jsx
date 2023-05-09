@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import { AiOutlineArrowDown } from 'react-icons/ai';
 import { Canvas } from '@react-three/fiber';
 import { MeshDistortMaterial, OrbitControls, Sphere } from '@react-three/drei';
+import IMAGES from '../lib/images';
 
 const Section = styled.div`
     height: 100vh;
@@ -184,7 +185,7 @@ const Hero = () => {
                             <MeshDistortMaterial color="#7e36af" attach='material' distort={0.5} speed={2} />
                         </Sphere>
                     </Canvas>
-                    <Img src='./img/heroWebDev.png' />
+                    <Img src={IMAGES.hero} />
                 </Right>
             </Container> 
         </Section>

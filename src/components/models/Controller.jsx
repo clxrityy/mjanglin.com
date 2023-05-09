@@ -10,8 +10,9 @@ Title: AKAI MIDI Controller
 import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 
+
 export function Controller(props) {
-  const { nodes, materials } = useGLTF('./assets/controller-transformed.glb')
+  const { nodes, materials } = useGLTF('./models/controller-transformed.glb');
   return (
     <group {...props} dispose={null}>
       <group position={[-2.96, 0.91, -2.07]} rotation={[0.1, 0, 0]} scale={[0.48, 0.07, 0.48]}>
@@ -51,4 +52,4 @@ export function Controller(props) {
   )
 }
 
-useGLTF.preload('./assets/controller-transformed.glb')
+useGLTF.preload('./models/controller-transformed.glb')

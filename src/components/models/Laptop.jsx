@@ -11,7 +11,7 @@ import React, { useRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 
 export function Laptop(props) {
-  const { nodes, materials } = useGLTF('./assets/laptop-transformed.glb')
+  const { nodes, materials } = useGLTF('./models/laptop-transformed.glb')
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.Frame_ComputerFrame_0.geometry} material={materials.ComputerFrame} position={[0, 0.98, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={40} />
@@ -20,6 +20,6 @@ export function Laptop(props) {
   )
 }
 
-useGLTF.preload('./assets/laptop-transformed.glb');
+useGLTF.preload('./models/laptop-transformed.glb');
 
 

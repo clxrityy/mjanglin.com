@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import IMAGES from '../lib/images';
 
 const Section = styled.div`
     height: 100vh;
@@ -151,7 +152,7 @@ const Tools = () => {
                 <Grid>
                     <GridItem>
                         <Box>
-                            <Img src='./img/skills/js.png' />
+                            <Img src={IMAGES.SKILLS.js} />
                             <Txt>
                                 JavaScript
                             </Txt>
@@ -159,7 +160,7 @@ const Tools = () => {
                     </GridItem>
                     <GridItem>
                         <Box>
-                            <Img src='./img/skills/python.png' />
+                            <Img src={IMAGES.SKILLS.python} />
                             <Txt>
                                 Python
                             </Txt>
@@ -167,7 +168,7 @@ const Tools = () => {
                     </GridItem>
                     <GridItem>
                         <Box>
-                            <Img src='./img/skills/java.png' />
+                            <Img src={IMAGES.SKILLS.java} />
                             <Txt>
                                 Java
                             </Txt>
@@ -175,7 +176,7 @@ const Tools = () => {
                     </GridItem>
                     <GridItem>
                         <Box>
-                            <Img src='./img/skills/ts.png' />
+                            <Img src={IMAGES.SKILLS.ts} />
                             <Txt>
                                 TypeScript
                             </Txt>
@@ -183,7 +184,7 @@ const Tools = () => {
                     </GridItem>
                     <GridItem>
                         <Box>
-                            <Img src='./img/skills/react.png' />
+                            <Img src={IMAGES.SKILLS.react} />
                             <Txt>
                                 React
                             </Txt>
@@ -191,7 +192,7 @@ const Tools = () => {
                     </GridItem>
                     <GridItem>
                         <Box>
-                            <Img src='./img/skills/firebase.png' />
+                            <Img src={IMAGES.SKILLS.firebase} />
                             <Txt>
                                 Firebase
                             </Txt>

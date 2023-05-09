@@ -7,11 +7,12 @@ Source: https://sketchfab.com/3d-models/wifi-antenna-642d897d3549497589809c8567e
 Title: WiFI Antenna
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from 'react';
+import { useGLTF } from '@react-three/drei';
+
 
 export function Wifi(props) {
-  const { nodes, materials } = useGLTF('./assets/wifi-transformed.glb')
+  const { nodes, materials } = useGLTF('./models/wifi-transformed.glb');
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
@@ -36,4 +37,4 @@ export function Wifi(props) {
   )
 }
 
-useGLTF.preload('./assets/wifi-transformed.glb')
+useGLTF.preload('./models/wifi-transformed.glb')
