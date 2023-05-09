@@ -10,12 +10,22 @@ const Section = styled.div`
     scroll-snap-align: center;
     display: flex;
     justify-content: center;
+
+    @media only screen and (max-width: 768px) {
+        margin-top: 250px;
+    }
 `;
 
 const Container = styled.div`
     width: 1400px;
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (max-width: 768px) {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
 `;
 
 const Left = styled.div`
@@ -30,6 +40,12 @@ const List = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @media only screen and (max-width: 768px) {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 `;
 
 const ListTitle = styled.h1`
@@ -79,6 +95,10 @@ const ListItem = styled.li`
                 }
             }
         }
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 40px;
     }
 `;
 

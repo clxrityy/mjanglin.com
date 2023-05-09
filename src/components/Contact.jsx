@@ -17,6 +17,10 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 50px;
+
+    @media only screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 const Left = styled.div`
@@ -78,6 +82,10 @@ const Icon = styled.a`
     &:hover {
         transform: scale(1.3);
         transition: all 200ms ease;
+    }
+
+    @media only screen and (max-width: 768px) {
+        font-size: 40px;
     }
 `;
 

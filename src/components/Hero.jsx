@@ -16,6 +16,10 @@ const Section = styled.div`
     @media only screen and (max-width: 768px) {
         height: 200vh;
     }
+
+    @media only screen and (max-width: 1200px) {
+        height: 180vh;
+    }
 `;
 
 const Container = styled.div`
@@ -31,6 +35,13 @@ const Container = styled.div`
         justify-content: center;
         width: 100%;
     }
+
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
 `;
 
 {/* LEFT */ }
@@ -43,6 +54,10 @@ const Left = styled.div`
 
     @media only screen and (max-width: 768px) {
         flex: 1;
+        align-items: center;
+    }
+
+    @media only screen and (max-width: 1200px) {
         align-items: center;
     }
 `;
@@ -72,6 +87,11 @@ const Desc = styled.p`
     @media only screen and (max-width: 768px) {
         padding: 20px;
         text-align: center;
+    }
+
+    @media only screen and (max-width: 1200px) {
+        text-align: center;
+        max-width: 500px;
     }
 `;
 
@@ -120,6 +140,10 @@ const Img = styled.img`
         height: 300px;
     }
 
+    @media only screen and (max-width: 1200px) {
+        width: 400px;
+    }
+
     @keyframes animate {
         100% {
             transform: translateY(20px)
@@ -156,7 +180,7 @@ const Hero = () => {
                         <OrbitControls enableZoom={false} autoRotate />
                         <ambientLight intensity={0.4} />
                         <directionalLight position={[3, 2, 1]} />
-                        <Sphere args={[1, 100, 200]} scale={1.3}>
+                        <Sphere args={[1, 100, 200]} scale={1.2}>
                             <MeshDistortMaterial color="#7e36af" attach='material' distort={0.5} speed={2} />
                         </Sphere>
                     </Canvas>

@@ -28,6 +28,10 @@ const Left = styled.div`
     @media only screen and (max-width: 768px) {
         display: none;
     }
+
+    @media only screen and (max-width: 1200px) {
+        display: none;
+    }
 `;
 
 const Title = styled.h1`
@@ -42,6 +46,8 @@ const Txt = styled.div`
     @media only screen and (max-width: 768px) {
         display: inline-block;
     }
+
+    
 `;
 
 const Subtitle = styled.h2`
@@ -54,6 +60,10 @@ const Desc = styled.p`
 
     @media only screen and (max-width: 768px) {
         padding: 5px 10px;
+    }
+
+    @media only screen and (max-width: 1200px) {
+        padding: 5px 20px;
     }
 `;
 
@@ -92,6 +102,11 @@ const Right = styled.div`
     @media only screen and (max-width: 768px) {
         align-items: center;
         text-align: center;
+    }
+
+    @media only screen and (max-width: 1200px) {
+        text-align: center;
+        align-items: center;
     }
 `;
 

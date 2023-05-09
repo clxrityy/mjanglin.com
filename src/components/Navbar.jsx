@@ -10,6 +10,10 @@ const Section = styled.div`
     @media only screen and (max-width: 768px) {
         width: 100%;
     }
+
+    @media only screen and (max-width: 1200px) {
+        width: 100%;
+    }
 `;
 const Container = styled.div`
     width: 1400px;
@@ -19,6 +23,11 @@ const Container = styled.div`
     padding: 10px 0px;
 
     @media only screen and (max-width: 768px) {
+        width: 100%;
+        padding: 10px;
+    }
+
+    @media only screen and (max-width: 1200px) {
         width: 100%;
         padding: 10px;
     }
@@ -49,6 +58,10 @@ const List = styled.div`
     list-style: none;
 
     @media only screen and (max-width: 768px) {
+        display: none;
+    }
+
+    @media only screen and (max-width: 1200px) {
         display: none;
     }
 `;
