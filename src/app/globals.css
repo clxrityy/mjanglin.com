@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
+
+body {
+  background: linear-gradient(rgba(0, 0, 0, 0.955), rgba(0, 0, 0, 0.99));
+  scrollbar-width: none;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* classes */
+.word-wrapper {
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1450px) {
+  .hero-left {
+    margin-left: 100px;
+  }
+}
