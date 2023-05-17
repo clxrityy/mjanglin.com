@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { motion, Variants, HTMLMotionProps } from "framer-motion";
+import Loading from "./Loading";
 
 interface Props extends HTMLMotionProps<"div"> {
     text: string;
@@ -47,19 +48,21 @@ const AnimatedTitle: FC<Props> = ({
     };
 
     return (
-        <motion.h1
-            style={{ display: "flex", overflow: "visible" }}
-            variants={container}
-            initial="hidden"
-            animate={'visible'}
-            {...props}
-        >
-            {letters.map((letter, index) => (
-                <motion.span key={index} variants={child}>
-                    {letter === " " ? "\u00A0" : letter}
-                </motion.span>
-            ))}
-        </motion.h1>
+        <Suspense fallback={<Loading />}>
+            <motion.h1
+                style={{ display: "flex", overflow: "visible" }}
+                variants={container}
+                initial="hidden"
+                animate={'visible'}
+                {...props}
+            >
+                {letters.map((letter, index) => (
+                    <motion.span key={index} variants={child}>
+                        {letter === " " ? "\u00A0" : letter}
+                    </motion.span>
+                ))}
+            </motion.h1>
+        </Suspense>
     );
 };
 
