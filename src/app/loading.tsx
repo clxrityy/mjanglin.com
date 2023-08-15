@@ -2,11 +2,11 @@ import { FC } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 
-interface loadingProps {
+interface LoadingProps {
 
 }
 
-const loading: FC<loadingProps> = ({ }) => {
+const LoadingPage: FC<LoadingProps> = ({ }) => {
     return <div className="h-[100%] snap-center w-[100%] 2xl:w-[1400px] flex justify-center 2xl:justify-between flex-col lg:flex-row items-center p-2">
 
         {/* LEFT */}
@@ -36,4 +36,4 @@ const loading: FC<loadingProps> = ({ }) => {
     </div>
 }
 
-export default loading;
+export default LoadingPage;

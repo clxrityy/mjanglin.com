@@ -1,5 +1,8 @@
+import Loading from '@/components/Loading';
 import './globals.css';
 import { Inter } from 'next/font/google';
+import { Suspense } from "react";
+
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,7 +31,9 @@ export default function RootLayout({
         <meta property="og:image" content="https://mjanglin.com/apple-touch-icon.png" />
       </head>
       <body className={`${inter.className} flex justify-center items-center`}>
-        {children}
+        <Suspense fallback={<Loading />}>
+          {children}
+        </Suspense>
       </body>
     </html>
   );

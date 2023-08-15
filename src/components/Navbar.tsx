@@ -14,7 +14,7 @@ const Navbar = () => {
                     <Link href='https://www.mjanglin.com'>
                         <Image src='/images/signature.png' width={100} height={100} className="h-[50px] w-[200px] hover:scale-125 cursor-pointer transition-all ease-out duration-300 -m-5" alt="logo/signature" />
                     </Link>
-                    <div className="hidden lg:flex gap-[20px] list-none">
+                    {/* <div className="hidden lg:flex gap-[20px] list-none">
                         <li className={listClass}>
                             Home
                         </li>
@@ -30,11 +30,11 @@ const Navbar = () => {
                         <li className={listClass}>
                             Contact
                         </li>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="flex items-center">
-                    <Link href='https://soundcloud.com/clxrityy'>
-                        <HiMusicNote className="w-[25px] h-[25px] cursor-pointer text-[rgb(72,145,116)] hover:scale-125 transition duration-300 ease-linear" />
+                    <Link href='https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV'>
+                        <HiMusicNote className="w-[25px] h-[25px] cursor-pointer text-[rgb(72,145,116)] hover:scale-125 hover:text-[#eee] transition-all duration-300 ease-linear" />
                     </Link>
                 </div>
             </div>

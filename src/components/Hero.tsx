@@ -1,7 +1,9 @@
 'use client';
 import AnimatedTitle from "./AnimatedTitle";
+import Loading from "./Loading";
 import { Mesh } from "./Mesh";
 import Navbar from "./Navbar";
+import { Suspense } from "react";
 
 const Hero = () => {
     return (
@@ -23,7 +25,9 @@ const Hero = () => {
 
                 {/* RIGHT */}
                 <div className="flex-1 md:flex-[3] xl:flex-[2] relative w-[100%] lg:w-auto">
-                    <Mesh />
+                    <Suspense fallback={<Loading />}>
+                        <Mesh />
+                    </Suspense>
                 </div>
             </div>
         </div>
