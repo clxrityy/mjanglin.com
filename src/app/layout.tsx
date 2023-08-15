@@ -2,7 +2,7 @@ import Loading from '@/components/Loading';
 import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 import { Suspense } from "react";
-
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -34,6 +34,7 @@ export default function RootLayout({
         <Suspense fallback={<Loading />}>
           {children}
         </Suspense>
+        <Analytics />
       </body>
     </html>
   );
