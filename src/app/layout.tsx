@@ -1,5 +1,5 @@
 import Loading from '@/components/Loading';
-import './globals.css';
+import '../styles/globals.css';
 import { Inter } from 'next/font/google';
 import { Suspense } from "react";
 

@@ -19,7 +19,7 @@ const Hero = () => {
                     </div>
 
                     <div className="flex items-center gap[10px]">
-                        <AnimatedTitle text="Web Developer" className="text-[rgb(72,145,116)] text-2xl" />
+                        <AnimatedTitle text="Developer" className="text-[rgb(72,145,116)] text-2xl" />
                     </div>
                 </div>
 

@@ -17,7 +17,7 @@
 } */
 
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.933), rgba(0, 0, 0, 0.99));
+  background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.933));
   scrollbar-width: none;
   color: white;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
