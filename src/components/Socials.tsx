@@ -1,40 +1,24 @@
-'use client';
-
-import Link from "next/link";
-import { useState } from "react";
-import { RiGithubFill, RiInstagramFill, RiLinkedinFill, RiSoundcloudFill, RiSpotifyFill, RiTwitterFill } from 'react-icons/ri';
-
+import Link from 'next/link';
+import { SlSocialTwitter, SlSocialSpotify, SlSocialSoundcloud, SlSocialInstagram } from 'react-icons/sl';
 
 const Socials = () => {
 
-    const [isClicked, setIsClicked] = useState(false);
-
-    const iconClass = `text-7xl hover:scale-125 transition duration-300 ease-linear ${isClicked && 'text-[#fff]'} cursor-pointer text-[rgb(72,145,116)] hover:text-white`;
-
-    return <div className="h-screen snap-center flex justify-center">
-        <div className="h-screen snap-center w-[100%] flex justify-center items-center">
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 justify-items-stretch gap-40 items-center">
-                <Link href='https://www.instagram.com/mjxnglin/'>
-                    <RiInstagramFill className={iconClass} onClick={() => setIsClicked(!isClicked)} />
-                </Link>
-                <Link href='https://wwww.twitter.com/yourclxrity/'>
-                    <RiTwitterFill className={iconClass} onClick={() => setIsClicked(!isClicked)} />
-                </Link>
-                <Link href='https://www.linkedin.com/in/mj-anglin-264473267/'>
-                    <RiLinkedinFill className={iconClass} onClick={() => setIsClicked(!isClicked)} />
-                </Link>
-                <Link href='https://soundcloud.com/clxrityy'>
-                    <RiSoundcloudFill className={iconClass} onClick={() => setIsClicked(!isClicked)} />
-                </Link>
-                <Link href='https://github.com/clxrityy'>
-                    <RiGithubFill className={iconClass} onClick={() => setIsClicked(!isClicked)} />
-                </Link>
-                <Link href='https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV'>
-                    <RiSpotifyFill className={iconClass} onClick={() => setIsClicked(!isClicked)} />
-                </Link>
-            </div>
-        </div> 
-    </div>
+    return (
+        <div className="flex flex-row space-x-4 md:space-x-6 justify-center items-center border-b rounded-sm py-4 px-2">
+            <Link href='https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV'>
+                <SlSocialSpotify className="social-icon" />
+            </Link>
+            <Link href='https://soundcloud.com/clxrityy'>
+                <SlSocialSoundcloud className="social-icon" />
+            </Link>
+            <Link href='https://www.instagram.com/mjxnglin/'>
+                <SlSocialInstagram className="social-icon" />
+            </Link>
+            <Link href='https://twitter.com/yourclxrity'>
+                <SlSocialTwitter className="social-icon" />
+            </Link>
+        </div>
+    )
 }
 
-export default Socials;
+export default Socials

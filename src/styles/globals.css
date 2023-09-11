@@ -2,38 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.99), rgba(0, 0, 0, 0.933));
+  height: 100vh;
+  background-color: #151515;
+  color: #e2e2e2;
   scrollbar-width: none;
-  color: white;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
 
-/* classes */
-.word-wrapper {
-  white-space: nowrap;
+main {
+  
+  @apply flex justify-center items-center h-[100vh]
 }
 
-@media screen and (min-width: 1100px) and (max-width: 1450px) {
-  .hero-left {
-    margin-left: 100px;
+
+.developer-icon {
+
+  @apply text-3xl cursor-pointer hover:scale-125 transition-all shadow-lg hover:shadow-2xl rounded-full
+}
+
+.heading {
+
+  @apply uppercase text-lg md:text-xl lg:text-2xl opacity-90 flex flex-row space-x-1 items-center font-bold tracking-widest transition-all text-center
+}
+
+.social-icon {
+  @apply text-2xl lg:text-3xl hover:scale-125 transition-all text-[rgb(72,145,116)] cursor-pointer hover:text-[#eee]
+}
+
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
   }
+}
+.animate-spin-slow {
+  animation: spin 1.75s linear infinite;
+  box-shadow: 1px 1px 0.25px #b7b7b7;
+}
+
+.icon {
+  @apply hover:scale-125 transition-all cursor-pointer
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 2.5px #b7b7b7;
+  transition: all;
+  transition-duration: 300ms;
+  cursor: pointer;
+}
+
+.text-shadow:hover {
+  text-shadow: none;
+}
+
+.music-link {
+  text-shadow: 1px 1px 0px #000;
+  @apply opacity-80 hover:opacity-90 hover:text-[#61aeca] hover:underline underline-offset-2
 }
