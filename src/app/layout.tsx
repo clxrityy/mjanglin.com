@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
-import { nunito } from '@/util/fonts';
+import { inter } from '@/util/fonts';
 
 
 
@@ -25,7 +25,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </head>
-      <body className={nunito.className}>
+      <body className={inter.className}>
         {children}
       </body>
     </html>

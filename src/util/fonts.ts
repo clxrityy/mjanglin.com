@@ -1,10 +1,10 @@
-import { Nunito, Roboto_Mono } from 'next/font/google';
+import { Inter, Roboto_Mono } from 'next/font/google';
 
-export const nunito = Nunito({
-    weight: ['200', '300', '400', '500', '600', '700', '800', '900', '1000'],
+export const inter = Inter({
+    weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
     display: "swap",
     preload: true,
-    style: ['normal', 'italic'],
+    style: ['normal'],
     subsets: ['latin']
 });
 
