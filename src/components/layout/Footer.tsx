@@ -15,7 +15,7 @@ export default function Footer({...props}: Props) {
                     <Link href="https://instagram.com/mjxnglin" className="social-link">
                         <icons.instagram size={20} />
                     </Link>
-                    <Link href="" className="social-link">
+                    <Link href="https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV" className="social-link">
                         <icons.spotify size={20} />
                     </Link>
                 </div>
