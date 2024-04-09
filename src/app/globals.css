@@ -80,4 +80,16 @@ p {
   .social-link {
     @apply hover:scale-125 transition-all duration-500 ease-in-out;
   }
+
+  .spotify-ad {
+    text-shadow: 0px 0px 7.5px #000000;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0,0,0, 0.25)
+    );
+    
+
+    @apply bg-black/25 rounded-lg px-2 shadow-md drop-shadow;
+  }
 }
