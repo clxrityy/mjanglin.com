@@ -8,7 +8,7 @@ const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "MJ Anglin",
-  description: "Developer, writer, and creator.",
+  description: "Developer & Creator",
 };
 
 export default function RootLayout({

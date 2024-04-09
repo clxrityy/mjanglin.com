@@ -1,5 +1,5 @@
-import Contact from "@/components/Contact";
-import Discord from "@/components/Discord";
+import Contact from "@/components/misc/Contact";
+import Discord from "@/components/misc/Discord";
 import Hero from "@/components/Hero";
 import { Card, CardFooter } from "@nextui-org/react";
 
