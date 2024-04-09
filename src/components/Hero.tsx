@@ -1,81 +1,104 @@
-import Dropdown from "./Dropdown";
-import { RiJavascriptFill } from 'react-icons/ri';
-import { BiLogoTypescript, BiLogoMongodb, BiCodeAlt, BiLogoGoLang } from 'react-icons/bi';
-import { TbBrandNextjs } from 'react-icons/tb';
-import { FaReact } from 'react-icons/fa';
-import { SiTailwindcss } from 'react-icons/si';
-import { PiMusicNotesFill } from 'react-icons/pi';
-import Image from "next/image";
-import Socials from "./Socials";
-import Donut from "./Donut";
+import configurations from "@/config";
 import Link from "next/link";
+import { Button, Chip, Popover, PopoverContent, PopoverTrigger, Image } from "@nextui-org/react";
 
+const { icons, colors } = configurations;
 
+export default function Hero() {
 
-const Hero = () => {
     return (
-        <div className="w-full h-full flex justify-center items-center">
-            <div className="flex">
-                <div className="flex flex-col space-y-4 justify-center items-center">
-                    <div className="flex flex-col space-y-10 justify-center items-center">
-                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold shadow-inner text-shadow">
-                            MJ Anglin
-                        </h1>
-                        <ul className='text-lg lg:text-xl font-semibold flex flex-col text-center space-y-6'>
-
-                            <li className="space-y-3 flex items-center justify-center flex-col">
-                                <h2 className="heading">
-                                    <BiCodeAlt className="icon" />
-                                    <span>
-                                        Developer
-                                    </span>
-                                </h2>
-                                <Dropdown prompt="Frameworks / tools">
-                                    <div className="grid grid-cols-5 grid-rows-2 items-center gap-x-1 gap-y-6 justify-between">
-                                        <RiJavascriptFill className='text-[#f7df1e] developer-icon' />
-                                        <BiLogoTypescript className="text-[#007acc] developer-icon" />
-                                        <TbBrandNextjs className="text-[#f4f5f7] developer-icon" />
-                                        <FaReact className="text-[#61DBFB] developer-icon" />
-                                        <Image src='/python.png' alt="python" className="developer-icon" width={27.5} height={27.5} />
-                                        <BiLogoMongodb className="developer-icon text-[#4DB33D]" />
-                                        <SiTailwindcss className="developer-icon text-[#00b4b6]" />
-                                        <Image src='/firebase.png' alt="firebase" className="developer-icon" width={27.55} height={27.5} />
-                                        <Image src='/java.png' alt="java" className="developer-icon" width={27.5} height={27.5} />
-                                        <BiLogoGoLang className="developer-icon text-[#00ADD8]" />
-                                    </div>
-                                </Dropdown>
-                            </li>
-                        </ul>
+        <div className="w-full h-1/2 flex items-center justify-center">
+            <div className="w-full max-w-2xl h-1/3 flex items-center justify-center">
+                <div className="bg-gradient-to-br from-green-600/60 to-blue-500/75 rounded-2xl px-10 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-inner">
+                    <div className="flex justify-end w-full">
+                        <p className="font-mono text-sm">
+                            @clxrity
+                        </p>
                     </div>
-                    <div>
-                        <Donut />
-                    </div>
-
-                    <div className="space-y-10">
-                        <div className="grid grid-flow-row gap-10 justify-center items-center">
-                            <div className="flex justify-center items-center">
-                                <Socials />
-                            </div>
+                    <div className="flex flex-col lg:flex-row gap-5">
+                        <Image src="/hero-img-cartoon-me.png" alt="Cartoon of MJ Anglin" width={150} height={150} className="rounded-full backdrop:bg-blend-screen shadow-lg" fetchPriority="high" />
+                        <div className="flex flex-col items-start justify-center">
+                            <h1 className="text-center">
+                                MJ Anglin
+                            </h1>
+                            <h3 className="uppercase text-base opacity-80">
+                                Developer
+                            </h3>
+                            <h3 className="uppercase text-base opacity-80">
+                                Creator
+                            </h3>
                         </div>
-                        <div className="space-y-3 flex items-center justify-center flex-col">
+                    </div>
+                    <div className="flex w-full items-center flex-col lg:flex-row justify-center lg:justify-around gap-5">
+                        <Popover placement="right" className="">
+                            <PopoverTrigger>
+                                <Button variant="bordered" className="bg-gradient-to-tr from-blue-500 to-purple-500 text-white font-semibold tracking-wider">skills</Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="bg-transparent shadow-xl">
+                                <div className="px-4 rounded-lg py-2 flex items-center justify-start text-center w-full">
+                                    <div className="grid grid-cols-1 lg:grid-cols-2 w-full justify-center gap-1 items-center grid-flow-dense">
+                                        <Chip variant="light"
+                                            classNames={{
+                                                base: "border border-white text-white"
+                                            }}>
+                                            <span className="flex flex-row items-center gap-1 text-center">
+                                            <icons.nodejs color={colors.nodejs} /> <span>
+                                                Node.js
+                                            </span>
+                                            </span>
+                                        </Chip>
+                                        <Chip variant="light"
+                                            classNames={{
+                                                base: "border border-white text-white"
+                                            }}>
+                                            <span className="flex flex-row items-center gap-1 text-center">
+                                            <icons.typescript color={colors.typescript} /> <span>
+                                                TypeScript
+                                            </span>
+                                            </span>
+                                        </Chip>
+                                        <Chip
+                                            variant="light"
+                                            classNames={{
+                                                base: "border border-white text-white"
+                                            }}
+                                            
+                                        >
+                                            <span className="flex flex-row items-center gap-1 text-center">
+                                            <icons.react color={colors.react} /> <span>
+                                                React
+                                            </span>
+                                            </span>
+                                        </Chip>
+                                        <Chip
+                                            variant="light"
+                                            classNames={{
+                                                base: "border border-white text-white"
+                                            }}
+                                            
+                                        >
+                                            <span className="flex flex-row items-center gap-1 text-center">
+                                            <icons.python color={colors.python} /> <span>
+                                                Python
+                                            </span>
+                                            </span>
+                                        </Chip>
+                                    </div>
+                                </div>
+                            </PopoverContent>
+                        </Popover>
 
-                            <Dropdown prompt="Music resources">
-                                <ul className="text-xs lg:text-sm tracking-wider flex items-center justify-evenly space-y-4 flex-col uppercase">
-                                    <li>
-                                        <Link href='https://clxrity.xyz' className="music-link">
-                                            clxrity.xyz
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </Dropdown>
+                        <div className="flex w-full items-center flex-row justify-center lg:justify-end gap-4">
+                            <Link href="https://github.com/clxrityy" className="hero-link">
+                                <icons.github color={colors.github} aria-label="github" />
+                            </Link>
+                            {/* <Link href="" className="hero-link">
+                                <icons.spotify color={colors.spotify} />
+                            </Link> */}
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-    )
+    );
 }
-
-export default Hero;

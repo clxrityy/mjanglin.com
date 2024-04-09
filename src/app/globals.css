@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 230, 230, 230;
+  --background-start-rgb: 10, 10, 10;
+  --background-end-rgb: 1, 1, 20;
+}
+
+html, body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+    background-color: rgb(var(--background-end-rgb));
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+    @apply max-h-screen w-screen;
+}
+
+main {
+
+  @apply w-screen min-h-screen max-h-fit flex flex-col lg:flex-row justify-start lg:justify-center xl:justify-between items-center mx-auto gap-20;
+}
+
+h1 {
+  text-shadow: 3px 0px 5px rgba(23, 48, 83, 75);
+  font-size: 3rem;
+  font-weight: 800;
+  
+  @apply tracking-tight;
+}
+
+
+h2 {
+  font-size: 2rem;
+  font-weight: 200;
+
+  @apply tracking-widest uppercase
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 550;
+}
+
+p {
+  font-size: 1rem;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  behavior: inherit;
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  };
+
+  .hero-link {
+
+    @apply text-4xl rounded-full bg-gradient-to-r from-white to-white/75 hover:scale-110 transition-all hover:bg-gradient-to-l hover:from-transparent hover:to-transparent focus:ring-2 focus:ring-white ring-offset-1 focus:ring-opacity-80;
+  }
+
+  .social-link {
+    @apply hover:scale-125 transition-all duration-500 ease-in-out;
+  }
+}
