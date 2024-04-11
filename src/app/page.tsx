@@ -20,7 +20,7 @@ export default async function Home() {
           radius="lg"
           className="border-none bg-[#6A7B6E] backdrop-blur-3xl shadow-inner"
         >
-          <iframe src="https://open.spotify.com/embed/album/1hNcadbxNEZZtoCmIHVnyM?utm_source=generator" width="100%" height="168" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="eager" className="scroll-smooth overflow-y-scroll w-full"></iframe>
+          <iframe title="reaching out by clxrity" src="https://open.spotify.com/embed/album/1hNcadbxNEZZtoCmIHVnyM?utm_source=generator" width="100%" height="168" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="eager" className="scroll-smooth overflow-y-scroll w-full"></iframe>
           <CardFooter className="text-gray-200 flex items-center shadow-background">
             <h5 className="text-wrap font-bold text-base max-w-xs spotify-ad">
               Check out my latest album on Spotify!
