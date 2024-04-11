@@ -9,14 +9,14 @@ export default function Hero() {
     return (
         <div className="w-full h-1/2 flex items-center justify-center">
             <div className="w-full max-w-3xl h-1/3 flex items-center justify-center">
-                <div className="bg-gradient-to-br from-green-600/60 to-blue-500/75 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-inner">
+                <div className="bg-gradient-to-br from-green-600/30 to-blue-500/50 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-inner">
                     <div className="flex justify-end w-full">
                         <p className="font-mono text-sm">
                             @cl<span className="underline underline-offset-4">x</span>rity
                         </p>
                     </div>
                     <div className="flex flex-col md:flex-row gap-3 md:gap-5 lg:gap-7 xl:gap-9 items-center">
-                        <Image src="/hero-img-cartoon-me.png" alt="Cartoon of MJ Anglin" width={100} height={100} className="rounded-full backdrop:bg-blend-mulitply filter drop-shadow-2xl bg-blend-hue rounded-b-6xl" fetchPriority="high" />
+                        <Image src="/hero-img-cartoon-me.png" alt="Cartoon of MJ Anglin" width={100} height={100} className="rounded-full backdrop:bg-blend-mulitply filter drop-shadow-2xl bg-blend-hue rounded-b-6xl" fetchPriority="high" fallbackSrc="https://www.mjanglin.com/hero-img-cartoon-me.png" />
                         <div className="flex flex-col items-start justify-center">
                             <h1 className="text-center">
                                 MJ Anglin
@@ -34,7 +34,7 @@ export default function Hero() {
                             <PopoverTrigger>
                                 <Button variant="bordered" className="bg-gradient-to-tr from-blue-500 to-purple-500 text-white font-semibold tracking-wider">skills</Button>
                             </PopoverTrigger>
-                            <PopoverContent className="bg-transparent shadow-xl">
+                            <PopoverContent className="bg-transparent/50 shadow-xl">
                                 <div className="px-4 rounded-lg py-2 flex items-center justify-start text-center w-full">
                                     <div className="grid grid-cols-1 lg:grid-cols-2 w-full justify-center gap-1 items-center grid-flow-dense">
                                         <Chip variant="light"

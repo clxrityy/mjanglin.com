@@ -1,10 +1,11 @@
+"use server";
 import Contact from "@/components/misc/Contact";
 import Discord from "@/components/misc/Discord";
 import Hero from "@/components/Hero";
 import { Card, CardFooter } from "@nextui-org/react";
 
 
-export default function Home() {
+export default async function Home() {
 
   return (
     <main>
