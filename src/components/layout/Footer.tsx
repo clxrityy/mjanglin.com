@@ -12,10 +12,10 @@ export default function Footer({...props}: Props) {
         <div className="relative">
             <div className="absolute bottom-0 left-0">
                 <div className="flex flex-row px-3 py-3 gap-4">
-                    <Link href="https://instagram.com/mjxnglin" className="social-link">
+                    <Link aria-label="instagram" href="https://instagram.com/mjxnglin" className="social-link">
                         <icons.instagram size={20} />
                     </Link>
-                    <Link href="https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV" className="social-link">
+                    <Link aria-label="spotify" href="https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV" className="social-link">
                         <icons.spotify size={20} />
                     </Link>
                 </div>
