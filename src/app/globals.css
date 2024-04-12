@@ -65,6 +65,14 @@ p {
   display: none;
 }
 
+input, textarea {
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  @apply text-black bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-600 ring-offset-1 w-full;
+}
 
 @layer utilities {
   .text-balance {
@@ -90,5 +98,10 @@ p {
     
 
     @apply bg-black/25 rounded-lg px-2 shadow-md drop-shadow;
+  }
+
+  .project-form-item-container {
+
+    @apply flex flex-col gap-4 items-center w-full;
   }
 }

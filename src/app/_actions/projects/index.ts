@@ -1,0 +1,55 @@
+"use server";
+import { revalidatePath } from "next/cache";
+import { sql } from "@vercel/postgres";
+import { z } from "zod";
+import { projectSchema } from "@/util/objects";
+
+
+export default async function getProject(uuid: number) {
+    const project = await sql`SELECT * FROM projects WHERE uuid = ${uuid}`;
+
+    if (!project) {
+        return null;
+    }
+
+    return projectSchema.parse(project);
+}
+
+export async function getProjects() {
+    const projects = await sql`SELECT * FROM projects`;
+
+    return projects.rows.map((project) => projectSchema.parse(project));
+}
+
+export async function addProject(data: z.infer<typeof projectSchema>) {
+    const { uuid, url, title, image, description, color, footer } = data;
+
+    try {
+
+        const project = await sql`
+    INSERT INTO projects (id, uuid, url, title, image, description, color, footer)
+    VALUES (DEFAULT, ${uuid}, ${url}, ${title}, ${image}, ${description}, ${color}, ${footer})
+    `;
+
+        revalidatePath("/");
+        return projectSchema.parse(project);
+    } catch (e) {
+        console.error(e);
+        throw e;
+    }
+}
+
+export async function createProjectTable() {
+    await sql`
+    CREATE TABLE IF NOT EXISTS projects (
+        id SERIAL PRIMARY KEY,
+        uuid TEXT,
+        url TEXT,
+        title TEXT,
+        image TEXT,
+        description TEXT,
+        color TEXT,
+        footer TEXT
+    )
+    `;
+}
