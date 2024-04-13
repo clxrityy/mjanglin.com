@@ -10,3 +10,10 @@ export const projectSchema = z.object({
     footer: z.string().optional(),
     tags: z.array(z.string()).optional(),
 });
+
+export const blogSchema = z.object({
+    title: z.string(),
+    content: z.string(),
+    date: z.string(),
+    image: z.string(),
+});

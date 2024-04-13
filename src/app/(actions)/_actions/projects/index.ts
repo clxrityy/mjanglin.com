@@ -1,18 +1,23 @@
 "use server";
-import { revalidatePath } from "next/cache";
+import { projectSchema } from "@/util/schemas";
 import { sql } from "@vercel/postgres";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { projectSchema } from "@/util/objects";
 
 
-export default async function getProject(uuid: number) {
-    const project = await sql`SELECT * FROM projects WHERE uuid = ${uuid}`;
+export default async function getProject(uuid: string) {
+    try {
+        const project = await sql`SELECT * FROM projects WHERE uuid = ${uuid}`;
 
     if (!project) {
         return null;
     }
 
-    return projectSchema.parse(project);
+    return projectSchema.parse(project.rows[0]);
+    } catch (e) {
+        console.error(e);
+        throw e;
+    }
 }
 
 export async function getProjects() {

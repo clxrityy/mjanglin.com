@@ -1,6 +1,6 @@
 "use client";
-import { addProject } from "@/app/_actions/projects";
-import { projectSchema } from "@/util/objects";
+import { addProject } from "@/app/(actions)/_actions/projects";
+import { projectSchema } from "@/util/schemas";
 import { Button } from "@nextui-org/react";
 import { ComponentProps, FormEvent } from "react";
 import { useFormStatus } from "react-dom";

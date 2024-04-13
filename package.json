@@ -9,13 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@next/mdx": "^14.2.1",
     "@nextui-org/react": "^2.2.10",
     "@nextui-org/system": "^2.0.15",
     "@nextui-org/theme": "^2.1.18",
+    "@types/mdx": "^2.0.13",
     "@vercel/postgres": "^0.8.0",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.28",
-    "next": "14.1.4",
+    "next": "14.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
@@ -25,12 +29,12 @@
   },
   "devDependencies": {
     "@types/node": "^20.12.7",
-    "@types/react": "^18.2.76",
+    "@types/react": "^18.2.78",
     "@types/react-dom": "^18.2.25",
     "@types/uuid": "^9.0.8",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.0.0",
-    "eslint-config-next": "14.1.4",
+    "eslint-config-next": "14.2.1",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"

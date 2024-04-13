@@ -1,5 +1,5 @@
 "use server";
-import { getProjects } from "@/app/_actions/projects";
+import { getProjects } from "@/app/(actions)/_actions/projects";
 import CreateProject from "@/components/project/CreateProject";
 import Project from "@/components/project/Project";
 import { redirect } from "next/navigation";

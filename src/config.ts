@@ -1,5 +1,6 @@
-import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord, FaTrash } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord, FaTrash, FaStar } from "react-icons/fa";
 import { SiTypescript } from "react-icons/si";
+import { MdOutlineStart } from "react-icons/md";
 
 
 const configurations =  {
@@ -17,6 +18,8 @@ const configurations =  {
         linkedin: FaLinkedin,
         discord: FaDiscord,
         delete: FaTrash,
+        star: FaStar,
+        publish: MdOutlineStart,
     },
     colors: {
         github: "#333",

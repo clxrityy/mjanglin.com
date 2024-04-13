@@ -1,4 +1,6 @@
+import withMdx from '@next/mdx';
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
     env: {
         ADMIN_PASS: process.env.ADMIN_PASS,
@@ -10,7 +12,11 @@ const nextConfig = {
                 hostname: 'i.gyazo.com',
             },
         ]
-    }
+    },
+    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    experimental: {
+        mdxRs: true,
+    },
 };
 
-export default nextConfig;
+export default withMdx(nextConfig);

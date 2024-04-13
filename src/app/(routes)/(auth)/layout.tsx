@@ -1,11 +1,11 @@
 "use server";
 import type { Metadata } from "next";
-import { createProjectTable } from "../_actions/projects";
 import { Toaster } from "react-hot-toast";
+import { createProjectTable } from "../../(actions)/_actions/projects";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "MJ Anglin | Authenticate",
+    title: "MJ Anglin | Admin",
     description: "Admin dashboard login",
   };
 
