@@ -13,7 +13,7 @@ const nextConfig = {
             },
         ]
     },
-    pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    pageExtensions: ['ts', 'tsx', 'mdx'],
     experimental: {
         mdxRs: true,
     },

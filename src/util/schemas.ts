@@ -12,8 +12,10 @@ export const projectSchema = z.object({
 });
 
 export const blogSchema = z.object({
+    uuid: z.string(),
     title: z.string(),
     content: z.string(),
     date: z.string(),
     image: z.string(),
+    blogType: z.string(),
 });

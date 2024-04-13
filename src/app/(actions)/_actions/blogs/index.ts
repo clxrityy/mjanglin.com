@@ -8,25 +8,27 @@ export async function createBlogTable() {
         await sql`
         CREATE TABLE IF NOT EXISTS blogs (
             id SERIAL PRIMARY KEY,
+            uuid TEXT,
             title TEXT,
             content TEXT,
             date DATE,
             image TEXT,
-        )`;
-
+            blogType TEXT
+        )
+        `;
     } catch (e) {
         console.error(e);
         throw e;
     }
 }
 
-export async function addBlog(data: z.infer<typeof blogSchema>) {
-    const { title, content, date, image } = data;
+export async function addBlog(data: z.infer<typeof blogSchema>, uuid: string) {
+    const { title, content, date, image, blogType } = data;
 
     try {
         const blog = await sql`
-        INSERT INTO blogs (id, title, content, date, image)
-        VALUES (DEFAULT, ${title}, ${content}, ${date}, ${image})
+        INSERT INTO blogs (id, uuid, title, content, date, image, blogType)
+        VALUES (DEFAULT, ${uuid}, ${title}, ${content}, ${date}, ${image}, ${blogType})
         `;
 
         return blog;
@@ -44,4 +46,16 @@ export async function getBlog(id: string) {
     }
 
     return blogSchema.parse(blog);
+}
+
+export async function getBlogs() {
+    try {
+
+        const blogs = await sql`SELECT * FROM blogs`;
+        return blogs.rows.map((blog) => blogSchema.parse(blog));
+
+    } catch (e) {
+        console.error(e);
+        throw e;
+    }
 }

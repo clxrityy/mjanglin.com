@@ -1,12 +1,13 @@
 "use server";
 
 import { createBlogTable } from "@/app/(actions)/_actions/blogs";
+import BlogHeader from "@/components/blog/Header";
 import { Metadata } from "next";
 
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        title: "MJ Anglin | Blog",
+        title: "MJ Anglin | Blogs",
         description: "Blog posts by MJ Anglin",
     };
 }
@@ -21,9 +22,11 @@ export default async function BlogLayout({
         await createBlogTable();
     } catch (e) {
         console.error(e);
+        throw e;
     }
 
-    return <div className="h-full w-full">
+    return <div className="h-[50vh] w-full flex flex-col items-center justify-center mx-auto max-w-3xl">
+        <BlogHeader />
         {children}
     </div>
 }
