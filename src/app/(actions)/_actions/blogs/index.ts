@@ -12,8 +12,7 @@ export async function createBlogTable() {
             title TEXT,
             content TEXT,
             date DATE,
-            image TEXT,
-            blogType TEXT
+            image TEXT
         )
         `;
     } catch (e) {
@@ -22,13 +21,13 @@ export async function createBlogTable() {
     }
 }
 
-export async function addBlog(data: z.infer<typeof blogSchema>, uuid: string) {
-    const { title, content, date, image, blogType } = data;
+export async function addBlog(data: z.infer<typeof blogSchema>) {
+    const { title, content, date, image, uuid } = data;
 
     try {
         const blog = await sql`
-        INSERT INTO blogs (id, uuid, title, content, date, image, blogType)
-        VALUES (DEFAULT, ${uuid}, ${title}, ${content}, ${date}, ${image}, ${blogType})
+        INSERT INTO blogs (id, uuid, title, content, date, image)
+        VALUES (DEFAULT, ${uuid}, ${title}, ${content}, ${date}, ${image})
         `;
 
         return blog;

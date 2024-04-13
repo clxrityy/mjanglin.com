@@ -17,5 +17,4 @@ export const blogSchema = z.object({
     content: z.string(),
     date: z.string(),
     image: z.string(),
-    blogType: z.string(),
 });
