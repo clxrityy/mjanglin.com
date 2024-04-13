@@ -31,18 +31,17 @@ export default function CreateProject({ ...props }: Props) {
         try {
             const project = await addProject(data).then(() => {
                 toast.success("Project added!");
-            }).catch((e) => {
-                toast.error("Failed to add project");
-                console.error(e);
-            })
+            });
+
             console.log(project);
         } catch (e) {
+            toast.error("Error adding project");
             console.error(e);
         }
     }
 
     return (
-        <form {...props} onSubmit={onSubmit} className="mx-auto px-5 py-2 border w-full flex flex-wrap justify-stretch items-stretch gap-5">
+        <form {...props} onSubmit={onSubmit} className="mx-auto px-5 py-4 border w-full flex flex-wrap justify-stretch items-stretch gap-5 rounded-md border-spacing-2 border-blue-400">
             <div className="grid justify-center grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 items-center w-full">
 
                 <div className="project-form-item-container">
@@ -73,7 +72,7 @@ export default function CreateProject({ ...props }: Props) {
             </div>
             <div className="w-full flex items-center justify-center">
                 <div className="w-2/3">
-                    <Button aria-disabled={pending} type="submit" className="w-full">Add</Button>
+                    <Button variant="flat" aria-disabled={pending} type="submit" className="w-full border-blue-500/75 hover:border-2 text-white">Add</Button>
                 </div>
             </div>
         </form>

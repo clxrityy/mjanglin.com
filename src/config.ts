@@ -1,4 +1,4 @@
-import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord, FaTrash } from "react-icons/fa";
 import { SiTypescript } from "react-icons/si";
 
 
@@ -15,7 +15,8 @@ const configurations =  {
         python: FaPython,
         instagram: FaInstagram,
         linkedin: FaLinkedin,
-        discord: FaDiscord
+        discord: FaDiscord,
+        delete: FaTrash,
     },
     colors: {
         github: "#333",

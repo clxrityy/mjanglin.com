@@ -23,12 +23,12 @@ html, body {
     overflow-y: scroll;
     scroll-behavior: smooth;
 
-    @apply max-h-screen w-screen;
+    @apply h-screen w-screen;
 }
 
 main {
 
-  @apply w-screen min-h-screen max-h-fit flex flex-col lg:flex-row justify-start lg:justify-center xl:justify-between items-center mx-auto gap-20 overflow-y-scroll;
+  @apply w-screen h-full flex flex-col lg:flex-row justify-start lg:justify-center xl:justify-between items-center mx-auto gap-20 overflow-y-scroll;
 }
 
 h1 {
@@ -71,7 +71,7 @@ input, textarea {
   padding: 0.5rem;
   border-radius: 0.5rem;
 
-  @apply text-black bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-600 ring-offset-1 w-full;
+  @apply text-black bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full;
 }
 
 @layer utilities {

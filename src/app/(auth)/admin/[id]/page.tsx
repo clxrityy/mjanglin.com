@@ -14,13 +14,13 @@ export default async function Page({ params }: Props) {
     if (params.id !== process.env.ADMIN_PASS!) {
         return redirect("/");
     } else {
-        return <div className="w-full h-full flex flex-col lg:flex-row items-center justify-between">
-            <div className="w-full h-full">
+        return <div className="w-full h-full flex flex-col md:flex-row items-center justify-around">
+            <div className="w-full h-full px-5 py-3 flex items-center justify-center">
                 <CreateProject />
             </div>
 
-            <div className="w-full h-full">
-                 <div className="flex flex-col items-center justify-center gap-4">
+            <div className="w-full h-full flex items-center justify-center">
+                 <div className="flex flex-col items-center justify-center gap-5 w-full mx-auto">
                     {projects.map((project) => {
                         return <Project key={project.uuid} project={project} />;
                     })}

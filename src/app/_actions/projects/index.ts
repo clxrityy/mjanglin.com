@@ -40,7 +40,8 @@ export async function addProject(data: z.infer<typeof projectSchema>) {
 }
 
 export async function createProjectTable() {
-    await sql`
+    try {
+        await sql`
     CREATE TABLE IF NOT EXISTS projects (
         id SERIAL PRIMARY KEY,
         uuid TEXT,
@@ -52,4 +53,20 @@ export async function createProjectTable() {
         footer TEXT
     )
     `;
+    } catch (e) {
+        console.error(e);
+        throw e;
+    }
+}
+
+export async function deleteProject(uuid: string) {
+    try {
+        await sql`
+    DELETE FROM projects WHERE uuid = ${uuid}
+    `;
+    revalidatePath(`/admin/${process.env.ADMIN_PASS}`);
+    } catch (e) {
+        console.error(e);
+        throw e;
+    }
 }
