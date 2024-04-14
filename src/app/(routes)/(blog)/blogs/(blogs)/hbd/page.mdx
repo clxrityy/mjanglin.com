@@ -1,0 +1,33 @@
+import ClientSnippet from "./(components)/_snippets/index.tsx";
+
+
+# hbd
+
+A dynamic Discord bot built for customizing birthday events within a guild.
+
+> Built with [discord.js](https://discord.js.org) and [Node.js](https://nodejs.org).
+
+---
+
+I wanted to create a Discord bot that's behavior could be configurable for each guild's specifications. I began by creating a template with the structure of the bot.
+
+The template includes a **command** handler, **event** handler, and a configuration file. The command handler is responsible for handling commands, the event handler is responsible for handling events, and the configuration file is responsible for storing the bot's *default* configuration.
+
+```
+.
+├── src/
+│   ├── commands/
+│   │   ├── ...
+│   ├── events/
+│   │   ├── ...
+├── ├── handlers/
+│   │   ├── index.ts
+│   ├── config.ts
+│   ├── index.ts
+├── tsconfig.json
+└── ...
+```
+
+The client is initialized within `index.ts`:
+
+<ClientSnippet />

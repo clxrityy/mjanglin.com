@@ -35,7 +35,6 @@ export default function RootLayout({
           content="Developer, writer, and creator."
         />
       </head>
-
       <body className={nunito.className}>
         <Providers>
           {children}

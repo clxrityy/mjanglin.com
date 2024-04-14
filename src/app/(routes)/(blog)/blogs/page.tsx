@@ -21,11 +21,10 @@ export default async function Page() {
 
         return <div className="w-full h-full flex flex-col items-center justify-center gap-5">
             {blogs.map((blog) => {
-                return <Link href={`/blog/${blog.blogType}/${blog.title}`} key={blog.uuid} className="w-full h-full flex flex-col lg:flex-row items-center justify-center gap-5 border hover:scale-105 transition-all rounded-md shadow">
+                return <Link href={`/blogs/${blog.title}`} key={blog.uuid} className="w-full h-full flex flex-col lg:flex-row items-center justify-center gap-5 border hover:scale-105 transition-all rounded-md shadow">
                     <div className="w-full flex items-center flex-col">
                         <h1 className="text-2xl font-bold">{blog.title}</h1>
                         <p>{blog.content}</p>
-                        <p className="text-sm text-end">{blog.blogType}</p>
                     </div>
                     <div className="w-full flex items-center">
                         <Image isBlurred src={blog.image} alt={blog.title} width={200} height={200} className="rounded-md" />

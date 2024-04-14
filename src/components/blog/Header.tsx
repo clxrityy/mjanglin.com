@@ -10,7 +10,7 @@ const { icons } = configurations;
 
 export default function BlogHeader({ ...props }: Props) {
     return <header {...props} className="w-full h-full flex flex-row items-center justify-between relative">
-        <nav className="flex items-start absolute top-0 left-0 px-4 py-5 flex-row gap-4">
+        <nav className="flex items-start absolute top-0 left-0 px-4 py-5 flex-row gap-4 h-full">
             <Link href="/" aria-label="home" className="hover:text-blue-500 transition-colors">
                 <icons.home size={40} />
             </Link>
