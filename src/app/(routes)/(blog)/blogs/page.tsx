@@ -9,7 +9,7 @@ export default async function Page() {
 
 
         if (!blogs || blogs.length < 1) {
-            return <div className="w-full h-full flex flex-col gap-5 items-center justify-center">
+            return <div className="w-full h-[50vh] flex flex-col gap-5 items-center justify-center">
                 <h1 className="text-3xl font-bold">No blogs found</h1>
                 <Link href="/" aria-label="Home">
                     <Button>

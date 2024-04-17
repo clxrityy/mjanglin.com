@@ -24,7 +24,7 @@ export default async function BlogLayout({
         throw e;
     }
 
-    return <div className="h-fit w-full flex flex-col items-center justify-around mx-auto max-w-7xl">
+    return <div className="h-fit w-full flex flex-col items-center justify-center mx-auto max-w-7xl">
         <BlogHeader />
         {children}
     </div>;

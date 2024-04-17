@@ -1,5 +1,4 @@
 import withMdx from '@next/mdx';
-import remarkPrism from 'remark-prism';
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -22,7 +21,4 @@ const nextConfig = {
 
 export default withMdx({
     extension: /\.mdx?$/,
-    options: {
-        remarkPlugins: [remarkPrism],
-    }
 })(nextConfig);
