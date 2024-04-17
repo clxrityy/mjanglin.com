@@ -22,7 +22,7 @@ export default function BlogsLayout() {
                         <div className='flex flex-col items-start gap-2 justify-center'>
                             <Header />
                         </div>
-                        <Image src="./(components)/_img/avatar.gif" alt='avatar' width={200} height={200} />
+                        <Image src="./hbd_avatar.gif" alt='avatar' width={200} height={200} priority />
                     </div>
 
                 </div>
