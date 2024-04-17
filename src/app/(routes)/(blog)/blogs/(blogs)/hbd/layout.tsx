@@ -2,8 +2,8 @@
 import { MDXProvider } from '@mdx-js/react';
 import Content from './page.mdx';
 import Links from './(components)/_markdown/links.mdx';
-import Gif from './(components)/_markdown/gif.mdx';
 import Header from './(components)/_markdown/header.mdx';
+import Image from 'next/image';
 
 
 export default function BlogsLayout() {
@@ -22,7 +22,7 @@ export default function BlogsLayout() {
                         <div className='flex flex-col items-start gap-2 justify-center'>
                             <Header />
                         </div>
-                        <Gif />
+                        <Image src="./(components)/_img/avatar.gif" alt='avatar' width={200} height={200} />
                     </div>
 
                 </div>
