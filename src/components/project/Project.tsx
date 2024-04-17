@@ -6,6 +6,7 @@ import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ComponentProps } from "react";
+import toast from "react-hot-toast";
 import { z } from "zod";
 
 const { icons } = configurations;
@@ -40,7 +41,11 @@ export default function Project({ project, ...props }: Props) {
             <div className="absolute top-0 right-0 p-2 z-[11]">
                 <div className="flex flex-col items-center justify-center gap-2">
                     <Button onClick={async () => {
-                        await deleteProject(project.uuid);
+                        await deleteProject(project.uuid).then(() => {
+                            toast.success("Project deleted successfully")
+                        }).catch((err) => {
+                            toast.error(err.message)
+                        })
                     }}
                         isIconOnly className="bg-red-500 hover:ring-white/80 hover:ring transition-opacity">
                         <icons.delete />

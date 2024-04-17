@@ -117,17 +117,17 @@ input, textarea {
 
 .blog-content ul {
 
-  @apply list-item ml-5 gap-1;
+  @apply list-item ml-5 gap-2;
 }
 
 .blog-content ol li {
 
-  @apply list-decimal text-base ml-5 gap-1;
+  @apply list-decimal text-base ml-5 gap-2;
 }
 
 .blog-content li li {
   
-    @apply indent-4 list-inside text-sm gap-1;
+    @apply indent-4 list-inside text-sm gap-2;
 }
 
 .blog-content::-webkit-scrollbar {

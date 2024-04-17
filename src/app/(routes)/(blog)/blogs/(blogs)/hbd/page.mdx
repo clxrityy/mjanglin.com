@@ -210,3 +210,72 @@ Next was to create a command(s) that would allow admins to configure the bot for
 
 ---
 
+I added a `config.ts` file within the `src/` directory which would contain some necessary settings for the bot:
+
+- Default embed colors
+- Default birthday message
+- Array of commands that can only be executed by admins
+- etc.
+
+### Handle admin commands
+
+Since there is now an array of **admin** commands (such as `/config`), I need to alter the command handler to check for admin commands, and only allow them to be executed by users with the admin role / admin permissions.
+> **Note**: as mentioned previously, information on the bot structure can be found [here](https://dev.to/clxrityy/how-to-create-a-dynamic-ai-discord-bot-with-typescript-3gjn).
+
+This involved:
+
+- Checking if the command is an admin command
+- If there's an admin role present within the guild's configuration, checking if the user has the role
+    - If not, checking if the user has the `ADMINISTRATOR` permission
+
+> ```ts
+> if (config.adminCommands.includes(commandName)) {
+>     // Check if the user has the admin role
+>     // Check if the user has the ADMINISTRATOR permission
+> }
+> ```
+
+---
+
+### Deployment
+
+I added the following scripts to allow the bot to be deployed and online with [`pm2`](https://pm2.keymetrics.io/):
+
+
+```json
+{
+    "run:deploy": "pnpm build && pm2 start dist/index.js --name hbd",
+    "run:restart": "pm2 restart hbd",
+    "run:stop": "pm2 stop hbd"
+}
+```
+
+---
+
+### Conclusion
+
+I've implemented the ability for users to store their birthday within the bot, and for the bot to check if it's a user's birthday every day. I've also implemented the ability for guilds to configure the bot to their specifications.
+
+The final product also includes some more fun commands such as:
+
+- `/hbd`
+    - `/hbd wish <user> [message]` - Wishes the user a happy birthday
+    > Only works if it's the target user's birthday
+    - `/hbd view [user] [year]` - Views birthday wishes with optional filters such as the target user and year
+- `/countdown [user]` - Counts down to the user's birthday
+- `/edit <user> <month> <day>` - Edits the user's birthday
+    - By default, only accessible to admins
+- `/horoscope` - Generates a horoscope for the user
+    - Based on the user's birthday (zodiac sign) and the current date
+    - Generated using the OpenAI API
+- `/sign [user]` - View a user's zodiac sign
+
+---
+
+The final code can be found on the [GitHub repository](https://github.com/clxrityy/hbd).
+
+You can invite the bot using [this link](https://discord.com/oauth2/authorize?client_id=1209023823114936341&permissions=2415921152&scope=bot).
+
+Read the [wiki](https://github.com/clxrityy/hbd/wiki) for more information about configuring the bot, and all the features attached to it.
+
+Thank you for reading! If you have any questions or suggestions, feel free to join my [Discord server](https://discord.gg/RnwJEdsmy2), or contact me at [contact@mjanglin.com](mailto:contact@mjanglin.com). Don't forget to give the repository a star if you found it helpful! 🌟

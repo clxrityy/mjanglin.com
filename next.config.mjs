@@ -11,6 +11,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'i.gyazo.com',
             },
+            {
+                protocol: 'https',
+                hostname: "www.mjanglin.com"
+            }
         ]
     },
     pageExtensions: ['ts', 'tsx', 'mdx',],
