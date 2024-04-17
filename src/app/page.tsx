@@ -1,3 +1,4 @@
+"use client";
 import Contact from "@/components/misc/Contact";
 import Discord from "@/components/misc/Discord";
 import Hero from "@/components/misc/Hero";

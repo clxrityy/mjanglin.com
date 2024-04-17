@@ -1,12 +1,12 @@
 "use server";
 import { getBlogs } from "@/app/(actions)/_actions/blogs";
-import { Button, Image, Link } from "@nextui-org/react";
-
+import Button from "@/components/ui/Button";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function Page() {
     try {
         const blogs = await getBlogs();
-
 
         if (!blogs || blogs.length < 1) {
             return <div className="w-full h-[50vh] flex flex-col gap-5 items-center justify-center">
@@ -27,7 +27,7 @@ export default async function Page() {
                         <p>{blog.content}</p>
                     </div>
                     <div className="w-full flex items-center">
-                        <Image isBlurred src={blog.image} alt={blog.title} width={200} height={200} className="rounded-md" />
+                        <Image src={blog.image} alt={blog.title} width={200} height={200} className="rounded-md" />
                     </div>
                 </Link>
             })}
