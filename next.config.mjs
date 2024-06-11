@@ -1,28 +1,6 @@
-import withMdx from '@next/mdx';
+import "./src/env.mjs"
 /** @type {import('next').NextConfig} */
 
-const nextConfig = {
-    // env: {
-    //     ADMIN_PASS: process.env.ADMIN_PASS,
-    // },
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'i.gyazo.com',
-            },
-            {
-                protocol: 'https',
-                hostname: "www.mjanglin.com"
-            }
-        ]
-    },
-    pageExtensions: ['ts', 'tsx', 'mdx',],
-    experimental: {
-        mdxRs: true,
-    },
-};
+const nextConfig = {};
 
-export default withMdx({
-    extension: /\.mdx?$/,
-})(nextConfig);
+export default nextConfig;

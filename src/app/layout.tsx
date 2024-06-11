@@ -2,13 +2,12 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
-import Footer from "@/components/layout/Footer";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MJ Anglin",
-  description: "Developer & Creator",
+  title: "hbd",
+  description: "A dynamic Discord horoscope and birthday bot",
 };
 
 export default function RootLayout({
@@ -28,17 +27,16 @@ export default function RootLayout({
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="theme-color" content="currentColor" />
         <title>
-          MJ Anglin
+          hbd
         </title>
         <meta
           property="description"
-          content="Developer, writer, and creator."
+          content="A Discord birthday bot"
         />
       </head>
       <body className={nunito.className}>
         <Providers>
           {children}
-          <Footer />
         </Providers>
       </body>
     </html>

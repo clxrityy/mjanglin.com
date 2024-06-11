@@ -1,3 +1,6 @@
-# [mjanglin.com](https://www.mjanglin.com)
+# hbd
 
-My personal website
+> https://hbd.mjanglin.com
+
+A dynamic Discord birthday bot.
+

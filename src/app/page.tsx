@@ -1,36 +1,26 @@
-"use client";
-import Contact from "@/components/misc/Contact";
-import Discord from "@/components/misc/Discord";
-import Hero from "@/components/misc/Hero";
-import { Card, CardFooter } from "@nextui-org/react";
+import { CONFIG } from "@/config";
+import { parseUser } from "@/utils/user";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
+export default async function Page() {
+    const user = parseUser();
 
-export default function Home() {
+    if (!user) {
+        return redirect(CONFIG.OAUTH2_INVITE_URL);
+    }
 
-  return (
-    <main>
-      <div className="flex flex-col items-center justify-around h-1/3 w-screen gap-6 lg:gap-10 mt-10 mb-20">
-        <Hero />
-        <div className="flex flex-col xl:flex-row items-center justify-center gap-4">
-          <Contact />
-          <Discord />
-        </div>
-        <Card
-          isFooterBlurred
-          radius="lg"
-          className="border-none bg-[#6A7B6E] backdrop-blur-3xl shadow-inner"
-        >
-          <iframe title="reaching out by clxrity" src="https://open.spotify.com/embed/album/1hNcadbxNEZZtoCmIHVnyM?utm_source=generator" width="100%" height="168" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="eager" className="scroll-smooth overflow-y-scroll w-full"></iframe>
-          <CardFooter className="text-gray-200 flex items-center shadow-background">
-            <h5 className="text-wrap font-bold text-base max-w-xs spotify-ad">
-              Check out my latest album on Spotify!
-            </h5>
-          </CardFooter>
-        </Card>
-      </div>
-      <div className="hidden lg:flex w-full items-center justify-center mx-auto h-full">
-        Projects (to be continued...)
-      </div>
-    </main>
-  )
+    return (
+        <main>
+            <div className="flex items-center justify-center flex-col gap-10">
+                <h1>hbd</h1>
+                <div className="flex items-center justify-center flex-col gap-2">
+                    <h3>
+                        Welcome, {user.username}!
+                    </h3>
+                    <Image src={user.avatar!} alt="avatar" width={100} height={100} />
+                </div>
+            </div>
+        </main>
+    )
 }

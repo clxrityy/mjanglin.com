@@ -1,37 +1,9 @@
-import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord, FaTrash, FaStar, FaHome } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
-import { MdOutlineStart } from "react-icons/md";
-
-
-const configurations =  {
-    icons: {
-        github: FaGithub,
-        spotify: FaSpotify,
-        soundcloud: FaSoundcloud,
-        music: FaMusic,
-        email: FaEnvelope,
-        react: FaReact,
-        nodejs: FaNodeJs,
-        typescript: SiTypescript,
-        python: FaPython,
-        instagram: FaInstagram,
-        linkedin: FaLinkedin,
-        discord: FaDiscord,
-        delete: FaTrash,
-        star: FaStar,
-        publish: MdOutlineStart,
-        home: FaHome,
-    },
-    colors: {
-        github: "#333",
-        spotify: "#1DB954",
-        soundcloud: "#FF5500",
-        typescript: "#007acc",
-        react: "#61DAFB",
-        nodejs: "#68a063",
-        python: "#4584B6",
-        discord: "#7289DA",
-    }
+export const CONFIG = {
+    REDIRECT_URI: process.env.NODE_ENV === "production" ? "https://hbd.mjanglin.com/api/auth/discord/redirect" : "http://localhost:3000/api/auth/discord/redirect",
+    OAUTH2_TOKEN: "https://discord.com/api/v10/oauth2/token",
+    OAUTH2_USER: "https://discord.com/api/v10/users/@me",
+    OAUTH2_REVOKE_TOKEN: "https://discord.com/api/v10/oauth2/token/revoke",
+    OAUTH2_INVITE_URL: process.env.NODE_ENV === "development" ? "https://discord.com/oauth2/authorize?client_id=1211045842362966077&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fapi%2Fauth%2Fdiscord%2Fredirect&integration_type=0&scope=identify+guilds+applications.commands" : "https://discord.com/oauth2/authorize?client_id=1211045842362966077&response_type=code&redirect_uri=https%3A%2F%2Fhbd.mjanglin.com%2Fapi%2Fauth%2Fdiscord%2Fredirect&integration_type=0&scope=identify+guilds+applications.commands",
+    COOKIE_NAME: process.env.COOKIE_NAME! || "discord-session",
+    BASE_URL: process.env.NODE_ENV === "production" ? "https://hbd.mjanglin.com" : "http://localhost:3000",
 }
-
-export default configurations;
