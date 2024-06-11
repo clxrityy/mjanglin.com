@@ -14,7 +14,7 @@
 import { commands } from "@/commands";
 import { env } from "./env.mjs";
 
-const URL = `https://discord.com/api/v10/applications/${env.DISCORD_CLIENT_ID!}/commands`;
+const URL = `https://discord.com/api/v10/applications/${env.CLIENT_ID}/commands`;
 
 /**
  * Register all commands globally.  This can take o(minutes), so wait until
@@ -27,7 +27,7 @@ async function main() {
     const response = await fetch(URL, {
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bot ${env.DISCORD_BOT_TOKEN!}`
+            "Authorization": `Bot ${env.BOT_TOKEN}`
         },
         method: "PUT",
         body: JSON.stringify(Object.values(commands)),
