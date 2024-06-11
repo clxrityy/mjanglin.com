@@ -2,6 +2,8 @@
 import Contact from "@/components/misc/Contact";
 import Discord from "@/components/misc/Discord";
 import Hero from "@/components/misc/Hero";
+import ProjectsContainer from "@/components/project/ProjectsContainer";
+import { PROJECTS } from "@/utils/constants";
 import { Card, CardFooter } from "@nextui-org/react";
 
 
@@ -28,8 +30,8 @@ export default function Home() {
           </CardFooter>
         </Card>
       </div>
-      <div className="hidden lg:flex w-full items-center justify-center mx-auto h-full">
-        Projects (to be continued...)
+      <div className="flex w-full mx-auto justify-center items-center mb-10">
+        <ProjectsContainer projects={PROJECTS} />
       </div>
     </main>
   )

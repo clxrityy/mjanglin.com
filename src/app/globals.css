@@ -28,7 +28,7 @@ html, body {
 
 main {
 
-  @apply w-screen h-full flex flex-col lg:flex-row justify-start lg:justify-center xl:justify-between items-center mx-auto gap-20 overflow-y-scroll;
+  @apply w-screen h-full flex flex-col xl:flex-row justify-between lg:justify-center xl:justify-between items-center mx-auto gap-20 overflow-y-auto;
 }
 
 h1 {
@@ -80,7 +80,6 @@ input, textarea {
 }
 
 .blog-content a {
-  
 
   @apply text-blue-500 hover:text-blue-700 hover:underline underline-offset-1;
 }
@@ -94,6 +93,7 @@ input, textarea {
   border-left: 0.3rem solid #333;
   padding: 0.5rem 1rem;
   background-color: #41414189;
+  font-size: 0.75rem;
 
   @apply px-4 py-2 my-2 rounded-md;
 }
@@ -117,17 +117,17 @@ input, textarea {
 
 .blog-content ul {
 
-  @apply list-item ml-5 gap-2;
+  @apply list-item ml-5 gap-4;
 }
 
 .blog-content ol li {
 
-  @apply list-decimal text-base ml-5 gap-2;
+  @apply list-decimal text-base ml-5 gap-4;
 }
 
 .blog-content li li {
   
-    @apply indent-4 list-inside text-sm gap-2;
+    @apply text-sm gap-4;
 }
 
 .blog-content::-webkit-scrollbar {
@@ -141,6 +141,9 @@ input, textarea {
   @apply rounded-sm bg-[#222] py-1 px-1 text-base text-wrap;
 }
 
+code {
+  font-size: 0.9rem;
+}
 
 .blog-content b, strong {
 
@@ -189,6 +192,6 @@ input, textarea {
 
   .blog-content {
 
-    @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col-reverse items-center justify-around mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4;
+    @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-4xl;
   }
 }

@@ -1,4 +1,14 @@
 import withMdx from '@next/mdx';
+import remarkGfm from 'remark-gfm';
+import rehypePrettyCode from "rehype-pretty-code";
+
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+    keepBackground: true,
+    theme: "one-dark-pro",
+    defaultLang: "plaintext",
+};
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -13,16 +23,17 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: "www.mjanglin.com"
+                hostname: "github.com"
             }
         ]
     },
     pageExtensions: ['ts', 'tsx', 'mdx',],
-    experimental: {
-        mdxRs: true,
-    },
 };
 
 export default withMdx({
     extension: /\.mdx?$/,
+    options: {
+        remarkPlugins: [remarkGfm],
+        rehypePlugins: [[rehypePrettyCode, options]],
+    }
 })(nextConfig);
