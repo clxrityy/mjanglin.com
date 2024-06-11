@@ -18,7 +18,7 @@ const buildOAuth2RequestPayload = (data: OAuthTokenExchangeRequestParams) => new
 const scope = ["identify"].join(" ");
 
 const OAUTH_QS = new URLSearchParams({
-    client_id: process.env.DISCORD_APP_ID!,
+    client_id: process.env.CLIENT_ID!,
     redirect_uri: CONFIG.REDIRECT_URI,
     response_type: "code",
     scope
@@ -40,8 +40,8 @@ export async function GET(req: NextRequest) {
     }
 
     const body = buildOAuth2RequestPayload({
-        client_id: process.env.DISCORD_APP_ID!,
-        client_secret: process.env.DISCORD_CLIENT_SECRET!,
+        client_id: process.env.CLIENT_ID!,
+        client_secret: process.env.CLIENT_SECRET!,
         grant_type: "authorization_code",
         code,
         redirect_uri: CONFIG.REDIRECT_URI,

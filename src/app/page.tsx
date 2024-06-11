@@ -1,6 +1,5 @@
 import { CONFIG } from "@/config";
 import { parseUser } from "@/utils/user";
-import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export default async function Page() {
@@ -18,7 +17,7 @@ export default async function Page() {
                     <h3>
                         Welcome, {user.username}!
                     </h3>
-                    <Image src={user.avatar!} alt="avatar" width={100} height={100} />
+
                 </div>
             </div>
         </main>
