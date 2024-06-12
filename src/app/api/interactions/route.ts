@@ -9,6 +9,8 @@ import {
     // MessageFlags,
 } from "discord-api-types/v10";
 import { NextResponse } from "next/server";
+import { handleCommand } from "@/lib/handleCommand";
+import { InteractionData } from "@/utils/types";
 
 /**
  * Use edge runtime which is faster, cheaper, and has no cold-boot.
@@ -41,19 +43,9 @@ export async function POST(req: Request) {
     }
 
     if (interaction.type === InteractionType.ApplicationCommand) {
-        const { name } = interaction.data;
+        const interactionObject: InteractionData = interaction as InteractionData;
 
-        switch (name) {
-            case commands.ping.name:
-                return NextResponse.json({
-                    type: InteractionResponseType.ChannelMessageWithSource,
-                    data: {
-                        content: "Pong!",
-                    },
-                });
-            default:
-
-        }
+        return NextResponse.json(await handleCommand(interactionObject));
     }
 
     return NextResponse.json({ message: "Unknown command" }, { status: 400 });

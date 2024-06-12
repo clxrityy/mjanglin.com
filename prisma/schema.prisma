@@ -14,3 +14,11 @@ model User {
   accessToken  String @unique
   refreshToken String @unique
 }
+
+model Birthday {
+  id      String @id @default(uuid())
+  userId  String @unique
+  guildId String
+  month   Int
+  day     Int
+}
