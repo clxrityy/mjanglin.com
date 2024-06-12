@@ -21,7 +21,6 @@
     "cookie": "^0.6.0",
     "crypto-js": "^4.2.0",
     "discord-api-types": "^0.37.88",
-    "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
     "framer-motion": "^11.2.10",
     "jsonwebtoken": "^9.0.2",
@@ -32,7 +31,6 @@
     "react-icons": "^5.2.1",
     "tweetnacl": "^1.0.3",
     "uuid": "^10.0.0",
-    "zlib": "^1.0.5",
     "zod": "^3.23.8"
   },
   "devDependencies": {

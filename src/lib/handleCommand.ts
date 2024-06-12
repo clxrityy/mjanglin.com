@@ -1,24 +1,24 @@
-import { Colors, userMention } from 'discord.js';
-import { InteractionResponse, EmbedType, InteractionData } from './../utils/types';
+import { InteractionResponse, EmbedType, InteractionData, Colors } from './../utils/types';
 import { InteractionResponseType } from "discord-api-types/v10";
 import { db } from './db';
+import { userMention } from '@/utils/misc';
 
 const EMBEDS = {
     noSubcommand: {
         description: "Please provide a subcommand",
-        color: Colors.Red,
+        color: Colors.RED,
     } as EmbedType,
     birthdayAlreadySet: {
         description: "You've already set your birthday!",
-        color: Colors.Orange
+        color: Colors.ORANGE
     } as EmbedType,
     birthdaySet: {
         description: "Birthday set!",
-        color: Colors.Green
+        color: Colors.GREEN
     } as EmbedType,
     noBirthdayFound: {
         description: "No birthday found",
-        color: Colors.Yellow
+        color: Colors.YELLOW
     } as EmbedType
 }
 
@@ -144,7 +144,7 @@ export async function handleCommand(interactionData: InteractionData): Promise<I
                     }
 
                     let embed: EmbedType = {
-                        color: Colors.Blue,
+                        color: Colors.BLURPLE,
                         description: `${userMention(target)}'s birthday: \`${birthday.month}/${birthday.day}\``
                     }
 
