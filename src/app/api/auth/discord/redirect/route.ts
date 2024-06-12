@@ -1,6 +1,6 @@
 import { CONFIG } from "@/config";
 import { encryptTokens } from '@/utils/encrypt';
-import { OAuth2CrendialsResponse,OAuthTokenExchangeRequestParams } from '@/utils/types';
+import { OAuth2CrendialsResponse, OAuthTokenExchangeRequestParams } from '@/utils/types';
 import { createUser, getUserDetails } from "@/utils/user";
 import axios, { AxiosRequestConfig } from 'axios';
 import { serialize } from "cookie";
@@ -57,16 +57,12 @@ export async function GET(req: NextRequest) {
 
         const encryptedTokens = encryptTokens(access_token, refresh_token);
 
-        try {
-            await createUser({
-                userId: user.data.id,
-                accessToken: encryptedTokens.accessToken,
-                refreshToken: encryptedTokens.refreshToken
-            });
 
-        } catch (e) {
-            console.log(`Error creating user: ${e}`);
-        }
+        await createUser({
+            userId: user.data.id,
+            accessToken: encryptedTokens.accessToken,
+            refreshToken: encryptedTokens.refreshToken
+        });
 
         if (!("id" in user.data)) return NextResponse.json(JSON.stringify("User not found"), { status: 404 });
 
