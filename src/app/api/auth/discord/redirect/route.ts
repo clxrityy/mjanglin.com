@@ -57,12 +57,11 @@ export async function GET(req: NextRequest) {
 
         const encryptedTokens = encryptTokens(access_token, refresh_token);
 
-
-        await createUser({
-            userId: user.data.id,
-            accessToken: encryptedTokens.accessToken,
-            refreshToken: encryptedTokens.refreshToken
-        });
+        // await createUser({
+        //     userId: user.data.id,
+        //     accessToken: encryptedTokens.accessToken,
+        //     refreshToken: encryptedTokens.refreshToken
+        // });
 
         if (!("id" in user.data)) return NextResponse.json(JSON.stringify("User not found"), { status: 404 });
 
