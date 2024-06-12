@@ -1,4 +1,4 @@
-import {  Colors, userMention } from 'discord.js';
+import { Colors, userMention } from 'discord.js';
 import { InteractionResponse, EmbedType, InteractionData } from './../utils/types';
 import { InteractionResponseType } from "discord-api-types/v10";
 import { db } from './db';
