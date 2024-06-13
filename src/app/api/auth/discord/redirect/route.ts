@@ -31,12 +31,15 @@ const OAUTH_QS = new URLSearchParams({
 const OAUTH_URL = `https://discord.com/api/oauth2/authorize?${OAUTH_QS}`;
 
 
-export async function GET(req: NextRequest) {
-    const code = req.nextUrl.searchParams.get("code");
-    const error = req.nextUrl.searchParams.get("error");
+export async function GET(req: Request) {
+    const urlParams = new URL(req.url).searchParams;
+
+    const code = urlParams.get("code");
+    const error = urlParams.get("error");
 
     if (error) {
-        return NextResponse.json(JSON.stringify(error), { status: 400 });
+        console.log(`Error authorizing user: ${error}`);
+        return NextResponse.json(JSON.stringify(error), { status: 500 });
     }
 
     if (!code) {
