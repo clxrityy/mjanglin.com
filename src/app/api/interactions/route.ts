@@ -69,9 +69,8 @@ export async function POST(req: Request) {
             case commands.birthday.name:
                 switch (interaction.data.options?.[0].name) {
                     // /birthday set
-                    case commands.birthday.options?.[0].name:
-
-                        const embed = await birthdaySet(interaction.data.options, interaction.user!.id, interaction.guild_id!);
+                    case "set":
+                        const embed = await birthdaySet(interaction.data.options, interaction.member!.user!.id, interaction.guild_id!);
                         
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -82,7 +81,7 @@ export async function POST(req: Request) {
                             }
                         });
                     // /birthday view
-                    case commands.birthday.options?.[1].name:
+                    case "view":
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
