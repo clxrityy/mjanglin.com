@@ -1,5 +1,5 @@
 import { InteractionResponse, EmbedType, InteractionData, Colors } from './../utils/types';
-import { InteractionResponseType } from "discord-api-types/v10";
+import { APIChatInputApplicationCommandInteractionData, APIInteraction, InteractionResponseType } from "discord-api-types/v10";
 import { db } from './db';
 import { userMention } from '@/utils/misc';
 import { commands } from '@/commands';
