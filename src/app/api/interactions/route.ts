@@ -41,9 +41,9 @@ export async function POST(req: Request) {
     const { interaction } = verifyResult;
 
     if (interaction.type === InteractionType.Ping) {
-        return {
+        return NextResponse.json({
             type: InteractionResponseType.Pong,
-        }
+        })
     }
 
     if (interaction.type === InteractionType.ApplicationCommand) {
