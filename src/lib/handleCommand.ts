@@ -22,7 +22,7 @@ const EMBEDS = {
     } as EmbedType
 }
 
-export async function handleCommand(interactionData: InteractionData): Promise<InteractionResponse | { message: string, status: number }> {
+export async function handleCommand(interactionData: InteractionData): Promise<InteractionResponse | {message: string } & { status: number }> {
     switch (interactionData.data.name) {
 
         /**
@@ -56,8 +56,10 @@ export async function handleCommand(interactionData: InteractionData): Promise<I
 
                     if (!user) {
                         return {
-                            message: "User not found",
-                            status: 404
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: "User not found"
+                            }
                         }
                     }
 
@@ -113,8 +115,10 @@ export async function handleCommand(interactionData: InteractionData): Promise<I
 
                     } catch (e: any) {
                         return {
-                            message: e.message,
-                            status: 500
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: e.message
+                            }
                         }
                     }
                 case "view":

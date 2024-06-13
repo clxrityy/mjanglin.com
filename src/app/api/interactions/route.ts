@@ -7,9 +7,9 @@ import {
     InteractionType,
     // MessageFlags,
 } from "discord-api-types/v10";
-import { NextResponse } from "next/server";
 import { handleCommand } from "@/lib/handleCommand";
 import { InteractionData } from "@/utils/types";
+import { NextResponse } from "next/server";
 
 /**
  * Use edge runtime which is faster, cheaper, and has no cold-boot.
@@ -32,7 +32,7 @@ const ROOT_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
 export async function POST(req: Request) {
     const verifyResult = await verifyInteractionRequest(req, env.PUBLIC_KEY);
     if (!verifyResult.isValid) {
-        return NextResponse.json({ message: "Invalid request signature" }, { status: 401 });
+        return NextResponse.json({ message: "Invalid request" }, { status: 401 });
     }
 
     const { interaction } = verifyResult;
