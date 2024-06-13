@@ -52,14 +52,14 @@ export async function POST(req: Request) {
         
         switch (name) {
             case commands.ping.name:
-                return {
+                return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
                         content: "Pong!"
                     }
-                }
+                });
             default:
-                
+
             
         }
 
