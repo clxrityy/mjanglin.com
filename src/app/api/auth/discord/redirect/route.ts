@@ -1,7 +1,10 @@
 import { CONFIG } from "@/config";
 import { encryptTokens } from '@/utils/encrypt';
 import { OAuth2CrendialsResponse, OAuthTokenExchangeRequestParams } from '@/utils/types';
-import { createUser, getUserDetails } from "@/utils/user";
+import {
+    // createUser,
+    getUserDetails
+} from "@/utils/user";
 import axios, { AxiosRequestConfig } from 'axios';
 import { serialize } from "cookie";
 import { sign } from "jsonwebtoken";
