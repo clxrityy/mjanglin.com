@@ -17,7 +17,7 @@ const verifyWithNacl = ({ publicKey, signature, timestamp, body }: VerifyWithNac
     )
 };
 
-type VerifyDiscordRequestResult = | { isValid: false } | { isValid: true, interaction: APIPingInteraction | APIChatInputApplicationCommandInteraction  | InteractionData};
+type VerifyDiscordRequestResult = | { isValid: false } | { isValid: true, interaction: APIPingInteraction | APIChatInputApplicationCommandInteraction };
 
 /**
  * Verify that the interaction request is from Discord and intended for our bot.
@@ -45,7 +45,7 @@ export async function verifyInteractionRequest(
     }
 
     return {
-        interaction: JSON.parse(rawBody) as APIPingInteraction| APIChatInputApplicationCommandInteraction,
+        interaction: JSON.parse(rawBody) as APIPingInteraction | APIChatInputApplicationCommandInteraction,
         isValid: true
     }
 }
