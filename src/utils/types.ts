@@ -75,7 +75,9 @@ export type EmbedType = {
         value: string;
         inline?: boolean;
     }[];
-    image?: string;
+    image?: {
+        url: string;
+    }
     thumbnail?: string;
     footer?: {
         text: string;
@@ -90,7 +92,6 @@ export type InteractionResponse = {
         flags?: number;
         embeds?: EmbedType[];
     },
-    ephemeral?: boolean;
 }
 
 export type InteractionData = {
