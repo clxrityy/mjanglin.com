@@ -46,8 +46,10 @@ export async function POST(req: Request) {
     }
 
     if (interaction.type === InteractionType.ApplicationCommand) {
+
+        const commandResponse = await handleCommand(interaction);
         
-        return NextResponse.json(await handleCommand(interaction));
+        return NextResponse.json(JSON.stringify(commandResponse));
     }
 
     return NextResponse.json("Unknown command", { status: 400 });
