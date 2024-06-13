@@ -23,7 +23,7 @@ const EMBEDS = {
     } as EmbedType
 }
 
-export async function handleCommand(interactionData: APIChatInputApplicationCommandInteraction): Promise<InteractionResponse | { message: string } & { status: number }> {
+export async function handleCommand(interactionData: APIChatInputApplicationCommandInteraction): Promise<InteractionResponse> {
 
 
     switch (interactionData.data.name) {
@@ -173,8 +173,10 @@ export async function handleCommand(interactionData: APIChatInputApplicationComm
         
         default:
             return {
-                message: "Unknown command",
-                status: 400
+                type: InteractionResponseType.ChannelMessageWithSource,
+                data: {
+                    content: "Unknown command"
+                }
             }
     }
 }

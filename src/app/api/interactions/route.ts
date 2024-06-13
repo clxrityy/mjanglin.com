@@ -34,7 +34,7 @@ const ROOT_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
 export async function POST(req: Request) {
     const verifyResult = await verifyInteractionRequest(req, env.PUBLIC_KEY);
     if (!verifyResult.isValid) {
-        return NextResponse.json({ message: "Invalid request" }, { status: 401 });
+        return NextResponse.json( "Invalid request", { status: 401 });
     }
 
     const { interaction } = verifyResult;
@@ -50,5 +50,5 @@ export async function POST(req: Request) {
         return NextResponse.json(await handleCommand(interaction));
     }
 
-    return NextResponse.json({ message: "Unknown command" }, { status: 400 });
+    return NextResponse.json("Unknown command", { status: 400 });
 }
