@@ -110,10 +110,10 @@ export type InteractionData = {
             avatar: string | null;
         }
     }
-    application_id: string;
-    token: string;
+    application_id?: string;
+    token?: string;
     locale?: string;
-    version: number;
+    version?: number;
 }
 
 export enum Colors {

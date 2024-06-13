@@ -1,6 +1,8 @@
 import { verifyInteractionRequest } from "@/lib/verify";
 import { env } from "@/env.mjs";
 import {
+    APIApplicationCommandInteractionData,
+    APIInteractionDataResolved,
     // APIInteractionDataOptionBase,
     // ApplicationCommandOptionType,
     InteractionResponseType,
@@ -42,7 +44,7 @@ export async function POST(req: Request) {
     }
 
     if (interaction.data!.type.valueOf() === InteractionType.ApplicationCommand) {
-        const interactionObject: InteractionData = interaction as InteractionData;
+        const interactionObject: InteractionData = interaction as InteractionData & { data: APIApplicationCommandInteractionData };
 
         return NextResponse.json(await handleCommand(interactionObject));
     }
