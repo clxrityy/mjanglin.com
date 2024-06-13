@@ -12,6 +12,7 @@ import {
 import { handleCommand } from "@/lib/handleCommand";
 import { InteractionData } from "@/utils/types";
 import { NextResponse } from "next/server";
+import { commands } from "@/commands";
 
 /**
  * Use edge runtime which is faster, cheaper, and has no cold-boot.
@@ -47,9 +48,24 @@ export async function POST(req: Request) {
 
     if (interaction.type === InteractionType.ApplicationCommand) {
 
-        const commandResponse = await handleCommand(interaction);
+        const { name } = interaction.data;
         
-        return NextResponse.json(JSON.stringify(commandResponse));
+        switch (name) {
+            case commands.ping.name:
+                return {
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        content: "Pong!"
+                    }
+                }
+            default:
+                
+            
+        }
+
+        // const commandResponse = await handleCommand(interaction);
+        
+        // return NextResponse.json(JSON.stringify(commandResponse));
     }
 
     return NextResponse.json("Unknown command", { status: 400 });
