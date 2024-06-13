@@ -9,6 +9,8 @@ import {
 } from "discord-api-types/v10";
 import { NextResponse } from "next/server";
 import { commands } from "@/commands";
+import birthdaySet from "@/handlers/birthday";
+import { EmbedType } from "@/utils/types";
 
 /**
  * Use edge runtime which is faster, cheaper, and has no cold-boot.
@@ -49,10 +51,18 @@ export async function POST(req: Request) {
         switch (name) {
             // /ping
             case commands.ping.name:
+
+                const embed: EmbedType = {
+                    title: "Pong!",
+                    color: 0x00FF00
+                }
+                
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
-                        content: "Pong!"
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
                     }
                 });
             // /birthday
@@ -60,13 +70,18 @@ export async function POST(req: Request) {
                 switch (interaction.data.options?.[0].name) {
                     // /birthday set
                     case commands.birthday.options?.[0].name:
+
+                        const embed = await birthdaySet(interaction.data.options, interaction.user!.id, interaction.guild_id!);
+                        
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
-                                content: "Birthday set!"
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
                             }
                         });
-                    // /birthday get
+                    // /birthday view
                     case commands.birthday.options?.[1].name:
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,

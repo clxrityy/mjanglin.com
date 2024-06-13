@@ -94,6 +94,18 @@ export type InteractionResponse = {
     },
 }
 
+export enum APPLICATION_COMMAND_OPTION_TYPES {
+    SUB_COMMAND = 1,
+    SUB_COMMAND_GROUP = 2,
+    STRING = 3,
+    INTEGER = 4,
+    BOOLEAN = 5,
+    USER = 6,
+    CHANNEL = 7,
+    ROLE = 8,
+    MENTIONABLE = 9,
+    NUMBER = 10,
+}
 
 export enum Colors {
     DEFAULT = 0x000000,
