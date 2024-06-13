@@ -36,15 +36,15 @@ export async function POST(req: Request) {
 
     const { interaction } = verifyResult;
 
-    if (interaction.data!.type === InteractionType.Ping) {
+    if (interaction.type === InteractionType.Ping) {
         return NextResponse.json({
             type: InteractionResponseType.Pong,
         })
     }
 
-    if (interaction.data.type === InteractionType.ApplicationCommand) {
+    if (interaction.type === InteractionType.ApplicationCommand) {
 
-        const { name } = interaction.data.data;
+        const { name } = interaction.data;
         
         switch (name) {
             // /ping

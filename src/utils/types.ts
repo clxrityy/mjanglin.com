@@ -95,16 +95,6 @@ export type InteractionResponse = {
 }
 
 
-export interface InteractionData <T extends APIChatInputApplicationCommandInteraction | APIPingInteraction> { 
-    data: T & {
-        options?: {
-            name: string;
-            type: number;
-            value?: string | number | boolean;
-        }[];
-    }
-}
-
 export enum Colors {
     DEFAULT = 0x000000,
     WHITE = 0xFFFFFF,
