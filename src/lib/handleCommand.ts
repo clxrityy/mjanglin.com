@@ -1,5 +1,5 @@
 import { InteractionResponse, EmbedType, InteractionData, Colors } from './../utils/types';
-import { APIChatInputApplicationCommandInteractionData, APIInteraction, InteractionResponseType } from "discord-api-types/v10";
+import { APIChatInputApplicationCommandInteraction, APIChatInputApplicationCommandInteractionData, APIInteraction, APIPingInteraction, InteractionResponseType, InteractionType } from "discord-api-types/v10";
 import { db } from './db';
 import { userMention } from '@/utils/misc';
 import { commands } from '@/commands';
@@ -23,9 +23,10 @@ const EMBEDS = {
     } as EmbedType
 }
 
-export async function handleCommand(interactionData: InteractionData): Promise<InteractionResponse | { message: string } & { status: number }> {
-    switch (interactionData.data.name) {
+export async function handleCommand(interactionData: APIChatInputApplicationCommandInteraction): Promise<InteractionResponse | { message: string } & { status: number }> {
 
+
+    switch (interactionData.data.name) {
         /**
          * /ping
          */

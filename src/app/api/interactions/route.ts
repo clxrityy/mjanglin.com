@@ -39,14 +39,15 @@ export async function POST(req: Request) {
 
     const { interaction } = verifyResult;
 
-    if (interaction.data!.type.valueOf() === InteractionType.Ping) {
-        return NextResponse.json({ type: InteractionResponseType.Pong });
+    if (interaction.type === InteractionType.Ping) {
+        return {
+            type: InteractionResponseType.Pong,
+        }
     }
 
-    if (interaction.data!.type.valueOf() === InteractionType.ApplicationCommand) {
-        const interactionObject: InteractionData = interaction as InteractionData;
-
-        return NextResponse.json(await handleCommand(interactionObject));
+    if (interaction.type === InteractionType.ApplicationCommand) {
+        
+        return NextResponse.json(await handleCommand(interaction));
     }
 
     return NextResponse.json({ message: "Unknown command" }, { status: 400 });

@@ -1,4 +1,4 @@
-import { APIApplicationCommandInteractionData, APIChatInputApplicationCommandInteractionData } from "discord-api-types/v10";
+import { APIApplicationCommandInteractionData, APIChatInputApplicationCommandInteractionData, InteractionResponseType } from "discord-api-types/v10";
 
 export type OAuth2CrendialsResponse = {
     access_token: string;
@@ -86,8 +86,8 @@ export type EmbedType = {
 }
 
 export type InteractionResponse = {
-    type: number;
-    data: {
+    type: InteractionResponseType.Pong | InteractionResponseType.ChannelMessageWithSource | InteractionResponseType.DeferredChannelMessageWithSource;
+    data?: {
         content?: string;
         flags?: number;
         embeds?: EmbedType[];
@@ -95,26 +95,10 @@ export type InteractionResponse = {
 }
 
 export type InteractionData = {
-    data: APIApplicationCommandInteractionData & {
-        options?: {
-            name: string;
-            value: any;
-        }[];
-    };
-    guildId?: string;
-    channelId?: string;
-    member?: {
-        user: {
-            id: string;
-            username: string;
-            discriminator: string;
-            avatar: string | null;
-        }
-    }
-    application_id?: string;
-    token?: string;
-    locale?: string;
-    version?: number;
+    guild_id?: string;
+    id: string;
+    name: string;
+
 }
 
 export enum Colors {
@@ -148,3 +132,74 @@ export enum Colors {
     DARK_BUT_NOT_BLACK = 0x2C2F33,
     NOT_QUITE_BLACK = 0x23272A
 }
+
+// export interface InteractionRawBody {
+//     app_permissions: string;
+//     application_id: string;
+//     authorizing_integration_owners: {
+//         [key: string]: string;
+//     };
+//     channel: {
+//         flags: number;
+//         guild_id: string;
+//         id: string;
+//         last_message_id: string;
+//         last_pin_timestamp: string;
+//         name: string;
+//         nsfw: boolean;
+//         parent_id: string;
+//         permissions: string;
+//         position: number;
+//         rate_limit_per_user: number;
+//         topic: string | null;
+//         type: number;
+//     };
+//     channel_id: string;
+//     context: number;
+//     data: {
+//         id: string;
+//         name: string;
+//         type: number;
+//     };
+//     entitlement_sku_ids: string[];
+//     entitlements: string[];
+//     guild: {
+//         features: string[];
+//         id: string;
+//         locale: string;
+//     };
+//     guild_id: string;
+//     guild_locale: string;
+//     id: string;
+//     locale: string;
+//     member: {
+//         avatar: string | null;
+//         communication_disabled_until: string | null;
+//         deaf: boolean;
+//         flags: number;
+//         joined_at: string;
+//         mute: boolean;
+//         nick: string | null;
+//         pending: boolean;
+//         permissions: string;
+//         premium_since: string | null;
+//         roles: string[];
+//         unusual_dm_activity_until: string | null;
+//         user: {
+//             avatar: string;
+//             avatar_decoration_data: {
+//                 asset: string;
+//                 sku_id: string;
+//             };
+//             clan: string | null;
+//             discriminator: string;
+//             global_name: string;
+//             id: string;
+//             public_flags: number;
+//             username: string;
+//         }
+//     }
+//     token: string;
+//     type: number;
+//     version: number;
+// }

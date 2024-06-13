@@ -1,4 +1,3 @@
-import { InteractionData } from "@/utils/types";
 import { APIChatInputApplicationCommandInteraction, APIPingInteraction } from "discord-api-types/v10";
 import nacl from "tweetnacl";
 
@@ -44,7 +43,7 @@ export async function verifyInteractionRequest(
         return { isValid: false };
     }
 
-    console.log(JSON.stringify(JSON.parse(rawBody), null, 2));
+    
 
     return {
         interaction: JSON.parse(rawBody) as APIPingInteraction | APIChatInputApplicationCommandInteraction,
