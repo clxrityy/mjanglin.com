@@ -45,6 +45,10 @@ export default async function birthdaySet(options: APIApplicationCommandInteract
                     const existingBirthday = await db.birthday.findUnique({
                         where: {
                             userId: userId
+                        },
+                        cacheStrategy: {
+                            ttl: 60,
+                            swr: 60,
                         }
                     });
 
