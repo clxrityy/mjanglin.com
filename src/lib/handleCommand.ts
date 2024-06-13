@@ -2,6 +2,7 @@ import { InteractionResponse, EmbedType, InteractionData, Colors } from './../ut
 import { InteractionResponseType } from "discord-api-types/v10";
 import { db } from './db';
 import { userMention } from '@/utils/misc';
+import { commands } from '@/commands';
 
 const EMBEDS = {
     noSubcommand: {
@@ -22,13 +23,13 @@ const EMBEDS = {
     } as EmbedType
 }
 
-export async function handleCommand(interactionData: InteractionData): Promise<InteractionResponse | {message: string } & { status: number }> {
+export async function handleCommand(interactionData: InteractionData): Promise<InteractionResponse | { message: string } & { status: number }> {
     switch (interactionData.data.name) {
 
         /**
          * /ping
          */
-        case "ping":
+        case commands.ping.name:
             return {
                 type: InteractionResponseType.ChannelMessageWithSource,
                 data: {
@@ -38,135 +39,135 @@ export async function handleCommand(interactionData: InteractionData): Promise<I
         /**
          * /birthday
          */
-        case "birthday":
-            const subcommand = interactionData.data.options?.[0];
+        // case "birthday":
+        //     const subcommand = interactionData.data.options?.[0];
 
-            if (!subcommand) {
-                return {
-                    type: InteractionResponseType.ChannelMessageWithSource,
-                    data: {
-                        embeds: [EMBEDS.noSubcommand]
-                    }
-                }
-            }
+        //     if (!subcommand) {
+        //         return {
+        //             type: InteractionResponseType.ChannelMessageWithSource,
+        //             data: {
+        //                 embeds: [EMBEDS.noSubcommand]
+        //             }
+        //         }
+        //     }
 
-            switch (subcommand.name) {
-                case "set":
-                    const user = interactionData.member?.user;
+        //     switch (subcommand.name) {
+        //         case "set":
+        //             const user = interactionData.member?.user;
 
-                    if (!user) {
-                        return {
-                            type: InteractionResponseType.ChannelMessageWithSource,
-                            data: {
-                                content: "User not found"
-                            }
-                        }
-                    }
+        //             if (!user) {
+        //                 return {
+        //                     type: InteractionResponseType.ChannelMessageWithSource,
+        //                     data: {
+        //                         content: "User not found"
+        //                     }
+        //                 }
+        //             }
 
-                    const existingBirthday = await db.birthday.findUnique({
-                        where: {
-                            userId: user.id,
-                            guildId: interactionData.guildId
-                        },
-                        cacheStrategy: {
-                            swr: 60,
-                            ttl: 60
-                        }
-                    });
+        //             const existingBirthday = await db.birthday.findUnique({
+        //                 where: {
+        //                     userId: user.id,
+        //                     guildId: interactionData.guildId
+        //                 },
+        //                 cacheStrategy: {
+        //                     swr: 60,
+        //                     ttl: 60
+        //                 }
+        //             });
 
-                    if (existingBirthday) {
-                        return {
-                            type: InteractionResponseType.ChannelMessageWithSource,
-                            data: {
-                                embeds: [EMBEDS.birthdayAlreadySet]
-                            }
-                        }
-                    }
-                    let day: number;
-                    let month: number;
+        //             if (existingBirthday) {
+        //                 return {
+        //                     type: InteractionResponseType.ChannelMessageWithSource,
+        //                     data: {
+        //                         embeds: [EMBEDS.birthdayAlreadySet]
+        //                     }
+        //                 }
+        //             }
+        //             let day: number;
+        //             let month: number;
 
-                    for (const { name, value } of interactionData.data.options!) {
-                        switch (name) {
-                            case "day":
-                                day = parseInt(value);
-                                break;
-                            case "month":
-                                month = parseInt(value);
-                                break;
-                        }
-                    }
+        //             for (const { name, value } of interactionData.data.options!) {
+        //                 switch (name) {
+        //                     case "day":
+        //                         day = parseInt(value);
+        //                         break;
+        //                     case "month":
+        //                         month = parseInt(value);
+        //                         break;
+        //                 }
+        //             }
 
-                    try {
-                        await db.birthday.create({
-                            data: {
-                                userId: user.id,
-                                guildId: interactionData.guildId!,
-                                day: day!,
-                                month: month!
-                            },
-                        });
+        //             try {
+        //                 await db.birthday.create({
+        //                     data: {
+        //                         userId: user.id,
+        //                         guildId: interactionData.guildId!,
+        //                         day: day!,
+        //                         month: month!
+        //                     },
+        //                 });
 
-                        return {
-                            type: InteractionResponseType.ChannelMessageWithSource,
-                            data: {
-                                embeds: [EMBEDS.birthdaySet]
-                            }
-                        }
+        //                 return {
+        //                     type: InteractionResponseType.ChannelMessageWithSource,
+        //                     data: {
+        //                         embeds: [EMBEDS.birthdaySet]
+        //                     }
+        //                 }
 
-                    } catch (e: any) {
-                        return {
-                            type: InteractionResponseType.ChannelMessageWithSource,
-                            data: {
-                                content: e.message
-                            }
-                        }
-                    }
-                case "view":
+        //             } catch (e: any) {
+        //                 return {
+        //                     type: InteractionResponseType.ChannelMessageWithSource,
+        //                     data: {
+        //                         content: e.message
+        //                     }
+        //                 }
+        //             }
+        //         case "view":
                     
-                    let target: string;
+        //             let target: string;
 
-                    for (const { name, value } of interactionData.data.options!) {
-                        if (name === "user") {
-                            target = value.id;
-                        }
-                    }
+        //             for (const { name, value } of interactionData.data.options!) {
+        //                 if (name === "user") {
+        //                     target = value.id;
+        //                 }
+        //             }
 
-                    if (target! === undefined) {
-                        target = interactionData.member!.user.id
-                    }
+        //             if (target! === undefined) {
+        //                 target = interactionData.member!.user.id
+        //             }
 
-                    const birthday = await db.birthday.findUnique({
-                        where: {
-                            userId: target,
-                            guildId: interactionData.guildId
-                        },
-                        cacheStrategy: {
-                            swr: 60,
-                            ttl: 60
-                        }
-                    });
+        //             const birthday = await db.birthday.findUnique({
+        //                 where: {
+        //                     userId: target,
+        //                     guildId: interactionData.guildId
+        //                 },
+        //                 cacheStrategy: {
+        //                     swr: 60,
+        //                     ttl: 60
+        //                 }
+        //             });
 
-                    if (!birthday) {
-                        return {
-                            type: InteractionResponseType.ChannelMessageWithSource,
-                            data: {
-                                embeds: [EMBEDS.noBirthdayFound]
-                            }
-                        }
-                    }
+        //             if (!birthday) {
+        //                 return {
+        //                     type: InteractionResponseType.ChannelMessageWithSource,
+        //                     data: {
+        //                         embeds: [EMBEDS.noBirthdayFound]
+        //                     }
+        //                 }
+        //             }
 
-                    let embed: EmbedType = {
-                        color: Colors.BLURPLE,
-                        description: `${userMention(target)}'s birthday: \`${birthday.month}/${birthday.day}\``
-                    }
+        //             let embed: EmbedType = {
+        //                 color: Colors.BLURPLE,
+        //                 description: `${userMention(target)}'s birthday: \`${birthday.month}/${birthday.day}\``
+        //             }
 
-                    return {
-                        type: InteractionResponseType.ChannelMessageWithSource,
-                        data: {
-                            embeds: [embed]
-                        }
-                    }
-            }
+        //             return {
+        //                 type: InteractionResponseType.ChannelMessageWithSource,
+        //                 data: {
+        //                     embeds: [embed]
+        //                 }
+        //             }
+        //     }
                
         
         default:
