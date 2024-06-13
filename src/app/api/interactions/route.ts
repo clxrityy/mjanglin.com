@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     }
 
     if (interaction.data!.type.valueOf() === InteractionType.ApplicationCommand) {
-        const interactionObject: InteractionData = interaction as InteractionData & { data: APIApplicationCommandInteractionData };
+        const interactionObject: InteractionData = interaction as InteractionData;
 
         return NextResponse.json(await handleCommand(interactionObject));
     }

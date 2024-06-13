@@ -1,4 +1,4 @@
-import { APIChatInputApplicationCommandInteractionData } from "discord-api-types/v10";
+import { APIApplicationCommandInteractionData, APIChatInputApplicationCommandInteractionData } from "discord-api-types/v10";
 
 export type OAuth2CrendialsResponse = {
     access_token: string;
@@ -95,7 +95,7 @@ export type InteractionResponse = {
 }
 
 export type InteractionData = {
-    data: APIChatInputApplicationCommandInteractionData & {
+    data: APIApplicationCommandInteractionData & {
         options?: {
             name: string;
             value: any;
