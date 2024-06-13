@@ -65,6 +65,10 @@ export async function handleCommand(interactionData: InteractionData): Promise<I
                         where: {
                             userId: user.id,
                             guildId: interactionData.guildId
+                        },
+                        cacheStrategy: {
+                            swr: 60,
+                            ttl: 60
                         }
                     });
 
@@ -97,7 +101,7 @@ export async function handleCommand(interactionData: InteractionData): Promise<I
                                 guildId: interactionData.guildId!,
                                 day: day!,
                                 month: month!
-                            }
+                            },
                         });
 
                         return {
@@ -131,6 +135,10 @@ export async function handleCommand(interactionData: InteractionData): Promise<I
                         where: {
                             userId: target,
                             guildId: interactionData.guildId
+                        },
+                        cacheStrategy: {
+                            swr: 60,
+                            ttl: 60
                         }
                     });
 

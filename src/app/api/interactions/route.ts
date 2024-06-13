@@ -1,4 +1,3 @@
-import { commands } from "@/commands";
 import { verifyInteractionRequest } from "@/lib/verify";
 import { env } from "@/env.mjs";
 import {
@@ -38,11 +37,11 @@ export async function POST(req: Request) {
 
     const { interaction } = verifyResult;
 
-    if (interaction.type === InteractionType.Ping) {
+    if (interaction.data!.type.valueOf() === InteractionType.Ping) {
         return NextResponse.json({ type: InteractionResponseType.Pong });
     }
 
-    if (interaction.type === InteractionType.ApplicationCommand) {
+    if (interaction.data!.type.valueOf() === InteractionType.ApplicationCommand) {
         const interactionObject: InteractionData = interaction as InteractionData;
 
         return NextResponse.json(await handleCommand(interactionObject));
