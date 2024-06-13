@@ -1,4 +1,4 @@
-import { APIApplicationCommandInteractionData, APIChatInputApplicationCommandInteractionData, InteractionResponseType } from "discord-api-types/v10";
+import { APIApplicationCommandInteractionData, APIChatInputApplicationCommandInteraction, APIChatInputApplicationCommandInteractionData, APIPingInteraction, InteractionResponseType } from "discord-api-types/v10";
 
 export type OAuth2CrendialsResponse = {
     access_token: string;
@@ -94,11 +94,15 @@ export type InteractionResponse = {
     },
 }
 
-export type InteractionData = {
-    guild_id?: string;
-    id: string;
-    name: string;
 
+export interface InteractionData <T extends APIChatInputApplicationCommandInteraction | APIPingInteraction> { 
+    data: T & {
+        options?: {
+            name: string;
+            type: number;
+            value?: string | number | boolean;
+        }[];
+    }
 }
 
 export enum Colors {

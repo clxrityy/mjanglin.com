@@ -1,16 +1,12 @@
 import { verifyInteractionRequest } from "@/lib/verify";
 import { env } from "@/env.mjs";
 import {
-    APIApplicationCommandInteractionData,
-    APIInteractionDataResolved,
     // APIInteractionDataOptionBase,
     // ApplicationCommandOptionType,
     InteractionResponseType,
     InteractionType,
     // MessageFlags,
 } from "discord-api-types/v10";
-import { handleCommand } from "@/lib/handleCommand";
-import { InteractionData } from "@/utils/types";
 import { NextResponse } from "next/server";
 import { commands } from "@/commands";
 
@@ -40,17 +36,18 @@ export async function POST(req: Request) {
 
     const { interaction } = verifyResult;
 
-    if (interaction.type === InteractionType.Ping) {
+    if (interaction.data!.type === InteractionType.Ping) {
         return NextResponse.json({
             type: InteractionResponseType.Pong,
         })
     }
 
-    if (interaction.type === InteractionType.ApplicationCommand) {
+    if (interaction.data.type === InteractionType.ApplicationCommand) {
 
-        const { name } = interaction.data;
+        const { name } = interaction.data.data;
         
         switch (name) {
+            // /ping
             case commands.ping.name:
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -58,6 +55,33 @@ export async function POST(req: Request) {
                         content: "Pong!"
                     }
                 });
+            // /birthday
+            case commands.birthday.name:
+                switch (interaction.data.options?.[0].name) {
+                    // /birthday set
+                    case commands.birthday.options?.[0].name:
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: "Birthday set!"
+                            }
+                        });
+                    // /birthday get
+                    case commands.birthday.options?.[1].name:
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: "No birthday found"
+                            }
+                        });
+                    default:
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: "Please provide a subcommand"
+                            }
+                        });
+                 }
             default:
 
             

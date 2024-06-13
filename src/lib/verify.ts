@@ -1,4 +1,5 @@
-import { APIChatInputApplicationCommandInteraction, APIPingInteraction } from "discord-api-types/v10";
+import { InteractionData } from "@/utils/types";
+import { APIChatInputApplicationCommandInteraction, APIChatInputApplicationCommandInteractionData, APIPingInteraction } from "discord-api-types/v10";
 import nacl from "tweetnacl";
 
 type VerifyWithNaclArgs = {
@@ -16,7 +17,7 @@ const verifyWithNacl = ({ publicKey, signature, timestamp, body }: VerifyWithNac
     )
 };
 
-type VerifyDiscordRequestResult = | { isValid: false } | { isValid: true, interaction: APIPingInteraction | APIChatInputApplicationCommandInteraction };
+type VerifyDiscordRequestResult = | { isValid: false } | { isValid: true, interaction: InteractionData<APIChatInputApplicationCommandInteraction | APIPingInteraction> };
 
 /**
  * Verify that the interaction request is from Discord and intended for our bot.
@@ -46,7 +47,7 @@ export async function verifyInteractionRequest(
     
 
     return {
-        interaction: JSON.parse(rawBody) as APIPingInteraction | APIChatInputApplicationCommandInteraction,
+        interaction: JSON.parse(rawBody) as InteractionData<APIChatInputApplicationCommandInteraction | APIPingInteraction>,
         isValid: true
     }
 }

@@ -1,4 +1,4 @@
-import { InteractionResponse, EmbedType, InteractionData, Colors } from './../utils/types';
+import { InteractionResponse, EmbedType, Colors } from './../utils/types';
 import { APIChatInputApplicationCommandInteraction, APIChatInputApplicationCommandInteractionData, APIInteraction, APIPingInteraction, InteractionResponseType, InteractionType } from "discord-api-types/v10";
 import { db } from './db';
 import { userMention } from '@/utils/misc';
@@ -37,6 +37,7 @@ export async function handleCommand(interactionData: APIChatInputApplicationComm
                     content: "Pong!"
                 }
             }
+        
         /**
          * /birthday
          */
