@@ -8,7 +8,6 @@ import { sign } from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from 'next/server';
 
-export const runtime = "edge";
 
 const axiosConfig: AxiosRequestConfig = {
     headers: {
