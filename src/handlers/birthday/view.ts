@@ -10,7 +10,9 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
     let birthday;
 
-    if (options.length <= 0) { 
+    const targetUser = options.find((option) => option.name === "user")?.value as string;
+
+    if (!targetUser) { 
 
         try {
             birthday = await db.birthday.findUnique({
@@ -46,11 +48,6 @@ export default async function birthdayView(options: InteractionOption[], userId:
             }
         }
     } else {
-        const targetUser = options.find((option) => option.name === "user")?.value as string;
-
-        if (!targetUser) {
-            embed = EMBEDS.error;
-        }
 
         console.log(targetUser); //
 
