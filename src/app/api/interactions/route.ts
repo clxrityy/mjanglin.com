@@ -1,6 +1,6 @@
 import { commands } from "@/data/commands";
 import { env } from "@/env.mjs";
-import { birthdayEdit, birthdaySet, birthdayView } from "@/handlers";
+import { birthdaySet, birthdayView } from "@/handlers";
 import { verifyInteractionRequest } from "@/lib/verify";
 import { EmbedType } from "@/types/general";
 import { InteractionData } from "@/types/interactions";
@@ -101,17 +101,6 @@ export async function POST(req: Request) {
                     // /birthday view
                     case "view":
                         embed = await birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
-
-                        return NextResponse.json({
-                            type: InteractionResponseType.ChannelMessageWithSource,
-                            data: {
-                                embeds: [
-                                    JSON.parse(JSON.stringify(embed))
-                                ]
-                            }
-                        });
-                    case "edit":
-                        embed = await birthdayEdit(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,

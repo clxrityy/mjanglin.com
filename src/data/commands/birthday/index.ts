@@ -7,7 +7,7 @@ const BIRTHDAY_COMMAND: ApplicationCommand = {
     options: [
         {
             name: "set",
-            description: "Set your birthday",
+            description: "Set your birthday, you can only set it once!",
             type: ApplicationCommandOptionType.Subcommand,
             options: [
                 {
@@ -41,29 +41,6 @@ const BIRTHDAY_COMMAND: ApplicationCommand = {
                 }
             ]
         },
-        {
-            name: "edit",
-            description: "Edit your birthday (only one time)",
-            type: ApplicationCommandOptionType.Subcommand,
-            options: [
-                {
-                    name: "month",
-                    description: "Month of your birthday",
-                    type: ApplicationCommandOptionType.Integer,
-                    required: true,
-                    min_value: 1,
-                    max_value: 12
-                },
-                {
-                    name: "day",
-                    description: "Day of your birthday",
-                    type: ApplicationCommandOptionType.Integer,
-                    required: true,
-                    min_value: 1,
-                    max_value: 31
-                },
-            ],
-        }
     ]
 } as const;
 
