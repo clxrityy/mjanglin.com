@@ -31,18 +31,22 @@ export default async function birthdaySet(options: APIApplicationCommandInteract
     switch (options[0].name) {
         case "set":
 
-            const month = options.find((option) => option.name === "month") as APIApplicationCommandInteractionDataOption & {
-                value: number;
-            };
+            options.forEach((option) => { 
+                console.log(option.name, option.type)
+            })
 
-            const day = options.find((option) => option.name === "day") as APIApplicationCommandInteractionDataOption & {
+            const month = options.map(({ name, type }) => ({ name, type }) as APIApplicationCommandInteractionDataOption & {
                 value: number;
-            }
+            }).find((option) => option.name === "month");
 
-            console.log(month, day)
+            const day = options.map(({ name, type }) => ({ name, type }) as APIApplicationCommandInteractionDataOption & {
+                value: number;
+            }).find((option) => option.name === "day");
+
+            
             
             if (!month || !day) {
-                embed = EMBEDS.noSubcommand;
+                embed = EMBEDS.error;
                 break;
              }
 
