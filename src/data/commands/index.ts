@@ -5,10 +5,12 @@
  * @see https://discord.com/developers/docs/interactions/application-commands#registering-a-command
  */
 
+import SIGN_COMMAND from "./astrology/sign";
 import BIRTHDAY_COMMAND from "./birthday";
 import PING_COMMAND from "./misc/ping";
 
 export const commands = {
     ping: PING_COMMAND,
-    birthday: BIRTHDAY_COMMAND
+    birthday: BIRTHDAY_COMMAND,
+    sign: SIGN_COMMAND
 } as const;
