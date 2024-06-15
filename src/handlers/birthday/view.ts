@@ -46,7 +46,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
             }
         }
     } else {
-        const targetUser: any = JSON.parse(JSON.stringify(options.find((option) => option.name === "user")?.value));
+        const targetUser: any = options.find((option) => option.name === "user")?.value;
 
         if (!targetUser) {
             embed = EMBEDS.error;
