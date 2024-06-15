@@ -47,6 +47,9 @@ export async function POST(req: Request) {
     if (interaction.type === InteractionType.ApplicationCommand) {
 
         const { name } = interaction.data;
+
+        console.log(interaction.data);
+        
         
         switch (name) {
             // /ping

@@ -31,10 +31,6 @@ export default async function birthdaySet(options: APIApplicationCommandInteract
     switch (options[0].name) {
         case "set":
 
-            options.forEach((option) => { 
-                console.log(option.name, option.type)
-            })
-
             const month = options.map(({ name, type }) => ({ name, type }) as APIApplicationCommandInteractionDataOption & {
                 value: number;
             }).find((option) => option.name === "month");
