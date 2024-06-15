@@ -29,3 +29,33 @@ export interface DiscordUser {
     avatar: string | null;
     accent_color: number | null;
 }
+
+export interface DiscordRole {
+    id: string;
+    name: string;
+    color: number;
+    position: number;
+    permissions: string;
+    managed: boolean;
+    mentionable: boolean;
+    hoist: boolean;
+    icon: string | null;
+    unicode_emoji: string | null;
+    flags: number;
+}
+
+export interface DiscordChannel {
+    id: string;
+    name?: string;
+    type: number;
+    guild_id?: string;
+    position?: number;
+    permission_overwrites?: {
+        id: string;
+        type: number;
+        allow: string;
+        deny: string;
+    }[];
+    nsfw?: boolean;
+    permissions?: string;
+}

@@ -1,5 +1,5 @@
 import { InteractionResponseType } from "discord-api-types/v10";
-import { DiscordUser, EmbedType } from "./general";
+import { DiscordChannel, DiscordRole, DiscordUser, EmbedType } from "./general";
 
 export type ApplicationCommandOption = {
     type: number;
@@ -25,7 +25,7 @@ export type ApplicationCommand = {
 export interface InteractionOption {
     name: string;
     type: number;
-    value: string | number | boolean | DiscordUser;
+    value: string | number | boolean | DiscordUser | DiscordRole | DiscordChannel | null;
 }
 
 export interface InteractionData {

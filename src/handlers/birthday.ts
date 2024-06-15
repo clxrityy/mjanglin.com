@@ -77,7 +77,7 @@ export async function birthdaySet(options: InteractionOption[], userId: string, 
             console.error(e);
             embed = {
                 ...EMBEDS.error,
-                description: `\`\`\`\`\n${e.message}\`\`\``,
+                description: `\`\`\`\n${e.message}\`\`\``,
             }
         }
     }
@@ -88,7 +88,7 @@ export async function birthdaySet(options: InteractionOption[], userId: string, 
 export async function birthdayView(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
 
-    if (options.length === 0) { 
+    if (options.length < 1) { 
         try {
             const birthday = await db.birthday.findUnique({
                 where: {
@@ -130,9 +130,11 @@ export async function birthdayView(options: InteractionOption[], userId: string,
         }
 
         try {
+            console.log(targetUser)
+
             const birthday = await db.birthday.findUnique({
                 where: {
-                    userId: targetUser.id,
+                    userId: targetUser!.id,
                     guildId: guildId
                 },
                 cacheStrategy: {
@@ -157,7 +159,7 @@ export async function birthdayView(options: InteractionOption[], userId: string,
             console.error(e);
             embed = {
                 ...EMBEDS.error,
-                description: `\`\`\`\`\n${e.message}\`\`\``,
+                description: `\`\`\`\n${e.message}\`\`\``,
             }
         }
     }
