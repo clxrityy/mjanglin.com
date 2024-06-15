@@ -46,7 +46,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
             }
         }
     } else {
-        const targetUser = options.find((option) => option.name === "user")?.value;
+        const targetUser: DiscordUser = JSON.parse(JSON.stringify(options.find((option) => option.name === "user")?.value));
 
         if (!targetUser) {
             embed = EMBEDS.error;
@@ -58,7 +58,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
             birthday = await db.birthday.findUnique({
                 where: {
-                    userId: targetUser as string,
+                    userId: targetUser.id,
                     guildId: guildId
                 },
                 cacheStrategy: {
@@ -69,13 +69,13 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
             if (birthday) {
                 embed = {
-                    description: `${userMention(targetUser as string)}'s birthday is set to \`${birthday.month}/${birthday.day}\``,
+                    description: `${userMention(targetUser.id)}'s birthday is set to \`${birthday.month}/${birthday.day}\``,
                     color: Colors.WHITE
                 }
             } else {
                 embed = {
                     ...EMBEDS.noBirthdayFound,
-                    description: `${userMention(targetUser as string)} hasn't set their birthday.`,
+                    description: `${userMention(targetUser.id)} hasn't set their birthday.`,
                 }
             }
 
