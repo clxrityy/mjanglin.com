@@ -8,7 +8,10 @@ import EMBEDS from "./constants";
 export default async function birthdayView(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
 
-    if (options.length < 1) { 
+    if (options.length <= 0) { 
+
+        console.log(userId) //
+
         try {
             const birthday = await db.birthday.findUnique({
                 where: {
