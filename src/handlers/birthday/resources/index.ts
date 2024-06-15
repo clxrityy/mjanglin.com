@@ -1,7 +1,7 @@
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 
-const EMBEDS = {
+export const EMBEDS = {
     noSubcommand: {
         description: "Please provide a subcommand",
         color: Colors.RED,
@@ -24,4 +24,3 @@ const EMBEDS = {
     } as EmbedType,
 }
 
-export default EMBEDS;

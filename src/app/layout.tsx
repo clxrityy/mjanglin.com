@@ -33,12 +33,13 @@ export default function RootLayout({
           property="description"
           content="A Discord birthday bot"
         />
-      </head>
-      <body className={nunito.className}>
-        <Providers>
+      </head><Providers>
+        <body className={nunito.className}>
+
           {children}
-        </Providers>
-      </body>
+
+        </body>
+      </Providers>
     </html>
   );
 }

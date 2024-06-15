@@ -11,7 +11,7 @@
  * @see https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
  */
 
-import { commands } from "@/commands";
+import { commands } from "@/data/commands";
 import { env } from "./env.mjs";
 
 const URL = `https://discord.com/api/v10/applications/${env.CLIENT_ID}/commands`;

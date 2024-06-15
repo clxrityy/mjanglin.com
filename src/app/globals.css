@@ -28,7 +28,7 @@ html, body {
 
 main {
 
-  @apply w-screen h-full flex flex-col lg:flex-row justify-start lg:justify-center xl:justify-between items-center mx-auto gap-20 overflow-y-scroll;
+  @apply w-screen min-h-screen flex flex-col lg:flex-row justify-start lg:justify-center xl:justify-between items-center mx-auto gap-20 overflow-y-scroll;
 }
 
 h1 {

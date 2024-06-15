@@ -1,9 +1,9 @@
-import { db } from "@/lib/db";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 import { EMBEDS } from "./resources";
+import { db } from "@/lib/db";
 
-export default async function birthdaySet(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
+export default async function birthdayEdit(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
 
     if (options.length === 0) {
@@ -27,18 +27,12 @@ export default async function birthdaySet(options: InteractionOption[], userId: 
             });
 
             if (existingBirthday) {
-                embed = {
-                    ...EMBEDS.birthdayAlreadySet,
-                    description: `Your birthday is already set to \`${existingBirthday.month}/${existingBirthday.day}\``,
-                    footer: {
-                        text: "/birthday edit to change it only one time!"
-                    }
-                }
-            } else {
-                await db.birthday.create({
+                await db.birthday.update({
+                    where: {
+                        userId: userId,
+                        guildId: guildId
+                    },
                     data: {
-                        userId,
-                        guildId,
                         month,
                         day
                     }
@@ -46,7 +40,17 @@ export default async function birthdaySet(options: InteractionOption[], userId: 
 
                 embed = {
                     ...EMBEDS.birthdaySet,
-                    description: `Your birthday is set to \`${month}/${day}\`!`
+                    description: `Your birthday has been edited to \`${month}/${day}\`!`,
+                    footer: {
+                        text: "This cannot be undone!"
+                    }
+                }
+            } else {
+                embed = {
+                    ...EMBEDS.noBirthdayFound,
+                    footer: {
+                        text: "Set your birthday using `/birthday set`"
+                    }
                 }
             }
         } catch (e: any) {
@@ -59,4 +63,4 @@ export default async function birthdaySet(options: InteractionOption[], userId: 
     }
 
     return embed;
-}
+ }
