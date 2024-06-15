@@ -22,8 +22,8 @@ pnpm register-commands
 
 ## Commands
 
-> `{}` - indicates required params
-> `()` - indicates optional params
+> **`{}`** - indicates required params
+> **`()`** - indicates optional params
 
 - `/ping` - Pong!
 - `/birthday`

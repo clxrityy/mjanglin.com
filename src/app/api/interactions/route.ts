@@ -1,6 +1,6 @@
 import { commands } from "@/commands";
 import { env } from "@/env.mjs";
-import { birthdaySet, birthdayView } from "@/handlers/birthday";
+import { birthdaySet, birthdayView } from "@/handlers";
 import { verifyInteractionRequest } from "@/lib/verify";
 import { InteractionData } from "@/types/interactions";
 import { EmbedType } from "@/types/general";
