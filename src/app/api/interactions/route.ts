@@ -21,7 +21,7 @@ import { NextResponse } from "next/server";
 
 export const runtime = "edge";
 
-const ROOT_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : env.ROOT_URL;
+// const ROOT_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : env.ROOT_URL;
 
 
 /**
@@ -33,7 +33,7 @@ const ROOT_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 
 export async function POST(req: Request) {
     const verifyResult = await verifyInteractionRequest(req, env.PUBLIC_KEY);
     if (!verifyResult.isValid) {
-        return NextResponse.json( "Invalid request", { status: 401 });
+        return NextResponse.json("Invalid request", { status: 401 });
     }
 
     const { interaction } = verifyResult;
@@ -85,7 +85,7 @@ export async function POST(req: Request) {
                     });
                 }
                 
-                switch (interactionSubcommand!.name) {
+                switch (interactionSubcommand.name) {
                     // /birthday set
                     case "set":
                         embed = await birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
@@ -119,13 +119,14 @@ export async function POST(req: Request) {
                         });
                  }
             default:
-
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        content: "Unknown command"
+                    }
+                });
             
         }
-
-        // const commandResponse = await handleCommand(interaction);
-        
-        // return NextResponse.json(JSON.stringify(commandResponse));
     }
 
     return NextResponse.json("Unknown command", { status: 400 });
