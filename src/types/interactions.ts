@@ -25,7 +25,7 @@ export type ApplicationCommand = {
 export interface InteractionOption {
     name: string;
     type: number;
-    value: string | number | boolean | DiscordUser | DiscordRole | DiscordChannel | null;
+    value: string | number | boolean;
 }
 
 export interface InteractionData {
