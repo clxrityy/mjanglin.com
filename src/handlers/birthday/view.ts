@@ -10,7 +10,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
     let birthday;
 
-    const targetUser = options.find((option) => option.name === "user")?.value as DiscordUser["id"];
+    const targetUser = options.find((option) => option.name === "user")?.value as string;
 
     if (!targetUser) { 
 
