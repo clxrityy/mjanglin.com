@@ -10,7 +10,7 @@ import {
 import { NextResponse } from "next/server";
 import { commands } from "@/commands";
 import birthdaySet from "@/handlers/birthday";
-import { EmbedType } from "@/utils/types";
+import { EmbedType, InteractionData } from "@/utils/types";
 
 /**
  * Use edge runtime which is faster, cheaper, and has no cold-boot.
@@ -48,7 +48,11 @@ export async function POST(req: Request) {
 
         const { name } = interaction.data;
 
-        console.log(interaction.data);
+        const interactionData: InteractionData = JSON.parse(JSON.stringify(interaction.data));
+
+        const interactionSubcommand = interactionData.options?.[0];
+
+        const interactionSubcommandOptions = interactionData.options?.[0].options;
         
         
         switch (name) {
@@ -70,10 +74,10 @@ export async function POST(req: Request) {
                 });
             // /birthday
             case commands.birthday.name:
-                switch (interaction.data.options?.[0].name) {
+                switch (interactionSubcommand!.name) {
                     // /birthday set
                     case "set":
-                        const embed = await birthdaySet(interaction.data.options, interaction.member!.user!.id, interaction.guild_id!);
+                        const embed = await birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
                         
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,

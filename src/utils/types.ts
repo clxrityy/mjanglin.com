@@ -1,4 +1,4 @@
-import { APIApplicationCommandInteractionData, APIChatInputApplicationCommandInteraction, APIChatInputApplicationCommandInteractionData, APIPingInteraction, InteractionResponseType } from "discord-api-types/v10";
+import { APIApplicationCommandInteractionData, APIApplicationCommandInteractionDataOption, APIChatInputApplicationCommandInteraction, APIChatInputApplicationCommandInteractionData, APIPingInteraction, InteractionResponseType } from "discord-api-types/v10";
 
 export type OAuth2CrendialsResponse = {
     access_token: string;
@@ -137,6 +137,24 @@ export enum Colors {
     GREYPLE = 0x99AAB5,
     DARK_BUT_NOT_BLACK = 0x2C2F33,
     NOT_QUITE_BLACK = 0x23272A
+}
+
+export interface InteractionSubcommandOrOption<T extends InteractionOption> {
+    name: string;
+    type: number;
+    options?: T[];
+}
+
+export interface InteractionOption {
+    name: string;
+    type: number;
+    value: string | number | boolean;
+}
+
+export interface InteractionData {
+    id: string;
+    name: string;
+    options?: InteractionSubcommandOrOption<InteractionOption>[]
 }
 
 // export interface InteractionRawBody {
