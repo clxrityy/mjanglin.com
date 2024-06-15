@@ -48,7 +48,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
             console.error(e);
             embed = {
                 ...EMBEDS.error,
-                description: `\`\`\`\`\n${e.message}\`\`\``,
+                description: `\`\`\`\n${e.message}\`\`\``,
             }
         }
     } else {

@@ -1,6 +1,7 @@
 import { commands } from "@/data/commands";
 import { env } from "@/env.mjs";
 import { birthdaySet, birthdayView } from "@/handlers";
+import astrologySignHandler from "@/handlers/astrology/sign";
 import { verifyInteractionRequest } from "@/lib/verify";
 import { EmbedType } from "@/types/general";
 import { InteractionData } from "@/types/interactions";
@@ -117,7 +118,22 @@ export async function POST(req: Request) {
                                 content: "Please provide a subcommand"
                             }
                         });
-                 }
+                }
+                
+            // /sign
+            case commands.sign.name:
+
+                embed = await astrologySignHandler(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
+                    }
+                });
+
             default:
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
