@@ -10,7 +10,7 @@ export default function CommandsLayout({ children }: Readonly<{
 }>) {
 
     return <div className="flex w-full h-full items-center">
-        <div className="container">
+        <div className="container mx-auto py-10">
             {children}
         </div>
     </div>

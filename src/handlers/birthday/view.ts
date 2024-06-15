@@ -2,15 +2,13 @@ import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { InteractionOption } from "@/types/interactions";
 import { userMention } from "@/utils/misc";
-import { EmbedType } from "@/types/general";
+import { DiscordUser, EmbedType } from "@/types/general";
 import EMBEDS from "./constants";
 
 export default async function birthdayView(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
 
     if (options.length <= 0) { 
-
-        console.log(userId) //
 
         try {
             const birthday = await db.birthday.findUnique({
@@ -46,7 +44,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
             }
         }
     } else {
-        const targetUser = options.find((option) => option.name === "user")?.value as string;
+        const targetUser = options.find((option) => option.name === "user")?.value as DiscordUser;
 
         if (!targetUser) {
             embed = EMBEDS.error;
@@ -56,7 +54,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
             const birthday = await db.birthday.findUnique({
                 where: {
-                    userId: targetUser,
+                    userId: targetUser.id,
                     guildId: guildId
                 },
                 cacheStrategy: {
@@ -67,13 +65,13 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
             if (birthday) {
                 embed = {
-                    description: `${userMention(targetUser)}'s birthday is set to \`${birthday.month}/${birthday.day}\``,
+                    description: `${userMention(targetUser.id)}'s birthday is set to \`${birthday.month}/${birthday.day}\``,
                     color: Colors.WHITE
                 }
             } else {
                 embed = {
                     ...EMBEDS.noBirthdayFound,
-                    description: `${userMention(targetUser)} hasn't set their birthday.`,
+                    description: `${userMention(targetUser.id)} hasn't set their birthday.`,
                 }
             }
 

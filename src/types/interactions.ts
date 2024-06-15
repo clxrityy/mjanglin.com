@@ -48,3 +48,36 @@ export interface InteractionSubcommandOrOption<T extends InteractionOption> {
     type: number;
     options?: T[];
 }
+
+export interface CommandData {
+    id: string,
+    application_id: string,
+    default_member_permissions: string | null;
+    version: string;
+    name: string;
+    type: number;
+    description: string;
+    dm_permission: boolean | null;
+    contexts: any | null;
+    integration_types: number[];
+    nswf: boolean | null;
+    options?: CommandDataSubCommandOrOption[];
+}
+
+export interface CommandDataSubCommandOrOption {
+    type: number;
+    name: string;
+    description: string;
+    required?: boolean;
+    choices?: { name: string, value: string }[];
+    options?: {
+        type: number;
+        name: string;
+        description: string;
+        required?: boolean;
+        min_value?: number;
+        max_value?: number;
+        min_length?: number;
+        max_length?: number;
+    }[];
+};

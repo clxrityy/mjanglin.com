@@ -1,5 +1,6 @@
+import Command from "@/components/Command";
 import { CONFIG } from "@/config";
-import { APIApplication } from "discord-api-types/v10";
+import { CommandData } from "@/types/interactions";
 
 export default async function Page() {
 
@@ -9,7 +10,9 @@ export default async function Page() {
                 Authorization: `Bot ${process.env.BOT_TOKEN!}`
             },
             next: {revalidate: 60 * 5}
-        }).then((res) => res.json() as Promise<APIApplication[]>)
+        }).then((res) => res.json() as Promise<CommandData[]>)
+
+        
 
         if (commands.length <= 0) {
             return <h3 className="font-semibold font-mono uppercase tracking-wide">
@@ -18,17 +21,10 @@ export default async function Page() {
         }
 
         return (
-            <div className="flex flex-col">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                 {commands.map((command) => {
                     return (
-                        <div key={command.id} className="flex flex-col">
-                            <h3 className="font-semibold font-mono uppercase tracking-wide">
-                                {command.name}
-                            </h3>
-                            <p>
-                                {command.description}
-                            </p>
-                        </div>
+                        <Command key={command.id} data={command} />
                     )
                 })}
             </div>
