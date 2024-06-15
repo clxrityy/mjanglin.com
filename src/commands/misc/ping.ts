@@ -1,4 +1,4 @@
-import { ApplicationCommand } from "@/utils/types";
+import { ApplicationCommand } from "@/types/interactions";
 
 const PING_COMMAND: ApplicationCommand = {
     name: "ping",

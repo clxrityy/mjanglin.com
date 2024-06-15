@@ -1,4 +1,4 @@
-import { ApplicationCommand } from "@/utils/types";
+import { ApplicationCommand } from "@/types/interactions";
 import { ApplicationCommandOptionType } from "discord-api-types/v10";
 
 const BIRTHDAY_COMMAND: ApplicationCommand = {

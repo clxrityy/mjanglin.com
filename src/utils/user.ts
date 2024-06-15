@@ -1,6 +1,6 @@
 import { CONFIG } from "@/config";
 import { db } from "@/lib/db";
-import { CreateUserParams, OAuth2UserResponse } from "@/utils/types";
+import { CreateUserParams, OAuth2UserResponse } from "@/types/auth";
 import { User } from "@prisma/client";
 import axios from "axios";
 import { parse } from "cookie";

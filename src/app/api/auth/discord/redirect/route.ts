@@ -1,6 +1,6 @@
 import { CONFIG } from "@/config";
+import { OAuth2CrendialsResponse, OAuthTokenExchangeRequestParams } from '@/types/auth';
 import { encryptTokens } from '@/utils/encrypt';
-import { OAuth2CrendialsResponse, OAuthTokenExchangeRequestParams } from '@/utils/types';
 import {
     createUser,
     getUserDetails
@@ -9,7 +9,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { serialize } from "cookie";
 import { sign } from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 
 const axiosConfig: AxiosRequestConfig = {

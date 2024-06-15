@@ -1,16 +1,16 @@
-import { verifyInteractionRequest } from "@/lib/verify";
+import { commands } from "@/commands";
 import { env } from "@/env.mjs";
+import { birthdaySet, birthdayView } from "@/handlers/birthday";
+import { verifyInteractionRequest } from "@/lib/verify";
+import { InteractionData } from "@/types/interactions";
+import { EmbedType } from "@/types/general";
 import {
     // APIInteractionDataOptionBase,
     // ApplicationCommandOptionType,
     InteractionResponseType,
     InteractionType,
-    // MessageFlags,
 } from "discord-api-types/v10";
 import { NextResponse } from "next/server";
-import { commands } from "@/commands";
-import birthdaySet from "@/handlers/birthday";
-import { EmbedType, InteractionData } from "@/utils/types";
 
 /**
  * Use edge runtime which is faster, cheaper, and has no cold-boot.
@@ -53,13 +53,14 @@ export async function POST(req: Request) {
         const interactionSubcommand = interactionData.options?.[0];
 
         const interactionSubcommandOptions = interactionData.options?.[0].options;
-        
+
+        let embed: EmbedType;
         
         switch (name) {
             // /ping
             case commands.ping.name:
 
-                const embed: EmbedType = {
+                embed = {
                     title: "Pong!",
                     color: 0x00FF00
                 }
@@ -74,10 +75,20 @@ export async function POST(req: Request) {
                 });
             // /birthday
             case commands.birthday.name:
+
+                if (!interactionSubcommand) {
+                    return NextResponse.json({
+                        type: InteractionResponseType.ChannelMessageWithSource,
+                        data: {
+                            content: "Please provide a subcommand"
+                        }
+                    });
+                }
+                
                 switch (interactionSubcommand!.name) {
                     // /birthday set
                     case "set":
-                        const embed = await birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
                         
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -89,10 +100,14 @@ export async function POST(req: Request) {
                         });
                     // /birthday view
                     case "view":
+                        embed = await birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
-                                content: "No birthday found"
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
                             }
                         });
                     default:

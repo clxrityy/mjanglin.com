@@ -19,3 +19,13 @@
 ```zsh
 pnpm register-commands
 ```
+
+## Commands
+
+> `{}` - indicates required params
+> `()` - indicates optional params
+
+- `/ping` - Pong!
+- `/birthday`
+    - `/birthday set {month} {day}`
+    - `/birthday view (user)`
