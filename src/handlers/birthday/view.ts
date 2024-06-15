@@ -10,7 +10,13 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
     let birthday;
 
-    const targetUser = options.find((option) => option.name === "user")?.value as string;
+    let targetUser;
+
+    if (options.find((option) => option.name === "user")) {
+        targetUser = options.find((option) => option.name === "user")?.value as string;
+    } else {
+        console.log("No user option found")
+    }
 
     if (!targetUser) { 
 
