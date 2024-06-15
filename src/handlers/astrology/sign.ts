@@ -37,7 +37,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
                 embed = {
                     color: Colors.LUMINOUS_VIVID_PINK,
                     title: sign.symbol,
-                    description: `**${sign.name}**\n\`${sign.startDate}/${sign.endDate}\``,
+                    description: `**${sign.name}**\n\`${sign.startDate} - ${sign.endDate}\``,
                 }
 
                 
@@ -76,7 +76,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
                 embed = {
                     color: Colors.LUMINOUS_VIVID_PINK,
                     title: sign.symbol,
-                    description: `${userMention(targetUser)} | **${sign.name}**\n\`${sign.startDate}/${sign.endDate}\``,
+                    description: `${userMention(targetUser)} | **${sign.name}**\n\`${sign.startDate} - ${sign.endDate}\``,
                     footer: {
                         text: `Birthday of ${userMention(targetUser)}`
                     }
