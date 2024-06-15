@@ -38,7 +38,14 @@ export default async function birthdaySet(options: APIApplicationCommandInteract
             const day = options.find((option) => option.name === "day") as APIApplicationCommandInteractionDataOption & {
                 value: number;
             }
+
+            console.log(month, day)
             
+            if (!month || !day) {
+                embed = EMBEDS.noSubcommand;
+                break;
+             }
+
             if (month.type === ApplicationCommandOptionType.Integer && day.type === ApplicationCommandOptionType.Integer) {
                 
                 try {
