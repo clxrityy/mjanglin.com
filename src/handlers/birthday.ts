@@ -123,18 +123,17 @@ export async function birthdayView(options: InteractionOption[], userId: string,
             }
         }
     } else {
-        const targetUser = options.find((option) => option.name === "user")?.value as DiscordUser;
+        const targetUser = options.find((option) => option.name === "user")?.value as string;
 
         if (!targetUser) {
             embed = EMBEDS.error;
         }
 
         try {
-            console.log(targetUser)
 
             const birthday = await db.birthday.findUnique({
                 where: {
-                    userId: targetUser!.id,
+                    userId: targetUser,
                     guildId: guildId
                 },
                 cacheStrategy: {
@@ -145,13 +144,13 @@ export async function birthdayView(options: InteractionOption[], userId: string,
 
             if (birthday) {
                 embed = {
-                    description: `${userMention(targetUser.id)}'s birthday is set to \`${birthday.month}/${birthday.day}\``,
+                    description: `${userMention(targetUser)}'s birthday is set to \`${birthday.month}/${birthday.day}\``,
                     color: Colors.WHITE
                 }
             } else {
                 embed = {
                     ...EMBEDS.noBirthdayFound,
-                    description: `${userMention(targetUser.id)} hasn't set their birthday.`,
+                    description: `${userMention(targetUser)} hasn't set their birthday.`,
                 }
             }
 
