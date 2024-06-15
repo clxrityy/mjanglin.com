@@ -23,4 +23,3 @@ export const EMBEDS = {
         color: Colors.RED
     } as EmbedType,
 }
-

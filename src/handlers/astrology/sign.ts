@@ -1,25 +1,22 @@
+import { EMBEDS } from "@/data/resources/embeds";
+import { Sign, getZodiacSign } from "@/data/resources/signs";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 import { userMention } from "@/utils/misc";
-import { EMBEDS } from "../../data/resources/embeds";
 
-export default async function birthdayView(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
+export default async function astrologySignHandler(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
-
-    let birthday;
-
     let targetUser;
+    let birthday;
+    let sign: Sign;
 
     if (options.find((option) => option.name === "user")) {
         targetUser = options.find((option) => option.name === "user")?.value as string;
-    } else {
-        console.log("No user option found")
     }
 
-    if (!targetUser) { 
-
+    if (!targetUser) {
         try {
             birthday = await db.birthday.findUnique({
                 where: {
@@ -33,10 +30,15 @@ export default async function birthdayView(options: InteractionOption[], userId:
             });
 
             if (birthday) {
+                sign = getZodiacSign(birthday.month, birthday.day);
+
                 embed = {
-                    description: `Your birthday is set to \`${birthday.month}/${birthday.day}\``,
-                    color: Colors.WHITE
+                    color: Colors.LUMINOUS_VIVID_PINK,
+                    title: sign.symbol,
+                    description: `**${sign.name}**\n\`${sign.startDate}/${sign.endDate}\``,
                 }
+
+                
             } else {
                 embed = {
                     ...EMBEDS.noBirthdayFound,
@@ -50,15 +52,11 @@ export default async function birthdayView(options: InteractionOption[], userId:
             console.error(e);
             embed = {
                 ...EMBEDS.error,
-                description: `\`\`\`\`\n${e.message}\`\`\``,
+                description: `\`\`\`\n${e.message}\`\`\``,
             }
         }
     } else {
-
-        console.log(targetUser); //
-
         try {
-
             birthday = await db.birthday.findUnique({
                 where: {
                     userId: targetUser,
@@ -71,14 +69,20 @@ export default async function birthdayView(options: InteractionOption[], userId:
             });
 
             if (birthday) {
+                sign = getZodiacSign(birthday.month, birthday.day);
+
                 embed = {
-                    description: `${userMention(targetUser)}'s birthday is set to \`${birthday.month}/${birthday.day}\``,
-                    color: Colors.WHITE
+                    color: Colors.LUMINOUS_VIVID_PINK,
+                    title: sign.symbol,
+                    description: `${userMention(targetUser)} | **${sign.name}**\n\`${sign.startDate}/${sign.endDate}\``,
+                    footer: {
+                        text: `Birthday of ${userMention(targetUser)}`
+                    }
                 }
             } else {
                 embed = {
                     ...EMBEDS.noBirthdayFound,
-                    description: `${userMention(targetUser)} hasn't set their birthday.`,
+                    description: `${userMention(targetUser)} has not set their birthday yet`,
                 }
             }
 
