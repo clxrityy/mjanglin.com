@@ -6,7 +6,7 @@
 - Utilizes [`discord-api-types`](https://discord-api-types.dev/) to facilitate requests and responses to/from the [interactions endpoint](https://discord.com/developers/docs/interactions/slash-commands#receiving-an-interaction)
 - Custom types are implemented to achieve additional functionality and usability within the application
 
-###### STARTER TEMPLATE
+##### STARTER TEMPLATE
 ###### [nextjs-discord-bot-with-oauth](https://github.com/clxrityy/nextjs-discord-bot-with-oauth)
 
 > ```zsh
@@ -21,6 +21,7 @@ pnpm register-commands
 ```
 
 ## Commands
+> [hbd.mjanglin.com/commands](https://hbd.mjanglin.com/commands)
 
 > **`{}`** - indicates required params
 > **`()`** - indicates optional params
@@ -29,3 +30,4 @@ pnpm register-commands
 - `/birthday`
     - `/birthday set {month} {day}`
     - `/birthday view (user)`
+- `/sign (user)` - View your zodiac sign

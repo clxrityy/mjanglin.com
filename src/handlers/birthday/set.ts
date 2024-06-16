@@ -29,10 +29,7 @@ export default async function birthdaySet(options: InteractionOption[], userId: 
             if (existingBirthday) {
                 embed = {
                     ...EMBEDS.birthdayAlreadySet,
-                    description: `Your birthday is already set to \`${existingBirthday.month}/${existingBirthday.day}\``,
-                    footer: {
-                        text: "/birthday edit to change it only one time!"
-                    }
+                    description: `Your birthday is already set to \`${existingBirthday.month}/${existingBirthday.day}\``
                 }
             } else {
                 await db.birthday.create({

@@ -16,6 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
@@ -33,7 +34,8 @@ export default function RootLayout({
           property="description"
           content="A Discord birthday bot"
         />
-      </head><Providers>
+      </head>
+      <Providers>
         <body className={nunito.className}>
 
           {children}
@@ -41,5 +43,6 @@ export default function RootLayout({
         </body>
       </Providers>
     </html>
+
   );
 }

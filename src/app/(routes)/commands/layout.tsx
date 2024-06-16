@@ -9,10 +9,10 @@ export default function CommandsLayout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
 
-    return <div className="flex w-full h-full">
+    return <main className="flex w-full h-full">
         <div className="mx-auto py-10">
             {children}
         </div>
-    </div>
+    </main>
     
 }
