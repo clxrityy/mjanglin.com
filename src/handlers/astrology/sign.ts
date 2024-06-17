@@ -12,12 +12,13 @@ export default async function astrologySignHandler(options: InteractionOption[],
     let birthday;
     let sign: Sign;
 
-    if (options) {
-        if (options.find((option) => option.name === "user")) {
-            targetUser = options.find((option) => option.name === "user")?.value as string;
-        }    
+    if (options.find((option) => option.name === "user")) {
+        targetUser = options.find((option) => option.name === "user")?.value as string;
     }
-    
+
+    console.log(options)
+    console.log(targetUser)
+
     if (!targetUser) {
         try {
             birthday = await db.birthday.findUnique({
@@ -40,7 +41,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
                     description: `**${sign.name}**\n\`${sign.startDate} - ${sign.endDate}\``,
                 }
 
-                
+
             } else {
                 embed = {
                     ...EMBEDS.noBirthdayFound,
@@ -77,9 +78,6 @@ export default async function astrologySignHandler(options: InteractionOption[],
                     color: Colors.LUMINOUS_VIVID_PINK,
                     title: sign.symbol,
                     description: `${userMention(targetUser)} | **${sign.name}**\n\`${sign.startDate} - ${sign.endDate}\``,
-                    footer: {
-                        text: `Birthday of ${userMention(targetUser)}`
-                    }
                 }
             } else {
                 embed = {
