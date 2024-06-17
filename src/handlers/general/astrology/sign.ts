@@ -1,5 +1,5 @@
-import { EMBEDS } from "@/data/resources/embeds";
-import { Sign, getZodiacSign } from "@/data/resources/signs";
+import { EMBEDS } from "@/data/util/resources/embeds";
+import { Sign, getZodiacSign } from "@/data/util/resources/signs";
 import { db } from "@/lib/db";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";

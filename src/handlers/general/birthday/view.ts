@@ -1,10 +1,10 @@
+import { mutualBirthday } from "@/data/util/functions/mutualBday";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 import { userMention } from "@/utils/misc";
-import { EMBEDS } from "../../data/resources/embeds";
-import { mutualBirthday } from "@/data/resources/mutualBday";
+import { EMBEDS } from "../../../data/util/resources/embeds";
 
 export default async function birthdayView(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;

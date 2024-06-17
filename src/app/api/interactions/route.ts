@@ -1,6 +1,6 @@
 import { commands } from "@/data/commands";
 import { env } from "@/env.mjs";
-import { birthdayCountdown, birthdaySet, birthdayView, astrologySignHandler } from "@/handlers";
+import { generalHandlers, adminHandlers } from "@/handlers";
 import { verifyInteractionRequest } from "@/lib/verify";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
                 switch (interactionSubcommand.name) {
                     // /birthday set
                     case "set":
-                        embed = await birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalHandlers.birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
                         
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -103,7 +103,7 @@ export async function POST(req: Request) {
                         });
                     // /birthday view
                     case "view":
-                        embed = await birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalHandlers.birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -114,7 +114,7 @@ export async function POST(req: Request) {
                             }
                         });
                     case "countdown":
-                        embed = await birthdayCountdown(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalHandlers.birthdayCountdown(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -136,7 +136,7 @@ export async function POST(req: Request) {
             // /sign
             case commands.sign.name:
 
-                embed = await astrologySignHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+                embed = await generalHandlers.astrologySignHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -144,6 +144,46 @@ export async function POST(req: Request) {
                         embeds: [
                             JSON.parse(JSON.stringify(embed))
                         ]
+                    }
+                });
+            
+            // /config
+
+            case commands.config.name:
+
+                switch (interactionSubcommand.name) {
+                    case "set":
+
+                        const embed = await adminHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
+                        
+                        
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: "Config set command"
+                            }
+                        });
+                    case "view":
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: "Config view command"
+                            }
+                        });
+                    default:
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                content: "Please provide a subcommand"
+                            }
+                        });
+                 }
+                
+                
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        content: "Config command"
                     }
                 });
 

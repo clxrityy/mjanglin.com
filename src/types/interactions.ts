@@ -1,5 +1,5 @@
-import { APIApplicationCommandPermission, InteractionResponseType } from "discord-api-types/v10";
-import { DiscordChannel, DiscordRole, DiscordUser, EmbedType } from "./general";
+import {  InteractionResponseType } from "discord-api-types/v10";
+import { EmbedType } from "./general";
 
 export type ApplicationCommandOption = {
     type: number;
@@ -20,7 +20,7 @@ export type ApplicationCommand = {
     name: string;
     description: string;
     options?: ApplicationCommandOption[];
-    permissions?: APIApplicationCommandPermission[];
+    permissions?: number[];
 }
 
 export interface InteractionOption {

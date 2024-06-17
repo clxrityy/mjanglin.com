@@ -15,6 +15,7 @@ export const CONFIG = {
         CLIENT_SECRET: process.env.CLIENT_SECRET!,
         JWT_SECRET: process.env.JWT_SECRET!,
         ENCRYPTION_KEY: process.env.ENCRYPTION_KEY!,
-        PUBLIC_KEY: process.env.PUBLIC_KEY!
+        PUBLIC_KEY: process.env.PUBLIC_KEY!,
+        BOT_TOKEN: process.env.BOT_TOKEN!,
     },
 }

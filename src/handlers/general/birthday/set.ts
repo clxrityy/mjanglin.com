@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
-import { EMBEDS } from "../../data/resources/embeds";
+import { EMBEDS } from "../../../data/util/resources/embeds";
 
 export default async function birthdaySet(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;

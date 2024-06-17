@@ -1,5 +1,5 @@
-import { EMBEDS } from "@/data/resources/embeds";
-import { timeLeft } from "@/data/resources/timeLeft";
+import { EMBEDS } from "@/data/util/resources/embeds";
+import { timeLeft } from "@/data/util/functions/timeLeft";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
