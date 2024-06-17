@@ -58,7 +58,7 @@ export async function POST(req: Request) {
         const interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[];
 
         let embed: EmbedType;
-        
+
         switch (name) {
             // /ping
             case commands.ping.name:
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
                     title: "Pong!",
                     color: Colors.BLURPLE
                 }
-                
+
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
@@ -87,12 +87,12 @@ export async function POST(req: Request) {
                         }
                     });
                 }
-                
+
                 switch (interactionSubcommand.name) {
                     // /birthday set
                     case "set":
                         embed = await generalHandlers.birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
-                        
+
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
@@ -132,7 +132,7 @@ export async function POST(req: Request) {
                             }
                         });
                 }
-                
+
             // /sign
             case commands.sign.name:
 
@@ -146,7 +146,7 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
-            
+
             // /config
 
             case commands.config.name:
@@ -154,9 +154,7 @@ export async function POST(req: Request) {
                 switch (interactionSubcommand.name) {
                     case "set":
 
-                        const embed = await adminHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
-                        
-                        
+
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
@@ -164,10 +162,13 @@ export async function POST(req: Request) {
                             }
                         });
                     case "view":
+                        embed = await adminHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
+
+                        
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
-                                content: "Config view command"
+                                embeds: [embed]
                             }
                         });
                     default:
@@ -177,9 +178,9 @@ export async function POST(req: Request) {
                                 content: "Please provide a subcommand"
                             }
                         });
-                 }
-                
-                
+                }
+
+
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
@@ -194,7 +195,7 @@ export async function POST(req: Request) {
                         content: "Unknown command"
                     }
                 });
-            
+
         }
     }
 
