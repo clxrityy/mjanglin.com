@@ -51,7 +51,6 @@ export default async function astrologySignHandler(options: InteractionOption[],
             }
         }
     } else {
-    
         try {
             birthday = await db.birthday.findUnique({
                 where: {
