@@ -4,7 +4,7 @@ import { birthdaySet, birthdayView } from "@/handlers";
 import astrologySignHandler from "@/handlers/astrology/sign";
 import { verifyInteractionRequest } from "@/lib/verify";
 import { EmbedType } from "@/types/general";
-import { InteractionData, InteractionOption } from "@/types/interactions";
+import { InteractionData, InteractionOption, InteractionSubcommand } from "@/types/interactions";
 import {
     // APIInteractionDataOptionBase,
     // ApplicationCommandOptionType,
@@ -53,9 +53,9 @@ export async function POST(req: Request) {
 
         const interactionOptions = interactionData.options as InteractionOption[]
 
-        const interactionSubcommand = interactionData.options?.[0];
+        const interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption>;
 
-        const interactionSubcommandOptions = interactionData.options?.[0].options;
+        const interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[];
 
         let embed: EmbedType;
         

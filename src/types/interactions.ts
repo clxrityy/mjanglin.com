@@ -32,7 +32,7 @@ export interface InteractionOption {
 export interface InteractionData {
     id: string;
     name: string;
-    options?: InteractionSubcommandOrOption<InteractionOption>[]
+    options?: InteractionSubcommand<InteractionOption>[] | InteractionOption[];
 }
 
 export type InteractionResponse = {
@@ -44,7 +44,7 @@ export type InteractionResponse = {
     },
 }
 
-export interface InteractionSubcommandOrOption<T extends InteractionOption> {
+export interface InteractionSubcommand<T extends InteractionOption> {
     name: string;
     type: number;
     options?: T[];
