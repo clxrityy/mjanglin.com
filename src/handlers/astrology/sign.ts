@@ -11,43 +11,41 @@ export default async function astrologySignHandler(options: InteractionOption[],
     let birthday;
     let sign: Sign;
 
-    if (options) {
-        if (options.find((option) => option.name === "user")) {
-            targetUser = options.find((option) => option.name === "user")?.value as string;
+    if (options && options.find((option) => option.name === "user")) {
+        targetUser = options.find((option) => option.name === "user")?.value as string;
 
-            try {
-                birthday = await db.birthday.findUnique({
-                    where: {
-                        userId: targetUser,
-                        guildId: guildId
-                    },
-                    cacheStrategy: {
-                        ttl: 60,
-                        swr: 60,
-                    }
-                });
-    
-                if (birthday) {
-                    sign = getZodiacSign(birthday.month, birthday.day);
-    
-                    embed = {
-                        color: sign.color,
-                        title: `${sign.symbol} ${sign.name}`,
-                        description: `\n\n${userMention(targetUser)}\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
-                    }
-                } else {
-                    embed = {
-                        ...EMBEDS.noBirthdayFound,
-                        description: `${userMention(targetUser)} has not set their birthday yet`,
-                    }
+        try {
+            birthday = await db.birthday.findUnique({
+                where: {
+                    userId: targetUser,
+                    guildId: guildId
+                },
+                cacheStrategy: {
+                    ttl: 60,
+                    swr: 60,
                 }
-    
-            } catch (e: any) {
-                console.error(e);
+            });
+
+            if (birthday) {
+                sign = getZodiacSign(birthday.month, birthday.day);
+
                 embed = {
-                    ...EMBEDS.error,
-                    description: `\`\`\`\n${e.message}\`\`\``,
+                    color: sign.color,
+                    title: `${sign.symbol} ${sign.name}`,
+                    description: `\n\n${userMention(targetUser)}\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
                 }
+            } else {
+                embed = {
+                    ...EMBEDS.noBirthdayFound,
+                    description: `${userMention(targetUser)} has not set their birthday yet`,
+                }
+            }
+
+        } catch (e: any) {
+            console.error(e);
+            embed = {
+                ...EMBEDS.error,
+                description: `\`\`\`\n${e.message}\`\`\``,
             }
         }
     } else {
