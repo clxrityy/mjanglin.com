@@ -17,7 +17,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
         }
     }
 
-    if (!targetUser) {
+    if (!targetUser || !options) {
         try {
             birthday = await db.birthday.findUnique({
                 where: {
@@ -35,8 +35,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
 
                 embed = {
                     color: sign.color,
-                    title: sign.symbol,
-                    description: `**${sign.name}**\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
+                    description: `**${sign.name}** \`${sign.symbol}\`\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
                 }
 
 
@@ -74,8 +73,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
 
                 embed = {
                     color: sign.color,
-                    title: sign.symbol,
-                    description: `\n**${sign.name}**\n${userMention(targetUser)}\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
+                    description: `\n**${sign.name}** \`${sign.symbol}\`\n${userMention(targetUser)}\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
                 }
             } else {
                 embed = {
