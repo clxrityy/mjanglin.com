@@ -8,7 +8,7 @@ export default async function Page() {
     const user = parseUser();
 
     if (!user) {
-        return redirect(CONFIG.OAUTH2_INVITE_URL);
+        return redirect(CONFIG.URLS.OAUTH2_INVITE_URL);
     }
 
     return (

@@ -9,13 +9,13 @@ import { cookies } from "next/headers";
 
 export function parseUser(): OAuth2UserResponse | null {
 
-    const cookie = cookies().get(CONFIG.COOKIE_NAME);
+    const cookie = cookies().get(CONFIG.VALUES.COOKIE_NAME);
 
     if (!cookie?.value) {
         return null;
     }
 
-    const token = parse(cookie.value)[CONFIG.COOKIE_NAME];
+    const token = parse(cookie.value)[CONFIG.VALUES.COOKIE_NAME];
 
     if (!token) {
         return null;
@@ -32,7 +32,7 @@ export function parseUser(): OAuth2UserResponse | null {
 }
 
 export async function getUserDetails(accessToken: string) {
-    return await axios.get<OAuth2UserResponse>(CONFIG.OAUTH2_USER, {
+    return await axios.get<OAuth2UserResponse>(CONFIG.URLS.OAUTH2_USER, {
         headers: {
             Authorization: `Bearer ${accessToken}`
         }

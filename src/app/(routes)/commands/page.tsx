@@ -5,7 +5,7 @@ import { CommandData } from "@/types/interactions";
 export default async function Page() {
 
     try {
-        const commands = await fetch(`${CONFIG.DISCORD_API_BASE_URL}/applications/${process.env.CLIENT_ID!}/commands`, {
+        const commands = await fetch(`${CONFIG.URLS.DISCORD_API_BASE_URL}/applications/${process.env.CLIENT_ID!}/commands`, {
             headers: {
                 Authorization: `Bot ${process.env.BOT_TOKEN!}`
             },

@@ -23,7 +23,7 @@ const scope = ["identify"].join(" ");
 
 const OAUTH_QS = new URLSearchParams({
     client_id: process.env.CLIENT_ID!,
-    redirect_uri: CONFIG.REDIRECT_URI,
+    redirect_uri: CONFIG.URLS.REDIRECT_URI,
     response_type: "code",
     scope
 }).toString();
@@ -51,12 +51,12 @@ export async function GET(req: Request) {
         client_secret: process.env.CLIENT_SECRET!,
         grant_type: "authorization_code",
         code,
-        redirect_uri: CONFIG.REDIRECT_URI,
+        redirect_uri: CONFIG.URLS.REDIRECT_URI,
         scope
     }).toString();
 
     try {
-        const { data } = await axios.post<OAuth2CrendialsResponse>(CONFIG.OAUTH2_TOKEN, body, axiosConfig);
+        const { data } = await axios.post<OAuth2CrendialsResponse>(CONFIG.URLS.OAUTH2_TOKEN, body, axiosConfig);
 
         const { access_token, refresh_token } = data;
 
@@ -74,14 +74,14 @@ export async function GET(req: Request) {
 
         const token = sign(user.data, process.env.JWT_SECRET!, { expiresIn: "24h" });
 
-        cookies().set(CONFIG.COOKIE_NAME, serialize(CONFIG.COOKIE_NAME, token, {
+        cookies().set(CONFIG.VALUES.COOKIE_NAME, serialize(CONFIG.VALUES.COOKIE_NAME, token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
             sameSite: "lax",
             path: "/"
         }));
 
-        return NextResponse.redirect(CONFIG.BASE_URL);
+        return NextResponse.redirect(CONFIG.URLS.BASE_URL);
 
     } catch (e) {
         console.log(`Error exchanging code for token: ${e}`);
