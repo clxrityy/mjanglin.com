@@ -5,15 +5,15 @@ import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 import { userMention } from "@/utils/misc";
 
-export default async function astrologySignHandler(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
+export default async function astrologySignHandler(userId: string, guildId: string, options?: InteractionOption[]): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
     let targetUser;
     let birthday;
     let sign: Sign;
 
-    if (options.find((option) => option.name === "user")) {
+    if (options && options.find((option) => option.name === "user")) {
         targetUser = options.find((option) => option.name === "user")?.value as string;
-        
+
         try {
             birthday = await db.birthday.findUnique({
                 where: {
