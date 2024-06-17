@@ -16,9 +16,6 @@ export default async function astrologySignHandler(options: InteractionOption[],
         targetUser = options.find((option) => option.name === "user")?.value as string;
     }
 
-    console.log(options)
-    console.log(targetUser)
-
     if (!targetUser) {
         try {
             birthday = await db.birthday.findUnique({
