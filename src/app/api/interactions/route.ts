@@ -51,7 +51,7 @@ export async function POST(req: Request) {
 
         const interactionData: InteractionData = JSON.parse(JSON.stringify(interaction.data));
 
-        const interactionOptions = interactionData.options;
+        const interactionOptions = interactionData.options as InteractionOption[];
 
         const interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption>;
 
@@ -136,7 +136,7 @@ export async function POST(req: Request) {
             // /sign
             case commands.sign.name:
 
-                embed = await astrologySignHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions as InteractionOption[]);
+                embed = await astrologySignHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
