@@ -10,6 +10,10 @@ export default async function viewConfigHandler(userId: string, guildId: string)
     const existingGuild = await db.guild.findUnique({
         where: {
             guildId: guildId
+        },
+        cacheStrategy: {
+            ttl: 60,
+            swr: 60,
         }
     });
 
