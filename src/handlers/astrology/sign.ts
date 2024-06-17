@@ -1,7 +1,6 @@
 import { EMBEDS } from "@/data/resources/embeds";
 import { Sign, getZodiacSign } from "@/data/resources/signs";
 import { db } from "@/lib/db";
-import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 import { userMention } from "@/utils/misc";
@@ -15,9 +14,6 @@ export default async function astrologySignHandler(options: InteractionOption[],
     if (options.find((option) => option.name === "user")) {
         targetUser = options.find((option) => option.name === "user")?.value as string;
     }
-
-    console.log(options);
-    console.log(targetUser);
 
     if (!targetUser) {
         try {
@@ -36,9 +32,9 @@ export default async function astrologySignHandler(options: InteractionOption[],
                 sign = getZodiacSign(birthday.month, birthday.day);
 
                 embed = {
-                    color: Colors.LUMINOUS_VIVID_PINK,
+                    color: sign.color,
                     title: sign.symbol,
-                    description: `**${sign.name}**\n\`${sign.startDate} - ${sign.endDate}\``,
+                    description: `**${sign.name}**\n\n\`${sign.startDate}\` - \` ${sign.endDate}\``,
                 }
 
 
@@ -75,9 +71,9 @@ export default async function astrologySignHandler(options: InteractionOption[],
                 sign = getZodiacSign(birthday.month, birthday.day);
 
                 embed = {
-                    color: Colors.LUMINOUS_VIVID_PINK,
+                    color: sign.color,
                     title: sign.symbol,
-                    description: `${userMention(targetUser)} | **${sign.name}**\n\`${sign.startDate} - ${sign.endDate}\``,
+                    description: `${userMention(targetUser)}\n**${sign.name}**\n\n\`${sign.startDate}\` - \` ${sign.endDate}\``,
                 }
             } else {
                 embed = {

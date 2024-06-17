@@ -3,6 +3,7 @@ import { env } from "@/env.mjs";
 import { birthdaySet, birthdayView } from "@/handlers";
 import astrologySignHandler from "@/handlers/astrology/sign";
 import { verifyInteractionRequest } from "@/lib/verify";
+import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionData, InteractionOption, InteractionSubcommand } from "@/types/interactions";
 import {
@@ -65,7 +66,7 @@ export async function POST(req: Request) {
 
                 embed = {
                     title: "Pong!",
-                    color: 0x00FF00
+                    color: Colors.BLURPLE
                 }
                 
                 return NextResponse.json({
