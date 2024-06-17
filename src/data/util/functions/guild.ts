@@ -18,7 +18,7 @@ export async function fetchGuild(guildId: string): Promise<Guild> {
             }
         });
     
-        const guild = JSON.parse(await response.json()) as Guild;
+        const guild = JSON.parse(JSON.stringify(await response.json())) as Guild;
     
         return guild;
     } catch (e: any) {
