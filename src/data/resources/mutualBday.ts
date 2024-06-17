@@ -10,6 +10,10 @@ export async function mutualBirthday(birthday: { month: number, day: number, use
                 NOT: {
                     userId: birthday.userId
                 }
+            },
+            cacheStrategy: {
+                ttl: 60,
+                swr: 60,
             }
         });
 
