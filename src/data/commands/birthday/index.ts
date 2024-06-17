@@ -41,6 +41,20 @@ const BIRTHDAY_COMMAND: ApplicationCommand = {
                 }
             ]
         },
+        {
+            name: "countdown",
+            description: "Countdown to your birthday",
+            type: ApplicationCommandOptionType.Subcommand,
+            options: [
+                {
+                    name: "user",
+                    description: "User to view",
+                    type: ApplicationCommandOptionType.User,
+                    required: false
+                }
+            ]
+        }
+
     ]
 } as const;
 

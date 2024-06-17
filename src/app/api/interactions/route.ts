@@ -1,7 +1,6 @@
 import { commands } from "@/data/commands";
 import { env } from "@/env.mjs";
-import { birthdaySet, birthdayView } from "@/handlers";
-import astrologySignHandler from "@/handlers/astrology/sign";
+import { birthdayCountdown, birthdaySet, birthdayView, astrologySignHandler } from "@/handlers";
 import { verifyInteractionRequest } from "@/lib/verify";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
@@ -105,6 +104,17 @@ export async function POST(req: Request) {
                     // /birthday view
                     case "view":
                         embed = await birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
+                            }
+                        });
+                    case "countdown":
+                        embed = await birthdayCountdown(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,

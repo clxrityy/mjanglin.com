@@ -1,15 +1,15 @@
 import { EMBEDS } from "@/data/resources/embeds";
-import { Sign, getZodiacSign } from "@/data/resources/signs";
+import { timeLeft } from "@/data/resources/timeLeft";
 import { db } from "@/lib/db";
+import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 import { userMention } from "@/utils/misc";
 
-export default async function astrologySignHandler(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
+export default async function birthdayCountdown(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
-    let targetUser;
     let birthday;
-    let sign: Sign;
+    let targetUser;
 
     if (options) {
         if (options.find((option) => option.name === "user")) {
@@ -31,25 +31,15 @@ export default async function astrologySignHandler(options: InteractionOption[],
             });
 
             if (birthday) {
-                sign = getZodiacSign(birthday.month, birthday.day);
+                const remainingDays = timeLeft(birthday.month, birthday.day);
 
                 embed = {
-                    color: sign.color,
-                    title: sign.symbol,
-                    description: `**${sign.name}**\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
+                    description: `There are **${remainingDays}** days until your birthday!`,
+                    color: Colors.AQUA
                 }
 
-
-            } else {
-                embed = {
-                    ...EMBEDS.noBirthdayFound,
-                    footer: {
-                        text: "Set your birthday using `/birthday set`"
-                    }
-                }
             }
-
-        } catch (e: any) {
+        } catch (e: any) { 
             console.error(e);
             embed = {
                 ...EMBEDS.error,
@@ -70,20 +60,20 @@ export default async function astrologySignHandler(options: InteractionOption[],
             });
 
             if (birthday) {
-                sign = getZodiacSign(birthday.month, birthday.day);
+                const remainingDays = timeLeft(birthday.month, birthday.day);
 
                 embed = {
-                    color: sign.color,
-                    title: sign.symbol,
-                    description: `\n**${sign.name}**\n${userMention(targetUser)}\n\n\`${sign.startDate}\` - \`${sign.endDate}\``,
+                    description: `There are **${remainingDays}** days until ${userMention(targetUser)}'s birthday!`,
+                    color: Colors.AQUA
                 }
+
             } else {
                 embed = {
                     ...EMBEDS.noBirthdayFound,
-                    description: `${userMention(targetUser)} has not set their birthday yet`,
+                    description: `${userMention(targetUser)} has not set their birthday yet!`,
                 }
             }
-
+            
         } catch (e: any) {
             console.error(e);
             embed = {
@@ -92,6 +82,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
             }
         }
     }
+
 
     return embed;
 }
