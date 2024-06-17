@@ -13,7 +13,7 @@ export default async function Page() {
 
     return (
         <main>
-            <div className="flex items-center justify-center flex-col gap-10">
+            <div className="flex justify-center items-center flex-col gap-10">
                 <h1>hbd</h1>
                 <div className="flex items-center justify-center flex-col gap-2">
                     <h3>
