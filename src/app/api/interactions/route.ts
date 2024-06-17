@@ -136,7 +136,7 @@ export async function POST(req: Request) {
             // /sign
             case commands.sign.name:
 
-                embed = await astrologySignHandler(interactionOptions as InteractionOption[], interaction.member!.user!.id, interaction.guild_id!);
+                embed = await astrologySignHandler(interactionOptions! as InteractionOption[], interaction.member!.user!.id, interaction.guild_id!);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,

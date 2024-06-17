@@ -11,7 +11,7 @@ export default async function astrologySignHandler(options: InteractionOption[],
     let birthday;
     let sign: Sign;
 
-    if (options && options.find((option) => option.name === "user")) {
+    if (options) {
         targetUser = options.find((option) => option.name === "user")?.value as string;
 
         try {

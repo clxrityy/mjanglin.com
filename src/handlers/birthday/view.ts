@@ -4,6 +4,7 @@ import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 import { userMention } from "@/utils/misc";
 import { EMBEDS } from "../../data/resources/embeds";
+import { mutualBirthday } from "@/data/resources/mutualBday";
 
 export default async function birthdayView(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
@@ -31,9 +32,24 @@ export default async function birthdayView(options: InteractionOption[], userId:
             });
 
             if (birthday) {
-                embed = {
-                    description: `Your birthday is set to \`${birthday.month}/${birthday.day}\``,
-                    color: Colors.WHITE
+
+                const mutual = await mutualBirthday({
+                    month: birthday.month,
+                    day: birthday.day,
+                    userId: userId,
+                    guildId: guildId
+                });
+
+                if (mutual) {
+                    embed = {
+                        description: `Your birthday is set to \`${birthday.month}/${birthday.day}\`\n\n🎉 You share a birthday with ${userMention(mutual)}`,
+                        color: Colors.WHITE
+                    }
+                } else {
+                    embed = {
+                        description: `Your birthday is set to \`${birthday.month}/${birthday.day}\``,
+                        color: Colors.WHITE
+                    }
                 }
             } else {
                 embed = {
