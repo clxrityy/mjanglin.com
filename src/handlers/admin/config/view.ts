@@ -67,12 +67,6 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                     color: Colors.RED
                 }
             }
-
-            embed = {
-                title: "Config",
-                description: "You are the owner of this server",
-                color: Colors.GREEN
-            }
         } else {
             embed = {
                 title: "Config",
