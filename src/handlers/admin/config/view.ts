@@ -27,9 +27,6 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                 await db.guild.update({
                     where: {
                         guildId: guildId,
-                        userId: {
-                            not: userId
-                        }
                     },
                     data: {
                         userId: guild.owner_id
