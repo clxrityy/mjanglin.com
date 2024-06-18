@@ -29,9 +29,24 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                         guildId: guildId,
                     },
                     data: {
-                        userId: guild.owner_id
+                        userId: userId,
                     },
                 });
+
+                const settings: GuildSettings = {
+                    guildId: existingGuild.guildId,
+                    userId: userId,
+                    changeable: existingGuild.changeable
+                };
+
+                embed = {
+                    title: "Config",
+                    description: `You are now the owner of this server\n\nChangeable birthdays: ${settings.changeable ? "`true`" : "`false`"}`,
+                    color: Colors.GREEN,
+                    footer: {
+                        text: "/config set"
+                    }
+                }
             } else if (existingGuild.userId === userId) { 
                 const settings: GuildSettings = {
                     guildId: existingGuild.guildId,
