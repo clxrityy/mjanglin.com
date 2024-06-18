@@ -5,6 +5,7 @@ import { ChangeEvent, useState } from "react";
 import SearchList from "./SearchList";
 import Scroll from "../ui/Scroll";
 import Command from "../Command";
+import Link from "next/link";
 
 export default function Search({ commands }: { commands: CommandData[] }) {
     const [searchField, setSearchField] = useState<string>("");
@@ -58,16 +59,20 @@ export default function Search({ commands }: { commands: CommandData[] }) {
                 />
             </div>
             {searchList()}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 px-4">
                 {commands.map((command) => {
 
                     if (command.name.includes(searchField) || command.name.includes(searchField) || command.options?.map((option) => option.name).includes(searchField) || command.options?.map((option) => option.name).includes(searchField)) {
                         return (
-                            <Command key={command.id} data={command} />
+                            <Link key={command.id} href={`/commands/${command.id}`} className="hover:scale-105 transition-all shadow">
+                                <Command data={command} />
+                            </Link>
                         )
                     } else if (searchField === "") {
                         return (
-                            <Command key={command.id} data={command} />
+                            <Link key={command.id} href={`/commands/${command.id}`} className="hover:scale-105 transition-all shadow">
+                                <Command data={command} />
+                            </Link>
                         )
                     } else if (!command.name.includes(searchField) || !command.name.includes(searchField)) {
                         return (

@@ -1,4 +1,3 @@
-import Command from "@/components/Command";
 import Search from "@/components/ux/Search";
 import { CONFIG } from "@/config";
 import { CommandData } from "@/types/interactions";
