@@ -3,7 +3,7 @@ import birthdayCountdown from "./general/birthday/countdown";
 import birthdaySet from "./general/birthday/set";
 import birthdayView from "./general/birthday/view";
 
-import { viewConfigHandler, changeableConfigHandler } from "./admin";
+import { viewConfigHandler, changeableConfigHandler, adminRoleConfigHandler } from "./admin";
 
 const generalHandlers = {
     astrologySignHandler, birthdayCountdown, birthdaySet,
@@ -12,7 +12,8 @@ const generalHandlers = {
 
 const adminHandlers = {
     viewConfigHandler,
-    changeableConfigHandler
+    changeableConfigHandler,
+    adminRoleConfigHandler
 }
 
 export {

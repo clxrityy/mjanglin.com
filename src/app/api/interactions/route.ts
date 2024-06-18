@@ -173,6 +173,15 @@ export async function POST(req: Request) {
                                         embeds: [embed]
                                     }
                                 });
+                            case "admin_role":
+                                embed = await adminHandlers.adminRoleConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+
+                                return NextResponse.json({
+                                    type: InteractionResponseType.ChannelMessageWithSource,
+                                    data: {
+                                        embeds: [embed]
+                                    }
+                                });
                         }
                         
                     case "view":

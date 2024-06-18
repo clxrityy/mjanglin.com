@@ -22,12 +22,3 @@ pnpm register-commands
 
 ## Commands
 > [hbd.mjanglin.com/commands](https://hbd.mjanglin.com/commands)
-
-> **`{}`** - indicates required params
-> **`()`** - indicates optional params
-
-- `/ping` - Pong!
-- `/birthday`
-    - `/birthday set {month} {day}`
-    - `/birthday view (user)`
-- `/sign (user)` - View your zodiac sign
