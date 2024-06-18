@@ -47,7 +47,11 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                 await db.guild.create({
                     data: {
                         guildId: guild.id,
-                        userId: userId,
+                        user: {
+                            connect: {
+                                userId: userId
+                            }
+                        }
                     },
                 });
 
