@@ -14,6 +14,9 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
         cacheStrategy: {
             ttl: 60,
             swr: 60,
+        },
+        include: {
+            user: true
         }
     });
 
@@ -21,7 +24,7 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
 
     if (existingGuild) {
 
-        if (existingGuild.userId === userId) {
+        if (existingGuild.user.userId === userId) {
             try {
                 await db.guild.update({
                     where: {
@@ -47,7 +50,6 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
                 }
             }
         } else {
-            
             if (!existingGuild.adminRoleId) {
                 embed = {
                     color: Colors.RED,
