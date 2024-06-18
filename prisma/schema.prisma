@@ -25,9 +25,10 @@ model Birthday {
 }
 
 model Guild {
-  id         String  @id @default(uuid())
-  guildId    String  @unique
-  userId     String
-  changeable Boolean @default(false)
-  user       User    @relation(fields: [userId], references: [id])
+  id          String  @id @default(uuid())
+  guildId     String  @unique
+  userId      String
+  changeable  Boolean @default(false)
+  adminRoleId String?
+  user        User    @relation(fields: [userId], references: [id])
 }

@@ -22,7 +22,13 @@ const CONFIG_COMMAND: ApplicationCommand = {
                     description: "Whether or not a birthday can be changed after it is set",
                     type: ApplicationCommandOptionType.Boolean,
                     required: false
-                }
+                },
+                {
+                    name: "admin_role",
+                    description: "The role that can use admin commands",
+                    type: ApplicationCommandOptionType.Role,
+                    required: false
+                },
             ]
         }
     ]

@@ -154,13 +154,27 @@ export async function POST(req: Request) {
                 switch (interactionSubcommand.name) {
                     case "set":
 
+                        if (!interactionSubcommandOptions) {
+                            return NextResponse.json({
+                                type: InteractionResponseType.ChannelMessageWithSource,
+                                data: {
+                                    content: "Please provide a subcommand"
+                                }
+                            });
+                        }
 
-                        return NextResponse.json({
-                            type: InteractionResponseType.ChannelMessageWithSource,
-                            data: {
-                                content: "Config set command"
-                            }
-                        });
+                        switch (interactionSubcommandOptions[0].name) {
+                            case "changeable":
+                                embed = await adminHandlers.changeableConfigHandler(interactionSubcommandOptions[0].value as boolean, interaction.member!.user!.id, interaction.guild_id!);
+
+                                return NextResponse.json({
+                                    type: InteractionResponseType.ChannelMessageWithSource,
+                                    data: {
+                                        embeds: [embed]
+                                    }
+                                });
+                        }
+                        
                     case "view":
                         embed = await adminHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
 
