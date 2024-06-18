@@ -26,10 +26,13 @@ export default async function viewConfigHandler(userId: string, guildId: string)
             if (existingGuild.userId !== userId) {
                 await db.guild.update({
                     where: {
-                        guildId: guildId
+                        guildId: guildId,
+                        userId: {
+                            not: userId
+                        }
                     },
                     data: {
-                        userId: userId
+                        userId: guild.owner_id
                     },
                 });
             } else if (existingGuild.userId === userId) { 
