@@ -47,8 +47,8 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                 await db.guild.create({
                     data: {
                         guildId: guild.id,
-                        userId: guild.owner_id
-                    }
+                        userId: userId,
+                    },
                 });
 
                 embed = {
