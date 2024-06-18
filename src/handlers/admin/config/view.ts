@@ -45,7 +45,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
 
                 embed = {
                     title: "Config",
-                    description: `You are now the owner of this server\n\nChangeable birthdays: ${settings.changeable ? "`true`" : "`false`"}`,
+                    description: `\n\nChangeable birthdays: ${settings.changeable ? "`true`" : "`false`"}`,
                     color: Colors.GREEN,
                     footer: {
                         text: "/config set"
