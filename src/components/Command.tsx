@@ -37,16 +37,19 @@ export default function Command({ data, ...props }: Props) {
                         </td>
                         {data.options && (
                             <td className="text-sm flex items-center flex-col">
-                                <ul className="gap-2">
+                                <ul className="gap-2 space-y-2">
                                     {data.options.map((option, i) => (
                                         <li key={i} className={`font-mono flex flex-col gap-2 ${option.required ? "text-red-500" : "text-cyan-500"}`}>
                                             {option.name}
                                             {option.options && (
-                                                <ul className="gap-2 flex flex-row text-xs border-t border-white/75 pt-2">
+                                                <ul className="gap-2 flex flex-row text-xs border-t border-white/75 pt-2 text-default">
                                                     {option.options.map((subOption, j) => (
-                                                        <li key={j} className="font-mono space-x-2">
+                                                        <li key={j} className="font-mono space-x-3 flex flex-col space-y-2">
                                                             <span className={`${subOption.required ? "text-red-500" : "text-cyan-700"}`}>
                                                                 {subOption.name}
+                                                            </span>
+                                                            <span className="text-xs text-zinc-400 font-light">
+                                                                {subOption.description}
                                                             </span>
                                                         </li>
                                                     ))}

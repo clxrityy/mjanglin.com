@@ -1,4 +1,5 @@
 import Command from "@/components/Command";
+import Search from "@/components/ux/Search";
 import { CONFIG } from "@/config";
 import { CommandData } from "@/types/interactions";
 
@@ -21,12 +22,8 @@ export default async function Page() {
         }
 
         return (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                {commands.map((command) => {
-                    return (
-                        <Command key={command.id} data={command} />
-                    )
-                })}
+            <div className="w-full h-full flex flex-col">
+                <Search commands={commands} />
             </div>
         )
 
