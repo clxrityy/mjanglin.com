@@ -19,24 +19,44 @@ export default async function viewConfigHandler(userId: string, guildId: string)
     });
 
     if (existingGuild) {
-        if (existingGuild.userId === userId) { 
-            const settings: GuildSettings = {
-                guildId: existingGuild.guildId,
-                userId: existingGuild.userId,
-                changeable: existingGuild.changeable
-            };
-            const guild = await fetchGuild(guildId);
-    
-            const avatar = await getGuildAvatar(guild);
-    
-            embed = {
-                thumbnail: {
-                    url: avatar
-                },
-                description: `**${guild.name}**\n\nOwner: <@${guild.owner_id}>\n\n\nChangeable birthdays: ${settings.changeable ? "`true`" : "`false`"}`,
-                color: Colors.LIGHT_GREY,
-                footer: {
-                    text: "/config set"
+
+        let guild = await fetchGuild(guildId);
+        
+        if (guild.owner_id === userId) {
+            if (existingGuild.userId !== userId) {
+                await db.guild.update({
+                    where: {
+                        guildId: guildId
+                    },
+                    data: {
+                        userId: userId
+                    },
+                });
+            } else if (existingGuild.userId === userId) { 
+                const settings: GuildSettings = {
+                    guildId: existingGuild.guildId,
+                    userId: existingGuild.userId,
+                    changeable: existingGuild.changeable
+                };
+                const guild = await fetchGuild(guildId);
+        
+                const avatar = await getGuildAvatar(guild);
+        
+                embed = {
+                    thumbnail: {
+                        url: avatar
+                    },
+                    description: `**${guild.name}**\n\nOwner: <@${guild.owner_id}>\n\n\nChangeable birthdays: ${settings.changeable ? "`true`" : "`false`"}`,
+                    color: Colors.LIGHT_GREY,
+                    footer: {
+                        text: "/config set"
+                    }
+                }
+            } else {
+                embed = {
+                    title: "Config",
+                    description: "You are not the owner of this server",
+                    color: Colors.RED
                 }
             }
         } else {
@@ -46,7 +66,6 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                 color: Colors.RED
             }
         }
-
     } else {
         const guild = await fetchGuild(guildId);
         if (guild.owner_id === userId) { 
