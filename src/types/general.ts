@@ -16,7 +16,11 @@ export type EmbedType = {
     image?: {
         url: string;
     }
-    thumbnail?: string;
+    thumbnail?: {
+        url: string;
+        height?: number;
+        width?: number;
+    }
     footer?: {
         text: string;
         icon_url?: string;

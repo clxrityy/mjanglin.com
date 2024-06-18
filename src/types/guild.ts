@@ -4,3 +4,9 @@ export type Guild = {
     icon: string | null
     owner_id: string
 }
+
+export type GuildSettings = {
+    changeable?: boolean;
+    guildId: string;
+    userId: string;
+}

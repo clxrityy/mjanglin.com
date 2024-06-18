@@ -26,3 +26,7 @@ export async function fetchGuild(guildId: string): Promise<Guild> {
         throw new Error("Failed to fetch guild");
     }
 }
+
+export async function getGuildAvatar(guild: Guild): Promise<string> {
+    return guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png` : "";
+}
