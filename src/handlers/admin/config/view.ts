@@ -29,7 +29,11 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                         guildId: guildId,
                     },
                     data: {
-                        userId: userId,
+                        user: {
+                            connect: {
+                                userId: userId
+                            }
+                        }
                     },
                 });
 
