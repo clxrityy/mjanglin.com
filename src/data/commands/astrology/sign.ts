@@ -3,7 +3,7 @@ import { ApplicationCommandOptionType } from "discord-api-types/v10";
 
 const SIGN_COMMAND: ApplicationCommand = {
     name: "sign",
-    description: "View user zodiac signs",
+    description: "View a user zodiac sign",
     options: [
         {
             name: "user",

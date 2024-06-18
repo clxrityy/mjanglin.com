@@ -4,7 +4,7 @@ import { ApplicationCommandOptionType } from "discord-api-types/v10";
 
 const CONFIG_COMMAND: ApplicationCommand = {
     name: "config",
-    description: "View or change the bot's configuration",
+    description: "View or change the bot's configuration (admin only)",
     permissions: [PERMISSIONS.ADMINISTRATOR],
     options: [
         {
@@ -19,7 +19,7 @@ const CONFIG_COMMAND: ApplicationCommand = {
             options: [
                 {
                     name: "changeable",
-                    description: "Changeable birthdays",
+                    description: "Whether or not a birthday can be changed after it is set",
                     type: ApplicationCommandOptionType.Boolean,
                     required: false
                 }

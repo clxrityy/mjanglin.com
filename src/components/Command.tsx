@@ -5,7 +5,7 @@ type Props = {
 }
 
 export default function Command({ data, ...props }: Props) {
-    
+
     return (
         <div {...props} className="flex flex-col items-center justify-center bg-gradient-to-r from-zinc-800/60 to-zinc-700/50 px-4 py-2 rounded-md shadow-inner border border-zinc-300/60 gap-5">
             <div className="flex flex-col items-center gap-2">
@@ -40,7 +40,14 @@ export default function Command({ data, ...props }: Props) {
                                 <ul className="gap-2 space-y-2">
                                     {data.options.map((option, i) => (
                                         <li key={i} className={`font-mono flex flex-col gap-2 ${option.required ? "text-red-500" : "text-cyan-500"}`}>
-                                            {option.name}
+                                            <div className="flex flex-row items-center justify-between gap-5">
+                                                <span>
+                                                    {option.name}
+                                                </span>
+                                                <span className="text-zinc-300 text-xs">
+                                                    {option.description}
+                                                </span>
+                                            </div>
                                             {option.options && (
                                                 <ul className="gap-2 flex flex-row text-xs border-t border-white/75 pt-2 text-default">
                                                     {option.options.map((subOption, j) => (
@@ -54,7 +61,7 @@ export default function Command({ data, ...props }: Props) {
                                                         </li>
                                                     ))}
                                                 </ul>
-                                            
+
                                             )}
                                         </li>
                                     ))}
