@@ -51,11 +51,11 @@ export async function POST(req: Request) {
 
         const interactionData: InteractionData = JSON.parse(JSON.stringify(interaction.data));
 
-        const interactionOptions = interactionData.options as InteractionOption[];
+        let interactionOptions = interactionData.options as InteractionOption[];
 
-        const interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption>;
+        let interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption>;
 
-        const interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[];
+        let interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[];
 
         let embed: EmbedType;
 
