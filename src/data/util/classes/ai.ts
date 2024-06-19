@@ -54,7 +54,7 @@ export class AI {
                 ],
             }).then((res) => res.choices[0].message.content).catch((e) => `**An error occured:**\n\`\`\`json\n${JSON.stringify(e, null, 2)}\`\`\``);
 
-            await this.sleep(50);
+            await this.sleep(5);
 
             return res;
 
