@@ -80,9 +80,10 @@ The data for the bot (commands & utility).
 
 ### Utilities
 
-Utilities for the bot should fall under 1 of these 2 categories:
+Utilities for the bot should fall under 1 of these 3 categories:
 1. **Function**
 2. **Resource**
+3. **Cass**
 
 #### Functions
 
@@ -94,6 +95,11 @@ These are functions that will be utilized throughout interactivity with the bot.
 These are constant values or data that will, once again, be utilized for interactivity with the bot.
 > **ex.** [`signs.ts`](./data/util/resources/signs.ts) -> A layout of all the zodiac signs for `/sign`
 
+#### Classes
+
+These are classes that provide external functions for interactivity with the bot.
+
+> **ex.** [`cooldown.ts`](./data/util/classes/cooldown.ts) -> The cooldown class for commands
 ---
 
 ## Handlers (`/src/handlers`)
