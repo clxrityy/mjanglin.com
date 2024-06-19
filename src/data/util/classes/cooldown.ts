@@ -47,8 +47,16 @@ export class Cooldown {
         } else {
             await db.cooldown.create({
                 data: {
-                    guildId: guildId,
-                    userId: userId,
+                    guild: {
+                        connect: {
+                            guildId: guildId
+                        }
+                    },
+                    user: {
+                        connect: {
+                            userId: userId
+                        }
+                    },
                     command: this.commandName,
                     expiresAt: new Date(Date.now() + this.timeout).toISOString()
                 }
