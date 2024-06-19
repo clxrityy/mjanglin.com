@@ -79,7 +79,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                 }
             } 
         } else {
-            if (member?.roles.includes(guildRoles.find(role => role.id === existingGuild.adminRoleId)!)) {
+            if (member?.roles.some(role => role.id === existingGuild.adminRoleId)) {
                 const settings: GuildSettings = {
                     guildId: existingGuild.guildId,
                     userId: existingGuild.userId,
@@ -93,7 +93,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                     thumbnail: {
                         url: avatar
                     },
-                    description: `**${guild.name}**\n\nOwner: <@${guild.owner_id}>\n\n\n**Changeable birthdays**: ${settings.changeable ? "`true`" : "`false`"}\n**Admin Role**: <@&${existingGuild.adminRoleId}>`,
+                    description: `**${guild.name}**\n\nOwner: <@${guild.owner_id}>\n\n\n**Changeable birthdays**: ${settings.changeable ? "`true`" : "`false`"}\n**Admin role**: <@&${existingGuild.adminRoleId}>`,
                     color: Colors.LIGHT_GREY,
                     footer: {
                         text: "/config set"
