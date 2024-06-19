@@ -22,4 +22,8 @@ export const EMBEDS = {
         title: "An error occurred",
         color: Colors.RED
     } as EmbedType,
+    cooldown: {
+        title: "COOLDOWN",
+        color: Colors.DARK_RED
+    } as EmbedType,
 }

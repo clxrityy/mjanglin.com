@@ -1,10 +1,10 @@
 import { commands } from "@/data/commands";
 import { env } from "@/env.mjs";
-import { generalHandlers, adminHandlers } from "@/handlers";
-import { verifyInteractionRequest } from "@/utils/verify";
+import { adminCommandHandlers, generalCommandHandlers } from "@/handlers/command";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionData, InteractionOption, InteractionSubcommand } from "@/types/interactions";
+import { verifyInteractionRequest } from "@/utils/verify";
 import {
     // APIInteractionDataOptionBase,
     // ApplicationCommandOptionType,
@@ -91,7 +91,7 @@ export async function POST(req: Request) {
                 switch (interactionSubcommand.name) {
                     // /birthday set
                     case "set":
-                        embed = await generalHandlers.birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalCommandHandlers.birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -103,7 +103,7 @@ export async function POST(req: Request) {
                         });
                     // /birthday view
                     case "view":
-                        embed = await generalHandlers.birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalCommandHandlers.birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -114,7 +114,7 @@ export async function POST(req: Request) {
                             }
                         });
                     case "countdown":
-                        embed = await generalHandlers.birthdayCountdown(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalCommandHandlers.birthdayCountdown(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -136,7 +136,7 @@ export async function POST(req: Request) {
             // /sign
             case commands.sign.name:
 
-                embed = await generalHandlers.astrologySignHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+                embed = await generalCommandHandlers.astrologySignHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -165,7 +165,7 @@ export async function POST(req: Request) {
 
                         switch (interactionSubcommandOptions[0].name) {
                             case "changeable":
-                                embed = await adminHandlers.changeableConfigHandler(interactionSubcommandOptions[0].value as boolean, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await adminCommandHandlers.changeableConfigHandler(interactionSubcommandOptions[0].value as boolean, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -174,7 +174,7 @@ export async function POST(req: Request) {
                                     }
                                 });
                             case "admin_role":
-                                embed = await adminHandlers.adminRoleConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await adminCommandHandlers.adminRoleConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -185,7 +185,7 @@ export async function POST(req: Request) {
                         }
                         
                     case "view":
-                        embed = await adminHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await adminCommandHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
 
                         
                         return NextResponse.json({
@@ -203,11 +203,17 @@ export async function POST(req: Request) {
                         });
                 }
 
+            // /horoscope
+            case commands.horoscope.name:
+
+                embed = await generalCommandHandlers.astrologyHoroscopeHandler(interaction.member!.user!.id, interaction.guild_id!);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
-                        content: "Config command"
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
                     }
                 });
 

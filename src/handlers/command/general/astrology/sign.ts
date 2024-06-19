@@ -1,5 +1,5 @@
+import { userMention } from "@/data/util/functions/misc";
 import { EMBEDS } from "@/data/util/resources/embeds";
-import { userMention } from "@/data/util/resources/misc";
 import { Sign, getZodiacSign } from "@/data/util/resources/signs";
 import { db } from "@/lib/db";
 import { EmbedType } from "@/types/general";

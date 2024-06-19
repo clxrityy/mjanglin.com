@@ -14,6 +14,7 @@ model User {
   accessToken  String  @unique
   refreshToken String  @unique
   guilds       Guild[]
+  cooldowns    Cooldown[]
 }
 
 model Birthday {
@@ -25,10 +26,22 @@ model Birthday {
 }
 
 model Guild {
-  id          String  @id @default(uuid())
-  guildId     String  @unique
+  id          String     @id @default(uuid())
+  guildId     String     @unique
   userId      String
-  changeable  Boolean @default(false)
+  changeable  Boolean    @default(false)
   adminRoleId String?
-  user        User    @relation(fields: [userId], references: [id])
+  cooldowns   Cooldown[]
+  user        User       @relation(fields: [userId], references: [id])
+}
+
+model Cooldown {
+  id        String   @id @default(uuid())
+  userId    String
+  guildId   String
+  command   String
+  createdAt DateTime @default(now())
+  expiresAt DateTime @default(dbgenerated("now() + interval '1 minute'"))
+  guild     Guild    @relation(fields: [guildId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }

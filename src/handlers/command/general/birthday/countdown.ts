@@ -1,6 +1,6 @@
+import { userMention } from "@/data/util/functions/misc";
 import { timeLeft } from "@/data/util/functions/timeLeft";
 import { EMBEDS } from "@/data/util/resources/embeds";
-import { userMention } from "@/data/util/resources/misc";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
