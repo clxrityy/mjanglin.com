@@ -1,7 +1,7 @@
 import { commands } from "@/data/commands";
 import { env } from "@/env.mjs";
 import { generalHandlers, adminHandlers } from "@/handlers";
-import { verifyInteractionRequest } from "@/lib/verify";
+import { verifyInteractionRequest } from "@/utils/verify";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionData, InteractionOption, InteractionSubcommand } from "@/types/interactions";

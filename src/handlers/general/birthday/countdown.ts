@@ -1,10 +1,10 @@
-import { EMBEDS } from "@/data/util/resources/embeds";
 import { timeLeft } from "@/data/util/functions/timeLeft";
+import { EMBEDS } from "@/data/util/resources/embeds";
+import { userMention } from "@/data/util/resources/misc";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
-import { userMention } from "@/utils/misc";
 
 export default async function birthdayCountdown(options: InteractionOption[], userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;

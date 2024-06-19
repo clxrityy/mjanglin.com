@@ -1,9 +1,9 @@
 import { EMBEDS } from "@/data/util/resources/embeds";
+import { userMention } from "@/data/util/resources/misc";
 import { Sign, getZodiacSign } from "@/data/util/resources/signs";
 import { db } from "@/lib/db";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
-import { userMention } from "@/utils/misc";
 
 export default async function astrologySignHandler(userId: string, guildId: string, options?: InteractionOption[]): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
