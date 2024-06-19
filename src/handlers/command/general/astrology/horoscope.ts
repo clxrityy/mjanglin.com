@@ -30,7 +30,7 @@ export default async function astrologyHoroscopeHandler(userId: string, guildId:
 
     if (birthdayData?.day && birthdayData?.month) {
 
-        const sign = getZodiacSign(birthdayData.day, birthdayData.month);
+        const sign = getZodiacSign(birthdayData.month, birthdayData.day);
 
         try {
             const timeLeft = await cooldown.checkCooldown(userId, guildId, "horoscope");
