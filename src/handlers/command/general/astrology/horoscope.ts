@@ -49,6 +49,8 @@ export default async function astrologyHoroscopeHandler(userId: string, guildId:
                 });
 
                 if (horoscope) {
+                    console.log(horoscope)
+
                     embed = {
                         color: sign.color,
                         title: `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`,
