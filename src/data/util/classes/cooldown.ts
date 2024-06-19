@@ -21,8 +21,12 @@ export class Cooldown {
     private async addCooldownData(userId: string, guildId: string) {
         const existingCooldown = await db.cooldown.findFirst({
             where: {
-                guildId: guildId,
-                userId: userId,
+                guild: {
+                    guildId: guildId
+                },
+                user: {
+                    userId: userId
+                },
                 command: this.commandName
             },
             cacheStrategy: {
@@ -71,8 +75,12 @@ export class Cooldown {
     public async checkCooldown(userId: string, guildId: string, command: string) {
         const existingCooldown = await db.cooldown.findFirst({
             where: {
-                guildId: guildId,
-                userId: userId,
+                guild: {
+                    guildId: guildId
+                },
+                user: {
+                    userId: userId
+                },
                 command: command
             },
             cacheStrategy: {
