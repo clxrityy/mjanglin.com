@@ -47,8 +47,6 @@ export async function POST(req: Request) {
 
     if (interaction.type === InteractionType.ApplicationCommand) {
 
-        console.log(interaction)
-
         const { name } = interaction.data;
 
         const interactionData: InteractionData = JSON.parse(JSON.stringify(interaction.data));
@@ -208,13 +206,8 @@ export async function POST(req: Request) {
             // /horoscope
             case commands.horoscope.name:
 
-                // embed = await generalCommandHandlers.astrologyHoroscopeHandler(interaction.member!.user!.id, interaction.guild_id!);
+                embed = await generalCommandHandlers.astrologyHoroscopeHandler(interaction.member!.user!.id, interaction.guild_id!);
 
-                embed = {
-                    title: "Horoscope",
-                    description: "This command is currently disabled",
-                    color: Colors.BLURPLE
-                }
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
