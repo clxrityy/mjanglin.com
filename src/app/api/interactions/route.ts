@@ -206,8 +206,13 @@ export async function POST(req: Request) {
             // /horoscope
             case commands.horoscope.name:
 
-                embed = await generalCommandHandlers.astrologyHoroscopeHandler(interaction.member!.user!.id, interaction.guild_id!);
+                // embed = await generalCommandHandlers.astrologyHoroscopeHandler(interaction.member!.user!.id, interaction.guild_id!);
 
+                embed = {
+                    title: "Horoscope",
+                    description: "This command is currently disabled",
+                    color: Colors.BLURPLE
+                }
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
