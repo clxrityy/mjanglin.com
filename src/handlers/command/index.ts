@@ -1,8 +1,4 @@
-import astrologySignHandler from "./general/astrology/sign";
-import astrologyHoroscopeHandler from "./general/astrology/horoscope";
-import birthdayCountdown from "./general/birthday/countdown";
-import birthdaySet from "./general/birthday/set";
-import birthdayView from "./general/birthday/view";
+import { astrologySignHandler, astrologyHoroscopeHandler, birthdayCountdown, birthdaySet, birthdayView } from "./general";
 
 import { adminRoleConfigHandler, changeableConfigHandler, viewConfigHandler } from "./admin";
 

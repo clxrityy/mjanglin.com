@@ -47,15 +47,17 @@ export async function POST(req: Request) {
 
     if (interaction.type === InteractionType.ApplicationCommand) {
 
+        console.log(interaction)
+
         const { name } = interaction.data;
 
         const interactionData: InteractionData = JSON.parse(JSON.stringify(interaction.data));
 
-        let interactionOptions = interactionData.options as InteractionOption[];
+        let interactionOptions = interactionData.options as InteractionOption[] || [];
 
-        let interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption>;
+        let interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption> || {};
 
-        let interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[];
+        let interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[] || [];
 
         let embed: EmbedType;
 
