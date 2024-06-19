@@ -18,7 +18,7 @@ export class AI {
         let content = "";
 
         if (aiType === "horoscope") {
-            content = "Generate a daily horoscope for the user based on their zodiac sign and the current date. The horoscope should be no more than 250 characters. The user's zodiac sign and birthday should be provided in the prompt. Tell them happy birthday if their birthday matches the current date."
+            content = "Generate a daily horoscope for the user based on their zodiac sign and the current date. The horoscope should be no more than 250 characters. The user's zodiac sign and their birthday should be provided in the prompt, along with the current date"
         }
 
         return content;
