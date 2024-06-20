@@ -9,12 +9,13 @@ datasource db {
 }
 
 model User {
-  id           String  @id @default(uuid())
-  userId       String  @unique
-  accessToken  String  @unique
-  refreshToken String  @unique
+  id           String     @id @default(uuid())
+  userId       String     @unique
+  accessToken  String     @unique
+  refreshToken String     @unique
   guilds       Guild[]
   cooldowns    Cooldown[]
+  members       Member[]
 }
 
 model Birthday {
@@ -33,6 +34,7 @@ model Guild {
   adminRoleId String?
   cooldowns   Cooldown[]
   user        User       @relation(fields: [userId], references: [id])
+  members     Member[]
 }
 
 model Cooldown {
@@ -44,4 +46,11 @@ model Cooldown {
   expiresAt DateTime @default(dbgenerated("now() + interval '1 minute'"))
   guild     Guild    @relation(fields: [guildId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
+}
+
+model Member {
+  id      String @id @default(uuid())
+  userId  String
+  user    User?   @relation(fields: [userId], references: [id])
+  guilds   Guild[]
 }

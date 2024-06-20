@@ -4,6 +4,7 @@ import { adminCommandHandlers, generalCommandHandlers } from "@/handlers/command
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionData, InteractionOption, InteractionSubcommand } from "@/types/interactions";
+import { checkMember } from "@/utils/member";
 import { verifyInteractionRequest } from "@/utils/verify";
 import {
     // APIInteractionDataOptionBase,
@@ -58,6 +59,8 @@ export async function POST(req: Request) {
         let interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[] || [];
 
         let embed: EmbedType;
+
+        await checkMember(interaction.member!.user!.id, interaction.guild_id!);
 
         switch (name) {
             // /ping
