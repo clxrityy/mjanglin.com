@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import { db } from "@/lib/db";
 
 export async function checkMember(id: string, guildId: string): Promise<boolean | void> {
-    const member = await db.member.findFirst({
+    let member: any = await db.member.findFirst({
         where: {
             userId: id,
             guilds: {
@@ -34,11 +35,15 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
         const user = await db.user.findFirst({
             where: {
                 userId: id
+            },
+            cacheStrategy: {
+                ttl: 60,
+                swr: 60
             }
         });
 
         try {
-            await db.member.create({
+           member = await db.member.create({
                 data: {
                     user: {
                         connect: {
@@ -74,13 +79,29 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                     },
                     data: {
                         members: {
-                            connect: {
-                                id
-                            }
+                            set: [
+                                ...userWithMembers!.members,
+                               member
+                            ]
                         }
                     }
                 });
             }
+        }
+    } else {
+        if (!member.guilds.find((g: any) => g.guildId === guildId)) {
+            await db.member.update({
+                where: {
+                    id: member.id
+                },
+                data: {
+                    guilds: {
+                        connect: {
+                            guildId: guildId
+                        }
+                    }
+                }
+            });
         }
     }
 }
