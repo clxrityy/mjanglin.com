@@ -58,19 +58,29 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
         }
 
         if (user) {
-            await db.user.update({
+            const userWithMembers = await db.user.findFirst({
                 where: {
                     userId: id
-                
                 },
-                data: {
-                    members: {
-                        connect: {
-                            id
+                include: {
+                    members: true
+                }
+            });
+
+            if (!userWithMembers?.members.includes(member!)) {
+                await db.user.update({
+                    where: {
+                        userId: id
+                    },
+                    data: {
+                        members: {
+                            connect: {
+                                id
+                            }
                         }
                     }
-                }
-            })
+                });
+            }
         }
     }
 }
