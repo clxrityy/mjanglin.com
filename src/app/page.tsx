@@ -31,10 +31,10 @@ export default async function Page() {
                         Welcome, {user.username}!
                     </h3>
                 </div>
-                <div className="flex items-center justify-center flex-col h-full w-full">
+                <div className="flex items-center justify-center flex-col md:flex-row h-full w-full gap-8">
                     <Button>
-                        <Link href="/commands">
-                            view all commands
+                        <Link href="/commands" className="max-w-sm">
+                            Application Commands <span className="font-mono text-zinc-600/85 font-light">(/)</span>
                         </Link>
                     </Button>
                 </div>
@@ -47,6 +47,9 @@ export default async function Page() {
                             {userGuilds?.guilds.map((guild) => (
                                 <Guild key={guild.guildId} {...guild} />
                             ))}
+                            <Link href={CONFIG.URLS.INVITE_URL} className="px-4 py-4 text-4xl border rounded-md flex items-center justify-center hover:scale-95 transition-all shadow hover:opacity-90 text-emerald-400 border-emerald-400" aria-label="add to guild">
+                                +
+                            </Link>
                         </div>
                     </div>
                 </div>
