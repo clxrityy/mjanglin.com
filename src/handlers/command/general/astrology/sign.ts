@@ -15,7 +15,7 @@ export default async function astrologySignHandler(userId: string, guildId: stri
         targetUser = options.find((option) => option.name === "user")?.value as string;
 
         try {
-            birthday = await db.birthday.findUnique({
+            birthday = await db.birthday.findFirst({
                 where: {
                     userId: targetUser,
                     guildId: guildId
@@ -50,7 +50,7 @@ export default async function astrologySignHandler(userId: string, guildId: stri
         }
     } else {
         try {
-            birthday = await db.birthday.findUnique({
+            birthday = await db.birthday.findFirst({
                 where: {
                     userId: userId,
                     guildId: guildId
