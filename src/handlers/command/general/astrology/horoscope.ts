@@ -14,7 +14,7 @@ export default async function astrologyHoroscopeHandler(userId: string, guildId:
 
     const ai = new AI(openai);
 
-    const birthdayData = await db.birthday.findUnique({
+    const birthdayData = await db.birthday.findFirst({
         where: {
             userId: userId,
             guildId: guildId
