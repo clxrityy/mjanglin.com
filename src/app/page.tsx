@@ -28,7 +28,7 @@ export default async function Page() {
                 <h1>hbd</h1>
                 <div className="flex items-center justify-center flex-col gap-2">
                     <h3>
-                        Welcome, {user.username}!
+                        Welcome, <span className="text-blue-400 tracking-wide">{user.username}</span>!
                     </h3>
                 </div>
                 <div className="flex items-center justify-center flex-col md:flex-row h-full w-full gap-8">
