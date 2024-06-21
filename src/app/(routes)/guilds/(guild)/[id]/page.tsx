@@ -2,10 +2,22 @@ import { fetchGuild, getGuildAvatar } from "@/data/util/functions/guild";
 import { fetchUser } from "@/data/util/functions/user";
 import { getZodiacSign } from "@/data/util/resources/signs";
 import { db } from "@/lib/db";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 
 type Props = {
     params: { id: string };
+}
+
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+    const id = params.id;
+
+    const guild = await fetchGuild(id);
+
+    return {
+        title: `hbd | ${guild.name}`,
+        description: `View birthdays for ${guild.name}`,
+    }
 }
 
 export default async function Page({ params }: Props) {

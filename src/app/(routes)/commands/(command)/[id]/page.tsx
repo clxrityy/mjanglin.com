@@ -1,10 +1,38 @@
 import Button from "@/components/ui/Button";
 import { CONFIG } from "@/config";
 import { CommandData } from "@/types/interactions";
+import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 type Props = {
     params: { id: string };
+}
+
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+    try {
+        const commands = await fetch(`${CONFIG.URLS.DISCORD_API_BASE_URL}/applications/${CONFIG.VALUES.CLIENT_ID}/commands`, {
+            headers: {
+                Authorization: `Bot ${CONFIG.VALUES.BOT_TOKEN}`
+            },
+            next: {
+                revalidate: 60 * 5
+            }
+        }).then((res) => res.json() as Promise<CommandData[]>);
+
+        const command = commands.find(c => c.id === params.id);
+
+        return {
+            title: `hbd | ${command?.name}`,
+            description: `View command details for ${command?.name}`,
+        }
+
+    } catch (e: any) {
+        console.error(e);
+        return {
+            title: "hbd | Command",
+            description: "View command details",
+        }
+    }
 }
 
 export default async function CommandPage({ params }: Props) {
