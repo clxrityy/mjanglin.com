@@ -22,7 +22,7 @@ export default async function birthdaySet(options: InteractionOption[], userId: 
     if (month && day) {
 
         try {
-            const existingBirthday = await db.birthday.findUnique({
+            const existingBirthday = await db.birthday.findFirst({
                 where: {
                     userId: userId,
                     guildId: guildId
@@ -45,7 +45,7 @@ export default async function birthdaySet(options: InteractionOption[], userId: 
                     try {
                         await db.birthday.update({
                             where: {
-                                userId: userId,
+                                id: existingBirthday.id
                             },
                             data: {
                                 month,

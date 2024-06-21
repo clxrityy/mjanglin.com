@@ -18,7 +18,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
         try {
 
-            birthday = await db.birthday.findUnique({
+            birthday = await db.birthday.findFirst({
                 where: {
                     userId: targetUser,
                     guildId: guildId
@@ -50,7 +50,7 @@ export default async function birthdayView(options: InteractionOption[], userId:
         }
     } else {
         try {
-            birthday = await db.birthday.findUnique({
+            birthday = await db.birthday.findFirst({
                 where: {
                     userId: userId,
                     guildId: guildId

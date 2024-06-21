@@ -19,7 +19,7 @@ export default async function birthdayCountdown(options: InteractionOption[], us
 
     if (!targetUser) {
         try {
-            birthday = await db.birthday.findUnique({
+            birthday = await db.birthday.findFirst({
                 where: {
                     userId: userId,
                     guildId: guildId
@@ -48,7 +48,7 @@ export default async function birthdayCountdown(options: InteractionOption[], us
         }
     } else {
         try {
-            birthday = await db.birthday.findUnique({
+            birthday = await db.birthday.findFirst({
                 where: {
                     userId: targetUser,
                     guildId: guildId
