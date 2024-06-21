@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { db } from "@/lib/db";
 
 export async function checkMember(id: string, guildId: string): Promise<boolean | void> {

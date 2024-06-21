@@ -4,7 +4,7 @@ import { encryptTokens } from '@/utils/encrypt';
 import {
     createUser,
     getUserDetails
-} from "@/utils/user";
+} from "@/utils/parseUser";
 import axios, { AxiosRequestConfig } from 'axios';
 import { serialize } from "cookie";
 import { sign } from "jsonwebtoken";

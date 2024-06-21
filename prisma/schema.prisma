@@ -20,7 +20,7 @@ model User {
 
 model Birthday {
   id      String @id @default(uuid())
-  userId  String @unique
+  userId  String 
   guildId String
   month   Int
   day     Int
@@ -45,12 +45,12 @@ model Cooldown {
   createdAt DateTime @default(now())
   expiresAt DateTime @default(dbgenerated("now() + interval '1 minute'"))
   guild     Guild    @relation(fields: [guildId], references: [id])
-  user      User     @relation(fields: [userId], references: [id])
+  user      User?     @relation(fields: [userId], references: [id])
 }
 
 model Member {
   id      String @id @default(uuid())
-  userId  String
-  user    User?   @relation(fields: [userId], references: [id])
+  userId  String 
+  user    User?  @relation(fields: [userId], references: [id])
   guilds   Guild[]
 }
