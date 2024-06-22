@@ -79,5 +79,28 @@ input, textarea {
 
 
 @layer utilities {
-  
+  .link {
+    @apply text-blue-500 hover:underline underline-offset-2 transition-all duration-300;
+  }
+  .paragraph {
+    @apply text-zinc-300 text-sm lg:text-base;
+  }
+  .heading {
+    @apply border-b w-full border-b-zinc-300;
+  }
+  .orderedListItem {
+    @apply flex flex-col gap-2;
+  }
+  .orderedListItemHeading {
+    @apply font-bold text-base;
+  }
+  .unorderedListItem {
+    @apply flex flex-col gap-3;
+  }
+  .unorderedListItemHeading {
+    @apply font-bold text-base;
+  }
+  .unorderedListList {
+    @apply list-disc flex flex-col list-outside gap-2 ml-5 text-sm md:text-base;
+  }
 }
