@@ -28,12 +28,12 @@ html, body {
 
 main {
 
-  @apply w-screen min-h-screen flex flex-col items-center mx-auto overflow-y-scroll;
+  @apply w-screen min-h-screen flex flex-col items-center mx-auto overflow-y-scroll my-10;
 }
 
 h1 {
-  text-shadow: 3px 0px 5px rgba(23, 48, 83, 75);
-  font-size: 3rem;
+  text-shadow: 2px 0px 8px rgb(247, 0, 13, 0.55);
+  font-size: 4rem;
   font-weight: 800;
   
   @apply tracking-tight;

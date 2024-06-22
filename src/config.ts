@@ -1,3 +1,6 @@
+import { FaDiscord, FaGithub, FaUserPlus } from "react-icons/fa";
+import { RiSlashCommands2 } from "react-icons/ri";
+
 export const CONFIG = {
     URLS: {
         REDIRECT_URI: process.env.NODE_ENV === "production" ? "https://hbd.mjanglin.com/api/auth/discord/redirect" : "http://localhost:3000/api/auth/discord/redirect",
@@ -8,7 +11,9 @@ export const CONFIG = {
         BASE_URL: process.env.NODE_ENV === "production" ? "https://hbd.mjanglin.com" : "http://localhost:3000",
         DISCORD_API_BASE_URL: "https://discord.com/api/v10",
         HOROSCOPE_API_BASE_URL: "http://theastrologer-api.herokuapp.com/api",
-        INVITE_URL: "https://discord.com/oauth2/authorize?client_id=1211045842362966077&response_type=code&redirect_uri=https%3A%2F%2Fhbd.mjanglin.com%2Fapi%2Fauth%2Fdiscord%2Fredirect&integration_type=0&scope=guilds+identify+applications.commands"
+        INVITE_URL: "https://discord.com/oauth2/authorize?client_id=1211045842362966077&response_type=code&redirect_uri=https%3A%2F%2Fhbd.mjanglin.com%2Fapi%2Fauth%2Fdiscord%2Fredirect&integration_type=0&scope=guilds+identify+applications.commands",
+        TEST_GUILD_URL: "https://discord.gg/n65AVpTFNf",
+        GITHUB_REPO: "https://github.com/clxrityy/mjanglin.com/tree/hbd"
     },
     VALUES: {
         COOKIE_NAME: process.env.COOKIE_NAME! || "discord-session",
@@ -23,5 +28,11 @@ export const CONFIG = {
         model: "gpt-3.5-turbo",
         temperature: 0.5,
         presence_penalty: 1,
+    },
+    ICONS: {
+        DISCORD: FaDiscord,
+        GITHUB: FaGithub,
+        INVITE: FaUserPlus,
+        COMMANDS: RiSlashCommands2,
     }
 }

@@ -19,3 +19,9 @@ export async function fetchUser(userId: string): Promise<OAuth2UserResponse> {
         throw new Error("Failed to fetch user");
     }
 }
+
+export async function fetchUserAvatar(userId: string): Promise<string> {
+    const user = await fetchUser(userId);
+
+    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.gif`;
+}

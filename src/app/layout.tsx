@@ -2,6 +2,10 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
+import { parseUser } from "@/utils/parseUser";
+import { redirect } from "next/navigation";
+import { CONFIG } from "@/config";
+import UserIcon from "@/components/layout/UserIcon";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -10,11 +14,18 @@ export const metadata: Metadata = {
   description: "A dynamic Discord horoscope and birthday bot",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const user = parseUser();
+
+  if (!user) {
+    return redirect(CONFIG.URLS.OAUTH2_INVITE_URL);
+  }
+
   return (
 
     <html lang="en">
@@ -37,6 +48,7 @@ export default function RootLayout({
       </head>
       <Providers>
         <body className={nunito.className}>
+          <UserIcon userId={user.id} />
           {children}
         </body>
       </Providers>

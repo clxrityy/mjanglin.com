@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button";
 import { CONFIG } from "@/config";
 import { db } from "@/lib/db";
 import { parseUser } from "@/utils/parseUser";
+import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -25,16 +26,36 @@ export default async function Page() {
     return (
         <main>
             <div className="flex justify-center items-center flex-col gap-10">
-                <h1>hbd</h1>
+                <div className="flex flex-row items-center justify-center gap-5">
+                    <h1 className="text-[#F69FC2]">hbd</h1>
+                    <Image src="/apple-touch-icon.png" alt="hbd" width={64} height={64} />
+                </div>
                 <div className="flex items-center justify-center flex-col gap-2">
                     <h3>
                         Welcome, <span className="text-blue-400 tracking-wide">{user.username}</span>!
                     </h3>
                 </div>
-                <div className="flex items-center justify-center flex-col md:flex-row h-full w-full gap-8">
-                    <Button>
-                        <Link href="/commands" className="max-w-sm">
-                            Application Commands <span className="font-mono text-zinc-600/85 font-light">(/)</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-full max-w-sm md:max-w-xl lg:max-w-4xl gap-8">
+                    <Button color="tertiary">
+                        <Link href={CONFIG.URLS.INVITE_URL} className="flex flex-row gap-2 items-center text-center justify-center">
+                            Invite <span className="">
+                                <CONFIG.ICONS.INVITE size={24} />
+                            </span>
+                        </Link>
+                    </Button>
+                    <Button color="tertiary">
+                        <Link href="/commands" className="flex flex-row gap-2 items-center text-center justify-center">
+                            Commands <span className=""><CONFIG.ICONS.COMMANDS size={24} /></span>
+                        </Link>
+                    </Button>
+                    <Button color="primary">
+                        <Link href={CONFIG.URLS.TEST_GUILD_URL} className="flex flex-row gap-2 items-center text-center justify-center">
+                            Developer Server <span className="text-[#5865F2]"><CONFIG.ICONS.DISCORD size={24} /></span>
+                        </Link>
+                    </Button>
+                    <Button color="primary">
+                        <Link href={CONFIG.URLS.GITHUB_REPO} className="flex flex-row gap-2 items-center text-center justify-center">
+                            GitHub <span className="bg-transparent rounded-full text-zinc-800"><CONFIG.ICONS.GITHUB size={24} /></span>
                         </Link>
                     </Button>
                 </div>
