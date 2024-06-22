@@ -7,8 +7,7 @@
     "build": "npx prisma generate --no-engine && next build",
     "start": "next start",
     "lint": "next lint",
-    "register-commands": "tsx ./scripts/register-commands",
-    "change-avatar": "tsx ./scripts/change-avatar"
+    "register-commands": "tsx ./scripts/register-commands"
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.1",

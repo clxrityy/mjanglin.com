@@ -21,7 +21,7 @@ export default async function Page() {
         include: {
             guilds: true
         }
-    })
+    });
 
     return (
         <main>
