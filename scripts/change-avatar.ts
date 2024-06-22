@@ -1,3 +1,9 @@
+
+import { env } from "./env.mjs";
+
+const URL = `https://discord.com/api/v10/users/@me`;
+
+
 /**
  * Changes the avatar for your Discord bot
  * 
@@ -7,22 +13,13 @@
  * 
  * ===== Usage =====
  * Run `pnpm change-avatar` from the root of the repository.
- * @see https://discord.com/developers/docs/resources/application
- */
-
-import { env } from "./env.mjs";
-
-const URL = `https://discord.com/api/v10/applications/@me`;
-
-/**
- * Change the avatar for the bot.
- * 
+ * @see https://discord.com/developers/docs/resources/user#modify-current-user
  * @param {string} avatar - The URL of the new avatar.
  */
 
 async function main(avatar: string) {
     const body = {
-        icon: avatar
+        avatar: avatar
     }
 
     const response = await fetch(URL, {
