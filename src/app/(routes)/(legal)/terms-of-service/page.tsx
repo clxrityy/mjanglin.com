@@ -19,7 +19,7 @@ export default function Page() {
                             Discord</Link>. By utilizing hbd, you agree to adhere to the guidelines and regulations outlined in this document.
                     </p>
                     <p className="paragraph">
-                        hbd is designed to keep track of user&#39;s birthdays, and allow you to customize and/or set up how you'd like the bot to interact with users/birthdays. Before utilizing hbd, it is important to review and understand these Terms of Service to ensure a positive experience for all users.
+                        hbd is designed to keep track of user&#39;s birthdays, and allow you to customize and/or set up how you&#39;d like the bot to interact with users/birthdays. Before utilizing hbd, it is important to review and understand these Terms of Service to ensure a positive experience for all users.
                     </p>
                     <p className="paragraph">
                         Please note that by using hbd, you are bound to these terms and any subsequent updates or modifications made to them. If you do not agree with any part of these terms, refrain from using hbd and its services.
@@ -131,7 +131,7 @@ export default function Page() {
                                     <b>Birthdays and Birthday Wishes</b> — Users may voluntarily provide their birthdays to hbd for the purpose of receiving personalized birthday wishes. These birthdays, along with any associated wishes, are securely stored to enhance user engagement and community interaction.
                                 </li>
                                 <li>
-                                    <b>Guild Settings</b> — hbd stores guild settings as configured by guild administrators to customize the bot's behavior within each Discord server. These settings are used to optimize the user experience and ensure seamless integration with the guild&#39;s environment.
+                                    <b>Guild Settings</b> — hbd stores guild settings as configured by guild administrators to customize the bot&#39;s behavior within each Discord server. These settings are used to optimize the user experience and ensure seamless integration with the guild&#39;s environment.
                                 </li>
                             </ul>
                         </li>
