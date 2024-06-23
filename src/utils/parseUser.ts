@@ -40,9 +40,9 @@ export async function getUserDetails(accessToken: string) {
 };
 
 export async function createUser({ userId, accessToken, refreshToken }: CreateUserParams): Promise<User> {
-    const existingUser = await db.user.findUnique({
+    const existingUser = await db.user.findFirst({
         where: {
-            userId
+            userId: userId
         }
     });
 

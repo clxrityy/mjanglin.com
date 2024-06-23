@@ -1,4 +1,10 @@
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "hbd | Terms of Service",
+    description: "hbd Discord bot Terms of Service",
+};
 
 export default function Page() {
     return (
@@ -29,7 +35,7 @@ export default function Page() {
                             GitHub repository
                         </Link>.
                     </p>
-                    <p className="paragraph">
+                    <p className="paragraph font-bold text-zinc-300">
                         Thank you for choosing hbd. We hope you enjoy your experience with our Discord bot!
                     </p>
                     <h3 className="heading" id="acceptance-of-terms">
