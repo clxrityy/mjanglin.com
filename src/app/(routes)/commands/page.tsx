@@ -28,7 +28,7 @@ export default async function Page() {
 
     } catch (e: any) {
         console.error(e);
-        return (<div className="flex flex-col items-center justify-center w-full">
+        return (<div className="flex flex-col items-center justify-center w-full h-full">
             <h3 className="font-semibold font-mono uppercase tracking-wide">
                 Error
             </h3>

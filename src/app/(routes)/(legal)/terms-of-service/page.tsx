@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Page() {
     return (
         <div className="w-full h-full my-10 max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl flex flex-col mx-auto scrollbar-hide">
-            <div className="flex flex-col items-start gap-5 pb-10">
+            <div className="flex flex-col items-start gap-5 pb-20">
                 <div className="w-full h-full flex items-center flex-col gap-4">
                     <h1 className="text-4xl">Terms of Service</h1>
                     <blockquote className="bg-zinc-600/40 px-2 py-2 border-l-4 border-zinc-600 rounded-md text-sm">

@@ -50,7 +50,7 @@ export default async function Page({ params }: Props) {
     }
 
     return (
-        <div className="flex flex-col gap-10 items-center my-10">
+        <div className="flex flex-col gap-10 items-center my-10 h-full">
             <div className="flex justify-center items-center flex-col gap-10">
                 <div className="flex items-center justify-center gap-2 flex-row">
                     <Image src={avatar} width={75} height={75} alt={guild.name} />

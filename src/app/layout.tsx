@@ -6,6 +6,7 @@ import { parseUser } from "@/utils/parseUser";
 import { redirect } from "next/navigation";
 import { CONFIG } from "@/config";
 import UserIcon from "@/components/layout/UserIcon";
+import Footer from "@/components/layout/Footer";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -50,6 +51,7 @@ export default async function RootLayout({
         <body className={nunito.className}>
           <UserIcon userId={user.id} />
           {children}
+          <Footer />
         </body>
       </Providers>
     </html>

@@ -70,7 +70,7 @@ export default async function CommandPage({ params }: Props) {
     } catch (e: any) {
         console.error(e);
         return (
-            <div className="flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center gap-4 h-full">
                 <h1 className="uppercase">Error</h1>
                 <pre className="text-red-500">
                     {e.message}

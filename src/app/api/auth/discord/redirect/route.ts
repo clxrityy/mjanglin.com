@@ -72,7 +72,7 @@ export async function GET(req: Request) {
 
         if (!("id" in user.data)) return NextResponse.json(JSON.stringify("User not found"), { status: 404 });
 
-        const token = sign(user.data, process.env.JWT_SECRET!, { expiresIn: "24h" });
+        const token = sign(user.data, process.env.JWT_SECRET!, { expiresIn: "72h" });
 
         cookies().set(CONFIG.VALUES.COOKIE_NAME, serialize(CONFIG.VALUES.COOKIE_NAME, token, {
             httpOnly: true,
