@@ -19,7 +19,7 @@ export default function Page() {
                             Discord</Link>. By utilizing hbd, you agree to adhere to the guidelines and regulations outlined in this document.
                     </p>
                     <p className="paragraph">
-                        hbd is designed to keep track of user's birthdays, and allow you to customize and/or set up how you'd like the bot to interact with users/birthdays. Before utilizing hbd, it is important to review and understand these Terms of Service to ensure a positive experience for all users.
+                        hbd is designed to keep track of user&#39;s birthdays, and allow you to customize and/or set up how you'd like the bot to interact with users/birthdays. Before utilizing hbd, it is important to review and understand these Terms of Service to ensure a positive experience for all users.
                     </p>
                     <p className="paragraph">
                         Please note that by using hbd, you are bound to these terms and any subsequent updates or modifications made to them. If you do not agree with any part of these terms, refrain from using hbd and its services.
@@ -36,7 +36,7 @@ export default function Page() {
                         Acceptance of Terms
                     </h3>
                     <p className="paragraph">
-                        By accessing or using hbd and its associated services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you are using hbd on behalf of an organization or entity, you represent and warrant that you have the authority to bind such organization or entity to these terms, and in such case, "you" and "your" will refer to that organization or entity.
+                        By accessing or using hbd and its associated services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you are using hbd on behalf of an organization or entity, you represent and warrant that you have the authority to bind such organization or entity to these terms, and in such case, &#34;you&#34; and &#34;your&#34; will refer to that organization or entity.
                     </p>
                     <p className="paragraph">
                         If you do not agree with any part of these terms or do not have the legal authority to accept them, you are not permitted to use hbd and must refrain from accessing or using its services.</p>
@@ -63,7 +63,7 @@ export default function Page() {
                                 2. Guild Configuration Management
                             </h4>
                             <p className="paragraph">
-                                Empowering guild administrators, hbd allows for the customization of guild settings to suit specific preferences and requirements. Administrators can effortlessly modify and manage various configurations to optimize the guild's Discord enviroment.
+                                Empowering guild administrators, hbd allows for the customization of guild settings to suit specific preferences and requirements. Administrators can effortlessly modify and manage various configurations to optimize the guild&#39;s Discord enviroment.
                             </p>
                         </li>
                         <li className="orderedListItem">
@@ -79,7 +79,7 @@ export default function Page() {
                                 4. Daily Horoscope
                             </h4>
                             <p className="paragraph">
-                                Elevating user engagement, hbd offers a daily horoscope feature tailored to each user's birthday and the current date. This personalized service provides insightful astrological predictions, enriching user interactions within Discord guilds.
+                                Elevating user engagement, hbd offers a daily horoscope feature tailored to each user&#39;s birthday and the current date. This personalized service provides insightful astrological predictions, enriching user interactions within Discord guilds.
                             </p>
                         </li>
                         <p className="paragraph">
@@ -131,7 +131,7 @@ export default function Page() {
                                     <b>Birthdays and Birthday Wishes</b> — Users may voluntarily provide their birthdays to hbd for the purpose of receiving personalized birthday wishes. These birthdays, along with any associated wishes, are securely stored to enhance user engagement and community interaction.
                                 </li>
                                 <li>
-                                    <b>Guild Settings</b> — hbd stores guild settings as configured by guild administrators to customize the bot's behavior within each Discord server. These settings are used to optimize the user experience and ensure seamless integration with the guild's environment.
+                                    <b>Guild Settings</b> — hbd stores guild settings as configured by guild administrators to customize the bot's behavior within each Discord server. These settings are used to optimize the user experience and ensure seamless integration with the guild&#39;s environment.
                                 </li>
                             </ul>
                         </li>
@@ -147,7 +147,7 @@ export default function Page() {
                                     <b>Community Engagement</b> — Birthdays and birthday wishes are utilized to foster community engagement and enhance the discord experience for users.
                                 </li>
                                 <li>
-                                    <b>Customization</b> — Guild settings are employed to customize hbd's behavior within each Discord server, ensuring a tailored experience for guild members.
+                                    <b>Customization</b> — Guild settings are employed to customize hbd&#39;s behavior within each Discord server, ensuring a tailored experience for guild members.
                                 </li>
                             </ul>
                         </li>
