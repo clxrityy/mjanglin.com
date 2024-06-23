@@ -136,7 +136,7 @@ export async function birthdayWishList(options: InteractionOption[], userId: str
     let embed: EmbedType = EMBEDS.error;
     let year;
 
-    if (options && options.find((option) => option.name === "year")) {
+    if (options && options.find((option) => option?.name === "year")) {
         year = options.find((option) => option.name === "year")?.value as number;
     }
 
