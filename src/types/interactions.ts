@@ -68,7 +68,7 @@ export interface CommandData {
     contexts: any | null;
     integration_types: number[];
     nswf: boolean | null;
-    options?: CommandDataSubCommandOrOption[];
+    options?: CommandDataSubCommandOrOption[] | CommandDataSubCommandGroupOrSubCommandOrOption[];
 }
 
 export interface CommandDataSubCommandOrOption {
@@ -88,3 +88,12 @@ export interface CommandDataSubCommandOrOption {
         max_length?: number;
     }[];
 };
+
+export interface CommandDataSubCommandGroupOrSubCommandOrOption {
+    type: number;
+    name: string;
+    description: string;
+    required?: boolean;
+    choices?: { name: string, value: string }[];
+    options?: CommandDataSubCommandOrOption[];
+}

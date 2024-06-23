@@ -59,6 +59,7 @@ export async function POST(req: Request) {
         let interactionSubcommandGroupOptions = [] as InteractionOption[] || [];
 
         if (interactionSubcommandGroup.options) {
+            console.log(interactionSubcommandGroup.options)
             interactionSubcommandGroup.options.forEach((options, idx) => interactionSubcommandGroupOptions.push(options.options![idx] as InteractionOption));
         }
 
