@@ -44,6 +44,12 @@ export type InteractionResponse = {
     },
 }
 
+export interface InteractionSubcommandGroup<T extends InteractionSubcommand<InteractionOption>> {
+    name: string;
+    type: number;
+    options: T[];
+}
+
 export interface InteractionSubcommand<T extends InteractionOption> {
     name: string;
     type: number;

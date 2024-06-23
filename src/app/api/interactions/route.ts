@@ -3,7 +3,7 @@ import { env } from "@/env.mjs";
 import { adminCommandHandlers, generalCommandHandlers } from "@/handlers/command";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
-import { InteractionData, InteractionOption, InteractionSubcommand } from "@/types/interactions";
+import { InteractionData, InteractionOption, InteractionSubcommand, InteractionSubcommandGroup } from "@/types/interactions";
 import { checkMember } from "@/utils/member";
 import { verifyInteractionRequest } from "@/utils/verify";
 import {
@@ -53,10 +53,14 @@ export async function POST(req: Request) {
         const interactionData: InteractionData = JSON.parse(JSON.stringify(interaction.data));
 
         let interactionOptions = interactionData.options as InteractionOption[] || [];
-
+        let interactionSubcommandGroup = interactionData.options?.[0] as InteractionSubcommandGroup<InteractionSubcommand<InteractionOption>> || {};
         let interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption> || {};
-
         let interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[] || [];
+        let interactionSubcommandGroupOptions = [] as InteractionOption[] || [];
+
+        if (interactionSubcommandGroup.options) {
+            interactionSubcommandGroup.options.forEach((options, idx) => interactionSubcommandGroupOptions.push(options.options![idx] as InteractionOption));
+        }
 
         let embed: EmbedType;
 
@@ -86,13 +90,42 @@ export async function POST(req: Request) {
             // /birthday
             case commands.birthday.name:
 
-                if (!interactionSubcommand) {
+                if (!interactionSubcommand || !interactionSubcommandGroup) {
                     return NextResponse.json({
                         type: InteractionResponseType.ChannelMessageWithSource,
                         data: {
                             content: "Please provide a subcommand"
                         }
                     });
+                }
+
+                // /birthday wish
+
+                if (interactionSubcommandGroup.name === "wish") {
+                    switch (interactionSubcommandGroup.options[0].name) {
+                        case "send":
+                            embed = await generalCommandHandlers.birthdayWishSend(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
+
+                            return NextResponse.json({
+                                type: InteractionResponseType.ChannelMessageWithSource,
+                                data: {
+                                    embeds: [
+                                        JSON.parse(JSON.stringify(embed))
+                                    ]
+                                }
+                            });
+                        case "list":
+                            embed = await generalCommandHandlers.birthdayWishList(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
+
+                            return NextResponse.json({
+                                type: InteractionResponseType.ChannelMessageWithSource,
+                                data: {
+                                    embeds: [
+                                        JSON.parse(JSON.stringify(embed))
+                                    ]
+                                }
+                            });
+                    }
                 }
 
                 switch (interactionSubcommand.name) {

@@ -53,6 +53,49 @@ const BIRTHDAY_COMMAND: ApplicationCommand = {
                     required: false
                 }
             ]
+        },
+        {
+            name: "wish",
+            description: "Wish a user a happy birthday!",
+            type: ApplicationCommandOptionType.SubcommandGroup,
+            options: [
+                {
+                    name: "send",
+                    description: "Send a wish",
+                    type: ApplicationCommandOptionType.Subcommand,
+                    required: false,
+                    options: [
+                        {
+                            name: "user",
+                            description: "User to wish",
+                            type: ApplicationCommandOptionType.User,
+                            required: true
+                        },
+                        {
+                            name: "message",
+                            description: "Message to send",
+                            type: ApplicationCommandOptionType.String,
+                            required: true
+                        }
+                    ]
+                },
+                {
+                    name: "list",
+                    description: "View your birthday wishes",
+                    type: ApplicationCommandOptionType.Subcommand,
+                    required: false,
+                    options: [
+                        {
+                            name: "year",
+                            description: "Year to view",
+                            type: ApplicationCommandOptionType.Integer,
+                            required: false,
+                            max_value: new Date().getFullYear(),
+                            min_value: 2024
+                        }
+                    ]
+                }
+            ]
         }
 
     ]

@@ -15,12 +15,12 @@ model User {
   refreshToken String     @unique
   guilds       Guild[]
   cooldowns    Cooldown[]
-  members       Member[]
+  members      Member[]
 }
 
 model Birthday {
   id      String @id @default(uuid())
-  userId  String 
+  userId  String
   guildId String
   month   Int
   day     Int
@@ -35,6 +35,7 @@ model Guild {
   cooldowns   Cooldown[]
   user        User       @relation(fields: [userId], references: [id])
   members     Member[]
+  wishes      Wish[]
 }
 
 model Cooldown {
@@ -45,12 +46,22 @@ model Cooldown {
   createdAt DateTime @default(now())
   expiresAt DateTime @default(dbgenerated("now() + interval '1 minute'"))
   guild     Guild    @relation(fields: [guildId], references: [id])
-  user      User?     @relation(fields: [userId], references: [id])
+  user      User?    @relation(fields: [userId], references: [id])
 }
 
 model Member {
-  id      String @id @default(uuid())
-  userId  String 
-  user    User?  @relation(fields: [userId], references: [id])
-  guilds   Guild[]
+  id     String  @id @default(uuid())
+  userId String
+  user   User?   @relation(fields: [userId], references: [id])
+  guilds Guild[]
+}
+
+model Wish {
+  id           String @id @default(uuid())
+  userId       String
+  guildId      String
+  targetUserId String
+  message      String
+  guild        Guild? @relation(fields: [guildId], references: [id])
+  year         Int @default(2024)
 }

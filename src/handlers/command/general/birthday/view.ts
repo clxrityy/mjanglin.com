@@ -1,5 +1,5 @@
 import { userMention } from "@/data/util/functions/misc";
-import { mutualBirthday } from "@/data/util/functions/mutualBday";
+import { mutualBirthday } from "@/data/util/functions/bday";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
@@ -13,8 +13,6 @@ export default async function birthdayView(options: InteractionOption[], userId:
 
     if (options && options.find((option) => option.name === "user")) {
         targetUser = options.find((option) => option.name === "user")?.value as string;
-
-        console.log(targetUser); //
 
         try {
 

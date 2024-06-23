@@ -28,3 +28,14 @@ export async function mutualBirthday(birthday: { month: number, day: number, use
         return null;
     }
 }
+
+export function checkIfBirthdayToday(month: number, day: number): boolean {
+    const currentMonth = new Date().getMonth() + 1;
+    const currentDay = new Date().getDate();
+
+    if (currentMonth === month && currentDay === day) {
+        return true;
+    } else {
+        return false;
+    }
+}
