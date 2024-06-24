@@ -1,6 +1,7 @@
 import configurations from "@/config";
 import Link from "next/link";
-import { Button, Chip, Popover, PopoverContent, PopoverTrigger, Image } from "@nextui-org/react";
+import { Button, Chip, Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
+import Image from "next/image";
 
 const { icons, colors } = configurations;
 
@@ -16,7 +17,8 @@ export default function Hero() {
                         </p>
                     </div>
                     <div className="flex flex-col md:flex-row gap-3 md:gap-5 lg:gap-7 xl:gap-9 items-center">
-                        {/* <Image src="/hero-img-cartoon-me.png" alt="Cartoon of MJ Anglin" width={100} height={100} className="rounded-full backdrop:bg-blend-mulitply filter drop-shadow-2xl bg-blend-hue rounded-b-6xl" fetchPriority="high" fallbackSrc="https://www.mjanglin.com/hero-img-cartoon-me.png" /> */}
+                        <Image src="/img/keyboard.gif" alt="keyboard" width={100} height={100} className="backdrop:bg-blend-mulitply filter bg-blend-hue hidden lg:flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
+                        <Image src="/img/soundwave.gif" alt="soundwave" width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
                         <div className="flex flex-col items-start justify-center">
                             <h1 className="text-center">
                                 MJ Anglin
