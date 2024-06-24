@@ -1,0 +1,285 @@
+# hbd
+
+A dynamic Discord bot built for customizing birthday events within a guild.
+
+> Built with [discord.js](https://discord.js.org) and [Node.js](https://nodejs.org).
+---
+
+I wanted to create a Discord bot that's behavior could be configurable for each guild's specifications. I began by creating a template with the structure of the bot.
+
+The template includes a **command** handler, **event** handler, and a configuration file. The command handler is responsible for handling commands, the event handler is responsible for handling events, and the configuration file is responsible for storing the bot's *default* configuration.
+
+```
+.
+├── src/
+│   ├── commands/
+│   │   ├── ...
+│   ├── events/
+│   │   ├── ...
+├── ├── handlers/
+│   │   ├── index.ts
+│   ├── config.ts
+│   ├── index.ts
+├── tsconfig.json
+└── ...
+```
+
+- The **handler** (`handlers/index.ts`) is responsible for handling events emitted by the Discord bot, such as commands being executed or the bot being ready.
+
+- All events are registered within `events/` and all commands are registered within `commands/`.
+    - **ex.**
+    ```
+    ...
+    ├── events/
+    │   ├── ready/
+    │   │   ├── registerCommands.ts
+    │   │   ├── ...
+    ...
+   ```
+   > Whenever the **`ready`** event is emitted, the `registerCommands.ts` file is executed (along with any other files within the directory).
+
+For more information about the template for the general structure of the bot template, setting up typescript, and adding configurability, you can read my blog here: [How to Create a Dynamic AI Discord Bot With Typescript](https://dev.to/clxrityy/how-to-create-a-dynamic-ai-discord-bot-with-typescript-3gjn).
+
+---
+
+### Installation / Set up
+
+- Clone the repository (or use the [template](https://github.com/clxrityy/ai-discord-bot))
+
+```bash
+git clone https://github.com/clxrityy/ai-discord-bot.git
+```
+
+- Install the dependencies
+
+```bash
+pnpm install
+```
+
+- Create a `.env` file in the root directory and add the following:
+    - `BOT_TOKEN` - Your Discord bot token
+        > [Discord Developer Applications](https://discord.com/developers/applications)
+    - `MONGO_URI` - Your MongoDB URI
+        > [MongoDB](https://cloud.mongodb.com/)
+
+    > **Note:** You can also add your `OPENAI_API_KEY` & `OPENAI_ORGANIZATION_ID` if you want to use the OpenAI API to utilize AI capabilities.
+
+- Start the bot to make sure it works properly
+    - `pnpm dev`
+
+---
+
+### Birthdays
+
+The first feature I wanted to implement was the ability for users to store their birthday within the bot. I created a command that allows users to set their birthday, which is stored within a MongoDB database.
+
+I started by creating a `Birthday` schema within the `models/` directory:
+
+```typescript
+import { model, Schema } from 'mongoose';
+
+const BirthdaySchema = new Schema({
+    GuildId: { type: String, required: true },
+    UserId: { type: String, required: true },
+    Birthday: { type: Date, required: true }
+});
+
+export default model('Birthday', BirthdaySchema);
+```
+
+I added a folder within the commands directory (`birthday/`) which will be responsible for handling all birthday-related commands.
+
+The first command is `/birthday`:
+
+> **Note**: Paramaters within `<>` are required, and parameters within `[]` are optional.
+
+- `/birthday set <date>` - Sets the user's birthday
+- `/birthday view [target]` - Views the user's birthday or the target's birthday
+- `/birthday list [month]` - Lists all guild birthdays or birthdays within a specific month
+
+Important factors I considered to implement with this:
+
+- **Validation** - Ensuring that the user's input is valid (valid date, valid month, etc.)
+- **Error Handling** - Handling errors that may occur during the process (and returning those errors to the user)
+- Making sure that users cannot set their birthday more than once
+
+---
+
+### Interval
+
+Now that the birthdays are stored within the database, I wanted to create a feature that would allow the bot to send a message to announce when it's a user's birthday.
+
+I needed the bot to check if it's a user's birthday every day at a specific time. So, I created an `interval` event that would check if it's a user's birthday every 24 hours.
+
+```ts
+import { Client } from "discord.js";
+import Birthday from "../../models/Birthday";
+
+module.exports = (client: Client) => {
+
+    const handleInterval = async (client: Client) => {
+        let filter = {}
+        const birthdays = await Birthday.find(filter);
+        let date = new Date();
+
+        const dateString = date.toLocaleDateString();
+        const dateArray = dateString.split("/");
+        const dateParsed = dateArray[0] + `/` + dateArray[1];
+
+        for (const birthday of birthdays) {
+
+            if (birthday.Birthday === dateParsed) {
+                client.emit("birthday", 
+                [birthday.UserID, birthday.GuildID]);
+            }
+        }
+    }
+
+    return setInterval(async () => await handleInterval(client), 1000 * 60 * 60 * 24);
+    // 1000ms * 60s * 60m * 24h
+}
+```
+
+- This emits the `birthday` event whenever it's a user's birthday, after checking once every day.
+
+The problem with this was the date. I'm emitting this event once the bot is ready only once, and the date is not updated. I need to update the date every day.
+
+At first, I was overthinking how I could update the date every day. I tried to create a separate event that would check the time... But then I realized I could create a utility function that would return the current date and pass it to the `handleInterval()` function.
+
+```ts
+module.exports = (client: Client) => {
+    const handleInterval = async (client: Client, date: Date) => {
+        /**
+         * Check if it's a user's birthday
+        */
+    }
+    return setInterval(async () => 
+    await handleInterval(client, getDate()), 
+    1000 * 60 * 60 * 24);
+}
+```
+
+---
+
+### Guild configuration
+
+Since the bot is now checking if it's a user's birthday (and emitting the `birthday` event), all I needed to do was implement functionality for the event.
+
+On birthdays, I needed 2 things to happen:
+
+- The bot sends a message to the guild wishing the user a happy birthday
+- The bot gives a special role to the birthday user
+    - This role will be removed after 24 hours
+
+While sending a birthday message was simple, I couldn't hard code a role ID to be given to each user (given the unique nature of each guild) and I didn't want the bot to manually create the role. It would be best if guilds could be configured to specify the role they want to give to birthday users.
+
+I created a model for guild configurations that would store:
+
+```ts
+import { model, Schema } from "mongoose";
+
+const guildSchema = new Schema({
+    // Guild ID
+    GuildID: String,
+    // Channel to send birthday announcements
+    AnnouncementChannel: String,
+    // Channels where commands can be executed
+    CommandsChannel: [String],
+    // Role that can configure the bot
+    AdminRole: String,
+    // Role to give to birthday users
+    BirthdayRole: String,
+    // Whether users can change their birthday
+    Changeable: Boolean,
+    // Message to send on birthdays
+    AnnouncementMessage: String, 
+});
+
+export default model("Guild", guildSchema);
+```
+
+Next was to create a command(s) that would allow admins to configure the bot for their guild.
+
+##### **`/config`**
+- `/config view` - Views the guild's configurations
+- `/config channels <announcement | commands> <channel>` - Sets the announcement or commands channel
+- `/config roles <admin | birthday> <role>` - Sets the admin or birthday role
+> - `/config <channels | roles> reset` - Resets the channels or roles
+- `/config changeable <true | false>` - Sets whether users can change their birthday
+    - If **true**, users can change their birthday
+    - If **false**, only admins can change birthdays
+        - `/edit` - Edits the user's birthday
+- `/config messages <announcement> <message>` - Sets the message to send on birthdays
+    - The message can include `{{user}}` to mention the user
+
+---
+
+I added a `config.ts` file within the `src/` directory which would contain some necessary settings for the bot:
+
+- Default embed colors
+- Default birthday message
+- Array of commands that can only be executed by admins
+- etc.
+
+### Handle admin commands
+
+Since there is now an array of **admin** commands (such as `/config`), I need to alter the command handler to check for admin commands, and only allow them to be executed by users with the admin role / admin permissions.
+> **Note**: as mentioned previously, information on the bot structure can be found [here](https://dev.to/clxrityy/how-to-create-a-dynamic-ai-discord-bot-with-typescript-3gjn).
+
+This involved:
+
+- Checking if the command is an admin command
+- If there's an admin role present within the guild's configuration, checking if the user has the role
+    - If not, checking if the user has the `ADMINISTRATOR` permission
+
+> ```ts
+> if (config.adminCommands.includes(commandName)) {
+>     // Check if the user has the admin role
+>     // Check if the user has the ADMINISTRATOR permission
+> }
+> ```
+
+---
+
+### Deployment
+
+I added the following scripts to allow the bot to be deployed and online with [`pm2`](https://pm2.keymetrics.io/):
+
+
+```json
+{
+    "run:deploy": "pnpm build && pm2 start dist/index.js --name hbd",
+    "run:restart": "pm2 restart hbd",
+    "run:stop": "pm2 stop hbd"
+}
+```
+
+---
+
+### Conclusion
+
+I've implemented the ability for users to store their birthday within the bot, and for the bot to check if it's a user's birthday every day. I've also implemented the ability for guilds to configure the bot to their specifications.
+
+The final product also includes some more fun commands such as:
+
+- `/hbd`
+    - `/hbd wish <user> [message]` - Wishes the user a happy birthday
+    > Only works if it's the target user's birthday
+    - `/hbd view [user] [year]` - Views birthday wishes with optional filters such as the target user and year
+- `/countdown [user]` - Counts down to the user's birthday
+- `/edit <user> <month> <day>` - Edits the user's birthday
+    - By default, only accessible to admins
+- `/horoscope` - Generates a horoscope for the user
+    - Based on the user's birthday (zodiac sign) and the current date
+    - Generated using the OpenAI API
+- `/sign [user]` - View a user's zodiac sign
+
+---
+
+The final code can be found on the [GitHub repository](https://github.com/clxrityy/hbd).
+
+You can invite the bot using [this link](https://discord.com/oauth2/authorize?client_id=1209023823114936341&permissions=2415921152&scope=bot).
+
+Read the [wiki](https://github.com/clxrityy/hbd/wiki) for more information about configuring the bot, and all the features attached to it.
+
+Thank you for reading! If you have any questions or suggestions, feel free to join my [Discord server](https://discord.gg/RnwJEdsmy2), or contact me at [contact@mjanglin.com](mailto:contact@mjanglin.com). Don't forget to give the repository a star if you found it helpful! 🌟
