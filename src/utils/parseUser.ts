@@ -47,7 +47,7 @@ export async function createUser({ userId, accessToken, refreshToken }: CreateUs
     });
 
     if (existingUser) {
-        await db.user.update({
+        return await db.user.update({
             where: {
                 userId: userId
             },
