@@ -32,7 +32,7 @@ export interface InteractionOption {
 export interface InteractionData {
     id: string;
     name: string;
-    options?: InteractionSubcommand<InteractionOption>[] | InteractionOption[];
+    options?: InteractionSubcommand<InteractionOption>[] | InteractionOption[] | InteractionSubcommandGroup<InteractionSubcommand<InteractionOption>>[];
 }
 
 export type InteractionResponse = {
