@@ -1,14 +1,20 @@
-import { SlashCommandIcon, TemplateIcon } from "./icons";
+import { SlashCommandIcon, TemplateIcon, StructureIcon, SummaryIcon } from "./icons";
+import { Banner } from "./components";
 
-# [hbd](https://hbd.mjanglin.com) 
-![hbd](/img/hbd_banner.gif)
- [hbd.mjanglin.com](https://hbd.mjanglin.com)
+export const metadata = {
+    title: "hbd",
+    description: "A dynamic Discord birthday bot built with Nextjs, runs using edge runtime",
+    author: "MJ Anglin",
+}
+
+<Banner />
+> [hbd.mjanglin.com](https://hbd.mjanglin.com)
 
 This is the updated version of the **hbd** bot. To view the original project built with discord.js, visit [this page](https://mjanglin.com/archive/hbd).
 
 ---
 
-### Synopsis
+### Synopsis <SummaryIcon />
 
 - hbd is a dynamic Discord birthday bot that runs using [Edge Runtime](https://vercel.com/docs/functions/runtimes/edge-runtime).
 - The [`discord-api-types`](https://discord-api-types.dev/) package is used to facilitate requests and responses to/from the [interactions endpoint](https://discord.com/developers/docs/interactions/slash-commands#receiving-an-interaction).
@@ -27,6 +33,44 @@ I built off his template to create *another* template that implements OAuth2 whi
 ```zsh 
 git clone https://github.com/clxrityy/nextjs-discord-bot-with-oauth.git 
 ```
+
+---
+
+### Structure <StructureIcon />
+
+```py
+•/
+├── prisma/ <-- Prisma schemas
+├── public/ <-- Public assets
+├── scripts/ <-- External scripts
+├── src/ <-- Source code
+├── ...
+```
+
+##### Source Code
+
+```py
+src/
+├── app/ <-- Routes within the website
+├── components/ <-- Components within website
+├── data/ <-- Bot data
+│   ├── commands/ <-- Bot commands
+│   ├── util/ <-- Bot utilities
+├── handlers/command/ <-- Command handlers
+├── lib/ <-- External libraries
+├── types/ <-- Types throughout the application
+├── utils/ <-- Utility functions
+├── config.ts <-- The configuration values
+├── env.mjs <-- Environment variables
+├── ...
+```
+
+> - **app** — https://nextjs.org/docs/app
+> - **components** — https://react.dev/learn/your-first-component#defining-a-component
+
+- For a more in-depth understanding on Nextjs routes & React components: **[Learn Nextjs](https://nextjs.org/learn?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=home)**.
+- An elaborated explanation of all the directories and files within our source code can be found in the Github repository [here](https://github.com/clxrityy/mjanglin.com/tree/hbd/src#readme).
+
 
 ---
 
@@ -101,7 +145,14 @@ async function main() {
 
 #### Interaction responses
 
-The data from the interaction is parsed into an `InteractionData` interface:
+> - All interactions are sent to the [interactions endpoint](https://discord.com/developers/docs/interactions/slash-commands#receiving-an-interaction) (`/api/interactions`).
+>   - Reference: [Discord Developer Docs | Interactions Endpoint URL](https://discord.com/developers/docs/interactions/overview#configuring-an-interactions-endpoint-url)
+> - The interaction request is verified with the package **[`tweetnacl`](https://www.npmjs.com/package/tweetnacl)**
+>   - Verifies the interaction request is from Discord and intended for our bot.
+>    - Reference: [Discord Developer Docs |  Receiving and Responding to Interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#security-and-authorization)
+>    - See the **<ins>verify</ins>** code [here](https://github.com/clxrityy/mjanglin.com/blob/hbd/src/utils/verify.ts)
+
+Within the interactions endpoint, data from the interaction is parsed into an `InteractionData` interface:
 
 ```ts
 export interface InteractionData {
@@ -110,3 +161,8 @@ export interface InteractionData {
     options?: InteractionSubcommand<InteractionOption>[] | InteractionOption[] | InteractionSubcommandGroup<InteractionSubcommand<InteractionOption>>[];
 }
 ```
+> This includes the value(s) of the option(s) and subcommands.
+
+#### Command handlers
+
+
