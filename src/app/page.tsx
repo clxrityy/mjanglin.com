@@ -31,7 +31,7 @@ export default function Home() {
         </Card>
       </div>
       <div className="flex w-full mx-auto justify-center items-center mb-10">
-        {/* <ProjectsContainer projects={PROJECTS} /> */}
+        <ProjectsContainer projects={PROJECTS} />
       </div>
     </main>
   )

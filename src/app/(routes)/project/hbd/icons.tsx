@@ -6,6 +6,8 @@ import { GoLaw } from "react-icons/go";
 import { FaUserPlus } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io";
 import { FaDiscord } from "react-icons/fa";
+import { SiPrisma } from "react-icons/si";
+import { BsCalendarCheckFill } from "react-icons/bs";
 
 
 export function SlashCommandIcon() {
@@ -38,4 +40,12 @@ export function GithubIcon() {
 
 export function DiscordIcon() {
     return <FaDiscord />
+}
+
+export function PrismaIcon() {
+    return <SiPrisma />
+}
+
+export function ConclusionIcon() {
+    return <BsCalendarCheckFill />
 }

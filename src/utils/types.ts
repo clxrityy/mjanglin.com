@@ -5,4 +5,5 @@ export type ProjectParams = {
     github?: string;
     image: string;
     footer?: string;
+    tags?: string[];
 }

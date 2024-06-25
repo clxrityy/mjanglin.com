@@ -3,11 +3,12 @@ import { ProjectParams } from "./types";
 export const PROJECTS = [
     {
         name: "hbd",
-        description: "A dynamic Discord bot for customizing birthday events within a guild",
+        description: "A dynamic Discord birthday bot",
         link: "/project/hbd",
-        github: "https://github.com/clxrityy/hbd",
-        image: "/img/hbd.gif",
-        footer: "Built with TypeScript, Discord.js, and MongoDB"
+        github: "https://github.com/clxrityy/mjanglin.com/tree/hbd",
+        image: "/img/hbd.png",
+        footer: "Built with Nextjs, runs using edge runtime",
+        tags: ["Nextjs", "Discord", "Prisma", "Vercel", "Typescript"]
     },
 
 ] as ProjectParams[];
