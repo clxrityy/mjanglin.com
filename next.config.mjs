@@ -28,6 +28,7 @@ const nextConfig = {
         ]
     },
     pageExtensions: ['ts', 'tsx', 'mdx',],
+    reactStrictMode: false,
 };
 
 export default withMdx({

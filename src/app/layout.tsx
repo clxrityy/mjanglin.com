@@ -6,12 +6,18 @@ import Footer from "@/components/layout/Footer";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
+// export const metadata: Metadata = {
+//   title: "MJ Anglin",
+//   description: "Developer & Creator",
+// };
+
 export const metadata: Metadata = {
+
   title: "MJ Anglin",
   description: "Developer & Creator",
-};
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -27,13 +33,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="theme-color" content="currentColor" />
-        <title>
-          MJ Anglin
-        </title>
-        <meta
-          property="description"
-          content="Developer, writer, and creator."
-        />
       </head>
       <body className={nunito.className}>
         <Providers>

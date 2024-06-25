@@ -1,12 +1,6 @@
 import { SlashCommandIcon, TemplateIcon, StructureIcon, SummaryIcon } from "./icons";
 import { Banner } from "./components";
 
-export const metadata = {
-    title: "hbd",
-    description: "A dynamic Discord birthday bot built with Nextjs, runs using edge runtime",
-    author: "MJ Anglin",
-}
-
 <Banner />
 > [hbd.mjanglin.com](https://hbd.mjanglin.com)
 
@@ -163,6 +157,60 @@ export interface InteractionData {
 ```
 > This includes the value(s) of the option(s) and subcommands.
 
-#### Command handlers
+
+#### Interaction
+This is where the **edge** runtime comes into play.
+
+```ts
+// api/interactions/route.ts
+
+/**
+ * @see https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes
+*/
+export const runtime = "edge";
+```
+The interaction is received and verified.
+
+```ts
+export async function POST(req: Reqest) {
+    /**
+    * @see https://github.com/clxrityy/mjanglin.com/blob/hbd/src/utils/verify.ts
+    */
+    const verifyResult = await verifyInteractionRequest(req, env.PUBLIC_KEY);
+
+    const { interaction } = verifyResult;
+}
+```
+
+The interaction data is parsed into an `InteractionData` interface.
+
+```ts
+import {
+    InteractionResponseType,
+    InteractionType,
+} from "discord-api-types/v10";
+import { InteractionData } from "@/types/interactions";
+
+if (interaction.type === InteractionType.ApplicationCommand) {
+    const { name } = interaction.data;
+    const interactionData: InteractionData = JSON.parse(JSON.stringify(interaction.data));
+}
+```
 
 
+```ts
+import { InteractionSubcommand, InteractionOption } from "@/types/interactions";
+
+let interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption> || {};
+// ...
+
+switch (name) {
+    case commands.ping.name:
+        return {
+            type: InteractionResponseType.ChannelMessageWithSource,
+            data: {
+                content: "Pong!"
+            }
+        }
+}
+```
