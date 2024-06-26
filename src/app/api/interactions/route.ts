@@ -97,30 +97,32 @@ export async function POST(req: Request) {
 
                 // /birthday wish
 
-                if (interactionSubcommandGroup.name === "wish") {
-                    switch (interactionSubcommandGroup.options[0].name) {
-                        case "send":
-                            embed = await generalCommandHandlers.birthdayWishSend(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                if (interactionSubcommandGroup) {
+                    if (interactionSubcommandGroup.name === "wish" && interactionSubcommandGroup.options.length > 0) {
+                        switch (interactionSubcommandGroup.options[0].name) {
+                            case "send":
+                                embed = await generalCommandHandlers.birthdayWishSend(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
-                            return NextResponse.json({
-                                type: InteractionResponseType.ChannelMessageWithSource,
-                                data: {
-                                    embeds: [
-                                        JSON.parse(JSON.stringify(embed))
-                                    ]
-                                }
-                            });
-                        case "list":
-                            embed = await generalCommandHandlers.birthdayWishList(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                                return NextResponse.json({
+                                    type: InteractionResponseType.ChannelMessageWithSource,
+                                    data: {
+                                        embeds: [
+                                            JSON.parse(JSON.stringify(embed))
+                                        ]
+                                    }
+                                });
+                            case "list":
+                                embed = await generalCommandHandlers.birthdayWishList(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
-                            return NextResponse.json({
-                                type: InteractionResponseType.ChannelMessageWithSource,
-                                data: {
-                                    embeds: [
-                                        JSON.parse(JSON.stringify(embed))
-                                    ]
-                                }
-                            });
+                                return NextResponse.json({
+                                    type: InteractionResponseType.ChannelMessageWithSource,
+                                    data: {
+                                        embeds: [
+                                            JSON.parse(JSON.stringify(embed))
+                                        ]
+                                    }
+                                });
+                        }
                     }
                 }
 
@@ -219,11 +221,11 @@ export async function POST(req: Request) {
                                     }
                                 });
                         }
-                        
+
                     case "view":
                         embed = await adminCommandHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
 
-                        
+
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
