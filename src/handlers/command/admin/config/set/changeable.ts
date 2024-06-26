@@ -60,6 +60,8 @@ export default async function changeableConfigHandler(optionValue: boolean, user
 
                 const member = members.find(m => m.user?.id === userId);
 
+                console.log(member) // test
+
                 if (!member) {
                     embed = EMBEDS.error;
                 }

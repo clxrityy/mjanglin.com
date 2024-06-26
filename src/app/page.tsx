@@ -1,5 +1,5 @@
 import Guild from "@/components/Guild";
-import Button from "@/components/ui/Button";
+import MainButton from "@/components/ui/MainButton";
 import { CONFIG } from "@/config";
 import { db } from "@/lib/db";
 import { parseUser } from "@/utils/parseUser";
@@ -36,28 +36,28 @@ export default async function Page() {
                     </h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-full max-w-sm md:max-w-xl lg:max-w-4xl gap-8">
-                    <Button color="tertiary">
+                    <MainButton color="tertiary">
                         <Link href={CONFIG.URLS.INVITE_URL} className="flex flex-row gap-2 items-center text-center justify-center">
                             Invite <span className="">
                                 <CONFIG.ICONS.INVITE size={24} />
                             </span>
                         </Link>
-                    </Button>
-                    <Button color="tertiary">
+                    </MainButton>
+                    <MainButton color="tertiary">
                         <Link href="/commands" className="flex flex-row gap-2 items-center text-center justify-center">
                             Commands <span className=""><CONFIG.ICONS.COMMANDS size={24} /></span>
                         </Link>
-                    </Button>
-                    <Button color="primary">
+                    </MainButton>
+                    <MainButton color="primary">
                         <Link href={CONFIG.URLS.TEST_GUILD_URL} className="flex flex-row gap-2 items-center text-center justify-center">
                             Developer Server <span className="text-[#5865F2]"><CONFIG.ICONS.DISCORD size={24} /></span>
                         </Link>
-                    </Button>
-                    <Button color="primary">
+                    </MainButton>
+                    <MainButton color="primary">
                         <Link href={CONFIG.URLS.GITHUB_REPO} className="flex flex-row gap-2 items-center text-center justify-center">
                             GitHub <span className="bg-transparent rounded-full text-zinc-800"><CONFIG.ICONS.GITHUB size={24} /></span>
                         </Link>
-                    </Button>
+                    </MainButton>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-5">
                     <h2>

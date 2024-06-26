@@ -48,7 +48,7 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <body className={nunito.className}>
+        <body className={`${nunito.className} dark`}>
           <UserIcon userId={user.id} />
           {children}
           <Footer />

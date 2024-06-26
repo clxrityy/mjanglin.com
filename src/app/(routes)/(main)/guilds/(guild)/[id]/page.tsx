@@ -1,3 +1,4 @@
+import Birthday from "@/components/Birthday";
 import { fetchGuild, getGuildAvatar } from "@/data/util/functions/guild";
 import { fetchUser } from "@/data/util/functions/user";
 import { getZodiacSign } from "@/data/util/resources/signs";
@@ -63,25 +64,31 @@ export default async function Page({ params }: Props) {
                 {birthdays.length > 0 ? (
                     <div className="flex flex-col gap-5 items-center">
                         <h2>Birthdays</h2>
-                        <div className="flex flex-col gap-3 items-center">
+                        <div className="flex items-center justify-center flex-col gap-5">
+                            
                             {birthdays.map(async (birthday) => {
                                 const userData = await fetchUser(birthday.userId);
 
                                 const zodiacSign = getZodiacSign(birthday.month, birthday.day);
 
-                                return (
-                                    <div key={birthday.id} className="flex flex-col items-center">
-                                        <h4 className="text-zinc-200">@{userData.username}</h4>
-                                        <div className="flex flex-row gap-2 items-center">
-                                            <p className="font-mono font-light text-zinc-500">
-                                                {birthday.month}/{birthday.day}
-                                            </p>
-                                            <span className="font-mono text-lg text-blue-500">
-                                                {zodiacSign.symbol}
-                                            </span>
-                                        </div>
-                                    </div>
-                                )
+                                const birthdayObj = {
+                                    month: birthday.month,
+                                    day: birthday.day
+                                }
+
+                                return <Birthday user={userData} zodiacSign={zodiacSign} birthday={birthdayObj} key={birthday.id} />
+                                    // <div key={birthday.id} className="flex flex-col items-center">
+                                    //     <h4 className="text-zinc-200">@{userData.username}</h4>
+                                    //     <div className="flex flex-row gap-2 items-center">
+                                    //         <p className="font-mono font-light text-zinc-500">
+                                    //             {birthday.month}/{birthday.day}
+                                    //         </p>
+                                    //         <span className="font-mono text-lg text-blue-500">
+                                    //             {zodiacSign.symbol}
+                                    //         </span>
+                                    //     </div>
+                                    // </div>
+                                
                             })}
                         </div>
                     </div>

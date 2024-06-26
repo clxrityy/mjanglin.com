@@ -23,7 +23,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
     });
 
     let guild = await fetchGuild(guildId);
-    let guildRoles = await getGuildRoles(guildId);
+    // let guildRoles = await getGuildRoles(guildId);
     let members = await getGuildMembers(userId);
     let member = members.find(m => m.user!.id === userId);
 

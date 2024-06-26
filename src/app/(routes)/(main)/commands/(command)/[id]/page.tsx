@@ -1,4 +1,4 @@
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/MainButton";
 import { CONFIG } from "@/config";
 import { CommandData } from "@/types/interactions";
 import { Metadata, ResolvingMetadata } from "next";
