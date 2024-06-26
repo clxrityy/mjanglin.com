@@ -56,7 +56,7 @@ export async function POST(req: Request) {
         let interactionSubcommandGroup = interactionData.options?.[0] as InteractionSubcommandGroup<InteractionSubcommand<InteractionOption>> || {};
         let interactionSubcommand = interactionData.options?.[0] as InteractionSubcommand<InteractionOption> || {};
         let interactionSubcommandOptions = interactionSubcommand.options as InteractionOption[] || [];
-        let interactionSubcommandGroupOptions = interactionSubcommandGroup.options as InteractionOption[] || [];
+        let interactionSubcommandGroupOptions = interactionSubcommandGroup && interactionSubcommandGroup.options as InteractionOption[] || [];
 
         let embed: EmbedType;
 
