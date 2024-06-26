@@ -45,6 +45,9 @@ export default function Search({ commands }: { commands: CommandData[] }) {
                             required*
                         </span>
                         <span className="text-cyan-500">
+                            subcommand*
+                        </span>
+                        <span className="text-cyan-700">
                             optional*
                         </span>
                     </pre>
