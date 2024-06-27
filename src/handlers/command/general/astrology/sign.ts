@@ -45,7 +45,7 @@ export default async function astrologySignHandler(userId: string, guildId: stri
             console.error(e);
             embed = {
                 ...EMBEDS.error,
-                description: `\`\`\`\n${e.message}\`\`\``,
+                description: `\`\`\`json\n${JSON.stringify(e.message, null, 2)}\`\`\``
             }
         }
     } else {
@@ -84,7 +84,7 @@ export default async function astrologySignHandler(userId: string, guildId: stri
             console.error(e);
             embed = {
                 ...EMBEDS.error,
-                description: `\`\`\`\n${e.message}\`\`\``,
+                description: `\`\`\`json\n${JSON.stringify(e.message, null, 2)}\`\`\``
             }
         }
     }

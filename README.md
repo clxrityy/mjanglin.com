@@ -25,3 +25,5 @@ pnpm register-commands
 > **[hbd.mjanglin.com/commands](https://hbd.mjanglin.com/commands)**
 
 ---
+
+[Read about the project](https://mjanglin.com/project/hbd)

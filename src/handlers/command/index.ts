@@ -1,11 +1,11 @@
-import { astrologySignHandler, astrologyHoroscopeHandler, birthdayCountdown, birthdaySet, birthdayView, birthdayWishList, birthdayWishSend } from "./general";
+import { astrologySignHandler, astrologyHoroscopeHandler, birthdayCountdown, birthdaySet, birthdayView, birthdayWishList, birthdayWishSend, avatarHandler } from "./general";
 
 import { adminRoleConfigHandler, changeableConfigHandler, viewConfigHandler } from "./admin";
 
 const generalCommandHandlers = {
     astrologySignHandler, birthdayCountdown, birthdaySet,
     birthdayView, astrologyHoroscopeHandler,
-    birthdayWishSend, birthdayWishList
+    birthdayWishSend, birthdayWishList, avatarHandler
 }
 
 const adminCommandHandlers = {
