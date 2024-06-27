@@ -23,5 +23,5 @@ export async function fetchUser(userId: string): Promise<OAuth2UserResponse> {
 export async function fetchUserAvatar(userId: string): Promise<string> {
     const user = await fetchUser(userId);
 
-    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.gif` || `https://cdn.discordapp.com/embed/avatars/${user.id}/${user.avatar}.png`;
 }
