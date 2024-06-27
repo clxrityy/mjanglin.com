@@ -26,4 +26,13 @@ export const EMBEDS = {
         title: "COOLDOWN",
         color: Colors.DARK_RED
     } as EmbedType,
+    help: {
+        title: "hbd | help",
+        color: Colors.BLUE,
+        description: `[**COMMANDS**](https://hbd.mjanglin.com/commands)\n[**SUPPORT**](https://discord.gg/n65AVpTFNf) | [**GITHUB**](https://github.com/clxrityy/mjanglin.com/tree/hbd)\n[**Terms of Service**](https://hbd.mjanglin.com/terms-of-service) | [**Privacy Policy**](https://hbd.mjanglin.com/terms-of-service#privacy-policy)`,
+        footer: {
+            text: `/help [command]`,
+        }
+
+    } as EmbedType
 }

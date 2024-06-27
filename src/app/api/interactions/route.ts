@@ -268,6 +268,20 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
+            
+            // /help
+            case commands.help.name:
+                    
+                    embed = await generalCommandHandlers.helpHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+    
+                    return NextResponse.json({
+                        type: InteractionResponseType.ChannelMessageWithSource,
+                        data: {
+                            embeds: [
+                                JSON.parse(JSON.stringify(embed))
+                            ]
+                        }
+                    });
 
             default:
                 return NextResponse.json({
