@@ -64,7 +64,7 @@ export default async function astrologyCompatibilityHandler(userId: string, guil
                 if (!user2BirthdayData) {
                     embed = {
                         color: Colors.ORANGE,
-                        description: `${userMention(user2Id)} has not set their birthday yet!**`,
+                        description: `${userMention(user2Id)} has not set their birthday yet!`,
                     }
                 } else {
                     const userTwoZodiacSign = getZodiacSign(user2BirthdayData.month, user2BirthdayData.day);
