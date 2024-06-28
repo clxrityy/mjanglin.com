@@ -12,6 +12,7 @@ import CONFIG_COMMAND from "./admin/config";
 import HOROSCOPE_COMMAND from "./astrology/horoscope";
 import AVATAR_COMMAND from "./misc/avatar";
 import HELP_COMMAND from "./help";
+import COMPATIBILITY_COMMAND from "./astrology/compatibility";
 
 export const commands = {
     ping: PING_COMMAND,
@@ -21,4 +22,5 @@ export const commands = {
     horoscope: HOROSCOPE_COMMAND,
     avatar: AVATAR_COMMAND,
     help: HELP_COMMAND,
+    compatibility: COMPATIBILITY_COMMAND,
 } as const;

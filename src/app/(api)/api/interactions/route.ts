@@ -254,7 +254,7 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
-            
+
             // /avatar
             case commands.avatar.name:
 
@@ -268,20 +268,33 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
-            
+
             // /help
             case commands.help.name:
-                    
-                    embed = await generalCommandHandlers.helpHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
-    
-                    return NextResponse.json({
-                        type: InteractionResponseType.ChannelMessageWithSource,
-                        data: {
-                            embeds: [
-                                JSON.parse(JSON.stringify(embed))
-                            ]
-                        }
-                    });
+
+                embed = await generalCommandHandlers.helpHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
+                    }
+                });
+            // /compatibility
+            case commands.compatibility.name:
+
+                embed = await generalCommandHandlers.astrologyCompatibilityHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
+                    }
+                });
 
             default:
                 return NextResponse.json({

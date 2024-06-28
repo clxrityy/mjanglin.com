@@ -1,6 +1,6 @@
 # Source Structure
 
-```
+```js
 src/
 ├── app/ <-- Routes for the website
 ├── components/ <-- Components for the website
@@ -83,7 +83,7 @@ The data for the bot (commands & utility).
 Utilities for the bot should fall under 1 of these 3 categories:
 1. **Function**
 2. **Resource**
-3. **Cass**
+3. **Class**
 
 #### Functions
 
