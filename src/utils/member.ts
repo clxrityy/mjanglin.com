@@ -42,13 +42,9 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
         });
 
         try {
-           member = await db.member.create({
+            member = await db.member.create({
                 data: {
-                    user: {
-                        connect: {
-                            userId: id
-                        }
-                    },
+                    userId: id,
                     guilds: {
                         connect: {
                             guildId: guildId
@@ -80,7 +76,7 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                         members: {
                             set: [
                                 ...userWithMembers!.members,
-                               member
+                                member
                             ]
                         }
                     }
