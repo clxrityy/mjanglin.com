@@ -88,6 +88,13 @@ export default async function helpHandler(userId: string, guildId: string, optio
                     description: `${commands.avatar.description}`,
                 }
                 break;
+            case commands.compatibility.name:
+                embed = {
+                    title: "/compatibility",
+                    color: Colors.GREY,
+                    description: `${commands.compatibility.description}`,
+                }
+                break;
             default:
                 embed = EMBEDS.help;
         }

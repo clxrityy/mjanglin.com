@@ -3,7 +3,7 @@ import { ApplicationCommandOptionType } from "discord-api-types/v10";
 
 const COMPATIBILITY_COMMAND: ApplicationCommand = {
     name: "compatibility",
-    description: "View the compatibility between yourself and another user",
+    description: "View the compatibility between yourself and another user based on your astrological signs",
     options: [
         {
             name: "user",
