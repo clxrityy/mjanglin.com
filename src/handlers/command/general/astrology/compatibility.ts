@@ -82,6 +82,8 @@ export default async function astrologyCompatibilityHandler(userId: string, guil
                                 zodiacSign2: userTwoZodiacSign.name
                             });
 
+                            console.log(compatibility);
+
                             if (compatibility) {
                                 embed = {
                                     color: Colors.GREEN,
@@ -110,7 +112,10 @@ export default async function astrologyCompatibilityHandler(userId: string, guil
 
 
             } catch (e: any) {
-
+                embed = {
+                    color: Colors.RED,
+                    description: `**An error occured:**\n\n\`\`\`json\n${JSON.stringify(e, null, 2)}\`\`\``
+                }
             }
         } else {
             embed = {
