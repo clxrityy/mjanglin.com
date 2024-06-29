@@ -38,7 +38,12 @@ export default async function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta name="theme-color" content="currentColor" />
+        <meta name="theme-color" content="#F99EC1" />
+        <meta property="twitter:image" content="/hbd_banner.gif" />
+        <meta property="og:title" content="hbd" />
+        <meta property="og:description" content="A Discord birthday bot" />
+        <meta property="description" content="A Discord birthday bot" />
+        <meta property="og:url" content="https://hbd.mjanglin.com" />
         <title>
           hbd
         </title>
