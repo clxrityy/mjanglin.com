@@ -1,5 +1,10 @@
-import { fetchGuild, getGuildAvatar, getGuildMembers, getGuildRoles } from "@/data/util/functions/guild";
-import { fetchUser } from "@/data/util/functions/user";
+import {
+    fetchGuild,
+    getGuildAvatar,
+    getGuildMembers,
+    // getGuildRoles
+} from "@/data/util/functions/guild";
+// import { fetchUser } from "@/data/util/functions/user";
 import { EMBEDS } from "@/data/util/resources/embeds";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
@@ -24,7 +29,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
 
     let guild = await fetchGuild(guildId);
     // let guildRoles = await getGuildRoles(guildId);
-    let members = await getGuildMembers(userId);
+    let members = await getGuildMembers(guildId);
     let member = members.find(m => m.user!.id === userId);
 
     if (existingGuild) {

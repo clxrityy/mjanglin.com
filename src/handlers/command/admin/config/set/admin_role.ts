@@ -59,8 +59,8 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
                 if (!member) {
                     embed = EMBEDS.error;
                 } else {
-                    if (member.roles.find(({ id }) => id === existingGuild.adminRoleId)) {
-                        
+                    if (member.roles.find(({ id }) => id === existingGuild.adminRoleId) || member.permissions.includes("ADMINISTRATOR")) {
+
                         try {
                             await db.guild.update({
                                 where: {

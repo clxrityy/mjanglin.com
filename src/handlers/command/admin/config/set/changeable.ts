@@ -68,7 +68,7 @@ export default async function changeableConfigHandler(optionValue: boolean, user
 
                 const memberRoles = member?.roles.map(r => r.id);
 
-                if (memberRoles?.includes(existingGuild.adminRoleId)) {
+                if (memberRoles?.includes(existingGuild.adminRoleId) || member?.permissions.includes("ADMINISTRATOR")) {
                     try {
                         await db.guild.update({
                             where: {
@@ -130,7 +130,7 @@ export default async function changeableConfigHandler(optionValue: boolean, user
         } else {
             embed = {
                 color: Colors.RED,
-                description: "You must be the owner of the server to change this configuration.",
+                description: "You must an administrator of the server to change this configuration.",
             }
         }
     }

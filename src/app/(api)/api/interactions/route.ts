@@ -295,6 +295,20 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
+            
+            // /embed
+            case commands.embed.name:
+
+                embed = await adminCommandHandlers.embedHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
+                    }
+                });
 
             default:
                 return NextResponse.json({

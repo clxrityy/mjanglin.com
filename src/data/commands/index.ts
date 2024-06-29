@@ -13,6 +13,7 @@ import HOROSCOPE_COMMAND from "./astrology/horoscope";
 import AVATAR_COMMAND from "./misc/avatar";
 import HELP_COMMAND from "./help";
 import COMPATIBILITY_COMMAND from "./astrology/compatibility";
+import EMBED_COMMAND from "./misc/embed";
 
 export const commands = {
     ping: PING_COMMAND,
@@ -23,4 +24,5 @@ export const commands = {
     avatar: AVATAR_COMMAND,
     help: HELP_COMMAND,
     compatibility: COMPATIBILITY_COMMAND,
+    embed: EMBED_COMMAND,
 } as const;

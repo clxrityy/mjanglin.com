@@ -98,6 +98,13 @@ export default async function helpHandler(userId: string, guildId: string, optio
                     }
                 }
                 break;
+            case commands.embed.name:
+                embed = {
+                    title: "/embed",
+                    color: Colors.GREY,
+                    description: `${commands.embed.description}`,
+                }
+                break;
             default:
                 embed = EMBEDS.help;
         }
