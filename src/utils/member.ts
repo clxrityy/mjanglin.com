@@ -22,6 +22,10 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
     const guild = await db.guild.findFirst({
         where: {
             guildId: guildId
+        },
+        cacheStrategy: {
+            ttl: 60,
+            swr: 60
         }
     });
 
@@ -30,6 +34,22 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
     }
 
     if (!member) {
+        try {
+            await db.member.create({
+                data: {
+                    userId: id,
+                    guilds: {
+                        connect: {
+                            guildId: guildId
+                        }
+                    }
+                },
+            });
+        } catch (e: any) {
+            console.error(e);
+        }
+        
+    } else {
 
         const user = await db.user.findFirst({
             where: {
@@ -41,62 +61,49 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
             }
         });
 
-        if (user) {
-            // try {
-            //     member = await db.member.create({
-            //         data: {
-            //             userId: user?.userId,
-            //             guilds: {
-            //                 connect: {
-            //                     guildId: guildId
-            //                 }
-            //             }
-            //         }
-            //     });
-            // } catch (e: any) {
-            //     console.error(e);
-            //     return false;
-            // }
-
-            const userWithMembers = await db.user.findFirst({
-                where: {
-                    userId: id
-                },
-                include: {
-                    members: true
-                }
-            });
-
-            if (!userWithMembers?.members.includes(member!)) {
-                await db.user.update({
+        if (!user) {
+            try {
+                await db.member.update({
                     where: {
-                        userId: id
+                        id: member.id as string,
                     },
                     data: {
-                        members: {
-                            set: [
-                                ...userWithMembers!.members,
-                                member
-                            ]
+                        guilds: {
+                            connect: {
+                                guildId: guildId
+                            }
                         }
                     }
-                });
+                })
+            } catch (e: any) {
+                console.error(e);
+            }
+
+
+        } else {
+            try {
+                await db.member.update({
+                    where: {
+                        id: member.id as string,
+                    },
+                    data: {
+                        guilds: {
+                            connect: {
+                                guildId: guildId
+                            }
+                        },
+                        user: {
+                            connect: {
+                                userId: id
+                            }
+                        }
+                    },
+                })
+            } catch (e: any) {
+                console.error(e);
             }
         }
-    } else {
-        if (!member.guilds.find((g: any) => g.guildId === guildId)) {
-            await db.member.update({
-                where: {
-                    id: member.id
-                },
-                data: {
-                    guilds: {
-                        connect: {
-                            guildId: guildId
-                        }
-                    }
-                }
-            });
-        }
+
+        
     }
 }
