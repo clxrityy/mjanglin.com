@@ -41,23 +41,25 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
             }
         });
 
-        try {
-            member = await db.member.create({
-                data: {
-                    userId: user?.userId,
-                    guilds: {
-                        connect: {
-                            guildId: guildId
-                        }
-                    }
-                }
-            });
-        } catch (e: any) {
-            console.error(e);
-            return false;
-        }
+       
 
         if (user) {
+            try {
+                member = await db.member.create({
+                    data: {
+                        userId: user?.userId,
+                        guilds: {
+                            connect: {
+                                guildId: guildId
+                            }
+                        }
+                    }
+                });
+            } catch (e: any) {
+                console.error(e);
+                return false;
+            }
+
             const userWithMembers = await db.user.findFirst({
                 where: {
                     userId: id
