@@ -91,8 +91,11 @@ export default async function helpHandler(userId: string, guildId: string, optio
             case commands.compatibility.name:
                 embed = {
                     title: "/compatibility",
-                    color: Colors.GREY,
+                    color: Colors.GREYPLE,
                     description: `${commands.compatibility.description}`,
+                    footer: {
+                        text: `12 hour cooldown`
+                    }
                 }
                 break;
             default:

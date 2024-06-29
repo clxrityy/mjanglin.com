@@ -27,9 +27,13 @@ export const EMBEDS = {
         color: Colors.DARK_RED
     } as EmbedType,
     help: {
-        title: "hbd | help",
+        author: {
+            name: "hbd",
+            icon_url: "https://cdn.discordapp.com/avatars/1211045842362966077/18c79f8d048da2cf804008fd2e65cb64.png",
+            url: "https://hbd.mjanglin.com"
+        },
         color: Colors.BLUE,
-        description: `<:slash_command:1256619891243352095> [**COMMANDS**](https://hbd.mjanglin.com/commands)\n\n <:discord:1256619327507927041> [**SUPPORT**](https://discord.gg/n65AVpTFNf) | <:github:1256619861363396648> [**GITHUB**](https://github.com/clxrityy/mjanglin.com/tree/hbd)\n\n⚖️ [**Terms of Service**](https://hbd.mjanglin.com/terms-of-service) | ⚖️ [**Privacy Policy**](https://hbd.mjanglin.com/terms-of-service#privacy-policy)`,
+        description: `<:slash_command:1256631341357989928> [**COMMANDS**](https://hbd.mjanglin.com/commands)\n\n <:discord:1256631317915762700> [**SUPPORT**](https://discord.gg/n65AVpTFNf)\n<:github:1256631319312601099> [**GITHUB**](https://github.com/clxrityy/mjanglin.com/tree/hbd)\n\n⚖️ [**Terms of Service**](https://hbd.mjanglin.com/terms-of-service)\n⚖️ [**Privacy Policy**](https://hbd.mjanglin.com/terms-of-service#privacy-policy)`,
         footer: {
             text: `/help [command]`,
         }
