@@ -29,7 +29,7 @@ export const EMBEDS = {
     help: {
         title: "hbd | help",
         color: Colors.BLUE,
-        description: `[**COMMANDS**](https://hbd.mjanglin.com/commands)\n[**SUPPORT**](https://discord.gg/n65AVpTFNf) | [**GITHUB**](https://github.com/clxrityy/mjanglin.com/tree/hbd)\n[**Terms of Service**](https://hbd.mjanglin.com/terms-of-service) | [**Privacy Policy**](https://hbd.mjanglin.com/terms-of-service#privacy-policy)`,
+        description: `<:slash_command:1256619891243352095> [**COMMANDS**](https://hbd.mjanglin.com/commands)\n\n <:discord:1256619327507927041> [**SUPPORT**](https://discord.gg/n65AVpTFNf) | <:github:1256619861363396648> [**GITHUB**](https://github.com/clxrityy/mjanglin.com/tree/hbd)\n\n⚖️ [**Terms of Service**](https://hbd.mjanglin.com/terms-of-service) | ⚖️ [**Privacy Policy**](https://hbd.mjanglin.com/terms-of-service#privacy-policy)`,
         footer: {
             text: `/help [command]`,
         }
