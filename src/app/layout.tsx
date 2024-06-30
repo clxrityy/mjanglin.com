@@ -1,4 +1,4 @@
-import { Nunito } from "next/font/google";
+import { FONTS } from "@/misc/fonts";
 import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
@@ -7,8 +7,7 @@ import { redirect } from "next/navigation";
 import { CONFIG } from "@/config";
 import UserIcon from "@/components/layout/UserIcon";
 import Footer from "@/components/layout/Footer";
-
-const nunito = Nunito({ subsets: ["latin"] });
+import HomeIcon from "@/components/layout/HomeIcon";
 
 export const metadata: Metadata = {
   title: "hbd",
@@ -53,7 +52,8 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <body className={`${nunito.className} dark`}>
+        <body className={`${FONTS.nunito.variable} ${FONTS.roboto.variable} dark`}>
+          <HomeIcon />
           <UserIcon userId={user.id} />
           {children}
           <Footer />

@@ -7,6 +7,7 @@ import Scroll from "../ui/Scroll";
 import Command from "../Command";
 import Link from "next/link";
 
+
 export default function Search({ commands }: { commands: CommandData[] }) {
     const [searchField, setSearchField] = useState<string>("");
 
@@ -30,25 +31,25 @@ export default function Search({ commands }: { commands: CommandData[] }) {
     }
 
     return (
-        <section className="gap-5 flex flex-col items-center">
-            <div className="flex items-center justify-center flex-col xl:flex-row gap-3 xl:justify-between">
+        <section className="gap-5 flex flex-col items-center pt-3">
+            <div className="flex items-center justify-center flex-col xl:flex-row gap-5 xl:justify-between">
                 <h2 className="text-center">
                     Search for a command
                 </h2>
                 <div className="flex flex-col items-center gap-1 justify-center">
-                    <p className="uppercase font-bold text-zinc-400">
+                    <p className="uppercase font-bold text-zinc-400 text-lg">
                         Options / paramaters:
                     </p>
-                    <pre className="flex flex-col gap-2 items-center uppercase text-base mx-auto">
+                    <pre className={`flex flex-col gap-2 items-center uppercase text-[0.9rem] mx-auto --font-roboto font-semibold tracking-wider`}>
 
                         <span className="text-red-500">
                             required*
                         </span>
                         <span className="text-cyan-500">
-                            subcommand*
+                            option / subcommand*
                         </span>
-                        <span className="text-cyan-700">
-                            optional*
+                        <span className="text-purple-500">
+                            subcommand option*
                         </span>
                     </pre>
                 </div>
@@ -62,18 +63,18 @@ export default function Search({ commands }: { commands: CommandData[] }) {
                 />
             </div>
             {searchList()}
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 px-4">
+            <div className="grid grid-flow-row-dense gap-8 px-4">
                 {commands.map((command) => {
 
                     if (command.name.includes(searchField) || command.name.includes(searchField) || command.options?.map((option) => option.name).includes(searchField) || command.options?.map((option) => option.name).includes(searchField)) {
                         return (
-                            <Link key={command.id} href={`/commands/${command.id}`} className="hover:scale-105 transition-all shadow">
+                            <Link key={command.id} href={`/commands/${command.id}`} className="hover:scale-95 transition focus:ring focus:ring-offset-4 h-fit rounded-md">
                                 <Command data={command} />
                             </Link>
                         )
                     } else if (searchField === "") {
                         return (
-                            <Link key={command.id} href={`/commands/${command.id}`} className="hover:scale-105 transition-all shadow">
+                            <Link key={command.id} href={`/commands/${command.id}`} className="hover:scale-95 transition focus:ring focus:ring-offset-4 h-fit rounded-md">
                                 <Command data={command} />
                             </Link>
                         )

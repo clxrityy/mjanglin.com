@@ -22,6 +22,7 @@ html, body {
     overflow: hidden;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    font-family: var(--font-nunito);
 
     @apply h-screen w-screen;
 }
@@ -69,6 +70,12 @@ input, textarea {
   border-radius: 0.5rem;
 
   @apply text-black bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full;
+}
+
+.command table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
 }
 
 
@@ -170,5 +177,13 @@ input, textarea {
   }
   .unorderedListList {
     @apply list-disc flex flex-col list-outside gap-2 ml-5 text-sm md:text-base;
+  }
+
+  .command {
+    background: linear-gradient(112.1deg, rgb(57, 68, 102) 11.4%, rgb(63, 76, 119) 70.2%);
+    border-radius: 0.5rem;
+    backdrop-filter: blur(100px);
+
+    @apply border border-white border-opacity-60;
   }
 }
