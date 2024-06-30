@@ -8,6 +8,8 @@ import { CONFIG } from "@/config";
 import UserIcon from "@/components/layout/UserIcon";
 import Footer from "@/components/layout/Footer";
 import HomeIcon from "@/components/layout/HomeIcon";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata: Metadata = {
   title: "hbd",
@@ -52,12 +54,14 @@ export default async function RootLayout({
         />
       </head>
       <Providers>
-        <body className={`${FONTS.nunito.variable} ${FONTS.roboto.variable} dark`}>
-          <HomeIcon />
-          <UserIcon userId={user.id} />
-          {children}
-          <Footer />
-        </body>
+        <Suspense fallback={<Loading />}>
+          <body className={`${FONTS.nunito.variable} ${FONTS.roboto.variable} dark`}>
+            <HomeIcon />
+            <UserIcon userId={user.id} />
+            {children}
+            <Footer />
+          </body>
+        </Suspense>
       </Providers>
     </html>
 

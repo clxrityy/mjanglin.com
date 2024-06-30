@@ -18,7 +18,7 @@ export default function Command({ data, ...props }: Props) {
         <Card {...props}>
             <CardHeader>
                 <CardTitle>
-                    <h3 className="font-mono bg-zinc-800 px-2 py-1 rounded-md w-fit hover:underline underline-offset-4 focus:text-blue-500">/{data.name} </h3>
+                    <h3 className="font-mono bg-zinc-800 px-2 py-1 rounded-md w-fit hover:underline underline-offset-4 focus:text-blue-500 text-2xl">/{data.name} </h3>
                 </CardTitle>
                 <CardDescription>
                     {data.description}

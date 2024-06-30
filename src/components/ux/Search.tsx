@@ -32,9 +32,9 @@ export default function Search({ commands }: { commands: CommandData[] }) {
 
     return (
         <section className="gap-5 flex flex-col items-center pt-3">
-            <div className="flex items-center justify-center flex-col xl:flex-row gap-5 xl:justify-between">
+            <div className="flex items-center justify-center flex-col lg:flex-row gap-5 xl:justify-stretch">
                 <h2 className="text-center">
-                    Search for a command
+                    Commands
                 </h2>
                 <div className="flex flex-col items-center gap-1 justify-center">
                     <p className="uppercase font-bold text-zinc-400 text-lg">
