@@ -1,5 +1,6 @@
 import { getGuildMembers } from "@/data/util/functions/guild";
 import { EMBEDS } from "@/data/util/resources/embeds";
+import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
@@ -22,8 +23,13 @@ export default async function embedHandler(userId: string, guildId: string, opti
     let guildMembers = await getGuildMembers(guildId);
     let member = guildMembers.find(m => m.user!.id === userId);
 
+    const guild = await db.guild.findFirst({
+        where: {
+            guildId: guildId
+        }
+    });
 
-    if (member?.permissions.includes("MANAGE_GUILD")) {
+    if (member?.permissions && member?.permissions.includes("MANAGE_GUILD")) {
         embed = {
             color: color || Colors.DEFAULT,
             title: title && title,
@@ -46,6 +52,32 @@ export default async function embedHandler(userId: string, guildId: string, opti
             },
         }
     } else {
+        if (guild && guild.adminRoleId) {
+            if (member?.roles.find(({ id }) => id === guild.adminRoleId)) {
+                embed = {
+                    color: color || Colors.DEFAULT,
+                    title: title && title,
+                    description: description && description,
+                    url: url && url,
+                    image: {
+                        url: image && image
+                    },
+                    thumbnail: {
+                        url: thumbnail && thumbnail
+                    },
+                    author: {
+                        name: author && author,
+                        icon_url: authorIcon && authorIcon,
+                        url: authorUrl && authorUrl
+                    },
+                    footer: {
+                        text: footer && footer,
+                        icon_url: footerIcon && footerIcon
+                    },
+                }
+            }
+        }
+
         embed = {
             ...EMBEDS.error,
             description: "You do not have the required permissions to use this command.",
