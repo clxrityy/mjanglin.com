@@ -1,4 +1,12 @@
 import { CommandData } from "@/types/interactions";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardTitle,
+    CardHeader
+} from "./ui/Card";
 
 type Props = {
     data: CommandData;
@@ -7,70 +15,52 @@ type Props = {
 export default function Command({ data, ...props }: Props) {
 
     return (
-        <div {...props} className="command flex flex-col items-center justify-center bg-gradient-to-r from-zinc-800/60 to-zinc-700/50 px-4 py-2 rounded-md shadow-lg gap-5">
-            <div className="flex flex-col items-center gap-2">
-                <div className="flex flex-row justify-stretch items-center gap-10">
-                <pre className="text-xl bg-zinc-950/70 px-1 py-1 rounded-md">
-                    /{data.name}
-                    </pre>
-                    <pre className="hidden md:flex text-xs bg-zinc-800 text-zinc-400 rounded-md px-1 py-1">
-                        {data.id}
-                    </pre>
-                </div>
-                <div className="bg-zinc-950/60 rounded-md px-4 py-2 flex flex-col gap-3 items-center justify-center w-full">
-                    <p className="text-zinc-200 text-lg font-semibold max-w-sm text-center">
-                        {data.description}
-                    </p>
-                </div>
-            </div>
-            {data.options && (<table className="space-y-4 mx-10 py-2 rounded-xl shadow-lg w-full flex items-center flex-col bg-zinc-900/75">
-                {/* <thead className="">
-                    <tr className="border-b-2 border-white/25">
-                        <th className="text-xs font-semibold uppercase">type</th>
-                        <th className="text-xs font-semibold uppercase">id</th>
-                        {data.options && (
-                            <th className="text-xs font-semibold uppercase">options</th>
-                        )}
-                    </tr>
-                </thead> */}
-                <tbody className="">
-                    <tr className="space-x-4 h-auto">
-                        
-                        <td className="text-base flex items-center flex-col">
-                            <ul className="gap-2 space-y-2">
-                                {data.options.map((option, i) => (
-                                    <li key={i} className={`flex flex-col gap-2 ${option.required ? "text-red-500" : "text-cyan-500"}`}>
-                                        <div className="flex flex-col items-center justify-between gap-5">
-                                            <span className="font-bold --font-roboto tracking-wide">
-                                                {option.name}
-                                            </span>
-                                            <span className="text-zinc-300 text-sm">
-                                                {option.description}
-                                            </span>
-                                        </div>
-                                        {option.options && (
-                                            <ul className="gap-2 grid grid-cols-1 lg:grid-cols-2 text-base border-t border-white/60 pt-2 text-default items-center justify-center pl-2">
-                                                {option.options.map((subOption, j) => (
-                                                    <li key={j} className="space-x-3 flex flex-col space-y-2">
-                                                        <span className={`${subOption.required ? "text-red-500" : "text-purple-500 font-semibold --font-roboto tracking-wider"}`}>
-                                                            {subOption.name}
-                                                        </span>
-                                                        <span className="text-[0.85rem] text-zinc-300 font-light">
-                                                            {subOption.description}
-                                                        </span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-
-                                        )}
-                                    </li>
-                                ))}
-                            </ul>
-                        </td>
-                        
-                    </tr>
-                </tbody>
-            </table>)}
-        </div>
-    )
+        <Card {...props}>
+            <CardHeader>
+                <CardTitle>
+                    <h3 className="font-mono bg-zinc-800 px-2 py-1 rounded-md w-fit hover:underline underline-offset-4 focus:text-blue-500">/{data.name} </h3>
+                </CardTitle>
+                <CardDescription>
+                    {data.description}
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                {data.options && (
+                    <table className="w-full">
+                        <tbody className="text-zinc-300">
+                            {data.options.map((option, i) => (
+                                <tr key={i} className="border rounded-lg border-zinc-600 hover:bg-slate-700/40 transition-colors hover:border-zinc-400 hover:rounded-xl hover:shadow">
+                                    <td className="px-4 py-3 shadow-md">
+                                        <ul>
+                                            <li className="flex flex-col gap-4">
+                                                <div className="flex flex-row gap-2 items-center text-lg">
+                                                    <pre className={`font-semibold ${option.required ? "text-red-500" : "text-cyan-500"}`}>{option.name}</pre>
+                                                    <span>{option.description}</span>
+                                                </div>
+                                                {option.options && (
+                                                    <ul className="indent-5">
+                                                        {option.options.map((subOption, j) => (
+                                                            <li key={j} className="flex flex-row gap-2 items-center">
+                                                                <span className={`font-semibold ${option.required ? "text-red-500" : "text-purple-400"}`}>{subOption.name}</span>
+                                                                <span>{subOption.description}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                )}
+            </CardContent>
+            <CardFooter>
+                <pre className="text-xs">
+                    {data.id}
+                </pre>
+            </CardFooter>
+        </Card>
+    );
 }
