@@ -2,7 +2,6 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
-import Footer from "@/components/layout/Footer";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -13,8 +12,8 @@ const nunito = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 
-  title: "MJ Anglin",
-  description: "Developer & Creator",
+  title: "sleep graph",
+  description: "Calculate your sleep schedule",
 }
 
 export default async function RootLayout({
@@ -37,7 +36,7 @@ export default async function RootLayout({
       <body className={nunito.className}>
         <Providers>
           {children}
-          <Footer />
+
         </Providers>
       </body>
     </html>
