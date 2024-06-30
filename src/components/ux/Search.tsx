@@ -63,7 +63,7 @@ export default function Search({ commands }: { commands: CommandData[] }) {
                 />
             </div>
             {searchList()}
-            <div className="grid grid-flow-row-dense gap-8 px-4">
+            <div className="grid grid-flow-row-dense auto-cols-auto gap-8 px-4 ">
                 {commands.map((command) => {
 
                     if (command.name.includes(searchField) || command.name.includes(searchField) || command.options?.map((option) => option.name).includes(searchField) || command.options?.map((option) => option.name).includes(searchField)) {
