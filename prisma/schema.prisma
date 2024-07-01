@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Birthday {
+  id      String @id
+  userId  String
+  guildId String
+  month   Int
+  day     Int
+}
+
+model Cooldown {
+  id        String   @id
+  userId    String
+  guildId   String
+  command   String
+  createdAt DateTime @default(now())
+  expiresAt DateTime @default(dbgenerated("(now() + '00:01:00'::interval)"))
+  Guild     Guild    @relation(fields: [guildId], references: [id])
+  User      User     @relation(fields: [userId], references: [id])
+}
+
+model Guild {
+  id          String     @id
+  guildId     String     @unique
+  userId      String
+  changeable  Boolean    @default(false)
+  adminRoleId String?
+  Cooldown    Cooldown[]
+  User        User       @relation(fields: [userId], references: [id])
+  Wish        Wish[]
+  Member      Member[]   @relation("GuildToMember")
+}
+
+model Member {
+  id     String  @id
+  userId String
+  User   User    @relation(fields: [userId], references: [id])
+  Guild  Guild[] @relation("GuildToMember")
+}
+
+model User {
+  id           String     @id
+  userId       String     @unique
+  accessToken  String     @unique
+  refreshToken String     @unique
+  Cooldown     Cooldown[]
+  Guild        Guild[]
+  Member       Member[]
+}
+
+model Wish {
+  id           String @id
+  userId       String
+  guildId      String
+  targetUserId String
+  message      String
+  year         Int    @default(2024)
+  Guild        Guild  @relation(fields: [guildId], references: [id])
+}
+
+model SleepUser {
+  id       String @id
+  userId   String @unique
+  username String
+  avatar   String @default("https://cdn.discordapp.com/attachments/1020419727731986613/1257156315466174526/default_clock.png?ex=6683618e&is=6682100e&hm=3149313c2ed7e676c5dffe39f2461c0d9f85f882564a208c404ff31905ee4b72&")
+  sessionId String
+  SleepData SleepData[]
+  updatedAt DateTime @default(now())
+  createdAt DateTime @default(now())
+}
+
+model SleepData {
+  id String @id @default(uuid())
+  userId String
+  date DateTime
+  duration Int
+  SleepUser SleepUser @relation(fields: [userId], references: [userId])
+}

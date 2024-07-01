@@ -3,6 +3,10 @@ import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import { db } from "@/lib/db";
+import { v4 as uuid } from "uuid";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -22,8 +26,58 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { sessionId } = auth();
+  const user = await currentUser();
+
+  if (user && sessionId) {
+    const existingUserData = await db.sleepUser.findFirst({
+      where: {
+        userId: user.id,
+      }
+    });
+
+    if (!existingUserData) {
+      try {
+        await db.sleepUser.create({
+          data: {
+            id: uuid(),
+            userId: user.id,
+            username: user.username!,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+            sessionId: sessionId,
+            avatar: user.imageUrl,
+          }
+        })
+      } catch (e: any) {
+        console.error(e);
+      }
+    } else {
+      try {
+        await db.sleepUser.update({
+          where: {
+            userId: user.id
+          },
+          data: {
+            sessionId: sessionId,
+            avatar: user.imageUrl,
+            updatedAt: new Date(),
+            username: user.username!,
+          }
+        })
+      } catch (e: any) {
+        console.error(e);
+      }
+    }
+  }
+
+
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <html lang="en">
         <head>
           <link rel="icon" href="/favicon.ico" />
@@ -39,7 +93,6 @@ export default async function RootLayout({
         <body className={nunito.className}>
           <Providers>
             {children}
-
           </Providers>
         </body>
       </html>
