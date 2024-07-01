@@ -7,6 +7,8 @@ import { dark } from "@clerk/themes";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { v4 as uuid } from "uuid";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const nunito = Nunito({ subsets: ["latin"] });
 
@@ -90,11 +92,17 @@ export default async function RootLayout({
           <meta name="theme-color" content="currentColor" />
         </head>
 
+
         <body className={nunito.className}>
+
           <Providers>
-            {children}
+            <Suspense fallback={<Loading />}>
+              {children}
+            </Suspense>
           </Providers>
+
         </body>
+
       </html>
     </ClerkProvider>
   );

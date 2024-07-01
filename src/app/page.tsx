@@ -4,7 +4,7 @@ import Link from "next/link";
 import { UserButton, useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { dark } from "@clerk/themes";
-import {ICONS} from "@/config/icons";
+import {ICONS} from "@/config/data/constants";
 
 
 export default function Home() {
