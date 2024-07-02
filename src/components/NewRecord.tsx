@@ -4,7 +4,6 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SleepUser } from "@prisma/client";
-import { db } from "@/lib/db";
 import { Button } from "@/components/ui/button";
 import {
     Form,
@@ -13,6 +12,7 @@ import {
     FormField,
     FormItem,
     FormLabel,
+    FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Calendar } from "@/components/ui/calendar";
@@ -25,11 +25,13 @@ import {
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { ICONS } from "@/config/data/constants";
+import toast from "react-hot-toast";
+import axios from "axios";
 
-const formSchema = z.object({
-    duration: z.number().int().positive(),
+
+export const formSchema = z.object({
+    duration: z.number().positive(),
     date: z.date(),
-    username: z.string(),
     userId: z.string(),
 });
 
@@ -52,8 +54,7 @@ export default function NewRecordForm({ userData }: Props) {
         resolver: zodResolver(formSchema),
         defaultValues: {
             duration: 0,
-            date: new Date(),
-            username: userData.username,
+            date: date,
             userId: userData.userId
         }
     });
@@ -61,21 +62,26 @@ export default function NewRecordForm({ userData }: Props) {
     const isLoading = form.formState.isLoading;
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        if (form.formState.isValid) {
-            console.log(values)
-            // try {
-            //     await db.sleepData.create({
-            //         data: {
-            //             duration: values.duration,
-            //             date: values.date,
-            //             userId: values.userId,
-            //         }
-            //     })
-            // } catch (e: any) {
-            //     console.error(e);
-            // }
+        if (form.getValues()) {
+            await axios.post(`/api/new-record`, {
+                ...values
+            }).then((res) => {
+                if (res.status !== 200) { 
+                    if (res.status === 400) {
+                        toast.error("A record already exists for this day!");
+                    } else {
+                        toast.error("Failed to add record");
+                    }
+                } else {
+                    toast.success("Record added successfully!");
+                }
+            }).catch((e: any) => {
+                toast.error("Failed to add record!");
+                console.error(e);
+            })
+
         } else {
-            console.error("Form is invalid");
+            toast.error("Form is invalid");
         }
     }
 
@@ -94,8 +100,17 @@ export default function NewRecordForm({ userData }: Props) {
                                 How long did you sleep? (in hours)
                             </FormDescription>
                             <FormControl>
-                                <Input {...field} type="number" className="text-zinc-200" />
+                                <Input
+                                    {...field}
+                                    type="number"
+                                    className="text-zinc-200"
+                                    disabled={isLoading}
+                                    onChange={(e) => {
+                                        field.onChange(e.target.valueAsNumber);
+                                    }}
+                                />
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )} />
                 <FormField
@@ -125,21 +140,29 @@ export default function NewRecordForm({ userData }: Props) {
                                     </PopoverTrigger>
                                     <PopoverContent className="w-auto p-0">
                                         <Calendar
+                                            disabled={isLoading}
                                             mode="single"
                                             selected={date}
                                             onSelect={setDate}
                                             initialFocus
                                             {...field}
+                                            onDayClick={(day) => {
+                                                field.onChange(day)
+                                            }}
+                                            onMonthChange={(month) => {
+                                                field.onChange(month)
+                                            }}
                                         />
                                     </PopoverContent>
                                 </Popover>
                             </FormControl>
+                            <FormMessage />
                         </FormItem>
                     )}
                 />
                 <Button disabled={isLoading} type="submit" className="w-full">
                     Add
-                    </Button>
+                </Button>
             </form>
         </Form>
     )

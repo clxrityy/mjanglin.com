@@ -1,13 +1,11 @@
 import { db } from "@/lib/db";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
 import NewRecordForm from "@/components/NewRecord";
 
 type Props = {
     params: { id: string };
 }
 
-export default async function Page({params}: Props) {
+export default async function Page({ params }: Props) {
 
     const userData = await db.sleepUser.findUnique({
         where: {
@@ -19,9 +17,15 @@ export default async function Page({params}: Props) {
     });
 
     if (userData)
-        return <div>
-        <NewRecordForm userData={userData} />
-    
+        return <div className="w-full flex items-center justify-center">
+            <NewRecordForm userData={userData} />
+
         </div>
-    
+
+    return <div className="w-full flex items-center justify-center">
+        <h1>
+            User data not found...
+        </h1>
+    </div>
+
 }
