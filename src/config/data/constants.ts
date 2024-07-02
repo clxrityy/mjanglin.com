@@ -4,7 +4,7 @@ import { IconType } from "react-icons/lib";
 import { CiSquarePlus } from "react-icons/ci";
 import { FcClock } from "react-icons/fc";
 import { BsClipboardDataFill } from "react-icons/bs";
-import { FaChartLine } from "react-icons/fa6";
+import { FaChartLine , FaCalendar } from "react-icons/fa6";
 import { VscCloseAll } from "react-icons/vsc";
 
 
@@ -12,7 +12,8 @@ export const ICONS = {
     dashboard: MdSpaceDashboard,
     signIn: FaSignInAlt,
     clock: FcClock,
-    close: VscCloseAll
+    close: VscCloseAll,
+    calendar: FaCalendar
 };
 
 type DashbarItem = {

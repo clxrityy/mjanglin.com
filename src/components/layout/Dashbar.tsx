@@ -35,7 +35,7 @@ export default function Dashbar({ userData }: Props) {
                                     onClick={() => setActive({
                                         activePath: item.path
                                     }, userData)}
-                                    href={item.path} className="w-full flex items-center justify-center py-4 transition-all rounded-md hover:bg-blue-200/15 focus:ring focus:outline-none focus:ring-offset-2 hover:scale-95 static z-20 gap-2 text-base md:text-lg">
+                                    href={`/dashboard/${userData.userId + item.path}`} className="w-full flex items-center justify-center py-4 transition-all rounded-md hover:bg-blue-200/15 focus:ring focus:outline-none focus:ring-offset-2 hover:scale-95 static z-20 gap-2 text-base md:text-lg">
                                 <item.icon size={24} />
                                     <span>
                                     {item.title}

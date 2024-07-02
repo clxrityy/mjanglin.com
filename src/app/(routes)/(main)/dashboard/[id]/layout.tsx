@@ -3,7 +3,7 @@ import Dashbar from "@/components/layout/Dashbar";
 import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
 import { ICONS } from "@/config/data/constants";
-import MobileDashbar from "@/components/responsive/MobileDashbar";
+import MobileDashbar from "@/components/layout/MobileDashbar";
 
 type Props = {
     children: React.ReactNode;
