@@ -1,9 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { UserButton, useUser } from "@clerk/nextjs";
-import Image from "next/image";
-import { dark } from "@clerk/themes";
+import { useUser } from "@clerk/nextjs";
 import {ICONS} from "@/config/data/constants";
 
 
@@ -25,7 +23,7 @@ export default function Home() {
           <div>
             <div className="flex flex-col items-center justify-center gap-4">
               {
-                isSignedIn ? (
+                isSignedIn && user ? (
                   <Button size="lg" className="text-xl font-bold hover:scale-105 transition-transform focus:ring focus:outline-none focus:ring-offset-2">
                     <Link href={`/dashboard/${user.id}`} className="flex flex-row items-center gap-2">
                       <ICONS.dashboard size={28} />

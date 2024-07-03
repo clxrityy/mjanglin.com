@@ -84,7 +84,7 @@ export default async function Page({ params }: Props) {
 
     return (
         <div className="w-full items-center justify-center flex">
-            <div className="flex flex-col items-center gap-40">
+            <div className="flex flex-col items-center gap-20 lg:gap-40">
                 <div className="flex items-center justify-center flex-col gap-5">
                     <h2>
                         Dashboard
@@ -94,7 +94,7 @@ export default async function Page({ params }: Props) {
                         {userData.username}
                     </h4>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:grid-cols-3 justify-normal w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xl:grid-cols-3 justify-normal w-full">
                     {renderDashItems(dashItems)}
                 </div>
             </div>
