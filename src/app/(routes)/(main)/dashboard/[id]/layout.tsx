@@ -28,7 +28,7 @@ export default async function Layout({ children, params }: Props) {
         <DashLayout userData={userData}>
             <div className="w-full flex flex-row">
                 <MobileDashbar userData={userData} />
-                <div className="flex w-full py-20 px-16">
+                <div className="flex w-full my-20 px-16">
                     {children}
                 </div>
             </div>
