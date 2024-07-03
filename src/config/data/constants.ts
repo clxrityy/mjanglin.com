@@ -6,6 +6,7 @@ import { FcClock } from "react-icons/fc";
 import { BsClipboardDataFill } from "react-icons/bs";
 import { FaChartLine , FaCalendar } from "react-icons/fa6";
 import { VscCloseAll } from "react-icons/vsc";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 
 export const ICONS = {
@@ -13,7 +14,11 @@ export const ICONS = {
     signIn: FaSignInAlt,
     clock: FcClock,
     close: VscCloseAll,
-    calendar: FaCalendar
+    calendar: FaCalendar,
+    newRecord: CiSquarePlus,
+    viewData: BsClipboardDataFill,
+    viewPattern: FaChartLine,
+    loading: AiOutlineLoading3Quarters
 };
 
 type DashbarItem = {

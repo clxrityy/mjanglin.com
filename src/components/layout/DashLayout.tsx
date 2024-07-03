@@ -25,7 +25,7 @@ export default function DashLayout({ children, userData }: Props) {
         </ResizablePanel>
         <ResizableHandle className="h-screen border border-zinc-200/30 border-separate hidden md:flex" />
         <ResizablePanel minSize={80} defaultSize={100} className="w-full">
-            <div className="w-full h-full">
+            <div className="w-full h-screen min-w-fit">
                 {children}
             </div>
         </ResizablePanel>

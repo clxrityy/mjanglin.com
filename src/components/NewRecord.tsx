@@ -27,6 +27,7 @@ import { format } from "date-fns";
 import { ICONS } from "@/config/data/constants";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 
 export const formSchema = z.object({
@@ -49,6 +50,7 @@ type Props = {
 export default function NewRecordForm({ userData }: Props) {
 
     const [date, setDate] = useState<Date>();
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -75,6 +77,7 @@ export default function NewRecordForm({ userData }: Props) {
                 } else {
                     toast.success("Record added successfully!");
                 }
+                router.push(`/dashboard/${userData.userId}/data`);
             }).catch((e: any) => {
                 toast.error("Failed to add record!");
                 console.error(e);
@@ -87,7 +90,7 @@ export default function NewRecordForm({ userData }: Props) {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 min-w-sm">
                 <FormField
                     control={form.control}
                     name="duration"
@@ -161,7 +164,7 @@ export default function NewRecordForm({ userData }: Props) {
                     )}
                 />
                 <Button disabled={isLoading} type="submit" className="w-full">
-                    Add
+                    {form.formState.isSubmitting ? <ICONS.loading className="animate-spin" /> : "Submit"}
                 </Button>
             </form>
         </Form>

@@ -19,10 +19,9 @@ export default async function Page({ params }: Props) {
     if (userData)
         return <div className="w-full flex items-center justify-center">
             <NewRecordForm userData={userData} />
-
         </div>
 
-    return <div className="w-full flex items-center justify-center">
+    return <div className="min-w-sm flex justify-center max-w-md">
         <h1>
             User data not found...
         </h1>
