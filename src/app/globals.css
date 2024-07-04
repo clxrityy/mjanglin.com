@@ -4,8 +4,8 @@
 
 :root {
   --foreground-rgb: 230, 230, 230;
-  --background-start-rgb: 10, 10, 10;
-  --background-end-rgb: 1, 1, 20;
+  --background-start-rgb: 15, 10, 15;
+  --background-end-rgb: 1, 3, 1;
 }
 
 
@@ -170,6 +170,18 @@ code {
   @apply text-lg font-semibold;
 }
 
+.hero-link .github {
+  @apply  hover:text-white transition-transform-colors focus:ring-white focus:ring-1;
+}
+
+.hero-link .instagram {
+  @apply hover:text-[#E1306C] transition-transform-colors focus:ring-[#E1306C] focus:ring-1;
+}
+
+.hero-link .spotify {
+  @apply hover:text-[#1DB954] transition-transform-colors focus:ring-[#1DB954] focus:ring-1;
+}
+
 /** 
   utilities
 */
@@ -181,7 +193,7 @@ code {
 
   .hero-link {
 
-    @apply text-4xl rounded-full bg-gradient-to-r from-white to-white/75 hover:scale-110 transition-all hover:bg-gradient-to-l hover:from-transparent hover:to-transparent focus:ring-2 focus:ring-white ring-offset-1 focus:ring-opacity-80;
+    @apply text-4xl rounded-full hover:scale-110 transition-all ring-offset-2 hover:shadow-md opacity-80 hover:opacity-100;
   }
 
   .social-link {
@@ -209,4 +221,5 @@ code {
 
     @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-4xl;
   }
+
 }
