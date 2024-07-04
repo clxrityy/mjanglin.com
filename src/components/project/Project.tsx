@@ -7,7 +7,7 @@ const { icons } = configurations;
 
 export default function Project({ name, description, link, image, footer, github, tags }: ProjectParams) {
     return (
-        <Link href={link} className="bg-gradient-to-br from-emerald-600/25 to-cyan-600/50 px-4 py-4 rounded-md shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5">
+        <Link href={link} className="bg-gradient-to-br from-white/15 to-white/5 px-4 py-4 rounded-lg shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5 border border-zinc-600 hover:border-zinc-500">
             <div className="flex flex-row md:flex-col lg:flex-row items-center justify-center gap-2">
                 <div className="flex flex-col items-center justify-center w-full gap-4">
                     <Link href={link} className="hover:scale-95 transition-all">

@@ -10,7 +10,7 @@ export default function Contact() {
         <div className="w-full h-full flex items-center justify-center">
             <div className="max-w-xl flex items-center justify-center mx-auto">
                 <div className="w-full h-full">
-                    <Button className="bg-sky-500/60 cursor-pointer w-full h-full px-10 py-3 focus:ring-emerald-500 focus:ring">
+                    <Button className="bg-gradient-to-tlcursor-pointer w-full h-full px-10 py-3 focus:ring-white focus:ring border-white/50 border-2">
                         <Link href="mailto:contact@mjanglin.com" className="text-white text-lg uppercase tracking-widest font-semibold flex flex-col gap-1 text-center items-center justify-center">
                             <span className="flex flex-row items-center gap-2 justify-center">
                                 <icons.email /> Contact

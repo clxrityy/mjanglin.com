@@ -9,8 +9,8 @@ export default function Hero() {
 
     return (
         <div className="w-full h-1/2 flex items-center justify-center">
-            <div className="w-full max-w-3xl h-1/3 flex items-center justify-center">
-                <div className="bg-gradient-to-br from-green-600/30 to-blue-500/50 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-inner">
+            <div className="w-full h-1/3 flex items-center justify-center">
+                <div className="bg-gradient-to-br from-zinc-500/30 to-zinc-300/20 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-inner">
                     <div className="flex justify-end w-full">
                         <p className="font-mono text-sm">
                             @cl<span className="underline underline-offset-4">x</span>rity

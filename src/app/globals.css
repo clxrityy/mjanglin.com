@@ -29,7 +29,7 @@ html, body {
 
 main {
 
-  @apply w-screen h-full flex flex-col xl:flex-row justify-between lg:justify-center xl:justify-between items-center mx-auto gap-20 overflow-y-auto;
+  @apply w-full h-full xl:h-screen flex flex-col xl:flex-row justify-center items-center mx-auto gap-20 overflow-y-auto;
 }
 
 h1 {
