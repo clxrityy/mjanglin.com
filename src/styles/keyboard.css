@@ -1,6 +1,6 @@
 .case {
-    background-color: #463973;
-    border-color: #2e2640;
+    background-color: #181819;
+    border-color: #26355563;
     border-radius: 5px;
     border-style: solid;
     border-width: 8px 10px 15px 10px;
@@ -14,7 +14,7 @@
   }
   
   .key {
-    border-color: #382e59 #2e2640;
+    border-color: #382e59 #252c414d;
     border-radius: 2px;
     border-style: solid;
     border-width: 3px 5px 8px 5px;

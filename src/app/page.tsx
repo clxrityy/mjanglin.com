@@ -1,5 +1,3 @@
-"use client";
-import Keyboard from "@/components/animations/Keyboard";
 import Contact from "@/components/misc/Contact";
 import Discord from "@/components/misc/Discord";
 import Hero from "@/components/misc/Hero";
@@ -9,7 +7,7 @@ import { Skeleton } from "@nextui-org/react";
 import { Suspense } from "react";
 
 
-export default function Home() {
+export default async function Home() {
 
   return (
     <main>
@@ -19,8 +17,8 @@ export default function Home() {
           <Contact />
           <Discord />
         </div>
-
       </div>
+      
       <div className="flex w-full mx-auto justify-center items-center mb-10">
         <Suspense fallback={<Skeleton />}>
           <ProjectsContainer projects={PROJECTS} />

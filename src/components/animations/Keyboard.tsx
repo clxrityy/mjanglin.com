@@ -10,15 +10,6 @@ export default function Keyboard() {
         setKey(e);
     }
 
-    useEffect(() => {
-        window.addEventListener("keydown", handleClick);
-        return () => {
-            window.removeEventListener("keydown", handleClick);
-        }
-    }, []);
-
-    console.log(key!.key)
-
 
 
     return <div className="case">
