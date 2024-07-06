@@ -9,7 +9,7 @@ type Props = {
 
 export default function ProjectsContainer({ projects, ...props }: Props) {
 
-    return <div {...props} className="w-full h-1/2 px-2 py-2 rounded-md mx-10">
+    return <div {...props} className="w-max h-1/2 px-10 py-5 rounded-md bg-gradient-to-bl">
         <div className="flex flex-col gap-6">
             <h1 className="text-3xl font-bold">project details</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">

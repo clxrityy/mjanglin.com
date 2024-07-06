@@ -24,12 +24,12 @@ html, body {
     overflow-y: scroll;
     scroll-behavior: smooth;
 
-    @apply h-screen w-screen;
+    @apply h-screen w-screen relative z-10;
 }
 
 main {
 
-  @apply w-full h-full xl:h-screen flex flex-col xl:flex-row justify-center items-center mx-auto gap-20 overflow-y-auto;
+  @apply w-full h-screen max-h-screen flex flex-col 2xl:flex-row justify-center items-center mx-auto gap-20 z-20 relative;
 }
 
 h1 {
@@ -74,6 +74,16 @@ input, textarea {
 
 code {
   @apply px-2 py-2 rounded-md overflow-scroll scroll-smooth;
+}
+
+.hero {
+  box-shadow: 5px 5px 75px #eeeeee5c;
+}
+
+.hero:hover {
+  box-shadow: 5px 5px 75px #eeeeee97;
+
+  @apply transition-all duration-500 ease-in-out;
 }
 
 /** 

@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   description: "Developer & Creator",
 }
 
+
+
 export default async function RootLayout({
   children,
 }: Readonly<{
