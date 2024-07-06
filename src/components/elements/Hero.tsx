@@ -10,7 +10,7 @@ export default function Hero() {
     return (
         <div className="w-full h-1/2 flex items-center justify-center">
             <div className="w-full h-1/3 flex items-center justify-center">
-                <div className="bg-gradient-to-br to-zinc-900 from-zinc-950 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-md hover:scale-105 transition-all duration-200 filter grayscale hover:grayscale-0 transition-transform-colors cursor-pointer hero">
+                <div className="bg-gradient-to-br to-zinc-900 from-zinc-950 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-md hover:scale-105 transition-all duration-200 filter grayscale hover:grayscale-0 transition-transform-colors cursor-pointer big-shadow">
                     <div className="flex justify-end w-full">
                         <p className="font-mono text-sm">
                             @cl<span className="underline underline-offset-4">x</span>rity

@@ -29,7 +29,7 @@ html, body {
 
 main {
 
-  @apply w-full h-screen max-h-screen flex flex-col 2xl:flex-row justify-center items-center mx-auto gap-20 z-20 relative;
+  @apply w-full h-screen max-h-screen flex flex-col 2xl:flex-row justify-center items-center mx-auto gap-10 z-20 relative my-20 2xl:my-0;
 }
 
 h1 {
@@ -76,12 +76,12 @@ code {
   @apply px-2 py-2 rounded-md overflow-scroll scroll-smooth;
 }
 
-.hero {
-  box-shadow: 5px 5px 75px #eeeeee5c;
+.big-shadow {
+  box-shadow: 5px 5px 85px #eeeeee5c;
 }
 
-.hero:hover {
-  box-shadow: 5px 5px 75px #eeeeee97;
+.big-shadow:hover {
+  box-shadow: 5px 5px 95px #eeeeee97;
 
   @apply transition-all duration-500 ease-in-out;
 }

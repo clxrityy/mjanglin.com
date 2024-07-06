@@ -8,10 +8,10 @@ const { icons } = configurations;
 export default function Project({ name, description, link, image, footer, github, tags, style }: ProjectParams) {
 
 
-    const gradient = style?.gradient_from && style?.gradient_to ? `bg-gradient-to-br from-${style.gradient_from} to-${style.gradient_to}` : "bg-gradient-to-br from-black to-purple-900/80";
+    const gradient = style?.gradient_from && style?.gradient_to ? `bg-gradient-to-br from-${style.gradient_from} to-${style.gradient_to}` : "bg-gradient-to-br from-purple-900/85 to-pink-950/60";
 
     return (
-        <Link href={link} className={`${gradient} px-4 py-4 rounded-lg shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5 border border-zinc-600 hover:border-zinc-500 filter grayscale hover:grayscale-0 transition-transform-colors`}>
+        <Link href={link} className={`${gradient} px-4 py-4 rounded-xl shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5 filter grayscale hover:grayscale-0 transition-transform-colors`}>
             <div className="flex flex-row md:flex-col xl:flex-row items-center justify-center gap-2">
                 <div className="flex flex-col items-center justify-center w-full gap-5">
                     <Link href={link} className="hover:scale-95 transition-all">
