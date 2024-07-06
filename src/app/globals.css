@@ -168,6 +168,8 @@ code {
 
 code {
   font-size: 0.9rem;
+
+  @apply font-mono tracking-widest font-light;
 }
 
 .blog-content b, strong {
@@ -229,7 +231,7 @@ code {
 
   .blog-content {
 
-    @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-4xl;
+    @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-5xl;
   }
 
 }

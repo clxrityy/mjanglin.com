@@ -1,9 +1,10 @@
-import { Nunito } from "next/font/google";
+import { Nunito_Sans, Red_Hat_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
 
-const nunito = Nunito({ subsets: ["latin"] });
+const nunito = Nunito_Sans({ subsets: ["latin"] });
+const redHatMono = Red_Hat_Mono({ subsets: ["latin"], variable: "--font-red-hat-mono", preload: true, fallback: ["arial"] });
 
 // export const metadata: Metadata = {
 //   title: "MJ Anglin",
@@ -35,11 +36,11 @@ export default async function RootLayout({
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="theme-color" content="currentColor" />
       </head>
-      <body className={nunito.className}>
-        <Providers>
+      <Providers>
+        <body className={`${nunito.className} ${redHatMono.variable}`}>
           {children}
-        </Providers>
-      </body>
+        </body>
+      </Providers>
     </html>
   );
 }
