@@ -4,9 +4,9 @@ import {
     CardContent,
     CardDescription,
     CardFooter,
-    CardTitle,
-    CardHeader
-} from "./ui/Card";
+    CardHeader,
+    CardTitle
+} from "../ui/Card";
 
 type Props = {
     data: CommandData;

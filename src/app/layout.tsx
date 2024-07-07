@@ -5,9 +5,9 @@ import { Metadata } from "next";
 import { parseUser } from "@/utils/parseUser";
 import { redirect } from "next/navigation";
 import { CONFIG } from "@/config";
-import UserIcon from "@/components/layout/UserIcon";
-import Footer from "@/components/layout/Footer";
-import HomeIcon from "@/components/layout/HomeIcon";
+import UserIcon from "@/components/misc/UserIcon";
+import Footer from "@/components/layers/Footer";
+import HomeIcon from "@/components/misc/HomeIcon";
 import { Suspense } from "react";
 import Loading from "./loading";
 

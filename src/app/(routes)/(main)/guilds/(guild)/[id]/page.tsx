@@ -1,4 +1,4 @@
-import Birthday from "@/components/Birthday";
+import Birthday from "@/components/elements/Birthday";
 import { fetchGuild, getGuildAvatar } from "@/data/util/functions/guild";
 import { fetchUser } from "@/data/util/functions/user";
 import { getZodiacSign } from "@/data/util/resources/signs";

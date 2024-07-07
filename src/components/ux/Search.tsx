@@ -1,11 +1,11 @@
 "use client";
 
 import { CommandData } from "@/types/interactions";
-import { ChangeEvent, useState } from "react";
-import SearchList from "./SearchList";
-import Scroll from "../ui/Scroll";
-import Command from "../Command";
 import Link from "next/link";
+import { ChangeEvent, useState } from "react";
+import Command from "../elements/Command";
+import Scroll from "../ui/Scroll";
+import SearchList from "./SearchList";
 
 
 export default function Search({ commands }: { commands: CommandData[] }) {

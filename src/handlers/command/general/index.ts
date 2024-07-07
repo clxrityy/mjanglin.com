@@ -7,10 +7,11 @@ import { birthdayWishSend, birthdayWishList } from "./birthday/wish";
 import avatarHandler from "./misc/avatar";
 import helpHandler from "./help";
 import astrologyCompatibilityHandler from "./astrology/compatibility";
+import holidays from "./holidays";
 
 export {
     astrologySignHandler, birthdayCountdown, birthdaySet,
     birthdayView, astrologyHoroscopeHandler,
     birthdayWishSend, birthdayWishList,
-    avatarHandler, helpHandler, astrologyCompatibilityHandler
+    avatarHandler, helpHandler, astrologyCompatibilityHandler, holidays
 };

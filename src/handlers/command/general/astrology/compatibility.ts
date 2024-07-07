@@ -72,7 +72,7 @@ export default async function astrologyCompatibilityHandler(userId: string, guil
                     try {
                         const timeLeft = await cooldown.checkCooldown(userId, guildId, "compatibility");
 
-                        if (timeLeft === 0) {
+                        if (timeLeft <= 0) {
                             await cooldown.setCooldown(userId, guildId);
 
                             const compatibility = await ai.compatibilityQuery({
@@ -82,7 +82,7 @@ export default async function astrologyCompatibilityHandler(userId: string, guil
                                 zodiacSign2: userTwoZodiacSign.name
                             });
 
-                            console.log(compatibility);
+                            console.log(compatibility); //
 
                             if (compatibility) {
                                 embed = {

@@ -1,4 +1,4 @@
-import Guild from "@/components/Guild";
+import Guild from "@/components/elements/Guild";
 import MainButton from "@/components/ui/MainButton";
 import { CONFIG } from "@/config";
 import { db } from "@/lib/db";
