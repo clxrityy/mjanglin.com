@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 
 export async function checkMember(id: string, guildId: string): Promise<boolean | void> {
-    let member: any = await db.member.findFirst({
+    let member = await db.member.findFirst({
         where: {
             userId: id,
             guilds: {

@@ -60,11 +60,7 @@ export async function POST(req: Request) {
 
         let embed: EmbedType;
 
-        try {
-            await checkMember(interaction.member!.user!.id, interaction.guild_id!);
-        } catch (e) {
-            console.error(e);
-        }
+        await checkMember(interaction.member!.user!.id, interaction.guild_id!).catch(e => console.error(e));
 
         switch (name) {
             // /ping
