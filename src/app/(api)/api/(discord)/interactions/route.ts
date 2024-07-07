@@ -309,6 +309,20 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
+            
+            // /holidays
+            case commands.holidays.name:
+
+                embed = await generalCommandHandlers.holidays(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
+                    }
+                })
 
             default:
                 return NextResponse.json({

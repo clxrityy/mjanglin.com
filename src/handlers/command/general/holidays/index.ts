@@ -171,11 +171,13 @@ export default async function holidays(userId: string, guildId: string, options?
                 description: `You are on cooldown for this command! Please wait **${Math.round(timeLeft * 0.001)}** more seconds.`
             }
         }
-        return embed;
     } catch (e: any) {
         embed = {
             ...EMBEDS.error,
             description: `**An error occured:**\n\n\`\`\`json\n${JSON.stringify(e, null, 2)}\`\`\``
         }
+
     }
+
+    return embed;
 }
