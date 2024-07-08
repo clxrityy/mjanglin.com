@@ -83,7 +83,7 @@ export default async function holidays(userId: string, guildId: string, options?
                                 },
                                 {
                                     name: "Holidays",
-                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date}\``).join("\n") || "No holidays found",
+                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date.split("-")[1]}/${holiday.date.split("-")[2]}\``).join("\n") || "No holidays found",
                                     inline: true
                                 }
                             ],
@@ -98,7 +98,7 @@ export default async function holidays(userId: string, guildId: string, options?
                             fields: [
                                 {
                                     name: "Holidays",
-                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date}\``).join("\n") || "No holidays found",
+                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date.split("-")[1]}/${holiday.date.split("-")[2]}\``).join("\n") || "No holidays found",
                                 }
                             ],
                             footer: {
@@ -144,7 +144,7 @@ export default async function holidays(userId: string, guildId: string, options?
                                 },
                                 {
                                     name: "Holidays",
-                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date}\``).join("\n") || "No holidays found",
+                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date.split("-")[1]}/${holiday.date.split("-")[2]}\``).join("\n") || "No holidays found",
                                     inline: true
                                 }
                             ],
@@ -159,7 +159,7 @@ export default async function holidays(userId: string, guildId: string, options?
                             fields: [
                                 {
                                     name: "Holidays",
-                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date}\``).join("\n") || "No holidays found",
+                                    value: holidays.map((holiday) => `- ${holiday.name} — \`${holiday.date.split("-")[1]}/${holiday.date.split("-")[2]}\``).join("\n") || "No holidays found",
                                 }
                             ]
                         }
