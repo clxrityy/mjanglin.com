@@ -64,8 +64,6 @@ export default async function holidays(userId: string, guildId: string, options?
         
                     holidays = await holidayApi({ country: country, year: 2023, month: month });
                 }
-
-                console.log(birthdays, holidays) // Debugging
         
                 if (holidays.length) {
                     if (birthdays.length) {

@@ -311,6 +311,8 @@ export async function POST(req: Request) {
 
                 embed = await generalCommandHandlers.holidays(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
 
+                console.log(embed) // TODO: Remove
+
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
                     data: {
