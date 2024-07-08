@@ -64,6 +64,8 @@ export default async function holidays(userId: string, guildId: string, options?
         
                     holidays = await holidayApi({ country: country, year: 2023, month: month });
                 }
+
+                console.log(birthdays, holidays) // Debugging
         
                 if (holidays.length) {
                     if (birthdays.length) {
@@ -174,7 +176,7 @@ export default async function holidays(userId: string, guildId: string, options?
     } catch (e: any) {
         embed = {
             ...EMBEDS.error,
-            description: `**An error occured:**\n\n\`\`\`json\n${JSON.stringify(e, null, 2)}\`\`\``
+            description: `\`\`\`json\n${JSON.stringify(e, null, 2)}\`\`\``
         }
 
     }
