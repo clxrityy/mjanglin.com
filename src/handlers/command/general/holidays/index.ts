@@ -49,7 +49,9 @@ export default async function holidays(userId: string, guildId: string, options?
                         }
                     });
         
-                    holidays = await holidayApi({ country: country, year: 2023, month: month, day: day });
+                    holidays = await holidayApi({ country: country, year: 2023, month: month, day: day - 1 });
+
+                    holidays = holidays.filter((holiday) => Number(holiday.date.split("-")[1]) == month && Number(holiday.date.split("-")[2]) == day);
                 } else {
                     day = new Date().getDate();
                     birthdays = await db.birthday.findMany({
@@ -64,7 +66,8 @@ export default async function holidays(userId: string, guildId: string, options?
                         }
                     });
         
-                    holidays = await holidayApi({ country: country, year: 2023, month: month, day: day });
+                    holidays = await holidayApi({ country: country, year: 2023, month: month, day: day - 1 });
+                    holidays = holidays.filter((holiday) => Number(holiday.date.split("-")[1]) == month && Number(holiday.date.split("-")[2]) == day);
                 }
         
                 if (holidays.length) {
@@ -125,7 +128,8 @@ export default async function holidays(userId: string, guildId: string, options?
                     }
                 });
         
-                holidays = await holidayApi({ country: country, year: 2023, month: month, day: day });
+                holidays = await holidayApi({ country: country, year: 2023, month: month, day: day - 1 });
+                holidays = holidays.filter((holiday) => Number(holiday.date.split("-")[1]) == month && Number(holiday.date.split("-")[2]) == day);
         
                 if (holidays.length) {
                     if (birthdays.length) {
