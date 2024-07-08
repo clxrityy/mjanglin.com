@@ -12,8 +12,8 @@ export default async function holidays(userId: string, guildId: string, options?
 
     const cooldown = COOLDOWNS.holidays;
 
-    let month;
-    let day;
+    let month = new Date().getMonth() + 1;
+    let day = new Date().getDate();
     let birthdays = [];
     let holidays = [];
     let country = "US";
