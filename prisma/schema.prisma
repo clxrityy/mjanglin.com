@@ -13,8 +13,8 @@ model User {
   userId       String     @unique
   accessToken  String     @unique
   refreshToken String     @unique
-  guilds       Guild[]
   cooldowns    Cooldown[]
+  guilds       Guild[]
   members      Member[]
 }
 
@@ -34,8 +34,8 @@ model Guild {
   adminRoleId String?
   cooldowns   Cooldown[]
   user        User       @relation(fields: [userId], references: [id])
-  members     Member[]
   wishes      Wish[]
+  members     Member[]   @relation("GuildToMember")
 }
 
 model Cooldown {
@@ -44,16 +44,16 @@ model Cooldown {
   guildId   String
   command   String
   createdAt DateTime @default(now())
-  expiresAt DateTime @default(dbgenerated("now() + interval '1 minute'"))
+  expiresAt DateTime @default(dbgenerated("(now() + '00:01:00'::interval)"))
   guild     Guild    @relation(fields: [guildId], references: [id])
-  user      User?    @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model Member {
   id     String  @id @default(uuid())
   userId String
-  user   User?   @relation(fields: [userId], references: [id])
-  guilds Guild[]
+  user   User    @relation(fields: [userId], references: [id])
+  guilds Guild[] @relation("GuildToMember")
 }
 
 model Wish {
@@ -62,6 +62,25 @@ model Wish {
   guildId      String
   targetUserId String
   message      String
-  guild        Guild? @relation(fields: [guildId], references: [id])
-  year         Int @default(2024)
+  year         Int    @default(2024)
+  guild        Guild  @relation(fields: [guildId], references: [id])
+}
+
+model SleepData {
+  id        String    @id
+  userId    String
+  date      DateTime
+  duration  Int
+  SleepUser SleepUser @relation(fields: [userId], references: [userId])
+}
+
+model SleepUser {
+  id        String      @id
+  userId    String      @unique
+  username  String
+  avatar    String      @default("https://cdn.discordapp.com/attachments/1020419727731986613/1257156315466174526/default_clock.png?ex=6683618e&is=6682100e&hm=3149313c2ed7e676c5dffe39f2461c0d9f85f882564a208c404ff31905ee4b72&")
+  updatedAt DateTime    @default(now())
+  createdAt DateTime    @default(now())
+  sessionId String
+  SleepData SleepData[]
 }
