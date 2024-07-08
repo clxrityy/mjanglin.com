@@ -51,9 +51,11 @@ export default async function holidays(userId: string, guildId: string, options?
         
                     holidays = await holidayApi({ country: country, year: 2023, month: month, day: day });
                 } else {
+                    day = new Date().getDate();
                     birthdays = await db.birthday.findMany({
                         where: {
                             month: month,
+                            day: day,
                             guildId: guildId
                         },
                         cacheStrategy: {
@@ -62,7 +64,7 @@ export default async function holidays(userId: string, guildId: string, options?
                         }
                     });
         
-                    holidays = await holidayApi({ country: country, year: 2023, month: month });
+                    holidays = await holidayApi({ country: country, year: 2023, month: month, day: day });
                 }
         
                 if (holidays.length) {
