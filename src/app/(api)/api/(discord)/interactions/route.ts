@@ -204,7 +204,9 @@ export async function POST(req: Request) {
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
                                     data: {
-                                        embeds: [embed]
+                                        embeds: [
+                                            JSON.parse(JSON.stringify(embed))
+                                        ]
                                     }
                                 });
                             case "admin_role":
@@ -213,7 +215,31 @@ export async function POST(req: Request) {
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
                                     data: {
-                                        embeds: [embed]
+                                        embeds: [
+                                            JSON.parse(JSON.stringify(embed))
+                                        ]
+                                    }
+                                });
+                            case "birthday_role":
+                                embed = await adminCommandHandlers.birthdayRoleConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+
+                                return NextResponse.json({
+                                    type: InteractionResponseType.ChannelMessageWithSource,
+                                    data: {
+                                        embeds: [
+                                            JSON.parse(JSON.stringify(embed))
+                                        ]
+                                    }
+                                });
+                            case "birthday_message":
+                                embed = await adminCommandHandlers.birthdayMessageConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+
+                                return NextResponse.json({
+                                    type: InteractionResponseType.ChannelMessageWithSource,
+                                    data: {
+                                        embeds: [
+                                            JSON.parse(JSON.stringify(embed))
+                                        ]
                                     }
                                 });
                         }
@@ -225,7 +251,9 @@ export async function POST(req: Request) {
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
-                                embeds: [embed]
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
                             }
                         });
                     default:
@@ -311,7 +339,19 @@ export async function POST(req: Request) {
 
                 embed = await generalCommandHandlers.holidays(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
 
-                console.log(embed) // TODO: Remove
+                return NextResponse.json({
+                    type: InteractionResponseType.ChannelMessageWithSource,
+                    data: {
+                        embeds: [
+                            JSON.parse(JSON.stringify(embed))
+                        ]
+                    }
+                });
+            
+            // /hbd
+
+            case commands.hbd.name:
+                embed = await adminCommandHandlers.hbdHandler(interaction.member!.user.id, interaction.guild_id!);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -320,7 +360,7 @@ export async function POST(req: Request) {
                             JSON.parse(JSON.stringify(embed))
                         ]
                     }
-                })
+                });
 
             default:
                 return NextResponse.json({

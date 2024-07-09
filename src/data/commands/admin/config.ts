@@ -29,6 +29,18 @@ const CONFIG_COMMAND: ApplicationCommand = {
                     type: ApplicationCommandOptionType.Role,
                     required: false
                 },
+                {
+                    name: "birthday_role",
+                    description: "The role to give to users on their birthday",
+                    type: ApplicationCommandOptionType.Role,
+                    required: false
+                },
+                {
+                    name: "birthday_message",
+                    description: "The message to send when it's someone's birthday (use {user} for the user's mention)",
+                    type: ApplicationCommandOptionType.String,
+                    required: false
+                }
             ]
         }
     ]

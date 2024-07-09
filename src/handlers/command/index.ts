@@ -1,6 +1,6 @@
 import { astrologySignHandler, astrologyHoroscopeHandler, birthdayCountdown, birthdaySet, birthdayView, birthdayWishList, birthdayWishSend, avatarHandler, helpHandler, astrologyCompatibilityHandler, holidays } from "./general";
 
-import { adminRoleConfigHandler, changeableConfigHandler, viewConfigHandler, embedHandler } from "./admin";
+import { adminRoleConfigHandler, changeableConfigHandler, viewConfigHandler, embedHandler, birthdayRoleConfigHandler, birthdayMessageConfigHandler, hbdHandler } from "./admin";
 
 const generalCommandHandlers = {
     astrologySignHandler, birthdayCountdown, birthdaySet,
@@ -12,7 +12,7 @@ const adminCommandHandlers = {
     viewConfigHandler,
     changeableConfigHandler,
     adminRoleConfigHandler,
-    embedHandler
+    embedHandler, birthdayRoleConfigHandler, birthdayMessageConfigHandler, hbdHandler
 }
 
 export {

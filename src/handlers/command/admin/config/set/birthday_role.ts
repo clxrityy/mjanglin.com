@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 
-export default async function adminRoleConfigHandler(roleId: string, userId: string, guildId: string): Promise<EmbedType> {
+export default async function birthdayRoleConfigHandler(roleId: string, userId: string, guildId: string): Promise<EmbedType> {
     let embed: EmbedType = EMBEDS.error;
 
     const existingGuild = await db.guild.findUnique({
@@ -23,7 +23,6 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
     const member = (await getGuildMembers(guildId)).find(m => m.user?.id === userId);
 
     if (existingGuild) {
-
         if (existingGuild.user.userId === userId) {
             try {
                 await db.guild.update({
@@ -31,13 +30,13 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
                         guildId: guildId
                     },
                     data: {
-                        adminRoleId: roleId
+                        birthdayRoleId: roleId
                     }
                 });
 
                 embed = {
                     color: Colors.GREEN,
-                    description: `Configuration updated!\n\n**Admin role:** <@&${roleId}>`,
+                    description: `Configuration updated!\n\n**Birthday role:** <@&${roleId}>`,
                     footer: {
                         text: "/config view"
                     }
@@ -67,13 +66,13 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
                                     guildId: guildId
                                 },
                                 data: {
-                                    adminRoleId: roleId
+                                    birthdayRoleId: roleId
                                 }
                             });
 
                             embed = {
                                 color: Colors.GREEN,
-                                description: `Configuration updated!\n\n**Admin role:** <@&${roleId}>`,
+                                description: `Configuration updated!\n\n**Birthday role:** <@&${roleId}>`,
                                 footer: {
                                     text: "/config view"
                                 }
@@ -88,11 +87,16 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
                     } else {
                         embed = {
                             color: Colors.RED,
-                            description: `You must have the admin role to change this configuration. (<@&${existingGuild.adminRoleId}>)`
+                            description: `You must have the admin role to change this configuration. (<@&${existingGuild.adminRoleId}>)`,
                         }
                     }
                 }
             }
+        }
+    } else {
+        embed = {
+            color: Colors.RED,
+            description: "No configuration found for this server."
         }
     }
 

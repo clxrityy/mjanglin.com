@@ -31,7 +31,7 @@ export async function getGuildAvatar(guild: Guild): Promise<string> {
     return guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png` : "/placeholder-discord.png";
 }
 
-export async function getGuildRoles(guildId: string): Promise<GuildRole[]> {
+export async function getGuildRoles(guildId: string): Promise<string[]> {
     const apiUrl = CONFIG.URLS.DISCORD_API_BASE_URL + `/guilds/${guildId}/roles`;
 
     try {
@@ -41,7 +41,7 @@ export async function getGuildRoles(guildId: string): Promise<GuildRole[]> {
             }
         });
 
-        const roles = JSON.parse(JSON.stringify(await response.json())) as GuildRole[];
+        const roles = JSON.parse(JSON.stringify(await response.json())) as string[];
 
         return roles;
     } catch (e: any) {

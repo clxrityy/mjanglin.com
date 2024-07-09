@@ -26,6 +26,10 @@ export default async function embedHandler(userId: string, guildId: string, opti
     const guild = await db.guild.findFirst({
         where: {
             guildId: guildId
+        },
+        cacheStrategy: {
+            ttl: 60,
+            swr: 60,
         }
     });
 

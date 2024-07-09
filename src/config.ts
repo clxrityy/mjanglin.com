@@ -34,5 +34,8 @@ export const CONFIG = {
         GITHUB: FaGithub,
         INVITE: FaUserPlus,
         COMMANDS: RiSlashCommands2,
+    },
+    DEFAULTS: {
+        HBD_MESSAGE: "Happy Birthday {user}! 🎉",
     }
 }

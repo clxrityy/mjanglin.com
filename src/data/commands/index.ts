@@ -15,6 +15,7 @@ import HELP_COMMAND from "./help";
 import COMPATIBILITY_COMMAND from "./astrology/compatibility";
 import EMBED_COMMAND from "./misc/embed";
 import HOLIDAYS_COMMAND from "./holidays";
+import HBD_COMMAND from "./admin/hbd";
 
 export const commands = {
     ping: PING_COMMAND,
@@ -26,5 +27,6 @@ export const commands = {
     help: HELP_COMMAND,
     compatibility: COMPATIBILITY_COMMAND,
     embed: EMBED_COMMAND,
-    holidays: HOLIDAYS_COMMAND
+    holidays: HOLIDAYS_COMMAND,
+    hbd: HBD_COMMAND,
 } as const;
