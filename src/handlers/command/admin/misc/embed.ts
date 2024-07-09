@@ -54,42 +54,48 @@ export default async function embedHandler(userId: string, guildId: string, opti
                     icon_url: footerIcon && footerIcon
                 },
             }
-        }
-        embed = {
-            ...EMBEDS.error,
-            description: "You do not have the required role to use this command.",
-        }
-    } else {
-        if (guild && guild.userId) {
-            if (guild.userId === userId) {
-                embed = {
-                    color: color || Colors.DEFAULT,
-                    title: title && title,
-                    description: description && description,
-                    url: url && url,
-                    image: {
-                        url: image && image
-                    },
-                    thumbnail: {
-                        url: thumbnail && thumbnail
-                    },
-                    author: {
-                        name: author && author,
-                        icon_url: authorIcon && authorIcon,
-                        url: authorUrl && authorUrl
-                    },
-                    footer: {
-                        text: footer && footer,
-                        icon_url: footerIcon && footerIcon
-                    },
+        } else {
+            if (guild && guild.userId) {
+                if (guild.userId === userId) {
+                    embed = {
+                        color: color || Colors.DEFAULT,
+                        title: title && title,
+                        description: description && description,
+                        url: url && url,
+                        image: {
+                            url: image && image
+                        },
+                        thumbnail: {
+                            url: thumbnail && thumbnail
+                        },
+                        author: {
+                            name: author && author,
+                            icon_url: authorIcon && authorIcon,
+                            url: authorUrl && authorUrl
+                        },
+                        footer: {
+                            text: footer && footer,
+                            icon_url: footerIcon && footerIcon
+                        },
+                    }
+    
+                } else {
+                    embed = {
+                        ...EMBEDS.error,
+                        description: "You do not have the required role to use this command.",
+                    }
                 }
-
             } else {
                 embed = {
                     ...EMBEDS.error,
                     description: "You do not have the required role to use this command.",
                 }
             }
+        }
+    } else {
+        embed = {
+            ...EMBEDS.error,
+            description: "You do not have the required role to use this command.",
         }
     }
 
