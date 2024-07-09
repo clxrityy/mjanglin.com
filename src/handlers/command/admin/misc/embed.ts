@@ -1,7 +1,7 @@
 import { getGuildMembers } from "@/data/util/functions/guild";
 import { EMBEDS } from "@/data/util/resources/embeds";
 import { db } from "@/lib/db";
-import { Colors } from "@/types/constants";
+import { Colors, PERMISSIONS } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 
@@ -29,7 +29,9 @@ export default async function embedHandler(userId: string, guildId: string, opti
         }
     });
 
-    if (member?.permissions && member?.permissions.includes("MANAGE_GUILD")) {
+    console.log(member?.permissions) // debug
+
+    if (member?.permissions && member?.permissions.includes(PERMISSIONS.MANAGE_GUILD.toString())) {
         embed = {
             color: color || Colors.DEFAULT,
             title: title && title,
