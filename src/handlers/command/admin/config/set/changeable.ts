@@ -66,7 +66,7 @@ export default async function changeableConfigHandler(optionValue: boolean, user
                     embed = EMBEDS.error;
                 }
 
-                const memberRoles = member?.roles.map(r => r.id);
+                const memberRoles = member?.roles.map(r => r);
 
                 if (memberRoles?.includes(existingGuild.adminRoleId) || member?.permissions.includes("ADMINISTRATOR")) {
                     try {

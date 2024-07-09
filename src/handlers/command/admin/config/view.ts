@@ -84,7 +84,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                 }
             } 
         } else {
-            if (member?.roles.some(role => role.id === existingGuild.adminRoleId)) {
+            if (member?.roles.some(role => role === existingGuild.adminRoleId)) {
                 const settings: GuildSettings = {
                     guildId: existingGuild.guildId,
                     userId: existingGuild.userId,

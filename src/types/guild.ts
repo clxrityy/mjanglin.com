@@ -37,7 +37,7 @@ export type GuildMember = {
         flags?: number;
     };
     nick: string | null;
-    roles: GuildRole[];
+    roles: string[];
     joined_at: string;
     premium_since: string | null;
     deaf: boolean;

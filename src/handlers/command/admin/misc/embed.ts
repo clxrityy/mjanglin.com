@@ -29,10 +29,8 @@ export default async function embedHandler(userId: string, guildId: string, opti
         }
     });
 
-    console.log(member?.roles); // debug
-
     if (guild && guild.adminRoleId) {
-        if (member?.roles.find(({ id }) => id === guild.adminRoleId)) {
+        if (member?.roles.find((role) => role === guild.adminRoleId)) {
             embed = {
                 color: color || Colors.DEFAULT,
                 title: title && title,
