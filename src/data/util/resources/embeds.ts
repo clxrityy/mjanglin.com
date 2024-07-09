@@ -33,7 +33,7 @@ export const EMBEDS = {
             url: "https://hbd.mjanglin.com"
         },
         color: Colors.BLUE,
-        description: `<:slash_command:1256631341357989928> [**COMMANDS**](https://hbd.mjanglin.com/commands)\n\n <:discord:1256631317915762700> [**SUPPORT**](https://discord.gg/n65AVpTFNf)\n<:github:1256631319312601099> [**GITHUB**](https://github.com/clxrityy/mjanglin.com/tree/hbd)\n\n⚖️ [**Terms of Service**](https://hbd.mjanglin.com/terms-of-service)\n⚖️ [**Privacy Policy**](https://hbd.mjanglin.com/terms-of-service#privacy-policy)`,
+        description: `<:slash_command:1256631341357989928> [**COMMANDS**](https://hbd.mjanglin.com/commands)\n\n <:discord:1256631317915762700> [**SUPPORT**](https://discord.gg/n65AVpTFNf)\n<:github:1256631319312601099> [**GITHUB**](https://github.com/clxrityy/mjanglin.com/tree/hbd)\n\n⚖️ [**Terms of Service**](https://hbd.mjanglin.com/terms-of-service)| ⚖️ [**Privacy Policy**](https://hbd.mjanglin.com/terms-of-service#privacy-policy)`,
         footer: {
             text: `/help [command]`,
         }
