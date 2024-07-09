@@ -1,7 +1,7 @@
 import { getGuildMembers } from "@/data/util/functions/guild";
 import { EMBEDS } from "@/data/util/resources/embeds";
 import { db } from "@/lib/db";
-import { Colors, PERMISSIONS } from "@/types/constants";
+import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
 import { InteractionOption } from "@/types/interactions";
 
@@ -29,33 +29,38 @@ export default async function embedHandler(userId: string, guildId: string, opti
         }
     });
 
-    console.log(member?.permissions) // debug
 
-    if (member?.permissions && member?.permissions.includes(PERMISSIONS.MANAGE_GUILD.toString())) {
+    if (guild && guild.adminRoleId) {
+        if (member?.roles.find(({ id }) => id === guild.adminRoleId)) {
+            embed = {
+                color: color || Colors.DEFAULT,
+                title: title && title,
+                description: description && description,
+                url: url && url,
+                image: {
+                    url: image && image
+                },
+                thumbnail: {
+                    url: thumbnail && thumbnail
+                },
+                author: {
+                    name: author && author,
+                    icon_url: authorIcon && authorIcon,
+                    url: authorUrl && authorUrl
+                },
+                footer: {
+                    text: footer && footer,
+                    icon_url: footerIcon && footerIcon
+                },
+            }
+        }
         embed = {
-            color: color || Colors.DEFAULT,
-            title: title && title,
-            description: description && description,
-            url: url && url,
-            image: {
-                url: image && image
-            },
-            thumbnail: {
-                url: thumbnail && thumbnail
-            },
-            author: {
-                name: author && author,
-                icon_url: authorIcon && authorIcon,
-                url: authorUrl && authorUrl
-            },
-            footer: {
-                text: footer && footer,
-                icon_url: footerIcon && footerIcon
-            },
+            ...EMBEDS.error,
+            description: "You do not have the required role to use this command.",
         }
     } else {
-        if (guild && guild.adminRoleId) {
-            if (member?.roles.find(({ id }) => id === guild.adminRoleId)) {
+        if (guild && guild.userId) {
+            if (guild.userId === userId) {
                 embed = {
                     color: color || Colors.DEFAULT,
                     title: title && title,
@@ -77,18 +82,15 @@ export default async function embedHandler(userId: string, guildId: string, opti
                         icon_url: footerIcon && footerIcon
                     },
                 }
-            }
-        }
 
-        embed = {
-            ...EMBEDS.error,
-            description: "You do not have the required permissions to use this command.",
-            footer: {
-                text: "Required permission: MANAGE_GUILD"
+            } else {
+                embed = {
+                    ...EMBEDS.error,
+                    description: "You do not have the required role to use this command.",
+                }
             }
         }
     }
-
 
     return embed;
 }
