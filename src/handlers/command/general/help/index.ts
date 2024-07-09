@@ -105,6 +105,14 @@ export default async function helpHandler(userId: string, guildId: string, optio
                     description: `${commands.embed.description}`,
                 }
                 break;
+            case commands.holidays.name:
+                embed = {
+                    title: "/holidays",
+                    color: Colors.GREY,
+                    description: `${commands.holidays.description}`,
+                }
+                break;
+            
             default:
                 embed = EMBEDS.help;
         }

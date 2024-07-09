@@ -3,7 +3,7 @@ import { ApplicationCommandOptionType } from "discord-api-types/v10";
 
 const EMBED_COMMAND: ApplicationCommand = {
     name: "embed",
-    description: "Send an embed message (requires MANGE_GUILD permission)",
+    description: "Send an embed message (requires admin role)",
     options: [
         {
             name: "color",
