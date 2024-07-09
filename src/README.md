@@ -137,3 +137,5 @@ Defined values for external libraries to be utilized throughout the application.
 
 - [`db.ts`](/src/lib/db.ts) - [Prisma](https://www.prisma.io/) client
 - [`openai.ts`](./lib/openai.ts) - [OpenAI](https://openai.com/) object
+- [`holidayApi.ts`](./lib/holidayApi.ts) - [Holiday API](https://holidayapi.com/) API
+- [`utils.ts`](./lib/utils.ts) - [ui.shadcn](https://ui.shadcn.com/docs/installation/next) utils for UI
