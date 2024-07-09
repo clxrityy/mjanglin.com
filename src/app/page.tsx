@@ -28,7 +28,7 @@ export default async function Page() {
             <div className="flex justify-center items-center flex-col gap-10">
                 <div className="flex flex-row items-center justify-center gap-5">
                     <h1 className="text-[#F69FC2]">hbd</h1>
-                    <Image src="/apple-touch-icon.png" alt="hbd" width={64} height={64} />
+                    <Image src="/apple-touch-icon.png" alt="hbd" width={64} height={64} className="animate-spin-slow" />
                 </div>
                 <div className="flex items-center justify-center flex-col gap-2">
                     <h3>

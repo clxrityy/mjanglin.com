@@ -4,8 +4,8 @@
 
 :root {
   --foreground-rgb: 230, 230, 230;
-  --background-start-rgb: 5, 5, 5;
-  --background-end-rgb: 1, 1, 10;
+  --background-start-rgb: 10, 5, 10;
+  --background-end-rgb: 12, 1, 28;
 }
 
 html, body {
@@ -29,7 +29,7 @@ html, body {
 
 main {
 
-  @apply w-screen min-h-screen flex flex-col items-center mx-auto overflow-y-scroll my-10;
+  @apply w-screen min-h-screen flex flex-col items-center mx-auto overflow-y-scroll my-10 justify-center md:justify-normal md:my-40;
 }
 
 h1 {
@@ -78,6 +78,14 @@ input, textarea {
   table-layout: fixed;
 }
 
+@keyframes spin {
+  to {
+      transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin 9s linear infinite;
+}
 
 @layer base {
   :root {
