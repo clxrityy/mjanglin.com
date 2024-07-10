@@ -63,8 +63,8 @@ export default async function helpHandler(userId: string, guildId: string, optio
                         },
                         {
                             name: "set",
-                            value: `Set the bot's configurations\n\`/config set changeable [true/false]\`\n\`/config set admin_role [role]\``
-                        }
+                            value: `Set the bot's configurations\n\`/config set changeable [true/false]\`\n\`/config set admin_role [@role]\`\n\`/config set birthday_role [@role]\n\`/config set birthday_message ["message"]\`\``
+                        },
                     ],
                     footer: {
                         text: `ADMIN ONLY`
