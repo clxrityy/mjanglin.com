@@ -103,6 +103,9 @@ export default async function helpHandler(userId: string, guildId: string, optio
                     title: "/embed",
                     color: Colors.RED,
                     description: `${commands.embed.description}`,
+                    footer: {
+                        text: `ADMIN ONLY`
+                    }
                 }
                 break;
             case commands.holidays.name:
@@ -118,6 +121,9 @@ export default async function helpHandler(userId: string, guildId: string, optio
                     title: "/hbd",
                     color: Colors.RED,
                     description: `${commands.hbd.description}`,
+                    footer: {
+                        text: `ADMIN ONLY`
+                    }
                 }
                 break;
             
