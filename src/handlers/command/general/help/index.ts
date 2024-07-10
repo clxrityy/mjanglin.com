@@ -101,7 +101,7 @@ export default async function helpHandler(userId: string, guildId: string, optio
             case commands.embed.name:
                 embed = {
                     title: "/embed",
-                    color: Colors.GREY,
+                    color: Colors.RED,
                     description: `${commands.embed.description}`,
                 }
                 break;
@@ -110,6 +110,14 @@ export default async function helpHandler(userId: string, guildId: string, optio
                     title: "/holidays",
                     color: Colors.GREY,
                     description: `${commands.holidays.description}`,
+                }
+                break;
+            
+            case commands.hbd.name:
+                embed = {
+                    title: "/hbd",
+                    color: Colors.RED,
+                    description: `${commands.hbd.description}`,
                 }
                 break;
             
