@@ -10,6 +10,7 @@ import Footer from "@/components/layers/Footer";
 import HomeIcon from "@/components/misc/HomeIcon";
 import { Suspense } from "react";
 import Loading from "./loading";
+import Stars from "@/components/layers/Stars";
 
 export const metadata: Metadata = {
   title: "hbd",
@@ -56,6 +57,7 @@ export default async function RootLayout({
       <Providers>
         <Suspense fallback={<Loading />}>
           <body className={`${FONTS.nunito.variable} ${FONTS.roboto.variable} dark`}>
+            <Stars />
             <HomeIcon />
             <UserIcon userId={user.id} />
             {children}
