@@ -10,7 +10,7 @@ export default function CommandsLayout({ children }: Readonly<{
 }>) {
 
     return <main>
-        <div className="mx-auto py-10">
+        <div className="mx-auto">
             {children}
         </div>
     </main>

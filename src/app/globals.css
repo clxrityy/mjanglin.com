@@ -33,7 +33,7 @@ main {
 }
 
 h1 {
-  text-shadow: 2px 0px 8px rgb(247, 0, 13, 0.55);
+  text-shadow: 2px 0px 8px rgba(100, 100, 255);
   font-size: 4rem;
   font-weight: 800;
   
@@ -69,7 +69,9 @@ input, textarea {
   padding: 0.5rem;
   border-radius: 0.5rem;
 
-  @apply text-black bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full;
+  box-shadow: 2.5px 4px 8px rgb(87, 100, 244);
+
+  @apply text-black bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full placeholder:text-zinc-600/75;
 }
 
 .command table {
@@ -85,6 +87,33 @@ input, textarea {
 }
 .animate-spin-slow {
   animation: spin 9s linear infinite;
+}
+
+.box-shadow-btn {
+  box-shadow: 0px 5px 8px rgba(100, 100, 200);
+}
+
+.box-shadow-btn:hover {
+  box-shadow: none;
+  transition: all 0.3s;
+}
+
+.box-shadow-box {
+  box-shadow: 0px 5px 8px rgb(75, 140, 209);
+}
+
+.box-shadow-box:hover {
+  box-shadow: none;
+  transition: all 0.3s;
+}
+
+.box-shadow-box-important {
+  box-shadow: 0px 2.5px 8px rgba(100, 200, 200);
+}
+
+.box-shadow-box-important:hover {
+  box-shadow: none;
+  transition: all 0.3s;
 }
 
 @layer base {

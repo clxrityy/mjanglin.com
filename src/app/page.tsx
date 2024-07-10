@@ -68,7 +68,7 @@ export default async function Page() {
                             {userGuilds?.guilds.map((guild) => (
                                 <Guild key={guild.guildId} {...guild} />
                             ))}
-                            <Link href={CONFIG.URLS.INVITE_URL} className="px-4 py-4 text-4xl border rounded-md flex items-center justify-center hover:scale-95 transition-all shadow hover:opacity-90 hover:text-emerald-400 hover:border-emerald-400 font-extrabold hover:bg-emerald-400/15" aria-label="Add to guild">
+                            <Link href={CONFIG.URLS.INVITE_URL} className="px-4 py-4 text-4xl border rounded-md flex items-center justify-center hover:scale-95 transition-all shadow hover:opacity-90 hover:text-emerald-400 hover:border-emerald-400 font-extrabold hover:bg-emerald-400/15 box-shadow-box-important focus:ring focus:ring-emerald-300/50" aria-label="Add to guild">
                                 +
                             </Link>
                         </div>

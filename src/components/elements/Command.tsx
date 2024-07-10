@@ -15,7 +15,7 @@ type Props = {
 export default function Command({ data, ...props }: Props) {
 
     return (
-        <Card {...props}>
+        <Card {...props} className="box-shadow-box">
             <CardHeader>
                 <CardTitle>
                     <h3 className="font-mono bg-zinc-800 px-2 py-1 rounded-md w-fit hover:underline underline-offset-4 focus:text-blue-500 text-2xl">/{data.name} </h3>
