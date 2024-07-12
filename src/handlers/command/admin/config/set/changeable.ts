@@ -19,6 +19,14 @@ export default async function changeableConfigHandler(optionValue: boolean, user
 
     let guild = await fetchGuild(guildId);
 
+    const members = await getGuildMembers(guildId);
+
+    console.log(members) // debug
+
+    const member = members.find(m => m.user?.id === userId);
+
+    console.log(member) // debug
+
     if (existingGuild) {
 
         if (guild.owner_id === userId) {
@@ -56,11 +64,6 @@ export default async function changeableConfigHandler(optionValue: boolean, user
                     description: "You must be the owner of the server to change this configuration.",
                 }
             } else {
-                const members = await getGuildMembers(guildId);
-
-                const member = members.find(m => m.user?.id === userId);
-
-                console.log(member) // test
 
                 if (!member) {
                     embed = EMBEDS.error;
@@ -102,11 +105,11 @@ export default async function changeableConfigHandler(optionValue: boolean, user
                         description: "You must have the admin role to change this configuration.",
                     }
                 }
-            } 
+            }
         }
     } else {
 
-        if (guild.owner_id === userId) { 
+        if (guild.owner_id === userId) {
             try {
                 await db.guild.create({
                     data: {

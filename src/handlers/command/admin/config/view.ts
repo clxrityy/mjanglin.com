@@ -62,7 +62,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
                         text: "/config set"
                     }
                 }
-            } else if (existingGuild.user.userId === userId) { 
+            } else if (existingGuild.userId === userId) { 
                 const settings: GuildSettings = {
                     guildId: existingGuild.guildId,
                     userId: existingGuild.userId,
