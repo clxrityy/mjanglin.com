@@ -11,6 +11,7 @@ import HomeIcon from "@/components/misc/HomeIcon";
 import { Suspense } from "react";
 import Loading from "./loading";
 import Stars from "@/components/layers/Stars";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "hbd",
@@ -62,6 +63,7 @@ export default async function RootLayout({
             <UserIcon userId={user.id} />
             {children}
             <Footer />
+            <SpeedInsights />
           </body>
         </Suspense>
       </Providers>
