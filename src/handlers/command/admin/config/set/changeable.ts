@@ -21,6 +21,8 @@ export default async function changeableConfigHandler(optionValue: boolean, user
 
     const members = await getGuildMembers(guildId);
 
+    console.log(members); // debug
+
     const member = members.find(m => m.user?.id === userId);
 
     if (existingGuild) {
