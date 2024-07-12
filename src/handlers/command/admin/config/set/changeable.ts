@@ -21,11 +21,7 @@ export default async function changeableConfigHandler(optionValue: boolean, user
 
     const members = await getGuildMembers(guildId);
 
-    console.log(members) // debug
-
     const member = members.find(m => m.user?.id === userId);
-
-    console.log(member) // debug
 
     if (existingGuild) {
 
@@ -69,9 +65,9 @@ export default async function changeableConfigHandler(optionValue: boolean, user
                     embed = EMBEDS.error;
                 }
 
-                const memberRoles = member?.roles.map(r => r);
+                const memberRoles = member?.roles;
 
-                if (memberRoles?.includes(existingGuild.adminRoleId) || member?.permissions.includes("ADMINISTRATOR")) {
+                if (memberRoles?.includes(existingGuild.adminRoleId)) {
                     try {
                         await db.guild.update({
                             where: {

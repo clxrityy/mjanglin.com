@@ -58,7 +58,7 @@ export async function getGuildMembers(guildId: string): Promise<GuildMember[]> {
             headers: {
                 Authorization: `Bot ${CONFIG.VALUES.BOT_TOKEN}`
             }
-        });
+        }, );
 
         const members = JSON.parse(JSON.stringify(await response.json())) as GuildMember[];
 
