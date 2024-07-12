@@ -1,4 +1,4 @@
-import { fetchGuild, getGuildAvatar, getGuildMembers } from "@/data/util/functions/guild";
+import { fetchGuild, getGuildAvatar, getGuildMember, getGuildMembers } from "@/data/util/functions/guild";
 import { EMBEDS } from "@/data/util/resources/embeds";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
@@ -19,11 +19,7 @@ export default async function changeableConfigHandler(optionValue: boolean, user
 
     let guild = await fetchGuild(guildId);
 
-    const members = await getGuildMembers(guildId);
-
-    console.log(members); // debug
-
-    const member = members.find(m => m.user?.id === userId);
+    const member = await getGuildMember(guildId, userId);
 
     if (existingGuild) {
 

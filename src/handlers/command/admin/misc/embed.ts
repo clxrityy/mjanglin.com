@@ -1,4 +1,4 @@
-import { getGuildMembers } from "@/data/util/functions/guild";
+import { getGuildMember } from "@/data/util/functions/guild";
 import { EMBEDS } from "@/data/util/resources/embeds";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
@@ -20,8 +20,7 @@ export default async function embedHandler(userId: string, guildId: string, opti
     const authorIcon = options.find((option) => option.name === "author_icon")?.value as string;
     const authorUrl = options.find((option) => option.name === "author_url")?.value as string;
 
-    let guildMembers = await getGuildMembers(guildId);
-    let member = guildMembers.find(m => m.user!.id === userId);
+    const member = await getGuildMember(guildId, userId);
 
     const guild = await db.guild.findFirst({
         where: {

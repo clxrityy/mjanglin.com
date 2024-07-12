@@ -1,8 +1,7 @@
 import {
     fetchGuild,
     getGuildAvatar,
-    getGuildMembers,
-    // getGuildRoles
+    getGuildMember,
 } from "@/data/util/functions/guild";
 // import { fetchUser } from "@/data/util/functions/user";
 import { EMBEDS } from "@/data/util/resources/embeds";
@@ -28,9 +27,7 @@ export default async function viewConfigHandler(userId: string, guildId: string)
     });
 
     let guild = await fetchGuild(guildId);
-    // let guildRoles = await getGuildRoles(guildId);
-    let members = await getGuildMembers(guildId);
-    let member = members.find(m => m.user!.id === userId);
+    const member = await getGuildMember(guildId, userId);
 
     if (existingGuild) {
         if (guild.owner_id === userId) {

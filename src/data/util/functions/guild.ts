@@ -58,7 +58,7 @@ export async function getGuildMembers(guildId: string): Promise<GuildMember[]> {
             headers: {
                 Authorization: `Bot ${CONFIG.VALUES.BOT_TOKEN}`
             }
-        }, );
+        });
 
         const members = JSON.parse(JSON.stringify(await response.json())) as GuildMember[];
 
@@ -66,5 +66,24 @@ export async function getGuildMembers(guildId: string): Promise<GuildMember[]> {
     } catch (e: any) {
         console.error(e);
         throw new Error("Failed to fetch guild members");
+    }
+}
+
+export async function getGuildMember(guildId: string, userId: string): Promise<GuildMember> {
+    const apiUrl = CONFIG.URLS.DISCORD_API_BASE_URL + `/guilds/${guildId}/members/${userId}`;
+
+    try {
+        const response = await fetch(apiUrl, {
+            headers: {
+                Authorization: `Bot ${CONFIG.VALUES.BOT_TOKEN}`
+            }
+        });
+
+        const member = JSON.parse(JSON.stringify(await response.json())) as GuildMember;
+
+        return member;
+    } catch (e: any) {
+        console.error(e);
+        throw new Error("Failed to fetch guild member");
     }
 }

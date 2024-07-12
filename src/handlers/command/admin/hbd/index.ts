@@ -1,6 +1,6 @@
 import { CONFIG } from "@/config";
 import { giveBirthdayRole } from "@/data/util/functions/birthdayRole";
-import { getGuildMembers } from "@/data/util/functions/guild";
+import { getGuildMember } from "@/data/util/functions/guild";
 import { EMBEDS } from "@/data/util/resources/embeds";
 import { db } from "@/lib/db";
 import { Colors } from "@/types/constants";
@@ -10,9 +10,7 @@ export default async function hbdHandler(userId: string, guildId: string): Promi
     let embed: EmbedType = EMBEDS.error;
     let message: string;
 
-    let members = await getGuildMembers(guildId);
-
-    let member = members.find((m) => m.user?.id === userId);
+    const member = await getGuildMember(guildId, userId);
     
     const birthdays = await db.birthday.findMany({
         where: {
