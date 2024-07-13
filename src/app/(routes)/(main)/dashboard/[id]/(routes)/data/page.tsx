@@ -40,7 +40,8 @@ export default async function Page({ params }: Props) {
         }
     })
 
-    return <div className="w-full h-full">
+    if (data.length > 0)
+        return <div className="w-full h-full">
         <div className="flex items-center justify-evenly w-full mx-auto flex-col xl:flex-row gap-20">
             <div className="flex flex-col items-center gap-10">
                 <div className="flex flex-row items-center text-center justify-center gap-2">
@@ -82,5 +83,12 @@ export default async function Page({ params }: Props) {
                 </div>
             </div>
         </div>
-    </div>
+        </div>
+    return (
+        <>
+            <h1>
+                No data found
+            </h1>
+        </>
+    )
 }

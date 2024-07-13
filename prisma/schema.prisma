@@ -28,15 +28,17 @@ model Cooldown {
 }
 
 model Guild {
-  id          String     @id
-  guildId     String     @unique
-  userId      String
-  changeable  Boolean    @default(false)
-  adminRoleId String?
-  Cooldown    Cooldown[]
-  User        User       @relation(fields: [userId], references: [id])
-  Wish        Wish[]
-  Member      Member[]   @relation("GuildToMember")
+  id              String     @id
+  guildId         String     @unique
+  userId          String
+  changeable      Boolean    @default(false)
+  adminRoleId     String?
+  birthdayRoleId  String?
+  birthdayMessage String?
+  Cooldown        Cooldown[]
+  User            User       @relation(fields: [userId], references: [id])
+  Wish            Wish[]
+  Member          Member[]   @relation("GuildToMember")
 }
 
 model Member {
@@ -67,20 +69,20 @@ model Wish {
 }
 
 model SleepUser {
-  id       String @id
-  userId   String @unique
-  username String
-  avatar   String @default("https://cdn.discordapp.com/attachments/1020419727731986613/1257156315466174526/default_clock.png?ex=6683618e&is=6682100e&hm=3149313c2ed7e676c5dffe39f2461c0d9f85f882564a208c404ff31905ee4b72&")
+  id        String      @id
+  userId    String      @unique
+  username  String
+  avatar    String      @default("https://cdn.discordapp.com/attachments/1020419727731986613/1257156315466174526/default_clock.png?ex=6683618e&is=6682100e&hm=3149313c2ed7e676c5dffe39f2461c0d9f85f882564a208c404ff31905ee4b72&")
+  updatedAt DateTime    @default(now())
+  createdAt DateTime    @default(now())
   sessionId String
   sleepData SleepData[]
-  updatedAt DateTime @default(now())
-  createdAt DateTime @default(now())
 }
 
 model SleepData {
-  id String @id @default(uuid())
-  userId String
-  date DateTime
-  duration Int
+  id        String    @id @default(uuid())
+  userId    String
+  date      DateTime
+  duration  Int
   sleepUser SleepUser @relation(fields: [userId], references: [userId])
 }

@@ -2,7 +2,8 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useUser } from "@clerk/nextjs";
-import {ICONS} from "@/config/data/constants";
+import { ICONS } from "@/config/data/constants";
+import BigButton from "@/components/ui/bigButton";
 
 
 export default function Home() {
@@ -24,22 +25,22 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center gap-4">
               {
                 isSignedIn && user ? (
-                  <Button size="lg" className="text-xl font-bold hover:scale-105 transition-transform focus:ring focus:outline-none focus:ring-offset-2">
+                  <BigButton variant={"secondary"}>
                     <Link href={`/dashboard/${user.id}`} className="flex flex-row items-center gap-2">
                       <ICONS.dashboard size={28} />
                       <span>
                         Dashboard
                       </span>
                     </Link>
-                  </Button>
+                  </BigButton>
                 ) : (
-                  <Button className="text-xl font-semibold px-10 py-4 focus:ring focus:ring-offset-2" size="lg">
+                  <BigButton variant={"secondary"}>
                     <Link href="/sign-in" className="flex flex-row items-center gap-2">
                       <ICONS.signIn size={24} />
                       Sign In
                     </Link>
-                  </Button>
-                  )
+                  </BigButton>
+                )
               }
             </div>
           </div>

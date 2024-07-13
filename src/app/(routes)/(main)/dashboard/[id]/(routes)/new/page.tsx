@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import NewRecordForm from "@/components/NewRecord";
+import NewRecordForm from "@/components/elements/NewRecord";
 
 type Props = {
     params: { id: string };
