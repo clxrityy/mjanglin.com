@@ -1,4 +1,4 @@
-import { DashbarItems, ICONS } from "@/config/data/constants";
+import { DashbarItems } from "@/config/data/constants";
 import { db } from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";

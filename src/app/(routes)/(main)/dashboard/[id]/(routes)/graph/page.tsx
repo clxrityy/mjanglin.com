@@ -3,8 +3,9 @@
 import BigButton from "@/components/ui/bigButton";
 import { db } from "@/lib/db";
 import Link from "next/link";
-import OrdersByWeekdayBarChart from "./_components/charts/OrdersByWeekdayBarChart";
+import OrdersByWeekdayAreaChart from "./_components/charts/OrdersByWeekdayAreaChart";
 import Reload from "@/components/ux/Reload";
+import RecentBarChart from "./_components/charts/RecentBarChart";
 
 type Props = {
     params: { id: string };
@@ -42,11 +43,11 @@ export default async function Page({ params }: Props) {
     if (data.length > 0)
         return <div className="w-full h-full">
             <div className="flex items-center justify-evenly w-full mx-auto flex-col xl:flex-row gap-20">
-                <div className="flex flex-col justify-center items-end lg:items-stretch w-full gap-4">
-                    <h4>
-                        Weekday average
-                    </h4>
-                    <OrdersByWeekdayBarChart data={data} />
+                <div className="w-full flex items-center justify-center max-h-[50rem]">
+                    <OrdersByWeekdayAreaChart data={data} />
+                </div>
+                <div className="w-full flex-1 items-center justify-center">
+                    <RecentBarChart data={data} />
                 </div>
             </div>
         </div>

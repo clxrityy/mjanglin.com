@@ -18,5 +18,5 @@ export default function Reload() {
         }
     }
 
-    return <BigButton onClick={handleReload} variant={"outline"}>{isLoading ? <AiOutlineLoading3Quarters className="animate-spin" /> : "Reload" }</BigButton>;
+    return <BigButton onClick={handleReload} variant={"default"}>{isLoading ? <AiOutlineLoading3Quarters className="animate-spin" /> : "Reload" }</BigButton>;
 }

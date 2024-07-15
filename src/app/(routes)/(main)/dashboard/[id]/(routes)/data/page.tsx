@@ -41,7 +41,7 @@ export default async function Page({ params }: Props) {
             date: data.date,
             value: data.duration
         }
-    })
+    });
 
     if (data.length > 0)
         return <div className="w-full h-full">
@@ -81,7 +81,7 @@ export default async function Page({ params }: Props) {
                     </div>
                     <div className="relative border rounded-md border-zinc-700 shadow">
                         <pre className="h-[10pc] lg:h-[20pc] xl:h-[30pc] overflow-y-scroll relative bg-zinc-900 px-4 py-4 max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl w-auto text-zinc-300/85 text-sm">
-                            {JSON.stringify(userSleepData, null, 2)}
+                            {JSON.stringify(data, null, 2)}
                         </pre>
                     </div>
                 </div>

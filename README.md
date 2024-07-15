@@ -14,7 +14,6 @@
 
 ## Charts / Graphs
 
-#### Weekday average
-![weekday average](https://i.gyazo.com/33df9b6f48ce6ac9f4e3d39c35f5b6a5.png)
+![weekday average](https://i.gyazo.com/95fcf38efab79b52893be7d59f944288.gif)
 
-
+![recent duration](https://i.gyazo.com/201adec24a40d009bf2990e6e8f64379.gif)
