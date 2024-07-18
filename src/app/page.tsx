@@ -25,7 +25,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center gap-4">
               {
                 isSignedIn && user ? (
-                  <BigButton variant={"secondary"}>
+                  <BigButton variant={"default"}>
                     <Link href={`/dashboard/${user.id}`} className="flex flex-row items-center gap-2">
                       <ICONS.dashboard size={28} />
                       <span>

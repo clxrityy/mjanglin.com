@@ -56,11 +56,11 @@ export default async function Page({ params }: Props) {
         <h1>
             No data found
         </h1>
+        <Reload />
         <BigButton variant="outline">
             <Link href={`/dashboard/${params.id}/new`}>
                 Add new data
             </Link>
         </BigButton>
-        <Reload />
     </div>
 }
