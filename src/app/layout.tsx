@@ -3,8 +3,8 @@ import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
 
-const nunito = Nunito_Sans({ subsets: ["latin"] });
-const redHatMono = Red_Hat_Mono({ subsets: ["latin"], variable: "--font-red-hat-mono", preload: true, fallback: ["arial"] });
+const nunito = Nunito_Sans({ subsets: ["latin"], preload: true });
+const redHatMono = Red_Hat_Mono({ subsets: ["latin"], variable: "--font-red-hat-mono", preload: true });
 
 // export const metadata: Metadata = {
 //   title: "MJ Anglin",

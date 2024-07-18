@@ -1,9 +1,10 @@
 import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord, FaTrash, FaStar, FaHome } from "react-icons/fa";
-import { SiTypescript } from "react-icons/si";
+import { SiTypescript, SiPrisma, SiVercel, SiPostgresql } from "react-icons/si";
 import { MdOutlineStart } from "react-icons/md";
+import { RiNextjsLine } from "react-icons/ri";
 
 
-const configurations =  {
+const configurations = {
     icons: {
         github: FaGithub,
         spotify: FaSpotify,
@@ -21,6 +22,10 @@ const configurations =  {
         star: FaStar,
         publish: MdOutlineStart,
         home: FaHome,
+        nextjs: RiNextjsLine,
+        prisma: SiPrisma,
+        vercel: SiVercel,
+        postgresql: SiPostgresql,
     },
     colors: {
         github: "#333",
@@ -31,7 +36,8 @@ const configurations =  {
         nodejs: "#68a063",
         python: "#4584B6",
         discord: "#7289DA",
+        postgresql: "#336791",
     }
-}
+} as const;
 
 export default configurations;

@@ -3,20 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 230, 230, 230;
-  --background-start-rgb: 15, 10, 15;
-  --background-end-rgb: 1, 3, 1;
+    --foreground-rgb: 230, 230, 230;
+    --background-start-rgb: 15, 10, 15;
+    --background-end-rgb: 1, 3, 1;
 }
 
 
-html, body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html,
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
     background-color: rgb(var(--background-end-rgb));
     margin: 0;
     padding: 0;
@@ -29,209 +27,210 @@ html, body {
 
 main {
 
-  @apply w-full h-screen max-h-screen flex flex-col 2xl:flex-row justify-center items-center mx-auto gap-10 z-20 relative my-20 2xl:my-0;
+    @apply w-full h-screen max-h-screen flex flex-col justify-center items-center mx-auto gap-10 z-20 relative my-20;
 }
 
 h1 {
-  text-shadow: 3px 0px 5px rgba(23, 48, 83, 75);
-  font-size: 3rem;
-  font-weight: 800;
-  
-  @apply tracking-tight flex flex-row gap-2 items-center w-fit;
+    text-shadow: 3px 0px 5px rgba(23, 48, 83, 75);
+    font-size: 3rem;
+    font-weight: 800;
+
+    @apply tracking-tight flex flex-row gap-2 items-center w-fit;
 }
 
 
 h2 {
-  font-size: 2rem;
-  font-weight: 200;
+    font-size: 2rem;
+    font-weight: 200;
 
-  @apply tracking-widest uppercase
+    @apply tracking-widest uppercase
 }
 
 h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  @apply flex items-center flex-row gap-2;
+    font-size: 1.5rem;
+    font-weight: 700;
+    @apply flex items-center flex-row gap-2;
 }
 
 h4 {
-  font-size: 1.35rem;
-  font-weight: 650;
+    font-size: 1.35rem;
+    font-weight: 650;
 }
 
 p {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
-input, textarea {
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+input,
+textarea {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
 
-  @apply text-black bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full;
+    @apply text-black bg-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full;
 }
 
 code {
-  @apply px-2 py-2 rounded-md overflow-scroll scroll-smooth;
+    @apply px-2 py-2 rounded-md overflow-scroll scroll-smooth;
 }
 
 .big-shadow {
-  box-shadow: 5px 5px 85px #eeeeee5c;
+    box-shadow: 5px 5px 85px #eeeeee5c;
 }
 
 .big-shadow:hover {
-  box-shadow: 5px 5px 95px #eeeeee97;
+    box-shadow: 5px 5px 95px #eeeeee97;
 
-  @apply transition-all duration-500 ease-in-out;
+    @apply transition-all duration-500 ease-in-out;
 }
 
 /** 
   blog content
 */
 .blog-content h1 {
-  text-shadow: none;
+    text-shadow: none;
 
-  @apply text-3xl lg:text-4xl xl:text-5xl
+    @apply text-3xl lg:text-4xl xl:text-5xl
 }
 
 .blog-content a {
 
-  @apply text-blue-500 hover:text-blue-600 hover:underline underline-offset-1;
+    @apply text-blue-500 hover:text-blue-600 hover:underline underline-offset-1;
 }
 
 .blog-content a pre {
-  
+
     @apply text-blue-500 hover:text-blue-600 hover:underline underline-offset-1;
 }
 
 .blog-content p {
 
-  @apply text-base;
+    @apply text-base;
 }
 
 .blog-content blockquote {
-  border-left: 0.3rem solid #333;
-  padding: 0.5rem 1rem;
-  background-color: #41414189;
-  font-size: 0.75rem;
+    border-left: 0.3rem solid #333;
+    padding: 0.5rem 1rem;
+    background-color: #41414189;
+    font-size: 0.75rem;
 
-  @apply px-4 py-2 my-2 rounded-md;
+    @apply px-4 py-2 my-2 rounded-md;
 }
 
 .blog-content hr {
-  border: 1px solid #333;
-  margin: 1rem 0;
-  width: 75%;
+    border: 1px solid #333;
+    margin: 1rem 0;
+    width: 75%;
 }
 
 .blog-content img {
 
 
-  @apply w-1/4 sm:w-full lg:w-1/3 mx-auto my-4;
+    @apply w-1/4 sm:w-full lg:w-1/3 mx-auto my-4;
 }
 
 .blog-content li {
 
-  @apply list-disc text-base px-2;
+    @apply list-disc text-base px-2;
 }
 
 .blog-content ul {
 
-  @apply list-item ml-5 gap-4;
+    @apply list-item ml-5 gap-4;
 }
 
 .blog-content ol li {
 
-  @apply list-decimal text-base ml-5 gap-4;
+    @apply list-decimal text-base ml-5 gap-4;
 }
 
 .blog-content li li {
-  
+
     @apply text-sm gap-4;
 }
 
 .blog-content ins {
-  @apply underline underline-offset-2;
+    @apply underline underline-offset-2;
 }
 
 .blog-content::-webkit-scrollbar {
-  display:inline;
-  width: 0.5rem;
+    display: inline;
+    width: 0.5rem;
 }
 
 
-.blog-content pre, code {
+.blog-content pre,
+code {
 
-  @apply rounded-sm bg-[#282727] py-1 px-1 text-base text-wrap;
+    @apply rounded-sm bg-[#282727] py-1 px-1 text-base text-wrap;
 }
 
 code {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 
-  @apply font-mono tracking-widest font-light;
+    @apply font-mono tracking-widest font-light;
 }
 
-.blog-content b, strong {
+.blog-content b,
+strong {
 
-  @apply font-extrabold;
+    @apply font-extrabold;
 }
 
 .blog-content h5 {
-  
-  @apply text-lg font-semibold;
+
+    @apply text-lg font-semibold;
 }
 
-.hero-link .github {
-  @apply  hover:text-white transition-transform-colors focus:ring-white focus:ring-1;
+.github {
+    @apply hover:text-white transition-colors focus:ring-1;
 }
 
-.hero-link .instagram {
-  @apply hover:text-[#E1306C] transition-transform-colors focus:ring-[#E1306C] focus:ring-1;
+.instagram {
+    @apply hover:text-[#E1306C] transition-colors focus:ring-[#E1306C] focus:ring-1;
 }
 
-.hero-link .spotify {
-  @apply hover:text-[#1DB954] transition-transform-colors focus:ring-[#1DB954] focus:ring-1;
-}
+.spotify {
+    @apply hover:text-[#1DB954] transition-colors focus:ring-[#1DB954] focus:ring-1;
+} 
 
 /** 
   utilities
 */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  };
+    .text-balance {
+        text-wrap: balance;
+    }
 
-  .hero-link {
+    .hero-link {
 
-    @apply text-4xl rounded-full hover:scale-110 transition-all ring-offset-2 hover:shadow-md opacity-80 hover:opacity-100;
-  }
+        @apply text-4xl rounded-full hover:scale-110 transition-all ring-offset-2 hover:shadow-md opacity-80 hover:opacity-100;
+    }   
 
-  .social-link {
-    @apply hover:scale-125 transition-all duration-500 ease-in-out;
-  }
+    .social-link {
+        @apply hover:scale-125 transition-all duration-500 ease-in-out;
+    }
 
-  .spotify-ad {
-    text-shadow: 0px 0px 7.5px #000000;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      rgba(0,0,0, 0.25)
-    );
-    
+    .spotify-ad {
+        text-shadow: 0px 0px 7.5px #000000;
+        background: linear-gradient(to bottom,
+                transparent,
+                rgba(0, 0, 0, 0.25));
 
-    @apply bg-black/25 rounded-lg px-2 shadow-md drop-shadow;
-  }
 
-  .project-form-item-container {
+        @apply bg-black/25 rounded-lg px-2 shadow-md drop-shadow;
+    }
 
-    @apply flex flex-col gap-4 items-center w-full;
-  }
+    .project-form-item-container {
 
-  .blog-content {
+        @apply flex flex-col gap-4 items-center w-full;
+    }
 
-    @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-5xl;
-  }
+    .blog-content {
+
+        @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-5xl;
+    }
 
 }

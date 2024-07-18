@@ -1,10 +1,11 @@
 export type ProjectParams = {
     name: string;
-    description: string;
+    short_desc: string;
     link: string;
     github?: string;
-    image: string;
-    footer?: string;
+    image?: string;
+    thumbnail?: string;
+    description?: string;
     tags?: string[];
     style?: {
         gradient_from?: string;

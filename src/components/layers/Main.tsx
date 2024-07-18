@@ -4,11 +4,11 @@ type Props = {
     children: React.ReactNode;
 }
 
-export default function Main({children}: Props) {
-    return <>
+export default async function Main({ children }: Props) {
+    return <div className="relative w-screen h-screen">
         <Background />
-        <main>
+        <main className="">
             {children}
         </main>
-    </>
+    </div>
 }
