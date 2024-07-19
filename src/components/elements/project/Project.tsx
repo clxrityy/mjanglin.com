@@ -10,10 +10,10 @@ const { icons } = configurations;
 
 export default function Project({ name, thumbnail, description, link, image, short_desc, github, tags, style }: ProjectParams) {
 
-    const gradient = style?.gradient_from && style?.gradient_to ? `bg-gradient-to-br from-${style.gradient_from} to-${style.gradient_to}` : "bg-gradient-to-br from-purple-900/85 to-pink-950/60";
+    const gradient = style?.gradient_from && style?.gradient_to ? `bg-gradient-to-br from-[${style.gradient_from}] to-[${style.gradient_to}]` : "bg-gradient-to-br from-zinc-900/60 to-black";
 
     return (
-        <Card className={`${gradient} px-4 py-4 rounded-xl shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5 filter grayscale hover:grayscale-0 transition-transform-colors`}>
+        <Card className={`${gradient} px-4 py-4 rounded-xl shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5 filter grayscale hover:grayscale-0 transition-transform-colors small-shadow`}>
             <CardHeader className="w-full flex items-stretch flex-row max-h-[200px] justify-evenly">
                 <div className="flex flex-col gap-2">
                     <CardTitle className="text-3xl font-bold text-center hover:underline">

@@ -17,7 +17,11 @@ export const PROJECTS = [
             "Prisma",
             "PostgreSQL",
             "TypeScript"
-        ]
+        ],
+        style: {
+            gradient_from: configurations.colors.discord,
+            gradient_to: "#000"
+        }
     },
 
 ] as ProjectParams[];

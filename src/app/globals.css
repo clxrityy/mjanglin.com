@@ -76,11 +76,21 @@ code {
 }
 
 .big-shadow {
-    box-shadow: 5px 5px 85px #eeeeee5c;
+    box-shadow: 5px 5px 55px #00eeff5c;
 }
 
 .big-shadow:hover {
     box-shadow: 5px 5px 95px #eeeeee97;
+
+    @apply transition-all duration-500 ease-in-out;
+}
+
+.small-shadow {
+    box-shadow: 2px 2px 25px #dd00ff5c;
+}
+
+.small-shadow:hover {
+    box-shadow: 2px 2px 35px #eeeeee97;
 
     @apply transition-all duration-500 ease-in-out;
 }

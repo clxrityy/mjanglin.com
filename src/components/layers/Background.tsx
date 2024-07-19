@@ -154,7 +154,7 @@ export default function Background() {
                     <polyline points="268 168 268 164 304 128 304 0"></polyline>
                 </g>
             </g>
-            <g id="module-02" transform="translate(599.000000, 0.000000)" className="path path-02" stroke="url(#linear)" stroke-width="4" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="8,960,24,960,16,400" stroke-dashoffset="6400">
+            <g id="module-02" transform="translate(599.000000, 0.000000)" className="path path-02" stroke="url(#linear)" strokeWidth="4" fill="none" fillRule="evenodd" strokeLinecap="butt" strokeLinejoin="round" strokeOpacity="1" strokeDasharray="8,960,24,960,16,400" strokeDashoffset="6400">
                 <g id="C12" transform="translate(377.000000, 0.000000)">
                     <polyline points="52 92 84 92 116 60 116 0"></polyline>
                     <polyline points="52 84 80 84 108 56 108 0"></polyline>
@@ -226,7 +226,7 @@ export default function Background() {
                     <polyline points="93 329 93 309 121.017851 280.982149 169.010795 280.982149 177.996472 271.996471 177.996472 192.993715 149.001378 163.998622 149.001378 41 108.988174 0.986795729 100.999989 0.986795729"></polyline>
                 </g>
             </g>
-            <g id="module-03" transform="translate(1024.000000, 164.000000)" className="path path-03" stroke="url(#linear)" stroke-width="4" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="8,960,24,960,16,400" stroke-dashoffset="6400">
+            <g id="module-03" transform="translate(1024.000000, 164.000000)" className="path path-03" stroke="url(#linear)" strokeWidth="4" fill="none" fillRule="evenodd" strokeLinecap="butt" strokeLinejoin="round" strokeOpacity="1" strokeDasharray="8,960,24,960,16,400" strokeDashoffset="6400">
                 <g id="C11" transform="translate(8.000000, 0.000000)">
                     <polyline points="48 52 195 52 228 85 228 176 300 248 372 248 392 228 432 228 464 260 516 260 520 256 520 248"></polyline>
                     <polyline points="48 44 199 44 235 80 235 171.005494 283.997253 220.002747 436 220.002747 448.040112 232.042859 455.065506 232.042859"></polyline>
@@ -328,7 +328,7 @@ export default function Background() {
                     <polyline points="64 136 60 136 52 128 52 124"></polyline>
                 </g>
             </g>
-            <g id="module-04" transform="translate(1532.000000, 115.000000)" className="path path-04" stroke="url(#linear)" stroke-width="4" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="8,960,24,960,16,400" stroke-dashoffset="6400">
+            <g id="module-04" transform="translate(1532.000000, 115.000000)" className="path path-04" stroke="url(#linear)" strokeWidth="4" fill="none" fillRule="evenodd" strokeLinecap="butt" strokeLinejoin="round" strokeOpacity="1" strokeDasharray="8,960,24,960,16,400" strokeDashoffset="6400">
                 <g id="C19">
                     <polyline points="368 361 428 361 444.03122 344.96878 492 344.96878 539.000005 344.96878"></polyline>
                     <polyline points="0 52 12 52 23 41 68 41 144 41 188 85 188 201 224 237 244 237 276 269 276 285 264 297 264 337 296 369 320 369"></polyline>
@@ -413,7 +413,7 @@ export default function Background() {
                     <polyline points="364 325 364 241 384 221 384 201"></polyline>
                 </g>
             </g>
-            <g id="module-05" transform="translate(1908.000000, 0.000000)" className="path path-05" stroke="url(#linear)" stroke-width="4" fill="none" fill-rule="evenodd" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="8,960,24,960,16,400" stroke-dashoffset="6400">
+            <g id="module-05" transform="translate(1908.000000, 0.000000)" className="path path-05" stroke="url(#linear)" strokeWidth="4" fill="none" fillRule="evenodd" strokeLinecap="butt" strokeLinejoin="round" strokeOpacity="1" strokeDasharray="8,960,24,960,16,400" strokeDashoffset="6400">
                 <g id="C13">
                     <polyline points="272 196 288 196 300 208 300 224 324 248 416 248 421 243 428 243"></polyline>
                     <polyline points="272 188 292 188 308 204 308 220 328 240 412.005952 240 420.002977 232.002976 480 232.002976 493.001488 219.001488 494 218 494 171"></polyline>
@@ -474,7 +474,7 @@ export default function Background() {
 
 
 
-            <g id="static" transform="translate(48.000000, 56.000000)" stroke="#DDE0E2" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+            <g id="static" transform="translate(48.000000, 56.000000)" stroke="#DDE0E2" strokeWidth="2" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="132" y="0" width="48" height="48" rx="4"></rect>
                 <circle cx="172" cy="200" r="4"></circle>
                 <circle cx="200" cy="212" r="4"></circle>
@@ -781,7 +781,7 @@ export default function Background() {
                 <circle cx="1811" cy="1280" r="4"></circle>
             </g>
 
-            <g id="paths-bg" transform="translate(0.000000, 0.000000)" stroke="#DDE0E2" stroke-width="2" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+            <g id="paths-bg" transform="translate(0.000000, 0.000000)" stroke="#DDE0E2" strokeWidth="2" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
                 <g id="C23" transform="translate(176.000000, 0.000000)">
                     <polyline id="path" points="52 92 84 92 116 60 116 0"></polyline>
                     <polyline id="path" points="52 84 80 84 108 56 108 0"></polyline>

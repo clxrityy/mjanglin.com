@@ -39,11 +39,11 @@ export default function Hero() {
                     <div className="flex w-full items-center flex-col lg:flex-row justify-center lg:justify-around gap-5">
                         <Popover placement="right" className="">
                             <PopoverTrigger>
-                                <Button variant="bordered" className="hover:bg-gradient-to-tr from-blue-500 to-purple-500 text-white font-semibold tracking-wider uppercase transition-background duration-250">skills</Button>
+                                <Button variant="bordered" className="hover:bg-gradient-to-tr from-blue-500 to-purple-500 text-white font-semibold tracking-wider uppercase transition-colors duration-250 rounded-md py-1">skills</Button>
                             </PopoverTrigger>
-                            <PopoverContent className="bg-transparent/50 shadow-xl">
+                            <PopoverContent className="bg-transparent/50 shadow-xl rounded-md">
                                 <div className="px-4 rounded-lg py-2 flex items-center justify-start text-center w-full">
-                                    <div className="grid grid-cols-1 lg:grid-cols-2 w-full justify-center gap-2 items-center grid-flow-dense opacity-90">
+                                    <div className="grid grid-cols-1 lg:grid-cols-2 w-full justify-center gap-3 items-center grid-flow-dense opacity-90 *:flex *:items-center *:justify-center *:border-opacity-50">
                                         <Chip variant="light"
                                             classNames={{
                                                 base: "border border-white text-white"
