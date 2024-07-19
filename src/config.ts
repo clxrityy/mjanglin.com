@@ -2,6 +2,7 @@ import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNode
 import { SiTypescript, SiPrisma, SiVercel, SiPostgresql } from "react-icons/si";
 import { MdOutlineStart } from "react-icons/md";
 import { RiNextjsLine } from "react-icons/ri";
+import { FaChartSimple } from "react-icons/fa6";
 
 
 const configurations = {
@@ -26,6 +27,7 @@ const configurations = {
         prisma: SiPrisma,
         vercel: SiVercel,
         postgresql: SiPostgresql,
+        recharts: FaChartSimple,
     },
     colors: {
         github: "#333",

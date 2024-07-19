@@ -5,9 +5,9 @@ type Props = {
 }
 
 export default async function Main({ children }: Props) {
-    return <div className="relative w-screen h-screen">
+    return <div className="static flex">
         <Background />
-        <main className="">
+        <main className="relative my-40">
             {children}
         </main>
     </div>

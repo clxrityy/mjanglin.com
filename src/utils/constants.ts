@@ -5,7 +5,7 @@ export const PROJECTS = [
     {
         name: "hbd",
         short_desc: "A dynamic Discord birthday bot",
-        image: "/img/hbd_example.gif",
+        images: ["/img/hbd_example.gif"],
         link: "/project/hbd",
         github: "https://github.com/clxrityy/mjanglin.com/tree/hbd",
         thumbnail: "/img/hbd.png",
@@ -24,6 +24,32 @@ export const PROJECTS = [
         },
         demo_link: "https://hbd.mjanglin.com"
     },
+    {
+        name: "sleep graph",
+        short_desc: "Calculate and visualize your sleep patterns",
+        thumbnail: "/img/sleep-graph.png",
+        github: "https://github.com/clxrityy/mjanglin.com/tree/sleepgraph",
+        tags: [
+            "Nextjs",
+            "Vercel",
+            "React",
+            "TypeScript",
+            "PostgreSQL",
+            "Prisma",
+            "Recharts",
+        ],
+        style: {
+            gradient_from: "#D53733aa",
+            gradient_to: "#000"
+        },
+        demo_link: "https://sleepgraph.mjanglin.com",
+        link: "https://sleepgraph.mjanglin.com",
+        description: "A web application that allows users to input their sleep data and visualize it with different graphs. Users can view their sleep patterns over time and see how their sleep quality changes.",
+        images: [
+            "/img/sleepgraph_example_1.gif",
+            "/img/sleepgraph_example_2.gif",
+        ]
+    }
 
 ] as ProjectParams[];
 
@@ -62,5 +88,10 @@ export const TAGS = [
         name: "React",
         icon: configurations.icons.react,
         color: configurations.colors.react,
+    },
+    {
+        name: "Recharts",
+        icon: configurations.icons.recharts,
+        color: "#fff"
     }
 ] as const;

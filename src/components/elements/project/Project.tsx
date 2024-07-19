@@ -8,7 +8,7 @@ import { TAGS } from "@/utils/constants";
 
 const { icons } = configurations;
 
-export default function Project({ name, thumbnail, description, link, image, short_desc, github, tags, style, demo_link }: ProjectParams) {
+export default function Project({ name, thumbnail, description, link, images, short_desc, github, tags, style, demo_link }: ProjectParams) {
 
     const gradient = style?.gradient_from && style?.gradient_to ? `bg-gradient-to-br from-[${style.gradient_from}] to-[${style.gradient_to}]` : "bg-gradient-to-br from-zinc-900/60 to-black";
 
@@ -34,8 +34,10 @@ export default function Project({ name, thumbnail, description, link, image, sho
                     <span className="opacity-85">
                         {description && description}
                     </span>
-                    <Link href={link} className="hover:scale-95 transition-transform">
-                        {image && <Image src={image} alt={name} width={300} height={300} className="rounded-lg opacity-80" unoptimized />}
+                    <Link href={link} className="hover:scale-95 transition-transform grid grid-cols-1 gap-1 items-center">
+                        {images && images.map((image, idx) => (
+                            <Image src={image} alt={name} width={300} height={300} className="rounded-lg opacity-80" unoptimized key={idx} />
+                        ))}
                     </Link>
                 </div>
             </CardContent>

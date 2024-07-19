@@ -3,7 +3,7 @@ export type ProjectParams = {
     short_desc: string;
     link: string;
     github?: string;
-    image?: string;
+    images?: string[];
     thumbnail?: string;
     description?: string;
     tags?: string[];
