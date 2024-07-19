@@ -25,7 +25,7 @@ export const CONFIG = {
         BOT_TOKEN: process.env.BOT_TOKEN!,
     },
     AI: {
-        model: "gpt-4o-mini",
+        model: "gpt-3.5-turbo",
         temperature: 0.5,
         presence_penalty: 1,
     },
