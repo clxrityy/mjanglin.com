@@ -5,6 +5,7 @@ export const PROJECTS = [
     {
         name: "hbd",
         short_desc: "A dynamic Discord birthday bot",
+        image: "/img/hbd_example.gif",
         link: "/project/hbd",
         github: "https://github.com/clxrityy/mjanglin.com/tree/hbd",
         thumbnail: "/img/hbd.png",

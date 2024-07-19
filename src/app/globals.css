@@ -27,7 +27,7 @@ body {
 
 main {
 
-    @apply w-full h-screen max-h-screen flex flex-col justify-center items-center mx-auto gap-10 z-20 relative my-20;
+    @apply w-full h-screen max-h-screen flex flex-col justify-center items-center mx-auto gap-10 z-20 relative my-40;
 }
 
 h1 {

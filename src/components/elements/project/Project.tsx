@@ -16,7 +16,7 @@ export default function Project({ name, thumbnail, description, link, image, sho
         <Card className={`${gradient} px-4 py-4 rounded-xl shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5 filter grayscale hover:grayscale-0 transition-transform-colors`}>
             <CardHeader className="w-full flex items-stretch flex-row max-h-[200px] justify-evenly">
                 <div className="flex flex-col gap-2">
-                    <CardTitle className="text-3xl font-bold text-center hover:undline">
+                    <CardTitle className="text-3xl font-bold text-center hover:underline">
                         <Link href={link}>
                             {name}
                         </Link>
@@ -25,15 +25,17 @@ export default function Project({ name, thumbnail, description, link, image, sho
                         {short_desc}
                     </CardDescription>
                 </div>
-                {thumbnail && <Image src={thumbnail} alt={name} width={100} height={100} className="rounded-lg flex" />}
+                {thumbnail && <Link href={link}>
+                    <Image src={thumbnail} alt={name} width={100} height={100} className="rounded-lg flex" />
+                </Link>}
             </CardHeader>
             <CardContent>
-                <div className="flex flex-col justify-between w-full gap-4">
+                <div className="flex flex-col justify-between w-full gap-4 items-center">
                     <span className="opacity-85">
                         {description && description}
                     </span>
                     <Link href={link} className="hover:scale-95 transition-transform">
-                        {image && <Image src={image} alt={name} width={100} height={100} className="rounded-lg" />}
+                        {image && <Image src={image} alt={name} width={300} height={300} className="rounded-lg opacity-80" unoptimized />}
                     </Link>
                 </div>
             </CardContent>
@@ -41,19 +43,13 @@ export default function Project({ name, thumbnail, description, link, image, sho
                 <div className="flex flex-col gap-4 items-center">
                     <div className="grid grid-cols-3 items-center gap-2 w-full">
                         {tags?.map((tag, index) => {
-
-                            const color = (name: string) => {
-                                const tag = TAGS.find(tag => tag.name === name);
-                                return tag?.color || "#ffffff";
-                            }
-
                             const icon = (name: string) => {
                                 const tag = TAGS.find(tag => tag.name === name);
                                 return tag?.icon || icons.star;
                             }
                             const Icon = icon(tag);
 
-                            return <span key={index} className={`bg-zinc-950/75 flex flex-row items-center gap-1 text-center rounded-md text-sm justify-center px-2 py-1`}>
+                            return <span key={index} className={`bg-zinc-950/75 flex flex-row items-center gap-1 text-center rounded-md text-sm justify-center px-2 py-1 hover:scale-105 transition-transform`}>
                                 <Icon />
                                 {tag}
                             </span>
