@@ -21,7 +21,8 @@ export const PROJECTS = [
         style: {
             gradient_from: configurations.colors.discord,
             gradient_to: "#000"
-        }
+        },
+        demo_link: "https://hbd.mjanglin.com"
     },
 
 ] as ProjectParams[];

@@ -10,5 +10,6 @@ export type ProjectParams = {
     style?: {
         gradient_from?: string;
         gradient_to?: string;
-    }
+    },
+    demo_link?: string;
 }

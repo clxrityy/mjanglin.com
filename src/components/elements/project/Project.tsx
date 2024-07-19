@@ -8,7 +8,7 @@ import { TAGS } from "@/utils/constants";
 
 const { icons } = configurations;
 
-export default function Project({ name, thumbnail, description, link, image, short_desc, github, tags, style }: ProjectParams) {
+export default function Project({ name, thumbnail, description, link, image, short_desc, github, tags, style, demo_link }: ProjectParams) {
 
     const gradient = style?.gradient_from && style?.gradient_to ? `bg-gradient-to-br from-[${style.gradient_from}] to-[${style.gradient_to}]` : "bg-gradient-to-br from-zinc-900/60 to-black";
 
@@ -56,12 +56,21 @@ export default function Project({ name, thumbnail, description, link, image, sho
                         })}
                     </div>
                 </div>
-                {github && (
-                    <Link href={github} className="text-xs text-zinc-300 hover:underline flex flex-row gap-1 items-center">
-                        <icons.github />
-                        View on GitHub
-                    </Link>
-                )}
+                <div className="flex flex-col gap-1 justify-self-end w-full text-zinc-300 text-sm">
+                    {demo_link && (
+                        <Link href={demo_link} className="hover:underline flex flex-row gap-1 items-center">
+                            <icons.star />
+                            Demo link
+                        </Link>
+                    )}
+                    {github && (
+                        <Link href={github} className="hover:underline flex flex-row gap-1 items-center">
+                            <icons.github />
+                            View on GitHub
+                        </Link>
+                    )}
+                </div>
+
             </CardFooter>
         </Card>
     )
