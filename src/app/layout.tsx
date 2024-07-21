@@ -1,10 +1,11 @@
-import { Nunito_Sans, Red_Hat_Mono } from "next/font/google";
+import { Noto_Sans, Red_Hat_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
 
-const nunito = Nunito_Sans({ subsets: ["latin"], preload: true });
-const redHatMono = Red_Hat_Mono({ subsets: ["latin"], variable: "--font-red-hat-mono", preload: true });
+const noto = Noto_Sans({ subsets: ["latin"], preload: true, display: "swap" });
+const redHatMono = Red_Hat_Mono({ subsets: ["latin"], variable: "--font-red-hat-mono", preload: true, display: "swap" });
+
 
 // export const metadata: Metadata = {
 //   title: "MJ Anglin",
@@ -25,6 +26,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
@@ -37,7 +39,7 @@ export default async function RootLayout({
         <meta name="theme-color" content="currentColor" />
       </head>
       <Providers>
-        <body className={`${nunito.className} ${redHatMono.variable}`}>
+        <body className={`${noto.className} ${redHatMono.variable}`}>
           {children}
         </body>
       </Providers>

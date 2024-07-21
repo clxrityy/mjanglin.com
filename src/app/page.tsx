@@ -1,10 +1,10 @@
 "use server";
 import Hero from "@/components/elements/Hero";
-import ProjectsContainer from "@/components/elements/project/ProjectsContainer";
+import ProjectsContainer from "@/components/layers/Container";
+import Main from "@/components/layers/Main";
 import { PROJECTS } from "@/utils/constants";
 import { Skeleton } from "@nextui-org/react";
 import { Suspense } from "react";
-import Main from "@/components/layers/Main";
 
 
 export default async function Home() {

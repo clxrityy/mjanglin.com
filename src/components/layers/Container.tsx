@@ -1,7 +1,7 @@
 import { ProjectParams } from "@/utils/types";
-import Project from "./Project";
-import { Suspense } from "react";
 import { Skeleton } from "@nextui-org/react";
+import { Suspense } from "react";
+import Project from "../elements/Project";
 
 type Props = {
     projects: ProjectParams[]

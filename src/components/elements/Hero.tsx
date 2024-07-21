@@ -11,15 +11,17 @@ export default function Hero() {
         <div className="w-full h-full flex items-center justify-center flex-col">
             <div className="bg-gradient-to-br to-zinc-900 from-zinc-950 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-md hover:scale-105 transition-all duration-200 filter grayscale hover:grayscale-0 transition-transform-colors cursor-pointer big-shadow">
                 <div className="flex justify-end w-full h-fit">
-                    <p className="font-mono text-sm">
-                        @cl<span className="underline underline-offset-4">x</span>rity
+                    <p className="font-mono font-extralight text-sm *:hover:animate-pulse opacity-85">
+                        @cl<span className="underline underline-offset-4 transition-opacity">x</span>rity
                     </p>
                 </div>
                 <div className="flex flex-col md:flex-row gap-3 md:gap-5 lg:gap-7 xl:gap-9 items-center">
                     <Image src="/img/keyboard.gif" alt="keyboard" width={100} height={100} className="backdrop:bg-blend-mulitply bg-blend-hue hidden lg:flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
-                    <Image src="/img/soundwave.gif" alt="soundwave" width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
+                    <Link href="https://soundcloud.com/clxrityy">
+                        <Image src="/img/soundwave.gif" alt="soundwave" width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
+                    </Link>
                     <div className="flex flex-col items-start justify-center">
-                        <h1 className="text-center">
+                        <h1 className="text-center tracking-wide">
                             <span className="text-cyan-500">
                                 MJ
                             </span>
@@ -27,10 +29,10 @@ export default function Hero() {
                                 Anglin
                             </span>
                         </h1>
-                        <h3 className="uppercase text-base text-cyan-500/90">
+                        <h3 className="uppercase text-base text-cyan-500/90 tracking-tighter">
                             Developer
                         </h3>
-                        <h3 className="uppercase text-base text-purple-400/90">
+                        <h3 className="uppercase text-base text-purple-400/90 tracking-tighter">
                             Creator
                         </h3>
                     </div>
@@ -38,7 +40,7 @@ export default function Hero() {
                 <div className="flex w-full items-center flex-col lg:flex-row justify-center lg:justify-around gap-5">
                     <Popover placement="right" className="">
                         <PopoverTrigger>
-                            <Button variant="bordered" className="hover:bg-gradient-to-tr from-blue-500 to-purple-500 text-white font-semibold tracking-wider uppercase transition-colors duration-250 rounded-md py-1">skills</Button>
+                            <Button variant="bordered" className="hover:bg-gradient-to-tr from-blue-500 to-purple-500 text-white font-semibold tracking-wider uppercase transition-colors duration-250 rounded-md py-2 text-opacity-90">skills</Button>
                         </PopoverTrigger>
                         <PopoverContent className="bg-transparent/50 shadow-xl rounded-md">
                             <div className="px-4 rounded-lg py-2 flex items-center justify-start text-center w-full">

@@ -17,7 +17,7 @@ export default function Project({ name, thumbnail, description, link, images, sh
             <CardHeader className="w-full flex items-stretch flex-row max-h-[200px] justify-evenly">
                 <div className="flex flex-col gap-2">
                     <CardTitle className="text-3xl font-bold text-center hover:underline">
-                        <Link href={link}>
+                        <Link href={link} className="">
                             {name}
                         </Link>
                     </CardTitle>
