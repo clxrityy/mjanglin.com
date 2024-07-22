@@ -9,7 +9,7 @@ export default function Hero() {
 
     return (
         <div className="w-full h-full flex items-center justify-center flex-col">
-            <div className="bg-gradient-to-br to-zinc-900 from-zinc-950 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-md hover:scale-105 transition-all duration-200 filter grayscale hover:grayscale-0 transition-transform-colors cursor-pointer big-shadow">
+            <div className="bg-gradient-to-br to-zinc-900 from-zinc-950 rounded-2xl px-12 py-8 backdrop:blur-3xl flex items-center justify-center flex-col gap-5 drop-shadow-xl shadow-md hover:scale-105 transition-all duration-200 transition-transform-colors cursor-pointer big-shadow">
                 <div className="flex justify-end w-full h-fit">
                     <p className="font-mono font-extralight text-sm *:hover:animate-pulse opacity-85">
                         @cl<span className="underline underline-offset-4 transition-opacity">x</span>rity
@@ -17,7 +17,7 @@ export default function Hero() {
                 </div>
                 <div className="flex flex-col md:flex-row gap-3 md:gap-5 lg:gap-7 xl:gap-9 items-center">
                     <Image src="/img/keyboard.gif" alt="keyboard" width={100} height={100} className="backdrop:bg-blend-mulitply bg-blend-hue hidden lg:flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
-                    <Link href="https://soundcloud.com/clxrityy">
+                    <Link href="https://www.clxrity.xyz">
                         <Image src="/img/soundwave.gif" alt="soundwave" width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
                     </Link>
                     <div className="flex flex-col items-start justify-center">
@@ -97,13 +97,13 @@ export default function Hero() {
                     </Popover>
 
                     <div className="flex w-full items-center flex-row justify-center lg:justify-end gap-4">
-                        <Link href="https://github.com/clxrityy" className="hero-link">
+                        <Link prefetch href="https://github.com/clxrityy" className="hero-link">
                             <icons.github size={20} className="github" aria-label="github" />
                         </Link>
-                        <Link href="https://instagram.com/mjxnglin" className="hero-link">
+                        <Link prefetch href="https://instagram.com/mjxnglin" className="hero-link">
                             <icons.instagram className="instagram" aria-label="instagram" size={20} />
                         </Link>
-                        <Link href="https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV" className="hero-link">
+                        <Link prefetch href="https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV" className="hero-link">
                             <icons.spotify className="spotify" aria-label="spotify" size={20} />
                         </Link>
                     </div>

@@ -76,21 +76,23 @@ code {
 }
 
 .big-shadow {
-    box-shadow: 3px 3px 45px #00eeff5c;
+    box-shadow: 1px 2px 20px 2px #b5b5b5;
+    @apply transition-all duration-500 ease-in-out;
 }
 
 .big-shadow:hover {
-    box-shadow: 3px 3px 55px #eeeeee97;
+    box-shadow: 3px 3px 28px 4px #06b6d4;
 
     @apply transition-all duration-500 ease-in-out;
 }
 
 .small-shadow {
-    box-shadow: 2px 2px 25px #dd00ff5c;
+    box-shadow: 2px 2px 35px #dd00ff5c;
+    @apply transition-all duration-500 ease-in-out;
 }
 
 .small-shadow:hover {
-    box-shadow: 2px 2px 35px #eeeeee97;
+    box-shadow: 2px 2px 35px #dd00ff5c;
 
     @apply transition-all duration-500 ease-in-out;
 }
