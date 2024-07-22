@@ -6,6 +6,7 @@ import { ProjectParams } from "@/utils/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { TAGS } from "@/utils/constants";
 
+
 const { icons } = configurations;
 
 export default function Project({ name, thumbnail, description, link, images, short_desc, github, tags, style, demo_link }: ProjectParams) {
