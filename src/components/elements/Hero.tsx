@@ -16,9 +16,15 @@ export default function Hero() {
                     </p>
                 </div>
                 <div className="flex flex-col md:flex-row gap-3 md:gap-5 lg:gap-7 xl:gap-9 items-center">
-                    <Image src="/img/keyboard.gif" alt="keyboard" width={100} height={100} className="backdrop:bg-blend-mulitply bg-blend-hue hidden lg:flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
+                    <video width={100} height={100} className="backdrop:bg-blend-mulitply bg-blend-hue hidden lg:flex place-self-center opacity-90">
+                        <source src="/img/keyboard.webm" type="video/webm" />
+                        <source src="/img/keyboard.mp4" type="video/mp4" />
+                    </video>
                     <Link href="https://www.clxrity.xyz">
-                        <Image src="/img/soundwave.gif" alt="soundwave" width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90" fetchPriority="high" unoptimized priority />
+                        <video width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90">
+                            <source src="/img/soundwave.webm" type="video/webm" />
+                            <source src="/img/soundwave.mp4" type="video/mp4" />
+                        </video>
                     </Link>
                     <div className="flex flex-col items-start justify-center">
                         <h1 className="text-center tracking-wide">
