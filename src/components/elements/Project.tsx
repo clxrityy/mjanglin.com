@@ -38,8 +38,8 @@ export default function Project({ name, thumbnail, description, link, examples, 
                     <Link href={link} className="hover:scale-95 transition-transform grid grid-cols-1 gap-1 items-center">
                         {examples && examples.map((example, idx) => (
                             <video width={300} height={300} className="rounded-lg opacity-80" key={idx} autoPlay muted loop playsInline>
-                                <source src={example.webm} type="video/webm" />
                                 <source src={example.mp4} type="video/mp4" />
+                                <source src={example.webm} type="video/webm" />
                             </video>
                         ))}
                     </Link>
