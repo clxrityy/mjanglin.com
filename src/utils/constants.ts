@@ -5,7 +5,10 @@ export const PROJECTS = [
     {
         name: "hbd",
         short_desc: "A dynamic Discord birthday bot",
-        images: ["/img/hbd_example.gif"],
+        examples: [{
+            webm: "/img/hbd_example.webm",
+            mp4: "/img/hbd_example.mp4"
+        }],
         link: "/project/hbd",
         github: "https://github.com/clxrityy/mjanglin.com/tree/hbd",
         thumbnail: "/img/hbd.png",
@@ -45,9 +48,15 @@ export const PROJECTS = [
         demo_link: "https://sleepgraph.mjanglin.com",
         link: "https://sleepgraph.mjanglin.com",
         description: "A web application that allows users to input their sleep data and visualize it with different graphs. Users can view their sleep patterns over time and see how their sleep quality changes.",
-        images: [
-            "/img/sleepgraph_example_1.gif",
-            "/img/sleepgraph_example_2.gif",
+        examples: [
+            {
+                webm: "/img/sleepgraph_example_1.webm",
+                mp4: "/img/sleepgraph_example_1.mp4"
+            },
+            {
+                webm: "/img/sleepgraph_example_2.webm",
+                mp4: "/img/sleepgraph_example_2.mp4"
+            }
         ]
     }
 

@@ -3,7 +3,7 @@ export type ProjectParams = {
     short_desc: string;
     link: string;
     github?: string;
-    images?: string[];
+    examples?: Example[];
     thumbnail?: string;
     description?: string;
     tags?: string[];
@@ -12,4 +12,9 @@ export type ProjectParams = {
         gradient_to?: string;
     },
     demo_link?: string;
+}
+
+type Example = {
+    webm: string;
+    mp4: string;
 }
