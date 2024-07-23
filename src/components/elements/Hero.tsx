@@ -22,8 +22,8 @@ export default function Hero() {
                     </video>
                     <Link href="https://www.clxrity.xyz">
                         <video width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90">
-                            <source src="/img/soundwave.webm" type="video/webm" />
                             <source src="/img/soundwave.mp4" type="video/mp4" />
+                            <source src="/img/soundwave.webm" type="video/webm" />
                         </video>
                     </Link>
                     <div className="flex flex-col items-start justify-center">
