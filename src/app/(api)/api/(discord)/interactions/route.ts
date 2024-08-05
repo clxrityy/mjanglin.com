@@ -97,7 +97,7 @@ export async function POST(req: Request) {
                     if (interactionSubcommandGroup.name === "wish" && interactionSubcommandGroup.options.length > 0) {
                         switch (interactionSubcommandGroup.options[0].name) {
                             case "send":
-                                embed = await generalCommandHandlers.birthdayWishSend(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await generalCommandHandlers.birthdayHandlers.wish.send(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -108,7 +108,7 @@ export async function POST(req: Request) {
                                     }
                                 });
                             case "list":
-                                embed = await generalCommandHandlers.birthdayWishList(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await generalCommandHandlers.birthdayHandlers.wish.list(interactionSubcommandGroupOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -125,7 +125,7 @@ export async function POST(req: Request) {
                 switch (interactionSubcommand.name) {
                     // /birthday set
                     case "set":
-                        embed = await generalCommandHandlers.birthdaySet(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalCommandHandlers.birthdayHandlers.set(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -137,7 +137,7 @@ export async function POST(req: Request) {
                         });
                     // /birthday view
                     case "view":
-                        embed = await generalCommandHandlers.birthdayView(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalCommandHandlers.birthdayHandlers.view(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -148,7 +148,7 @@ export async function POST(req: Request) {
                             }
                         });
                     case "countdown":
-                        embed = await generalCommandHandlers.birthdayCountdown(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await generalCommandHandlers.birthdayHandlers.countdown(interactionSubcommandOptions!, interaction.member!.user!.id, interaction.guild_id!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -170,7 +170,7 @@ export async function POST(req: Request) {
             // /sign
             case commands.sign.name:
 
-                embed = await generalCommandHandlers.astrologySignHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+                embed = await generalCommandHandlers.astrologyHandlers.sign(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -199,7 +199,7 @@ export async function POST(req: Request) {
 
                         switch (interactionSubcommandOptions[0].name) {
                             case "changeable":
-                                embed = await adminCommandHandlers.changeableConfigHandler(interactionSubcommandOptions[0].value as boolean, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await adminCommandHandlers.configHandlers.set.changeable(interactionSubcommandOptions[0].value as boolean, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -210,7 +210,7 @@ export async function POST(req: Request) {
                                     }
                                 });
                             case "admin_role":
-                                embed = await adminCommandHandlers.adminRoleConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await adminCommandHandlers.configHandlers.set.adminRole(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -221,7 +221,7 @@ export async function POST(req: Request) {
                                     }
                                 });
                             case "birthday_role":
-                                embed = await adminCommandHandlers.birthdayRoleConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await adminCommandHandlers.configHandlers.set.birthdayRole(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -232,7 +232,7 @@ export async function POST(req: Request) {
                                     }
                                 });
                             case "birthday_message":
-                                embed = await adminCommandHandlers.birthdayMessageConfigHandler(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+                                embed = await adminCommandHandlers.configHandlers.set.birthdayMessage(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -245,7 +245,7 @@ export async function POST(req: Request) {
                         }
 
                     case "view":
-                        embed = await adminCommandHandlers.viewConfigHandler(interaction.member!.user!.id, interaction.guild_id!);
+                        embed = await adminCommandHandlers.configHandlers.view(interaction.member!.user!.id, interaction.guild_id!);
 
 
                         return NextResponse.json({
@@ -268,7 +268,7 @@ export async function POST(req: Request) {
             // /horoscope
             case commands.horoscope.name:
 
-                embed = await generalCommandHandlers.astrologyHoroscopeHandler(interaction.member!.user!.id, interaction.guild_id!);
+                embed = await generalCommandHandlers.astrologyHandlers.horoscope(interaction.member!.user!.id, interaction.guild_id!);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -309,7 +309,7 @@ export async function POST(req: Request) {
             // /compatibility
             case commands.compatibility.name:
 
-                embed = await generalCommandHandlers.astrologyCompatibilityHandler(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
+                embed = await generalCommandHandlers.astrologyHandlers.compatibility(interaction.member!.user!.id, interaction.guild_id!, interactionOptions);
 
                 return NextResponse.json({
                     type: InteractionResponseType.ChannelMessageWithSource,
@@ -361,6 +361,56 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
+            
+            // /friend
+
+            case commands.friend.name:
+                switch (interactionSubcommand.name) {
+                    case "request":
+                        embed = await generalCommandHandlers.friendHandlers.friendRequest( interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
+
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
+                            }
+                        });
+                    case "accept":
+                        embed = await generalCommandHandlers.friendHandlers.friendAccept( interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
+
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
+                            }
+                        });
+                    case "remove":
+                        embed = await generalCommandHandlers.friendHandlers.friendRemove(interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
+                        
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
+                            }
+                        });
+                    case "list":
+                        embed = await generalCommandHandlers.friendHandlers.friendList(interaction.member!.user!.id, interaction.guild_id!);
+
+                        return NextResponse.json({
+                            type: InteractionResponseType.ChannelMessageWithSource,
+                            data: {
+                                embeds: [
+                                    JSON.parse(JSON.stringify(embed))
+                                ]
+                            }
+                        });
+                 }
 
             default:
                 return NextResponse.json({
