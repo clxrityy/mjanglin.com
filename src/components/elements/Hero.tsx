@@ -21,10 +21,7 @@ export default function Hero() {
                         <source src="/img/keyboard.mp4" type="video/mp4" />
                     </video>
                     <Link href="https://www.clxrity.xyz">
-                        <video width={100} height={100} className="backdrop:bg-blend-multiply filter bg-blend-hue flex place-self-center opacity-90">
-                            <source src="/img/soundwave.mp4" type="video/mp4" />
-                            <source src="/img/soundwave.webm" type="video/webm" />
-                        </video>
+                        <Image width={100} height={100} src="/img/wave.png" alt="wave" />
                     </Link>
                     <div className="flex flex-col items-start justify-center">
                         <h1 className="text-center tracking-wide">
