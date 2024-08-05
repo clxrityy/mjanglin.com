@@ -1,6 +1,6 @@
 import { FONTS } from "@/misc/fonts";
 import "./globals.css";
-import Providers from "./providers";
+import Providers from "../components/layers/providers";
 import { Metadata } from "next";
 import { parseUser } from "@/utils/parseUser";
 import { redirect } from "next/navigation";

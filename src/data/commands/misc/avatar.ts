@@ -12,6 +12,6 @@ const AVATAR_COMMAND: ApplicationCommand = {
             required: false
         }
     ]
-}
+} as const;
 
 export default AVATAR_COMMAND;

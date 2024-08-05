@@ -8,10 +8,11 @@ import avatarHandler from "./misc/avatar";
 import helpHandler from "./help";
 import astrologyCompatibilityHandler from "./astrology/compatibility";
 import holidays from "./holidays";
+import friendRequest from "./friendships/request";
 
 export {
     astrologySignHandler, birthdayCountdown, birthdaySet,
     birthdayView, astrologyHoroscopeHandler,
     birthdayWishSend, birthdayWishList,
-    avatarHandler, helpHandler, astrologyCompatibilityHandler, holidays
+    avatarHandler, helpHandler, astrologyCompatibilityHandler, holidays, friendRequest
 };
