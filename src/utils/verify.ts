@@ -43,8 +43,6 @@ export async function verifyInteractionRequest(
         return { isValid: false };
     }
 
-    
-
     return {
         interaction: JSON.parse(rawBody) as APIChatInputApplicationCommandInteraction | APIPingInteraction,
         isValid: true

@@ -1,17 +1,56 @@
 import Guild from "@/components/elements/Guild";
+import { Button } from "@/components/ui/Button";
 import MainButton from "@/components/ui/MainButton";
 import { CONFIG } from "@/config";
 import { db } from "@/lib/db";
 import { parseUser } from "@/utils/parseUser";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 export default async function Page() {
     const user = parseUser();
 
     if (!user) {
-        return redirect(CONFIG.URLS.OAUTH2_INVITE_URL);
+        return <main>
+            <div className="flex justify-center items-center flex-col gap-10">
+                <div className="flex flex-row items-center justify-center gap-5">
+                    <h1 className="text-[#F69FC2]">hbd</h1>
+                    <Image src="/apple-touch-icon.png" alt="hbd" width={64} height={64} className="animate-spin-slow" />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center h-full max-w-sm md:max-w-xl lg:max-w-4xl gap-8">
+                    <MainButton color="tertiary">
+                        <Link href={CONFIG.URLS.INVITE_URL} className="flex flex-row gap-2 items-center text-center justify-center">
+                            Invite <span className="">
+                                <CONFIG.ICONS.INVITE size={24} />
+                            </span>
+                        </Link>
+                    </MainButton>
+                    <MainButton color="tertiary">
+                        <Link href="/commands" className="flex flex-row gap-2 items-center text-center justify-center">
+                            Commands <span className=""><CONFIG.ICONS.COMMANDS size={24} /></span>
+                        </Link>
+                    </MainButton>
+                    <MainButton color="primary">
+                        <Link href={CONFIG.URLS.TEST_GUILD_URL} className="flex flex-row gap-2 items-center text-center justify-center">
+                            Developer Server <span className="text-[#5865F2]"><CONFIG.ICONS.DISCORD size={24} /></span>
+                        </Link>
+                    </MainButton>
+                    <MainButton color="primary">
+                        <Link href={CONFIG.URLS.GITHUB_REPO} className="flex flex-row gap-2 items-center text-center justify-center">
+                            GitHub <span className="bg-transparent rounded-full text-zinc-800"><CONFIG.ICONS.GITHUB size={24} /></span>
+                        </Link>
+                    </MainButton>
+                </div>
+                <div className="flex flex-col items-center justify-center gap-5">
+                    <h2>
+                        Sign in to add guilds!
+                    </h2>
+                    <Button>
+                        <Link href={CONFIG.URLS.OAUTH2_INVITE_URL}>Sign in</Link>
+                    </Button>
+                </div>
+            </div>
+        </main>
     }
 
     const userGuilds = await db.user.findUnique({

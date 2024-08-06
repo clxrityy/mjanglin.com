@@ -1,3 +1,4 @@
+import { CONFIG } from "@/config";
 import { commands } from "@/data/commands";
 import { env } from "@/env.mjs";
 import { adminCommandHandlers, generalCommandHandlers } from "@/handlers/command";
@@ -33,12 +34,14 @@ export const runtime = "edge";
  */
 
 export async function POST(req: Request) {
-    const verifyResult = await verifyInteractionRequest(req, env.PUBLIC_KEY);
+
+    const verifyResult = await verifyInteractionRequest(req, CONFIG.VALUES.PUBLIC_KEY);
     if (!verifyResult.isValid) {
         return NextResponse.json("Invalid request", { status: 401 });
     }
 
     const { interaction } = verifyResult;
+
 
     if (interaction.type === InteractionType.Ping) {
         return NextResponse.json({
@@ -414,10 +417,7 @@ export async function POST(req: Request) {
 
             default:
                 return NextResponse.json({
-                    type: InteractionResponseType.ChannelMessageWithSource,
-                    data: {
-                        content: "Unknown command"
-                    }
+                    type: InteractionResponseType.Pong,
                 });
 
         }

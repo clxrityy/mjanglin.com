@@ -3,8 +3,6 @@ import "./globals.css";
 import Providers from "../components/layers/providers";
 import { Metadata } from "next";
 import { parseUser } from "@/utils/parseUser";
-import { redirect } from "next/navigation";
-import { CONFIG } from "@/config";
 import UserIcon from "@/components/misc/UserIcon";
 import Footer from "@/components/layers/Footer";
 import HomeIcon from "@/components/misc/HomeIcon";
@@ -25,10 +23,6 @@ export default async function RootLayout({
 }>) {
 
   const user = parseUser();
-
-  if (!user) {
-    return redirect(CONFIG.URLS.OAUTH2_INVITE_URL);
-  }
 
   return (
 
@@ -60,7 +54,7 @@ export default async function RootLayout({
           <body className={`${FONTS.nunito.variable} ${FONTS.roboto.variable} dark`}>
             <Stars />
             <HomeIcon />
-            <UserIcon userId={user.id} />
+            {user && <UserIcon userId={user.id} />}
             {children}
             <Footer />
             <SpeedInsights />
