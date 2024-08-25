@@ -1,4 +1,4 @@
-import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord, FaTrash, FaStar, FaHome } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaMusic, FaReact, FaSoundcloud, FaSpotify, FaNodeJs, FaPython, FaInstagram, FaLinkedin, FaDiscord, FaTrash, FaStar, FaHome, FaFileAudio } from "react-icons/fa";
 import { SiTypescript, SiPrisma, SiVercel, SiPostgresql } from "react-icons/si";
 import { MdOutlineStart } from "react-icons/md";
 import { RiNextjsLine } from "react-icons/ri";
@@ -28,6 +28,7 @@ const configurations = {
         vercel: SiVercel,
         postgresql: SiPostgresql,
         recharts: FaChartSimple,
+        audio: FaFileAudio,
     },
     colors: {
         github: "#333",

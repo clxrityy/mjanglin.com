@@ -58,6 +58,34 @@ export const PROJECTS = [
                 mp4: "/img/sleepgraph_example_2.mp4"
             }
         ]
+    },
+    {
+        name: "react-audio",
+        short_desc: "A react audio component library",
+        thumbnail: "/img/react-audio.png",
+        github: "https://github.com/clxrityy/react-audio",
+        tags: [
+            "React",
+            "TypeScript",
+            "Web Audio API",
+            "NodeJS"
+        ],
+        description: "A react component library that allows users to easily add audio players to their web applications. The library is highly customizable and supports multiple audio sources.",
+        link: "https://www.npmjs.com/package/@clxrity/react-audio",
+        examples: [
+            {
+                webm: "/img/react-audio_example_1.webm",
+                mp4: "/img/react-audio_example_1.mp4"
+            },
+            {
+                webm: "/img/react-audio_example_2.webm",
+                mp4: "/img/react-audio_example_2.mp4"
+            }
+        ],
+        style: {
+            gradient_from: "#000",
+            gradient_to: "#000"
+        }
     }
 
 ] as ProjectParams[];
@@ -101,6 +129,16 @@ export const TAGS = [
     {
         name: "Recharts",
         icon: configurations.icons.recharts,
+        color: "#fff"
+    },
+    {
+        name: "Web Audio API",
+        icon: configurations.icons.audio,
+        color: "#fff"
+    },
+    {
+        name: "NodeJS",
+        icon: configurations.icons.nodejs,
         color: "#fff"
     }
 ] as const;
