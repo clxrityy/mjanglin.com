@@ -20,8 +20,8 @@ export default function Hero() {
                         <source src="/img/keyboard.webm" type="video/webm" />
                         <source src="/img/keyboard.mp4" type="video/mp4" />
                     </video>
-                    <Link href="https://www.clxrity.xyz">
-                        <Image width={100} height={100} src="/img/wave.png" alt="wave" />
+                    <Link href="https://clxrity.xyz" className="">
+                        <Image width={100} height={100} src="/img/wave.png" alt="wave" className="invert-[50%] hover:invert-0 duration-1000 transition-transform ease-in" />
                     </Link>
                     <div className="flex flex-col items-start justify-center">
                         <h1 className="text-center tracking-wide">

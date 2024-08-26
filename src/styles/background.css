@@ -1,59 +1,22 @@
 .background {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: transparent;
-    z-index: 0;
-    opacity: 0.35;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+    position: fixed;
+    background-color: black;
+    background-image:
+        radial-gradient(white, rgba(255, 255, 255, .2) 2px, transparent 40px),
+        radial-gradient(white, rgba(255, 255, 255, .15) 1px, transparent 30px),
+        radial-gradient(white, rgba(255, 255, 255, .1) 2px, transparent 40px),
+        radial-gradient(rgba(255, 255, 255, .4), rgba(255, 255, 255, .1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+    animation: bg 35s linear infinite;
 
-    @apply w-fit h-fit;
 }
 
-.path {
-    animation: draw 20s infinite;
-    animation-timing-function: linear;
-}
-
-.path-01 {
-    animation-delay: 0s;
-}
-
-.path-02 {
-    animation-delay: 1s;
-}
-
-.path-03 {
-    animation-delay: 2s;
-}
-
-.path-04 {
-    animation-delay: 3s;
-}
-
-.path-05 {
-    animation-delay: 4s;
-}
-
-polyline {
-    stroke: #06b6d4;
-    stroke-width: 1;
-    /* stroke-dasharray: 1000;
-    stroke-dashoffset: 1000; */
-
-    box-shadow: 1px 0px 20px 0px #fff;
-}
-
-path::before {
-    content: "";
-    stroke: rgb(192 132 252 / 0.9);
-}
-
-@keyframes draw {
-    0% {}
-
-    100% {
-        stroke-dashoffset: 0;
-        stroke-opacity: 1;
+@keyframes bg {
+    to {
+        background-position: 50vw 25vh, 40vw 60vh, 130vw 27vh, 70vw 10vh, 0 0;
     }
 }

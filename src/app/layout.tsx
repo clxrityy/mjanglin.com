@@ -38,11 +38,13 @@ export default async function RootLayout({
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="theme-color" content="currentColor" />
       </head>
-      <Providers>
-        <body className={`${noto.className} ${redHatMono.variable}`}>
+
+      <body className={`${noto.className} ${redHatMono.variable}`}>
+        <Providers>
           {children}
-        </body>
-      </Providers>
+        </Providers>
+      </body>
+
     </html>
   );
 }
