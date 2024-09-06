@@ -71,7 +71,7 @@ export const PROJECTS = [
             "NodeJS"
         ],
         description: "A react component library that allows users to easily add audio players to their web applications. The library is highly customizable and supports multiple audio sources.",
-        link: "https://www.npmjs.com/package/@clxrity/react-audio",
+        link: "https://clxrityy.github.io/react-audio/?path=/docs/home--docs",
         examples: [
             {
                 webm: "/img/react-audio_example_1.webm",
