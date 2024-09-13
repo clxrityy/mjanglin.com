@@ -8,7 +8,6 @@
     --background-end-rgba: 1, 3, 1, 0.5;
 }
 
-
 html,
 body {
     color: rgb(var(--foreground-rgba));
@@ -21,21 +20,33 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    font-family: var(--font-noto);
+    scrollbar-color: rgba(227, 42, 134, 0.8) transparent;
+    scrollbar-3dlight-color: #06b5d48f;
+    scrollbar-width: thin;
+    scrollbar-gutter: both-edges;
 
     @apply h-screen w-screen relative z-10;
 }
 
-main {
+::-webkit-scrollbar {
+    width: 5px;
+}
 
+
+::-webkit-scrollbar-thumb {
+    background: #06b5d4;
+    border-radius: 10px;
+}
+
+main {
     @apply w-full min-h-screen flex flex-col justify-center items-center mx-auto gap-10 relative;
 }
 
 h1 {
-    text-shadow: 3px 0px 5px rgba(23, 48, 83, 75);
-    font-size: 3rem;
     font-weight: 800;
 
-    @apply tracking-tight flex flex-row gap-2 items-center w-fit;
+    @apply tracking-tight flex flex-row gap-2 items-center w-fit text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
 }
 
 
@@ -100,6 +111,11 @@ code {
 /** 
   blog content
 */
+.blog-content {
+    scrollbar-width: 0px;
+    z-index: 0;
+}
+
 .blog-content h1 {
     text-shadow: none;
 
@@ -166,11 +182,6 @@ code {
     @apply underline underline-offset-2;
 }
 
-.blog-content::-webkit-scrollbar {
-    display: inline;
-    width: 0.5rem;
-}
-
 
 .blog-content pre,
 code {
@@ -214,27 +225,7 @@ strong {
 @layer utilities {
     .text-balance {
         text-wrap: balance;
-    }
-
-    .hero-link {
-
-        @apply text-4xl rounded-full hover:scale-110 transition-all ring-offset-2 hover:shadow-md opacity-80 hover:opacity-100;
-    }   
-
-    .social-link {
-        @apply hover:scale-125 transition-all duration-500 ease-in-out;
-    }
-
-    .spotify-ad {
-        text-shadow: 0px 0px 7.5px #000000;
-        background: linear-gradient(to bottom,
-                transparent,
-                rgba(0, 0, 0, 0.25));
-
-
-        @apply bg-black/25 rounded-lg px-2 shadow-md drop-shadow;
-    }
-
+    }  
     .project-form-item-container {
 
         @apply flex flex-col gap-4 items-center w-full;
@@ -242,7 +233,23 @@ strong {
 
     .blog-content {
 
-        @apply scroll-smooth overflow-y-scroll max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-5xl;
+        @apply max-h-fit h-fit mt-32 mb-10 w-4/5 xl:w-full flex flex-col mx-auto bg-blue-300/10 rounded-md py-5 px-6 gap-4 max-w-5xl;
     }
 
+    .hero-title {
+        font-weight: 800;
+        text-shadow: 0 0 10px #000;
+
+        @apply tracking-wide flex flex-row gap-2 items-center w-fit text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+    }
+
+    .font-jetbrains {
+        font-family: var(--font-jetbrains-mono);
+    }
+
+    .hero-heading {
+        font-size: 1.75rem;
+        font-weight: 200;
+        text-shadow: 0 0 10px #000;
+    }
 }

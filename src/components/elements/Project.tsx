@@ -1,53 +1,49 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import configurations from "@/config";
 import { ProjectParams } from "@/utils/types";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { TAGS } from "@/utils/constants";
 
 
 const { icons } = configurations;
 
-export default function Project({ name, thumbnail, description, link, examples, short_desc, github, tags, style, demo_link }: ProjectParams) {
-
-    const gradient = style?.gradient_from && style?.gradient_to ? `bg-gradient-to-br from-[${style.gradient_from}] to-[${style.gradient_to}]` : "bg-gradient-to-br from-zinc-950 to-zinc-800";
+export default async function Project({ name, thumbnail, description, link, examples, short_desc, github, tags, demo_link }: ProjectParams) {
 
     return (
-        <Card className={`${gradient} px-4 py-4 rounded-xl shadow hover:scale-95 transition cursor-pointer focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-400 relative flex flex-col gap-5 filter grayscale hover:grayscale-0 transition-transform-colors small-shadow`}>
-            <CardHeader className="w-full flex items-stretch flex-row max-h-[200px] justify-evenly">
-                <div className="flex flex-col gap-2">
-                    <CardTitle className="text-3xl font-bold text-center hover:underline">
-                        <Link prefetch href={link} className="">
-                            {name}
-                        </Link>
-                    </CardTitle>
-                    <CardDescription>
-                        {short_desc}
-                    </CardDescription>
+        <div className={`border px-10 py-4 rounded-lg border-opacity-15 border-white bg-gradient-to-tr from-white/10 to-white/5 shadow-lg shadow-white/20 hover:scale-x-95 transition-all duration-700 ease-linear hover:shadow-xl relative`}>
+            <div className="flex flex-col items-center justify-center gap-4">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+                    {thumbnail && <Link prefetch href={link}>
+                        <Image src={thumbnail} alt={name} width={75} height={75} className="rounded-lg flex" />
+                    </Link>}
+                    <div className="flex flex-col gap-2">
+                        <h1 className="text-3xl font-bold text-center hover:underline hover:text-blue-500 transition">
+                            <Link prefetch href={link} className="">
+                                {name}
+                            </Link>
+                        </h1>
+                        <p className="">
+                            {short_desc}
+                        </p>
+                    </div>
                 </div>
-                {thumbnail && <Link href={link}>
-                    <Image src={thumbnail} alt={name} width={100} height={100} className="rounded-lg flex" />
-                </Link>}
-            </CardHeader>
-            <CardContent>
-                <div className="flex flex-col justify-between w-full gap-4 items-center">
-                    <span className="opacity-85">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-5 w-full">
+                    <span className="max-w-[1/3] flex items-center justify-center flex-auto text-sm xl:text-base">
                         {description && description}
                     </span>
-                    <Link href={link} className="hover:scale-95 transition-transform grid grid-cols-1 gap-1 items-center">
+                    <div className="flex flex-col items-center justify-center w-2/3 gap-3">
                         {examples && examples.map((example, idx) => (
-                            <video width={300} height={300} className="rounded-lg opacity-80" key={idx} autoPlay muted loop playsInline>
-                                <source src={example.mp4} type="video/mp4" />
-                                <source src={example.webm} type="video/webm" />
-                            </video>
+                            <Link key={idx} href={example.webm ? example.webm : example.mp4} className="hover:scale-105 transition-transform duration-500 shadow-2xl shadow-black rounded-lg hover:border-2 ease-out focus:ring-blue-500 focus:ring">
+                                <video width={500} height={500} className="rounded-lg opacity-100" key={idx} autoPlay muted loop playsInline>
+                                    <source src={example.mp4} type="video/mp4" />
+                                    <source src={example.webm} type="video/webm" />
+                                </video>
+                            </Link>
                         ))}
-                    </Link>
+                    </div>
                 </div>
-            </CardContent>
-            <CardFooter className="flex flex-col gap-5">
-                <div className="flex flex-col gap-4 items-center">
-                    <div className="grid grid-cols-3 items-center gap-2 w-full">
+                <div className="flex gap-4 items-center justify-center w-full py-4">
+                    <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-2 items-center justify-around gap-3 w-full lg:w-2/3 xl:w-1/2">
                         {tags?.map((tag, index) => {
                             const icon = (name: string) => {
                                 const tag = TAGS.find(tag => tag.name === name);
@@ -55,8 +51,8 @@ export default function Project({ name, thumbnail, description, link, examples, 
                             }
                             const Icon = icon(tag);
 
-                            return <span key={index} className={`bg-zinc-950/75 flex flex-row items-center gap-1 text-center rounded-md text-sm justify-center px-2 py-1 hover:scale-105 transition-transform`}>
-                                <Icon />
+                            return <span key={index} className={`bg-zinc-950/75 flex flex-row items-center gap-2 text-center rounded-md text-sm justify-center px-2 py-1 hover:scale-105 transition-transform w-fit mx-auto`}>
+                                <Icon size={12} />
                                 {tag}
                             </span>
                         })}
@@ -64,21 +60,20 @@ export default function Project({ name, thumbnail, description, link, examples, 
                 </div>
                 <div className="flex flex-col gap-1 justify-self-end w-full text-zinc-300 text-sm">
                     {demo_link && (
-                        <Link href={demo_link} className="hover:underline flex flex-row gap-1 items-center">
+                        <Link href={demo_link} className="hover:underline hover:text-blue-500 flex flex-row gap-1 items-center">
                             <icons.star />
                             Demo link
                         </Link>
                     )}
                     {github && (
-                        <Link href={github} className="hover:underline flex flex-row gap-1 items-center">
+                        <Link href={github} className="hover:underline hover:text-blue-500 flex flex-row gap-1 items-center">
                             <icons.github />
                             View on GitHub
                         </Link>
                     )}
                 </div>
-
-            </CardFooter>
-        </Card>
-    )
+            </div>
+        </div>
+    );
 }
 

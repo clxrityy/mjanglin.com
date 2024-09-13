@@ -1,10 +1,15 @@
-import { Noto_Sans, Red_Hat_Mono } from "next/font/google";
+import { Red_Hat_Mono, JetBrains_Mono, Noto_Sans } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import { Metadata } from "next";
+import Script from 'next/script';
+import Sidebar from "@/components/layers/Sidebar";
+import Footer from "@/components/layers/Footer";
+import { Suspense } from "react";
 
-const noto = Noto_Sans({ subsets: ["latin"], preload: true, display: "swap" });
+const noto = Noto_Sans({ subsets: ["latin"], preload: true, display: "swap", variable: "--font-noto" });
 const redHatMono = Red_Hat_Mono({ subsets: ["latin"], variable: "--font-red-hat-mono", preload: true, display: "swap" });
+const jetBrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", preload: true, display: "swap", weight: ["100", "200", "800", "700", '600', "500", "300", '400'] });
 
 
 // export const metadata: Metadata = {
@@ -37,14 +42,26 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="theme-color" content="currentColor" />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-DH9C4WZGMK"
+        />
       </head>
-
-      <body className={`${noto.className} ${redHatMono.variable}`}>
         <Providers>
-          {children}
+          <body className={`${noto.variable} ${redHatMono.variable} ${jetBrainsMono.variable}`}>
+            <Sidebar />
+            {children}
+            <Footer />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DH9C4WZGMK');
+          `}
+            </Script>
+          </body>
         </Providers>
-      </body>
-
     </html>
   );
 }

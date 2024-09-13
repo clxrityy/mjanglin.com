@@ -8,11 +8,16 @@ type Props = {
 
 export default async function Main({ children }: Props) {
     return <div className="static flex">
-        <Background />
-        <main className="relative my-40">
-            <Suspense fallback={<Loading />}>
-                {children}
-            </Suspense>
+        <Suspense fallback={<div className="h-screen w-screen fixed bg-gray-800 animate-pulse" />}>
+            <Background />
+        </Suspense>
+        <main className="relative">
+            <div className="my-20">
+                <Suspense fallback={<Loading />}>
+                    {children}
+                </Suspense>
+            </div>
+            
         </main>
     </div>
 }

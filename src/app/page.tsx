@@ -13,16 +13,18 @@ export default async function Home() {
   return (
     <Main>
       <div className="flex flex-col items-center justify-around h-1/3 w-full gap-6 mt-10 mb-20">
-        <Suspense fallback={<div />}>
+        <Suspense fallback={<div className="w-10 h-10 rounded-full border border-white animate-spin" />}>
           <Hero />
         </Suspense>
       </div>
-      
+      <div>
+        
+      </div>
       <div className="flex w-full mx-auto justify-center items-center mb-10">
         <Suspense fallback={<div />}>
           <ProjectsContainer projects={PROJECTS} />
         </Suspense>
-      </div>
+      </div> 
     </Main>
   )
 }
