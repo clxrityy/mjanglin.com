@@ -70,10 +70,10 @@ export default async function astrologyCompatibilityHandler(userId: string, guil
                     const userTwoZodiacSign = getZodiacSign(user2BirthdayData.month, user2BirthdayData.day);
 
                     try {
-                        const timeLeft = await cooldown.checkCooldown(userId, guildId, "compatibility");
+                        const timeLeft = await cooldown.checkCooldown(userId, "compatibility");
 
                         if (timeLeft <= 0) {
-                            await cooldown.setCooldown(userId, guildId);
+                            await cooldown.setCooldown(userId);
 
                             const compatibility = await ai.compatibilityQuery({
                                 username1: userOne.username,
