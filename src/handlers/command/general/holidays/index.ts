@@ -30,10 +30,10 @@ export default async function holidays(userId: string, guildId: string, options?
     }
 
     try {
-        const timeLeft = await cooldown.checkCooldown(userId, guildId, "holidays");
+        const timeLeft = await cooldown.checkCooldown(userId, "holidays");
 
         if (timeLeft <= 0) {
-            await cooldown.setCooldown(userId, guildId);
+            await cooldown.setCooldown(userId);
 
             if (month) {
                 if (month && day) {
@@ -78,7 +78,7 @@ export default async function holidays(userId: string, guildId: string, options?
                             fields: [
                                 {
                                     name: "Birthdays",
-                                    value: birthdays.map((birthday) => `- <@${birthday.userId}> — \`${birthday.month}/${birthday.day}\``).join("\n") || "No birthdays found",
+                                    value: birthdays.map((birthday: any) => `- <@${birthday.userId}> — \`${birthday.month}/${birthday.day}\``).join("\n") || "No birthdays found",
                                     inline: true
                                 },
                                 {
@@ -139,7 +139,7 @@ export default async function holidays(userId: string, guildId: string, options?
                             fields: [
                                 {
                                     name: "Birthdays",
-                                    value: birthdays.map((birthday) => `- <@${birthday.userId}> — \`${birthday.month}/${birthday.day}\``).join("\n") || "No birthdays found",
+                                    value: birthdays.map((birthday: any) => `- <@${birthday.userId}> — \`${birthday.month}/${birthday.day}\``).join("\n") || "No birthdays found",
                                     inline: true
                                 },
                                 {

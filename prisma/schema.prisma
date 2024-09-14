@@ -32,7 +32,6 @@ model Guild {
   userId      String
   changeable  Boolean    @default(false)
   adminRoleId String?
-  cooldowns   Cooldown[]
   user        User       @relation(fields: [userId], references: [id])
   wishes      Wish[]
   members     Member[]   @relation("GuildToMember")
@@ -43,11 +42,9 @@ model Guild {
 model Cooldown {
   id        String   @id @default(uuid())
   userId    String
-  guildId   String
   command   String
   createdAt DateTime @default(now())
   expiresAt DateTime @default(dbgenerated("(now() + '00:01:00'::interval)"))
-  guild     Guild    @relation(fields: [guildId], references: [id])
   user      User     @relation(fields: [userId], references: [id])
 }
 

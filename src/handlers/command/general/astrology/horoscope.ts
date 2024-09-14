@@ -33,10 +33,10 @@ export default async function astrologyHoroscopeHandler(userId: string, guildId:
         const sign = getZodiacSign(birthdayData.month, birthdayData.day);
 
         try {
-            const timeLeft = await cooldown.checkCooldown(userId, guildId, "horoscope");
+            const timeLeft = await cooldown.checkCooldown(userId, "horoscope");
     
             if (timeLeft === 0) {
-                await cooldown.setCooldown(userId, guildId);
+                await cooldown.setCooldown(userId);
     
                 const horoscope = await ai.horoscopeQuery({
                     username: user.username,

@@ -18,12 +18,9 @@ export class Cooldown {
         this.activeTimeouts = {};
     }
 
-    private async addCooldownData(userId: string, guildId: string) {
+    private async addCooldownData(userId: string) {
         const existingCooldown = await db.cooldown.findFirst({
             where: {
-                guild: {
-                    guildId: guildId
-                },
                 user: {
                     userId: userId
                 },
@@ -47,11 +44,6 @@ export class Cooldown {
         } else {
             await db.cooldown.create({
                 data: {
-                    guild: {
-                        connect: {
-                            guildId: guildId
-                        }
-                    },
                     user: {
                         connect: {
                             userId: userId
@@ -66,9 +58,9 @@ export class Cooldown {
 
 
 
-    async setCooldown(userId: string, guildId: string) {
+    async setCooldown(userId: string) {
 
-        await this.addCooldownData(userId, guildId);
+        await this.addCooldownData(userId)
 
         if (!this.activeTimeouts[this.commandName]) {
             this.activeTimeouts[this.commandName] = {};
@@ -80,12 +72,9 @@ export class Cooldown {
         }
     }
 
-    public async checkCooldown(userId: string, guildId: string, command: string) {
+    public async checkCooldown(userId: string, command: string) {
         const existingCooldown = await db.cooldown.findFirst({
             where: {
-                guild: {
-                    guildId: guildId
-                },
                 user: {
                     userId: userId
                 },
@@ -148,10 +137,9 @@ export class Cooldown {
         delete this.activeTimeouts[this.commandName][userId];
     }
 
-    async removeCooldownData(userId: string, guildId: string) {
+    async removeCooldownData(userId: string) {
         await db.cooldown.deleteMany({
             where: {
-                guildId: guildId,
                 userId: userId,
                 command: this.commandName
             }
