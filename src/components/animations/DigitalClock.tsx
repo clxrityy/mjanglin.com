@@ -33,22 +33,22 @@ export default function DigitalClock() {
     return (
         <div className="clock-wrapper">
             <div className="clock">
-                <div className="hour">
+                <div className="hour" suppressHydrationWarning>
                     {getHours()}
                 </div>
                 <span>
                     :
                 </span>
-                <div className="minute">
+                <div className="minute" suppressHydrationWarning>
                     {getMinutes()}
                 </div>
                 <span>
                     :
                 </span>
-                <div className="second">
+                <div className="second" suppressHydrationWarning>
                     {getSeconds()}
                 </div>
-                <div className="ampm">
+                <div className="ampm" suppressHydrationWarning>
                     {getAmPm()}
                 </div>
             </div> 

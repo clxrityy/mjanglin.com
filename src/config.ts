@@ -4,6 +4,7 @@ import { MdOutlineStart } from "react-icons/md";
 import { RiNextjsLine, RiJavascriptFill } from "react-icons/ri";
 import { FaChartSimple } from "react-icons/fa6";
 import { PiSubtractFill } from "react-icons/pi";
+import { GoProjectRoadmap } from "react-icons/go";
 
 
 
@@ -35,6 +36,7 @@ const configurations = {
         javascript: RiJavascriptFill,
         java: FaJava,
         openai: SiOpenai,
+        projectsBlog: GoProjectRoadmap,
     },
     colors: {
         github: "#333",
@@ -42,7 +44,7 @@ const configurations = {
         soundcloud: "#FF5500",
         typescript: "#007acc",
         react: "#61DAFB",
-        nodejs: "#68a063",
+        nodejs: "#215732",
         python: "#4584B6",
         discord: "#7289DA",
         postgresql: "#336791",

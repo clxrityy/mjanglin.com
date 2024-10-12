@@ -31,37 +31,39 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <meta name="theme-color" content="currentColor" />
-        <Script
-          strategy="afterInteractive"
-          src="https://www.googletagmanager.com/gtag/js?id=G-DH9C4WZGMK"
-        />
-      </head>
+      <html lang="en">
         <Providers>
-          <body className={`${noto.variable} ${redHatMono.variable} ${jetBrainsMono.variable}`}>
-            <Sidebar />
-            {children}
-            <Footer />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
+        <head>
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+          <link rel="manifest" href="/manifest.json" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta content="width=device-width, initial-scale=1" name="viewport" />
+          <meta name="theme-color" content="currentColor" />
+          <Script
+            strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-DH9C4WZGMK"
+          />
+        </head>
+
+        <body className={`${noto.variable} ${redHatMono.variable} ${jetBrainsMono.variable}`}>
+          
+          <Sidebar />
+          {children}
+          <Footer />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-DH9C4WZGMK');
           `}
-            </Script>
-          </body>
+          </Script>
+        </body>
         </Providers>
-    </html>
+      </html>
+    
   );
 }

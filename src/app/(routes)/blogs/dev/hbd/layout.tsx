@@ -4,7 +4,7 @@ import { Metadata } from "next"
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        title: "MJ Anglin - hbd discord bot",
+        title: "hbd discord bot",
         description: "A dynamic Discord birthday bot built with Nextjs, runs using edge runtime",
         keywords: [
             "discord",

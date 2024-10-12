@@ -10,7 +10,7 @@ const { icons } = configurations;
 export default async function Project({ name, thumbnail, description, link, examples, short_desc, github, tags, demo_link }: ProjectParams) {
 
     return (
-        <div className={`border px-10 py-4 rounded-lg border-opacity-15 border-white bg-gradient-to-tr from-white/10 to-white/5 shadow-lg shadow-white/20 hover:scale-x-95 transition-all duration-700 ease-linear hover:shadow-xl relative`}>
+        <div className={`border px-10 py-4 rounded-lg border-opacity-15 border-white bg-gradient-to-tr from-blue-950/20 to-blue-700/15 shadow-lg shadow-white/20 hover:scale-x-95 transition-all duration-700 ease-linear hover:shadow-xl relative`}>
             <div className="flex flex-col items-center justify-center gap-4">
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
                     {thumbnail && <Link prefetch href={link}>
@@ -49,11 +49,11 @@ export default async function Project({ name, thumbnail, description, link, exam
                                 const tag = TAGS.find(tag => tag.name === name);
                                 return tag?.icon || icons.star;
                             }
-                            const Icon = icon(tag);
+                            const Icon = icon(tag.name);
 
                             return <span key={index} className={`bg-zinc-950/75 flex flex-row items-center gap-2 text-center rounded-md text-sm justify-center px-2 py-1 hover:scale-105 transition-transform w-fit mx-auto`}>
                                 <Icon size={12} />
-                                {tag}
+                                {tag.name}
                             </span>
                         })}
                     </div>

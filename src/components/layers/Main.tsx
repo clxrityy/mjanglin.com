@@ -11,13 +11,12 @@ export default async function Main({ children }: Props) {
         <Suspense fallback={<div className="h-screen w-screen fixed bg-gray-800 animate-pulse" />}>
             <Background />
         </Suspense>
-        <main className="relative">
+        <div className="relative">
             <div className="my-20">
                 <Suspense fallback={<Loading />}>
                     {children}
                 </Suspense>
             </div>
-            
-        </main>
+        </div>
     </div>
 }
