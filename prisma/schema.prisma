@@ -19,33 +19,32 @@ model Birthday {
 model Cooldown {
   id        String   @id
   userId    String
-  guildId   String
   command   String
   createdAt DateTime @default(now())
   expiresAt DateTime @default(dbgenerated("(now() + '00:01:00'::interval)"))
-  Guild     Guild    @relation(fields: [guildId], references: [id])
   User      User     @relation(fields: [userId], references: [id])
 }
 
 model Guild {
-  id              String     @id
-  guildId         String     @unique
+  id              String   @id
+  guildId         String   @unique
   userId          String
-  changeable      Boolean    @default(false)
+  changeable      Boolean  @default(false)
   adminRoleId     String?
   birthdayRoleId  String?
   birthdayMessage String?
-  Cooldown        Cooldown[]
-  User            User       @relation(fields: [userId], references: [id])
+  User            User     @relation(fields: [userId], references: [id])
   Wish            Wish[]
-  Member          Member[]   @relation("GuildToMember")
+  Member          Member[] @relation("GuildToMember")
 }
 
 model Member {
-  id     String  @id
-  userId String
-  User   User    @relation(fields: [userId], references: [id])
-  Guild  Guild[] @relation("GuildToMember")
+  id             String   @id
+  userId         String
+  friends        String[]
+  friendRequests String[]
+  User           User     @relation(fields: [userId], references: [id])
+  Guild          Guild[]  @relation("GuildToMember")
 }
 
 model User {
@@ -85,4 +84,51 @@ model SleepData {
   date      DateTime
   duration  Int
   sleepUser SleepUser @relation(fields: [userId], references: [userId])
+}
+
+model Blog {
+  id             String   @id
+  title          String
+  content        String
+  previewContent String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime
+  userId         String
+  uuid           String   @unique
+}
+
+model DivinityBaseItem {
+  id                    String                  @id
+  uuid                  String                  @unique
+  description           String
+  name                  String
+  updatedAt             DateTime                @default(now())
+  DivinityInventoryItem DivinityInventoryItem[]
+}
+
+model DivinityGame {
+  id                    String                  @id
+  gameId                String                  @unique
+  userId                String                  @unique
+  experience            Int
+  DivinityInventoryItem DivinityInventoryItem[]
+}
+
+model DivinityInventoryItem {
+  id               String           @id
+  userId           String
+  gameId           String
+  uuid             String
+  tier             Int
+  name             String
+  experience       Int?
+  DivinityGame     DivinityGame     @relation(fields: [gameId], references: [gameId], onDelete: Cascade)
+  DivinityBaseItem DivinityBaseItem @relation(fields: [uuid], references: [uuid])
+}
+
+model DivinityUser {
+  id       String  @id
+  userId   String  @unique
+  username String?
+  gameId   String?
 }
