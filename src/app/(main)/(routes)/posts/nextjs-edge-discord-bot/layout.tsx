@@ -1,16 +1,15 @@
 import { mdxPosts } from "@/utils/constants";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 
 const post = mdxPosts[0];
 
-export async function generateMetadata(parent: ResolvingMetadata): Promise<Metadata> {
-    const previousImages = (await parent).openGraph?.images || [];
+export async function generateMetadata(): Promise<Metadata> {
 
     return {
         title: post.title,
         description: post.preview,
         openGraph: {
-            images: [post.mainImage, ...previousImages]
+            images: [post.mainImage]
         },
         keywords: post.keywords
     }
