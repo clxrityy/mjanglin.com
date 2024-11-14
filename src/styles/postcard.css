@@ -1,0 +1,52 @@
+/* From Uiverse.io by Sashank02 */
+.post-card {
+    padding: 20px;
+    width: 330px;
+    min-height: 370px;
+    border-radius: 20px;
+    background: #212121;
+    box-shadow: 5px 5px 8px #1b1b1b,
+        -5px -5px 8px #272727;
+    transition: 0.4s;
+    height: fit-content;
+}
+
+.post-card:hover {
+    @apply scale-105 transition-all shadow-md duration-150 ease-in;
+}
+
+.post-card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(73, 150, 192);
+    margin: 15px 0 0 10px;
+}
+
+.post-card-image {
+    min-height: 170px;
+    background-color: transparent;
+    min-width: auto;
+}
+
+.post-card-actual-image {
+    border-radius: 15px;
+    box-shadow: inset 5px 5px 3px #2f2f2f,
+        inset -5px -5px 3px #333333;
+}
+
+.post-card-body {
+    margin: 13px 0 0 10px;
+    color: rgb(184, 184, 184);
+    font-size: 15px;
+}
+
+.post-card-footer {
+    float: right;
+    margin: 28px 0 0 18px;
+    font-size: 13px;
+    color: #b3b3b3;
+}
+
+.post-card-by-name {
+    font-weight: 700;
+}

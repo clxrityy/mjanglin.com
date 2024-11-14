@@ -19,8 +19,9 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(routes)/(blog)/blogs/page.tsx", "src/app/(routes)/blog/what-i-know-about-computers/page.mdx"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(main)/(routes)/(blog)/blogs/page.tsx", "src/app/(main)/(routes)/blog/what-i-know-about-computers/page.mdx"],
+  "exclude": ["node_modules", "__archive__"]
 }

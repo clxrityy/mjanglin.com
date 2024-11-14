@@ -38,3 +38,5 @@ next-env.d.ts
 /test
 
 .env
+__archive__
+test.md
