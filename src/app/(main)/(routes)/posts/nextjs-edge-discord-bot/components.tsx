@@ -33,7 +33,7 @@ export function TemplateRepository() {
 export function ExampleDashboardGif() {
     return (
         <div className="flex flex-col gap-1 w-full items-center justify-center">
-            <Image src={"https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcbeolsdvgqp06okcij8j.gif"} alt="Example of the dashboard" width={800} height={800} className="rounded-lg w-full" />
+            <Image priority src={"https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fcbeolsdvgqp06okcij8j.gif"} alt="Example of the dashboard" width={800} height={800} className="rounded-lg w-full" />
             <blockquote>
                 <p className="text-sm font-light">
                     Dashboard example from <Link href={"https://hbd.mjanglin.com"}>
