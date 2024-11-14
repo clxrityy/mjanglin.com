@@ -3,14 +3,19 @@ import type { Metadata, ResolvedMetadata } from "next";
 
 const post = mdxPosts[1];
 
-export async function generateMetadata(parent: ResolvedMetadata): Promise<Metadata> {
-    const previousImages = (parent).openGraph?.images || [];
+export async function generateMetadata(): Promise<Metadata> {
 
     return {
         title: post.title,
         description: post.preview,
         openGraph: {
-            images: [post.mainImage, ...previousImages]
+            images: [
+                {
+                    url: post.mainImage,
+                    width: 200,
+                    height: 200
+                }
+            ]
         },
         keywords: post.keywords
     }
