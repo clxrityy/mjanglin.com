@@ -6,7 +6,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 const options = { next: { revalidate: 30 } };
 
-export async function getStaticProps({ params }: { params: Promise<{ slug: string }> }) {
+async function getStaticProps({ params }: { params: Promise<{ slug: string }> }) {
     const post: Post = await client.fetch(POST_QUERY, await params, options);
 
     return {
