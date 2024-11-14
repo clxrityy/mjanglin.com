@@ -1,5 +1,5 @@
 import { mdxPosts } from "@/utils/constants";
-import type { Metadata, ResolvedMetadata } from "next";
+import type { Metadata } from "next";
 
 const post = mdxPosts[1];
 
