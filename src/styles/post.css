@@ -36,12 +36,16 @@ p {
 }
 
 ul {
-    @apply list-disc text-start flex flex-col gap-2;
+    @apply list-disc text-start flex flex-col gap-2 my-4;
 }
 
 
 ul li li {
     @apply ml-8 mt-1;
+}
+
+ul li {
+    @apply list-disc;
 }
 
 
@@ -51,4 +55,8 @@ hr {
 
 blockquote ul {
     @apply list-disc text-start pl-4;
+}
+
+code {
+    @apply text-start max-w-fit overflow-x-scroll py-2 px-2 rounded-sm; 
 }
