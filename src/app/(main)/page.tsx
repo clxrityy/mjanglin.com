@@ -1,5 +1,4 @@
 import { HeroCard } from "@/components/Hero";
-import { MdxPostCard } from "@/components/cards/MdxPostCard";
 import { StackCard } from "@/components/cards/StackCard";
 import { TimeCard } from "@/components/cards/TimeCard";
 import { getAllPosts } from "@/sanity/lib/queries";
@@ -9,7 +8,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
 
-const PostCard = dynamic(() => import("@/components/cards/PostCard").then(mod => mod.PostCard));
+
+const Posts = dynamic(() => import("@/components/Posts").then(mod => mod.Posts));
+// const PostCard = dynamic(() => import("@/components/cards/PostCard").then(mod => mod.PostCard));
 
 export default async function Page() {
 
@@ -46,14 +47,17 @@ export default async function Page() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-max grid grid-cols-1 2xl:grid-cols-2 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
+                    {/* <div className="w-max grid grid-cols-1 2xl:grid-cols-2 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
                         {
                             posts.map(post => <PostCard key={post._id} post={post} />)
                         }
                         {
                             mdxPosts.map(post => <MdxPostCard key={post.slug} post={post} />)
                         }
-                    </div>
+                    </div> */}
+                    <Suspense fallback={<div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />}>
+                        <Posts posts={posts} mdxPosts={mdxPosts} />
+                    </Suspense>
                 </div>
             </div>
         </main>

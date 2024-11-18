@@ -1,3 +1,4 @@
+import { GithubRepo } from "@birdgg/react-github";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -42,10 +42,10 @@ export interface Author {
 
 export interface MdxPost {
     title: string;
-    slug: string;
     publishedAt: string;
     mainImage: string;
     preview: string;
     keywords: string[];
     author: string;
+    slug: string;
 }
