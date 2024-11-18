@@ -7,6 +7,22 @@ import {Exo} from "next/font/google";
 export const metadata: Metadata = {
     title: "MJ Anglin",
     description: "Developer & Creator",
+    openGraph: {
+        title: "MJ Anglin",
+        description: "Developer & Creator",
+        type: "website",
+        url: "https://mjanglin.com",
+        locale: "en_US",
+        emails: ["contact@mjanglin.com"],
+        siteName: "MJ Anglin",
+        images: [
+            "https://mjanglin.com/apple-touch-icon.png",
+            "https://mjanglin.com/favicon-32x32.png",
+            "https://mjanglin.com/favicon-16x16.png",
+            "https://mjanglin.com/android-chrome-192x192.png",
+            "https://mjanglin.com/android-chrome-512x512.png"
+        ]
+    }
 }
 
 const exo = Exo({
@@ -34,6 +50,15 @@ export default function RootLayout({
                     strategy="afterInteractive"
                     src="https://www.googletagmanager.com/gtag/js?id=G-DH9C4WZGMK"
                 />
+                <meta property="og:url" content="https://mjanglin.com" />
+                <meta property="twitter:image" content="https://mjanglin.com/apple-touch-icon.png" />
+                <meta property="og:image" content="https://mjanglin.com/apple-touch-icon.png" />
+                {/* <meta property="twitter:card" /> */}
+                <meta property="og:site_name" content="MJ Anglin" />
+                <meta property="og:title" content="MJ Anglin" />
+                <meta property="og:description" content="Developer & Creator" />
+                <meta property="twitter:description" content="Developer & Creator" />
+                <meta property="twitter:title" content="MJ Anglin" />
             </head>
 
             <body className={`${exo.variable}`}>
