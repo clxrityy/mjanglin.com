@@ -1,6 +1,7 @@
 import { HeroCard } from "@/components/Hero";
 import { StackCard } from "@/components/cards/StackCard";
 import { TimeCard } from "@/components/cards/TimeCard";
+import { SocialsMenu } from "@/components/layout/SocialsMenu";
 import { getAllPosts } from "@/sanity/lib/queries";
 import { mdxPosts } from "@/utils/constants";
 import { Clock, Mail } from "lucide-react";

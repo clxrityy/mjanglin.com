@@ -7,8 +7,9 @@
   height: 330px;
   border-radius: 16px;
   overflow: hidden;
+  z-index: auto;
 
-  @apply hover:scale-95 transition-transform duration-300 hover:drop-shadow-lg;
+  @apply transition-transform duration-300 hover:drop-shadow-lg;
 }
 
 .wave {

@@ -1,6 +1,7 @@
 import { IMAGES } from "@/config";
 import "@/styles/hero.css";
 import Image from "next/image";
+import { SocialsMenu } from "./layout/SocialsMenu";
 
 export function HeroCard() {
     return (
@@ -19,6 +20,7 @@ export function HeroCard() {
                 </p>
                 <div className="name">mjanglin</div>
             </div>
+            <SocialsMenu />
         </div>
     );
 }
