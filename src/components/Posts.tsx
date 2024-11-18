@@ -29,12 +29,8 @@ export function Posts({ posts, mdxPosts }: Props) {
     }
 
     useEffect(() => {
-        if (postsToShow.length === posts.length && mdxPostsToShow.length === mdxPosts.length) {
-            return;
-        } else {
-            loopPostsWithSlice(0, postsPerPage);
-            loopMdxPostsWithSlice(0, postsPerPage);
-        }
+        loopPostsWithSlice(0, postsPerPage);
+        loopMdxPostsWithSlice(0, postsPerPage);
     });
 
     const loadMorePosts = () => {
