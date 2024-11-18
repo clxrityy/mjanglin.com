@@ -35,7 +35,7 @@ export function Posts({ posts, mdxPosts }: Props) {
             loopPostsWithSlice(0, postsPerPage);
             loopMdxPostsWithSlice(0, postsPerPage);
         }
-    }, []);
+    }, [posts.length, mdxPosts.length, postsToShow.length, mdxPostsToShow.length]);
 
     const loadMorePosts = () => {
         loopPostsWithSlice(nextPosts, nextPosts + postsPerPage);
