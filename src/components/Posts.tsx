@@ -31,7 +31,7 @@ export function Posts({ posts, mdxPosts }: Props) {
     useEffect(() => {
         loopPostsWithSlice(0, postsPerPage);
         loopMdxPostsWithSlice(0, postsPerPage);
-    });
+    }, []);
 
     const loadMorePosts = () => {
         loopPostsWithSlice(nextPosts, nextPosts + postsPerPage);
