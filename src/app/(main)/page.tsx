@@ -60,7 +60,7 @@ export default async function Page() {
                             <Posts posts={posts} mdxPosts={mdxPosts} />
                         </Suspense>
                         <button className="z-50 mb-10 bg-blue-500 px-4 py-2 rounded-md font-semibold hover:scale-95 hover:bg-blue-600/50 transition-all duration-100 ease-in-out focus:ring focus:ring-offset-2 focus:bg-blue-600">
-                            <Link href={"/posts"}>
+                            <Link href={"/posts"} className="text-inherit hover:text-inherit">
                                 View all posts
                             </Link>
                         </button>

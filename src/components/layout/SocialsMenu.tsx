@@ -8,22 +8,22 @@ export function SocialsMenu() {
         /* From Uiverse.io by akshat-patel28 */
         <div className="socials-button-container z-50">
             <button className="socials-button">
-                <Link href={URLS.spotify}>
+                <Link href={URLS.spotify} className="text-inherit hover:text-inherit">
                     <FaSpotify className="socials-icon" />
                 </Link>
             </button>
             <button className="socials-button">
-                <Link href={URLS.github}>
+                <Link href={URLS.github} className="text-inherit hover:text-inherit">
                     <FaGithub className="socials-icon" />
                 </Link>
             </button>
             <button className="socials-button">
-                <Link href={URLS.instagram}>
+                <Link href={URLS.instagram} className="text-inherit hover:text-inherit">
                     <FaInstagram className="socials-icon" />
                 </Link>
             </button>
             <button className="socials-button">
-                <Link href={URLS.discord}>
+                <Link href={URLS.discord} className="text-inherit hover:text-inherit">
                     <FaDiscord className="socials-icon" />
                 </Link>
             </button>

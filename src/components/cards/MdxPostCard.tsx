@@ -13,7 +13,7 @@ export function MdxPostCard({ post }: { post: MdxPost }) {
                 {
                     imageUrl && (
                         <div className="post-card-image flex items-center justify-center w-full">
-                            <Image unoptimized src={imageUrl} alt={title} width={500} height={500} className="rounded-md w-full max-w-[240px] post-card-actual-image" />
+                            <Image unoptimized src={imageUrl} alt={title} width={500} height={500} className="rounded-md w-full max-w-[240px] post-card-actual-image" placeholder="blur" blurDataURL="/assets/blur-loading-img.png"/>
                         </div>
                     )
                 }
