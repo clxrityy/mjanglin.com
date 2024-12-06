@@ -24,13 +24,3 @@ html, body {
         font-family: var(--font-exo);
     }
 }
-
-a .link {
-    color: rgb(var(--foreground-rgba));
-    text-decoration: none;
-    transition: color 0.2s;
-
-    &:hover {
-        color: rgb(var(--foreground-rgba));
-    }
-}
