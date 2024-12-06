@@ -48,6 +48,10 @@ ul li {
     @apply list-disc;
 }
 
+li {
+    @apply my-2 mb-1;
+}
+
 
 hr {
     @apply my-4 border-t-2 border-gray-600;
@@ -58,5 +62,9 @@ blockquote ul {
 }
 
 code {
-    @apply text-start max-w-fit overflow-x-scroll py-2 px-2 rounded-sm; 
+    @apply text-start max-w-fit overflow-x-scroll py-2 px-2 rounded-sm my-2; 
+}
+
+pre {
+    @apply py-0 px-0 rounded-sm;
 }

@@ -1,0 +1,341 @@
+import { MainImage, TemplateRepository, DemoRespository } from "./components";
+
+# How to host a Discord bot on Vercel with Edge Functions
+
+<MainImage />
+
+
+## Edge Features
+
+- **Fast**: Edge Functions are executed at the edge of the network, close to users, which means they run with lower latency.
+- **Secure**: Edge Functions are sandboxed and run in a secure environment.
+- **Scalable**: Edge Functions scale automatically with traffic, so you don't have to worry about provisioning or managing servers.
+- **Simple**: Edge Functions are easy to deploy and manage, with a simple API and CLI.
+
+## Overview
+
+This page is a comprehensive guide on how to host a Discord bot on Vercel with Edge Functions. I'll cover everything from setting up a new Discord bot to deploying it to Vercel.
+
+### Throughout this guide, here are the tools that will be utilized:
+- **Database & Storage**: [Prisma](https://www.prisma.io/) & [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres)
+    - Prisma is a modern database toolkit that makes it easy to work with databases. Vercel Postgres is a managed PostgreSQL database that is easy to set up and use.
+    - The extension [Prisma Accelerate](https://www.prisma.io/accelerate) is also utilized for edge caching.
+- **Discord API**: [discord-api-types](https://www.npmjs.com/package/discord-api-types) is a package that provides TypeScript types for the Discord API.
+- **OAuth2**: Multiple packages are used to facilitate authentication through Discord with encryption and security in mind.
+    - **[cookie](https://www.npmjs.com/package/cookie)**: A package that provides cookie parsing and serialization.
+    - **[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)**: A package that provides JSON Web Token (JWT) support.
+    - **[crypto-js](https://www.npmjs.com/package/crypto-js)**: A package that provides cryptographic functions.
+    - **[tweetnacl](https://www.npmjs.com/package/tweetnacl)**: A package that eases process of verification with Discord.
+
+---
+
+## Template repositories
+
+All of this wouldn't be possible without the work from [@jzxhuang](https://github.com/jzxhuang) and his [nextjs-discord-bot](https://github.com/jzxhuang/nextjs-discord-bot) template:
+
+<TemplateRepository />
+
+> This template provides you with the basic starter boiler plate for registering commands, and handling interactions with Discord on Edge runtime.
+
+---
+
+To extend that template further for the purpose of authentication and an interactive dashboard, I created a fork of it:
+
+<DemoRespository />
+
+> #### This template extends the base template to include:
+> - OAuth2 authentication with Discord
+>   - Including encyption, cookie management, and JWT verification
+> - Prisma for database management (storing authenticated users)
+> - A simple dashboard to view authenticated users
+
+For an extended overview on the changes made to the initial template and how to set it up, check out the [pull request](https://github.com/jzxhuang/nextjs-discord-bot/pull/4) I made to the original repository.
+
+---
+
+## Getting Started
+
+- Create a new Discord bot on the [Discord Developer Portal](https://discord.com/developers/applications).
+- Clone the [demo repository](https://github.com/clxrityy/nextjs-discord-bot-with-oauth).
+    ```zsh
+    git clone https://github.com/clxrityy/nextjs-discord-bot-with-oauth.git
+    ```
+- Add your environment variables to a `.env`/`.env.local` file:
+    ```env
+    # Settings -> General Information
+    DISCORD_APP_ID=
+    DISCORD_APP_PUBLIC_KEY=
+
+    # Settings -> OAuth2
+    DISCORD_CLIENT_SECRET=
+
+    # Settings -> Bot
+    # Required to register commands and fetch the list of commands in the web app
+    # Technically not required to actually run the bot
+    DISCORD_BOT_TOKEN=
+    ```
+- Install the dependencies:
+    ```zsh
+    pnpm install
+    ```
+- Run the development server:
+    ```zsh
+    pnpm dev
+    ```
+- Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## Structure
+
+```py
+•/
+├── prisma/ <-- Prisma schemas
+├── public/ <-- Public assets
+├── scripts/ <-- External scripts
+├── src/ <-- Source code
+├── ...
+```
+
+### Source Code
+
+```py
+src/
+├── app/ <-- Routes within the website
+├── components/ <-- Components within website
+├── data/ <-- Bot data
+│   ├── commands/ <-- Bot commands
+│   ├── util/ <-- Bot utilities
+├── handlers/command/ <-- Command handlers
+├── lib/ <-- External libraries
+├── types/ <-- Types throughout the application
+├── utils/ <-- Utility functions
+├── config.ts <-- The configuration values
+├── env.mjs <-- Environment variables
+├── ...
+```
+
+> - **app** — https://nextjs.org/docs/app
+> - **components** — https://react.dev/learn/your-first-component#defining-a-component
+
+- For a more in-depth understanding on Nextjs routes & React components: **[Learn Nextjs](https://nextjs.org/learn?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=home)**.
+- An elaborated explanation of all the directories and files within our source code can be found in the Github repository [here](https://github.com/clxrityy/mjanglin.com/tree/hbd/src#readme).
+
+---
+
+## Commands
+
+### Defining & Registering
+
+Commands are defined as an `ApplicationCommand` type.
+
+##### Application command type: ([reference](https://discord.com/developers/docs/interactions/application-commands))
+
+```ts
+export type ApplicationCommandOption = {
+    type: number;
+    name: string;
+    // ...
+}
+
+export type ApplicationCommand = {
+    name: string;
+    description: string;
+    options?: ApplicationCommandOption[];
+    permissions?: number[];
+}
+```
+
+#### Command definition example:
+
+```ts
+import { ApplicationCommand } from "@/types/interactions";
+
+const PING_COMMAND: ApplicationCommand = {
+    name: "ping",
+    description: "Replies with Pong!"
+} as const;
+
+export default PING_COMMAND;
+```
+
+Every command is exported in the primary `index.ts` file:
+
+```ts
+/**
+ * @see https://discord.com/developers/docs/interactions/application-commands#registering-a-command
+ */
+import PING_COMMAND from "./misc/ping";
+
+export const commands = {
+    ping: PING_COMMAND,
+}
+```
+
+- To register commands, run the `pnpm register-commands` script.
+
+```ts
+import { commands } from "@/data/commands";
+import { env } from "./env.mjs";
+ /**
+ * @see https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
+ */
+async function main() {
+    const reponse = await fetch(`http://discord.com/api/v10/applications/${env.CLIENT_ID}/commands`, 
+    {
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bot ${env.BOT_TOKEN}`
+        },
+        method: "PUT",
+        body: JSON.stringify(Object.values(commands))
+    });
+}
+```
+
+### Interaction API
+
+- All interactions are sent to the [interactions endpoint](https://discord.com/developers/docs/interactions/slash-commands#receiving-an-interaction) (`/api/interactions`).
+    - Reference: [Discord Developer Docs | Interactions Endpoint URL](https://discord.com/developers/docs/interactions/overview#configuring-an-interactions-endpoint-url)
+- The interaction request is verified with the package **[`tweetnacl`](https://www.npmjs.com/package/tweetnacl)**
+    - Verifies the interaction request is from Discord and intended for our bot.
+    - Reference: [Discord Developer Docs |  Receiving and Responding to Interactions](https://discord.com/developers/docs/interactions/receiving-and-responding#security-and-authorization)
+    - See the **<ins>verify</ins>** code [here](https://github.com/clxrityy/mjanglin.com/blob/hbd/src/utils/verify.ts)
+
+Within the interactions endpoint, data from the interaction is parsed into an `InteractionData` interface:
+
+```ts
+export interface InteractionData {
+    id: string;
+    name: string;
+    options?: InteractionSubcommand<InteractionOption>[] | InteractionOption[] | InteractionSubcommandGroup<InteractionSubcommand<InteractionOption>>[];
+}
+```
+> This includes the value(s) of the option(s) and subcommands.
+
+### Interaction Response
+
+- This is where the **edge** runtime comes into play.
+
+```ts
+// api/interactions/route.ts
+
+/**
+ * @see https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes
+*/
+export const runtime = "edge";
+```
+
+- The interaction is received and verified:
+
+```ts
+export async function POST(req: Reqest) {
+    /**
+    * @see https://github.com/clxrityy/mjanglin.com/blob/hbd/src/utils/verify.ts
+    */
+    const verifyResult = await verifyInteractionRequest(req, env.PUBLIC_KEY);
+
+    const { interaction } = verifyResult;
+}
+```
+
+> The interaction is parsed into the `InteractionData` interface mentioned before
+
+- A response is sent back to Discord based on the command name in the form of an [interaction response object](https://discord.com/developers/docs/interactions/receiving-and-responding#create-interaction-response)
+    - [type](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-type)
+    - [data](https://discord.com/developers/docs/interactions/receiving-and-responding#interaction-response-object-interaction-callback-data-structure)
+
+```ts
+import { InteractionSubcommand, InteractionOption } from "@/types/interactions";
+// ...
+
+switch (name) {
+    case commands.ping.name:
+        return {
+            type: InteractionResponseType.ChannelMessageWithSource,
+            data: {
+                content: "Pong!"
+            }
+        }
+}
+```
+
+---
+
+## Prisma
+
+Prisma is a modern database toolkit that makes it easy to work with databases. It provides a type-safe and auto-generated query builder that's tailored to your database schema.
+
+- Data is stored with [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres).
+- Additionally, [Prisma Accelerate](https://www.prisma.io/data-platform/accelerate) is utilized for edge caching.
+
+```zsh
+pnpm add @prisma/client @prisma/extension-accelerate
+```
+
+```zsh
+pnpm add -D prisma
+```
+
+- To initialize the Prisma client run `npx prisma generate`.
+    - Now you can use the Prisma client to interact with your database.
+
+```ts
+// src/lib/db.ts
+import { PrismaClient } from "@prisma/client";
+import { withAccelerate } from "@prisma/extension-accelerate";
+
+function makePrisma() {
+    return new PrismaClient({
+        datasources: {
+            db: {
+                url: process.env.ACCELERATE_URL
+            }
+        }
+    }).$extends(withAccelerate());
+}
+```
+
+- See [Nextjs Prisma Postgres](https://vercel.com/guides/nextjs-prisma-postgres) for more information on setting up Prisma with Vercel Postgres.
+
+### Schemas & Models
+
+- Prisma schemas are defined in the `prisma/` directory.
+- The first necessary schema is the **`User`** model:
+    - Easing the process of storing user data through OAuth2 authentication.
+
+```prisma
+model User {
+    id           String     @id @default(uuid())
+    userId       String     @unique
+    accessToken  String     @unique
+    refreshToken String     @unique
+    // More added later
+}
+```
+
+- After defining the schema, run `npx prisma db push` to create the table in your database, and `npx prisma generate` to generate the Prisma client.
+    - Now you can interact with the `User` model in your application.
+
+```ts
+import { db } from "@/lib/db";
+
+export async function getUser(userId: string) {
+    return await db.user.findFirst({
+        where: {
+            userId: userId
+        }
+    });
+}
+```
+
+---
+
+## Conclusion
+
+- The bot is built with Next.js, Prisma, and the Discord API. It is designed to be easily customizable and extendable with new commands and features.
+- This bot is still a work in progress. The goal is to create a dynamic Discord bot that can be easily deployed and managed with Vercel. 
+- If you have any ideas for improvements, please feel free to open a [pull request](https://github.com/clxrityy/mjanglin.com/pulls).
+- If you come across any bugs or issues, please open an [issue](https://github.com/clxrityy/mjanglin.com/issues).
+- Clone the template repository [here](https://github.com/clxrityy/nextjs-discord-bot-with-oauth)
+> Thank you for reading! ❤️

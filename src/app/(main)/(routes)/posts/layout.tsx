@@ -1,6 +1,12 @@
 import "@/styles/post.css";
+import { Metadata } from "next";
 import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";
+
+export const metadata: Metadata = {
+    title: "MJ Anglin | Posts",
+    description: "A collection of posts written by MJ Anglin",
+}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (

@@ -57,7 +57,7 @@ export function Posts({ posts, mdxPosts }: Props) {
                 }
             </div>
             {
-                <button disabled={posts.length === postsToShow.length && mdxPosts.length === mdxPostsToShow.length} onClick={loadMorePosts} className="bg-[#4996C0] text-white font-exo py-2 px-4 rounded-lg hover:bg-[#2E6B8D] transition-colors focus:bg-blue-600 font-semibold disabled:bg-gray-600 disabled:cursor-not-allowed mb-10">More Posts</button>
+                <button disabled={posts.length === postsToShow.length && mdxPosts.length === mdxPostsToShow.length} onClick={loadMorePosts} className="bg-[#4996C0] text-white font-exo py-2 px-4 rounded-lg hover:bg-[#2E6B8D] transition-colors focus:bg-blue-600 font-semibold disabled:bg-gray-600 disabled:cursor-not-allowed mb-10">Load more</button>
             }
         </div>
     )

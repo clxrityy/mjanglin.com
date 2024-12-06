@@ -1,7 +1,6 @@
 import { HeroCard } from "@/components/Hero";
 import { StackCard } from "@/components/cards/StackCard";
 import { TimeCard } from "@/components/cards/TimeCard";
-import { SocialsMenu } from "@/components/layout/SocialsMenu";
 import { getAllPosts } from "@/sanity/lib/queries";
 import { mdxPosts } from "@/utils/constants";
 import { Clock, Mail } from "lucide-react";
@@ -56,9 +55,16 @@ export default async function Page() {
                             mdxPosts.map(post => <MdxPostCard key={post.slug} post={post} />)
                         }
                     </div> */}
-                    <Suspense fallback={<div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />}>
-                        <Posts posts={posts} mdxPosts={mdxPosts} />
-                    </Suspense>
+                    <div className="flex flex-col gap-5 items-center justify-center">
+                        <Suspense fallback={<div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />}>
+                            <Posts posts={posts} mdxPosts={mdxPosts} />
+                        </Suspense>
+                        <button className="z-50 mb-10 bg-blue-500 px-4 py-2 rounded-md font-semibold hover:scale-95 hover:bg-blue-600/50 transition-all duration-100 ease-in-out focus:ring focus:ring-offset-2 focus:bg-blue-600">
+                            <Link href={"/posts"}>
+                                View all posts
+                            </Link>
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>
