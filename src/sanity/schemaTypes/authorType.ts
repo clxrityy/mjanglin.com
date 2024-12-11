@@ -1,11 +1,12 @@
-import {UserIcon} from '@sanity/icons'
+import SanityUserIcon from '../components/Icon'
 import {defineArrayMember, defineField, defineType} from 'sanity'
+
 
 export const authorType = defineType({
   name: 'author',
   title: 'Author',
   type: 'document',
-  icon: UserIcon,
+  icon: SanityUserIcon,
   fields: [
     defineField({
       name: 'name',
