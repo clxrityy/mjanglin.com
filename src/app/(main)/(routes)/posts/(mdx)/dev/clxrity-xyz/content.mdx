@@ -1,1 +1,95 @@
-# To be continued...
+import { Title, Example, WebAudioAPIImgs, ReactAudioRepo } from "./components";
+
+<Title />
+
+## Introduction
+
+- As a music producer, I am always looking for sounds and samples to use in my music. I also inevitably end up with a lot of audio files that I don't always use, or even remember that I have.
+- I wanted to create a simple way to display and listen to these audio files, and also to be able to download them easily.
+- There are other websites and sources that do this as well, such as [looperman](https://www.looperman.com/), [splice](https://splice.com/), and [freesound](https://freesound.org/), but I wanted to create my own version that I could customize and control (and be accustomed to my own style).
+    - Also, it's worth mentioning that none of these websites have an interactive audio player that allows you to actually visualize the waveform of the audio file, which is something I wanted to incoorporate.
+- The website ([clxrity.xyz](https://clxrity.xyz), based on my artist name) is still **very much** in the works. This is merely a prototype of what I want to achieve.
+
+<Example />
+
+--- 
+
+## Building an audio waveform visualizer package
+
+<ReactAudioRepo />
+
+> **Note:** This package is very much still in the works.
+
+- At the core of this project is an audio waveform visualizer package that I am building. This package will allow you to visualize the waveform of an audio file, and also interact with it (e.g. play, pause, seek, etc.).
+
+```zsh
+npm i @clxrity/react-audio
+```
+
+### Web Audio API
+
+- To start off by interacting with audio files in the browser, it was essential to utilize the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
+    - For the use of interfaces such as [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext), [MediaElementAudioSourceNode](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode), [AnalyserNode](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode), etc.
+
+<WebAudioAPIImgs />
+
+### Canvas
+
+- To visualize the waveform of the audio file, I utilized the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API). 
+    - For the use of interfaces such as [CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D), [CanvasGradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient), etc.
+
+- I created a [`<Canvas />`](https://github.com/clxrityy/react-audio/blob/main/src/components/ui/Canvas/index.tsx) component that takes in the following props:
+
+```tsx
+import { ComponentPropsWithRef } from 'react';
+
+interface CanvasProps extends ComponentPropsWithRef<'canvas'> {
+    analyzerdData: AnalyzerData;
+    color: string
+    size?: {
+        width: number
+        height: number
+    }
+}
+```
+
+- A reference to the canvas element is created using the `useRef` hook.
+
+```tsx
+import { ElementRef } from 'react';
+
+const canvasRef = useRef<ElementRef<'canvas'>>(null);
+```
+
+- I created a `draw()` function that is called within a [`useEffect`](https://react.dev/reference/react/useEffect) hook that will be called whenever data changes.
+    - I also created an `animateBars()` utility function that will fill the canvas with the waveform data.
+
+```tsx
+const draw = (
+    analyzerNode: AnalyserNode,
+    bufferLengthCount: number,
+    dataArrayDigits: Uint8Array,
+) => {
+    const canvas = canvasRef.current;
+    if (!canvas || !analyzerNode) return;
+
+    const canvasCtx = canvas.getContext('2d');
+
+    const animate = () => {
+        requestAnimationFrame(animate);
+        canvas.width = canvas.width;
+        animateBars({
+            analyzer: analyzerNode,
+            canvas,
+            canvasCtx,
+            dataArray: dataArrayDigits,
+            bufferLength: bufferLengthCount,
+            color,
+        })
+    }
+
+    animate();
+}
+```
+
+## To be continued...

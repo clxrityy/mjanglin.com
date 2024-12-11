@@ -16,7 +16,7 @@ export const mdxPosts: MdxPost[] = [
         publishedAt: "2024-11-14",
         mainImage: "https://i.gyazo.com/bebb1509068c91fc360d6717c5a4d7f9.gif",
         preview: "A short dev blog about creating a website for producers to display and allow downloads of their audio files.",
-        keywords: ["audio", "website", "react", "nextjs", "javascript", "typescript", "tailwindcss", "react-audio", "clxrity"],
+        keywords: ["audio", "website", "react", "nextjs", "javascript", "typescript", "tailwindcss", "react-audio", "clxrity", "audio files", "display", "download", "waveform", "wav", "mp3", "web audio api"],
         author: "MJ Anglin"
     },
     {
