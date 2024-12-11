@@ -1,4 +1,4 @@
-import SanityUserIcon from '../components/Icon'
+import { SanityUserIcon } from '../components/Icons'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 
