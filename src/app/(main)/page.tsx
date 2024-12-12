@@ -5,11 +5,10 @@ import { StackCard } from "@/components/cards/StackCard";
 import { TimeCard } from "@/components/cards/TimeCard";
 import { getAllPosts } from "@/sanity/lib/queries";
 import { mdxPosts } from "@/utils/constants";
-import { Clock, Mail } from "lucide-react";
+import { Clock } from "lucide-react";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { Suspense } from "react";
-import { LuGalleryHorizontalEnd } from "react-icons/lu";
+
 
 
 const MorePosts = dynamic(() => import("@/components/MorePosts").then(mod => mod.MorePosts));
