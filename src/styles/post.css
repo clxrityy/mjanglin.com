@@ -39,10 +39,14 @@ ul {
     @apply list-disc text-start flex flex-col gap-2 my-4;
 }
 
+ol {
+    @apply list-decimal text-start flex flex-col gap-2 my-4;
+}
 
-ul li li {
+ul li li, ol li li {
     @apply ml-8 mt-1;
 }
+
 
 ul li {
     @apply list-disc;
@@ -62,9 +66,9 @@ blockquote ul {
 }
 
 code {
-    @apply text-start max-w-fit overflow-x-scroll py-2 px-2 rounded-sm my-2; 
+    @apply text-start max-w-fit overflow-x-scroll py-1 px-1 rounded-sm my-2; 
 }
 
 pre {
-    @apply py-0 px-0 rounded-sm;
+    @apply py-0 px-0 rounded-sm m-0;
 }

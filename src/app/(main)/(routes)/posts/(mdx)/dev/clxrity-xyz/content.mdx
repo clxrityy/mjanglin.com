@@ -92,4 +92,90 @@ const draw = (
 }
 ```
 
-## To be continued...
+- The `animate()` function is called recursively using the `requestAnimationFrame` function.
+    - The `canvas.width = canvas.width` line is used to clear the canvas on each frame.
+    - The `animateBars()` function is called with the necessary arguments to fill the canvas with the waveform data.
+
+```tsx
+// utils/animateBars.ts
+
+interface AnimateBarsParams {
+    analyzer: AnalyserNode;
+    canvas: HTMLCanvasElement;
+    canvasCtx: CanvasRenderingContext2D;
+    dataArray: Uint8Array;
+    bufferLength: number;
+    color: string;
+}
+
+export default function animateBars({
+    analyzer,
+    canvas,
+    canvasCtx,
+    dataArray,
+    bufferLength,
+    color,
+}: AnimateBarsParams) {
+    /**
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getByteFrequencyData
+    */
+    analyzer.getByteFrequencyData(dataArray);
+    canvasCtx.fillStyle = color; // color of the bars
+    const HEIGHT = canvas.height;
+    const barWidth = Math.ceil(canvas.width / bufferLength) * 2.5;
+
+    let barHeight;
+    let x = 0;
+
+    for (let i = 0; i < bufferLength; i++) {
+        barHeight = (dataArray[i] / 255) * HEIGHT;
+
+        canvasCtx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+        x += barWidth + 1;
+    }
+}
+```
+
+### Waveform component
+
+- While I also created multiple different components for playing & interacting with an audio file, the most important component that would be utilizing the `<Canvas />` component is the [`<Waveform />`](https://github.com/clxrityy/react-audio/blob/main/src/lib/Waveform/index.tsx) component.
+    - This contains mulitple states and functions that are used to interact with the audio file.
+        - Values stored in state (with the [useState](https://react.dev/reference/react/useState) hook) include:
+            - The analyzer data (as the `AnalyzerData` interface type mentioned previously)
+            - The audio context (as [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext))
+            - The audio source (the URL/path to the audio file)
+        - Values stored in refs (with the [useRef](https://react.dev/reference/react/useRef) hook) include:
+            - The audio element (as [HTMLAudioElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement))
+            - The source node (as [MediaElementAudioSourceNode](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode))
+- The `<Waveform />` component takes in the following props:
+    - It also extends the `ComponentProps` interface from React, and default `Props` interface which I created for all the components to extend from.
+
+```ts
+import { ComponentProps } from 'react';
+export interface WaveformProps extends ComponentProps<'div'>, Props {
+    color?: string;
+    size?: {
+        width: number;
+        height: number;
+    };
+    fftsize: number; /*
+        - The size of the Fast Fourier Transform to be used to determine the frequency domain.
+        - The default value is 2048.
+        - Valid options include: 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768
+    */
+}
+```
+
+<br />
+
+- Within a `useEffect` hook, if a track source is present, the audio source is set and the audio element is loaded.
+
+```tsx
+useEffect(() => {
+    if (track.src) {
+        setAudioSrc(track.src);
+        audioElement.current.load();
+    }
+}, [track.src, audioElement]);
+```
