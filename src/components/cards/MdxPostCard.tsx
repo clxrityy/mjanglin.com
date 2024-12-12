@@ -1,5 +1,5 @@
 import { MdxPost } from "@/utils/types";
-import "@/styles/postcard.css";
+import "@/styles/css/postcard.css";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -12,7 +12,7 @@ type Props = {
 
 const postsPerPage = 2;
 
-export function Posts({ posts, mdxPosts }: Props) {
+export function MorePosts({ posts, mdxPosts }: Props) {
     const [postsToShow, setPostsToShow] = useState<Post[]>([]);
     const [mdxPostsToShow, setMdxPostsToShow] = useState<MdxPost[]>([]);
     const [nextPosts, setNextPosts] = useState<number>(postsPerPage);

@@ -1,4 +1,6 @@
+import { AllPostsBtn } from "@/components/AllPostsBtn";
 import { HeroCard } from "@/components/Hero";
+import { ReadMore } from "@/components/cards/ReadMore";
 import { StackCard } from "@/components/cards/StackCard";
 import { TimeCard } from "@/components/cards/TimeCard";
 import { getAllPosts } from "@/sanity/lib/queries";
@@ -7,9 +9,10 @@ import { Clock, Mail } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
+import { LuGalleryHorizontalEnd } from "react-icons/lu";
 
 
-const Posts = dynamic(() => import("@/components/Posts").then(mod => mod.Posts));
+const MorePosts = dynamic(() => import("@/components/MorePosts").then(mod => mod.MorePosts));
 // const PostCard = dynamic(() => import("@/components/cards/PostCard").then(mod => mod.PostCard));
 
 export default async function Page() {
@@ -37,11 +40,17 @@ export default async function Page() {
                                         <p className="text-sm font-light">
                                             I build websites and applications that interact with the world.
                                         </p>
-                                        <div className="flex flex-row items-center justify-center gap-3">
-                                            <Link href={"mailto:contact@mjanglin.com"} className="hover:text-[#4996C0] transition-colors focus:text-blue-600">
+                                        {/* <div className="flex flex-row items-center justify-center gap-3">
+                                            <Link href={"mailto:contact@mjanglin.com"} className="hover:text-[#4996C0] transition-colors focus:text-blue-600" aria-label="contact@mjanglin.com">
                                                 <Mail />
                                             </Link>
-                                        </div>
+                                            <Link href={"/about"} className="hover:text-[#4996C0] transition-colors focus:text-blue-600" aria-label="about">
+                                                <MdReadMore size={20} />
+                                            </Link>
+                                        </div> */}
+                                        <ReadMore>
+                                            Read more
+                                        </ReadMore>
                                     </section>
                                 </StackCard>
                             </div>
@@ -55,15 +64,16 @@ export default async function Page() {
                             mdxPosts.map(post => <MdxPostCard key={post.slug} post={post} />)
                         }
                     </div> */}
-                    <div className="flex flex-col gap-5 items-center justify-center">
+                    <div className="flex flex-col gap-5 items-center justify-center w-full">
                         <Suspense fallback={<div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />}>
-                            <Posts posts={posts} mdxPosts={mdxPosts} />
+                            <MorePosts posts={posts} mdxPosts={mdxPosts} />
                         </Suspense>
-                        <button className="z-50 mb-10 bg-blue-500 px-4 py-2 rounded-md font-semibold hover:scale-95 hover:bg-blue-600/50 transition-all duration-100 ease-in-out focus:ring focus:ring-offset-2 focus:bg-blue-600">
-                            <Link href={"/posts"} className="text-inherit hover:text-inherit">
-                                View all posts
+                        {/* <button className="z-50 mb-10 bg-blue-500 px-4 py-4 rounded-xl font-semibold hover:scale-95 hover:bg-blue-600/50 transition-all duration-100 ease-in-out focus:ring focus:ring-offset-2 focus:bg-blue-600 w-1/2 md:w-4/5 2xl:w-1/3 border-2 border-blue-950/40 hover:border-blue-300/25">
+                            <Link href={"/posts"} className="text-inherit hover:text-inherit flex flex-row lg:flex-col 2xl:flex-row gap-1 items-center justify-center w-full text-xl">
+                                View all posts <LuGalleryHorizontalEnd />
                             </Link>
-                        </button>
+                        </button> */}
+                        <AllPostsBtn />
                     </div>
                 </div>
             </div>

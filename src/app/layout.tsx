@@ -1,8 +1,8 @@
 import Script from "next/script";
-import "../globals.css";
+import "./globals.css";
 import { Metadata } from "next";
 import { Background } from "@/components/layout/Background";
-import {Exo} from "next/font/google"; 
+import { exo } from "@/styles/fonts";
 
 export const metadata: Metadata = {
     title: "MJ Anglin",
@@ -25,12 +25,7 @@ export const metadata: Metadata = {
     }
 }
 
-const exo = Exo({
-    subsets: ["latin"],
-    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    preload: true,
-    variable: "--font-exo"
-})
+
 
 export default function RootLayout({
     children

@@ -14,7 +14,13 @@ export const URLS = {
     spotify: "https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV",
     soundcloud: "https://soundcloud.com/clxrityy",
     linkedin: "https://www.linkedin.com/in/mjanglin1/",
-    discord: "https://discord.gg/RnwJEdsmy2"
+    discord: "https://discord.gg/RnwJEdsmy2",
+    API: {
+        ipify: "https://api.ipify.org",
+        ip_api: "http://ip-api.com/json/",
+        flags_api: "https://flagsapi.com",
+        weather: "https://api.open-meteo.com/v1/forecast"
+    }
 }
 
 export const COLORS = {

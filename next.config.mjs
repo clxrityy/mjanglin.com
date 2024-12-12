@@ -33,6 +33,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "clxrity.xyz"
+      },
+      {
+        protocol: "https",
+        hostname: "flagsapi.com"
       }
     ],
   },

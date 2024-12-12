@@ -1,0 +1,52 @@
+/* From Uiverse.io by sahilxkhadka */ 
+.card {
+  width: 342px;
+  height: 208px;
+  position: relative;
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @apply hover:scale-110 transition-all duration-500 ease-in-out drop-shadow;
+}
+
+.background {
+  fill: linear-gradient(90deg, #b6b1c1 0%, #7b7b81 100%);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.cloud {
+  position: absolute;
+  right: 0;
+  top: -12px;
+}
+
+.cloud svg {
+  height: 120px;
+}
+
+.card .main-text {
+  font-size: 48px;
+  z-index: 2;
+}
+
+.card .info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card .info .text-gray {
+  color: rgba(235, 235, 245, 0.60);
+}
+
+.card .info .info-right {
+  align-self: flex-end;
+}
+
+.text-shadow {
+  text-shadow: 1px 0px 2px #000;
+}

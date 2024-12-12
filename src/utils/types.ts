@@ -49,3 +49,28 @@ export interface MdxPost {
     author: string;
     slug: string;
 }
+
+export interface IpGeolocation {
+    query: string;
+    status: string;
+    country: string;
+    countryCode: string;
+    region: string;
+    regionName: string;
+    city: string;
+    zip: string;
+    lat: number;
+    lon: number;
+    timezone: string;
+    isp: string;
+    org: string;
+    as: string;
+}
+
+export interface WeatherForecast {
+    current: {
+        time: string;
+        temperature_2m: number;
+        rain: number;
+    }
+}

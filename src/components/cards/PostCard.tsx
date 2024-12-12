@@ -2,7 +2,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { getAuthor } from "@/sanity/lib/queries";
 import { Post } from "@/utils/types";
 import Image from "next/image";
-import "@/styles/postcard.css";
+import "@/styles/css/postcard.css";
 import Link from "next/link";
 
 export async function PostCard({ post }: { post: Post }) {

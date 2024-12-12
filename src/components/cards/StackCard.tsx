@@ -1,4 +1,4 @@
-import "@/styles/stackcard.css";
+import "@/styles/css/stackcard.css";
 
 export function StackCard({ children }: { children: React.ReactNode }) {
     return (
