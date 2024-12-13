@@ -14,7 +14,7 @@ export async function getLocationByIp(ip: string): Promise<IpGeolocation | undef
         const { query, status, country, countryCode, region, regionName, city, zip, lat, lon, timezone, isp, org, as } = await axios.get<IpGeolocation>(`${URLS.API.ip_api}${ip}`).then(res => res.data);
 
         return { query, status, country, countryCode, region, regionName, city, zip, lat, lon, timezone, isp, org, as };
-    } catch (e: any) {
+    } catch (e) {
         console.error(e);
         return undefined;
     }
