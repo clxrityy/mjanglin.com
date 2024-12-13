@@ -5,7 +5,7 @@ export function Title() {
     return (
         <div className="flex flex-col gap-2 items-center justify-center w-full">
             <h1>
-                Displaying and downloaading audio files with React & Next.js
+                Displaying and downloading audio files with React & Next.js
             </h1>
             <Image src={"https://clxrity.xyz/apple-touch-icon.png"} alt="clxrity logo" width={50} height={50} />
         </div>

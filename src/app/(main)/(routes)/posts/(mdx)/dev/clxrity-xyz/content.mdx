@@ -14,7 +14,7 @@ import { Title, Example, WebAudioAPIImgs, ReactAudioRepo } from "./components";
 
 --- 
 
-## Building an audio waveform visualizer package
+## Part 1 - Building an audio waveform visualizer package
 
 <ReactAudioRepo />
 
@@ -179,3 +179,97 @@ useEffect(() => {
     }
 }, [track.src, audioElement]);
 ```
+
+- After **many** hours I spent stuck on an issue where the audio file would not play, I realized that the audio file would not play until the user interacted with the page (due to the [Autoplay Policy](https://developer.chrome.com/blog/autoplay/)).
+    - I had to create a `handleUserGesture()` function that would handle the audio context state.
+
+```tsx
+const handleUserGesture = () => {
+    if (!audioCtx) {
+        setAudioCtx(new AudioContext())
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+}
+```
+
+- This will be called (for now) when the user clicks anywhere on the page.
+
+```tsx
+useEffect(() => {
+    window.addEventListener('click', handleUserGesture);
+
+    return () => {
+        window.removeEventListener('click', handleUserGesture);
+    }
+}, [audioCtx]);
+```
+
+- Next was to create an `audioAnalyzer()` function that would handle setting the `AnalyzerData` state.
+
+```tsx
+const audioAnalyzer = () => {
+    if (sourceNode.current) {
+        return; // if source node is already set, return
+    }
+    if (audioElement.current && audioCtx) {
+        setAnalyzerData(
+            audioElement.current,
+            audioCtx,
+            sourceNode,
+            fftsize,
+        )
+    }
+}
+```
+
+- This function will be called whenever the audio element is played.
+
+```tsx
+useEffect(() => {
+    const current = audioElement.current;
+
+    if (current) {
+        audioElement.current.src = audioSrc;
+        current.addEventListener("play", audioAnalyzer);
+
+        audioAnalyzer();
+    }
+
+    return () => {
+        audioElement.current.removeEventListener("play", audioAnalyzer); // remove event listener when component unmounts
+        audioCtx.close(); // close the audio context when the component unmounts
+    }
+
+}, [audioElement, audioCtx]);
+```
+
+- With all of this, and additional UI components, I was able to create a simple audio player that visualizes the waveform of the audio file.
+    - You may view the completed code for the `<Waveform />` component [here](https://github.com/clxrityy/react-audio/blob/main/src/lib/Waveform/index.tsx)
+
+```tsx
+return (
+    <div {...props} {/* ... */}>
+        <Player 
+            audioElement={audioElement}
+            {/* ... */}
+        />
+        {
+            analyzerData && (
+                <Canvas 
+                    analyzerData={analyzerData}
+                    color={color}
+                    size={size}
+                />
+            )
+        }
+    </div>
+)
+```
+
+---
+
+## Part 2 - Building the website
+
+To be continued...
