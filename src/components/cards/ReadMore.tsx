@@ -27,7 +27,7 @@ export function ReadMore({ children }: { children: React.ReactNode }) {
                         y="2.5"
                         x="2.5"
                     ></rect>
-                    <line stroke-width="3" stroke="#fff" y2="75" x2="63.5" x1="63.5"></line>
+                    <line strokeWidth="3" stroke="#fff" y2="75" x2="63.5" x1="63.5"></line>
                     <path
                         strokeLinecap="round"
                         strokeWidth="4"
@@ -41,7 +41,7 @@ export function ReadMore({ children }: { children: React.ReactNode }) {
                         d="M101 20H76"
                     ></path>
                     <path
-                        stroke-linecap="round"
+                        strokeLinecap="round"
                         stroke-width="4"
                         stroke="#fff"
                         d="M16 30L50 30"
