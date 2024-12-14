@@ -1,6 +1,7 @@
 "use client";
 
 import "@/styles/css/timecard.css";
+import { exo } from "@/styles/fonts";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { TiWeatherCloudy } from "react-icons/ti";
@@ -56,21 +57,25 @@ export function TimeCard() {
         return time.toLocaleTimeString().split(" ")[1];
     }
 
+    const hours = getHours();
+    const minutes = getMinutes();
+
     return (
         /* From Uiverse.io by akshat-patel28 */
-        <div className={`time-card ${determineTimeGradient(time)}`}>
-            <p className={`time-text`}>
-                <span>{`${getHours()} : ${getMinutes()}`}</span>
-                <span className="time-sub-text">{getAmOrPm()}</span></p>
+        <Link href={`/weather`} className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className}`}>
+            <p className="time-text">
+                <span>{`${hours} : ${minutes}`}</span>
+                <span className="time-sub-text">{getAmOrPm()}</span>
+            </p>
             <p className="day-text">{getDateString()}</p>
             <div className="clock-icon py-2 px-2">
                 <div className="clock-container">
                     <div className="clock" />
                 </div>
             </div>
-            <Link href={`/weather`} className="absolute bottom-0 right-0 px-1 py-1 drop-shadow-md hover:scale-105 transition-all ease-linear hover:text-blue-400 focus:text-blue-500 text-inherit">
+            {/* <Link href={`/weather`} className="absolute bottom-0 right-0 px-1 py-1 drop-shadow-md hover:scale-105 transition-all ease-linear hover:text-blue-400 focus:text-blue-500 text-inherit">
                 <TiWeatherCloudy size={40} />
-            </Link>
-        </div>
+            </Link> */}
+        </Link>
     )
 }

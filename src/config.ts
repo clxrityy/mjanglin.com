@@ -13,14 +13,17 @@ export const URLS = {
     instagram: "https://instagram.com/mjxnglin",
     spotify: "https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV",
     soundcloud: "https://soundcloud.com/clxrityy",
-    linkedin: "https://www.linkedin.com/in/mjanglin1/",
     discord: "https://discord.gg/RnwJEdsmy2",
     API: {
         ipify: "https://api.ipify.org",
         ip_api: "http://ip-api.com/json/",
         flags_api: "https://flagsapi.com",
-        weather: "https://api.open-meteo.com/v1/forecast"
-    }
+        weather: "https://api.open-meteo.com/v1/forecast",
+        spotify: "https://api.spotify.com/v1",
+    },
+    spotify_auth_redirect: process.env.NODE_ENV === "production" ? "https://mjanglin.com/api/spotify/callback" : "http://localhost:3000/api/spotify/callback",
+    apple_music: "https://music.apple.com/us/artist/clxrity/1702200875",
+    linkedin: "https://www.linkedin.com/in/mjanglin1/"
 }
 
 export const COLORS = {

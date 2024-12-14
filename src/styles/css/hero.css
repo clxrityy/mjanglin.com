@@ -3,13 +3,11 @@
   background: transparent;
   box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
   position: relative;
-  width: 240px;
-  height: 330px;
   border-radius: 16px;
   overflow: hidden;
   z-index: auto;
 
-  @apply transition-transform duration-300 hover:drop-shadow-lg;
+  @apply transition-transform duration-300 hover:drop-shadow-lg w-[240px] h-[330px] sm:w-[420px];
 }
 
 .wave {
@@ -45,6 +43,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  @apply text-[20px] sm:text-[24px] lg:text-[32px] sm:top-24;
 }
 
 .name {
@@ -53,6 +53,8 @@
   position: relative;
   top: 1em;
   text-transform: lowercase;
+
+  @apply text-[14px] sm:text-[18px];
 }
 
 .wave:nth-child(2),

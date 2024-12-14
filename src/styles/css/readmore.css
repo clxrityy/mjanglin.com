@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-background-color: #4996C0;
+background-color: #1379ffd4;;
   border: none;
   border-radius: 10px;
   padding: 0px 15px;
@@ -33,7 +33,7 @@ background-color: #4996C0;
   transform-origin: left;
 }
 .readmore-btn:hover {
-  background-color: #215470;;
+  background-color: #7898e980;
 }
 @keyframes paging {
   0% {

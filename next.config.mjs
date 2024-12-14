@@ -37,6 +37,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "flagsapi.com"
+      },
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
       }
     ],
   },

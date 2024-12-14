@@ -6,7 +6,7 @@ export function AllPostsBtn() {
         /* From Uiverse.io by Li-Deheng */
         <div className="btn-conteiner mb-10">
             <Link className="btn-content hover:text-inherit focus:no-underline" href="/posts">
-                <span className="btn-title">ALL POSTS</span>
+                <span className="btn-title">View more</span>
                 <span className="icon-arrow">
                     <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                         <g id="arrow" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

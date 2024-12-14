@@ -1,15 +1,15 @@
 import { URLS } from "@/config"
 import "@/styles/css/socials.css"
 import Link from "next/link"
-import { FaDiscord, FaGithub, FaInstagram, FaSpotify } from "react-icons/fa"
+import { FaDiscord, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa"
 
 export function SocialsMenu() {
     return (
         /* From Uiverse.io by akshat-patel28 */
         <div className="socials-button-container z-50">
             <button className="socials-button" aria-label="spotify">
-                <Link href={URLS.spotify} className="text-inherit hover:text-inherit" aria-label="spotify">
-                    <FaSpotify className="socials-icon" />
+                <Link href={URLS.linkedin} className="text-inherit hover:text-inherit" aria-label="spotify">
+                    <FaLinkedin className="socials-icon" />
                 </Link>
             </button>
             <button className="socials-button" aria-label="github">
