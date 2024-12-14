@@ -25,11 +25,18 @@ function determineTimeGradient(time: Date) {
 
 export function TimeCard() {
     const [time, setTime] = useState<Date>(new Date());
+    const [hours, setHours] = useState<string>("");
+    const [minutes, setMinutes] = useState<string>("");
+    const [amOrPm, setAmOrPm] = useState<string>("");
 
     useEffect(() => {
         const interval = setInterval(() => {
             tick();
         }, 1000);
+
+        setHours(getHours());
+        setMinutes(getMinutes());
+        setAmOrPm(getAmOrPm());
 
         return () => {
             clearInterval(interval);
@@ -56,15 +63,13 @@ export function TimeCard() {
         return time.toLocaleTimeString().split(" ")[1];
     }
 
-    const hours = getHours();
-    const minutes = getMinutes();
 
     return (
         /* From Uiverse.io by akshat-patel28 */
-        <Link href={`/weather`} className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className}`}>
+        <Link href={`/weather`} className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className} w-full`}>
             <p className="time-text">
                 <span>{`${hours} : ${minutes}`}</span>
-                <span className="time-sub-text">{getAmOrPm()}</span>
+                <span className="time-sub-text">{amOrPm}</span>
             </p>
             <p className="day-text">{getDateString()}</p>
             <div className="clock-icon py-2 px-2">

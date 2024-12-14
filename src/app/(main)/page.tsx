@@ -29,7 +29,7 @@ export default async function Page() {
                         <div className="flex flex-col gap-10 items-center justify-center w-full">
                             <div className="flex flex-col w-full gap-0 items-center justify-center 2xl:justify-start lg:gap-5">
                                 <HeroCard />
-                                <div className="flex flex-col 2xl:flex-row w-full items-center justify-center gap-10 2xl:pb-20">
+                                <div className="flex flex-col w-full items-center justify-center gap-10 2xl:pb-20">
                                     <Suspense fallback={<Clock className="animate-spin" />}>
                                         <TimeCard />
                                     </Suspense>

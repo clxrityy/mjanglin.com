@@ -8,7 +8,7 @@ import { URLS } from "@/config";
 export function SpotifyProfile({ data }: { data: Artist }) {
     return (
         <div className={`spotify-card ${exo.className}`}>
-            <div className="spotify-card__content w-full">
+            <div className="spotify-card__content">
                 <div className="flex flex-col items-center justify-center gap-8 w-full">
                     <div className="flex flex-row gap-2 justify-stretch items-center w-full">
                         <Image src={data.images[0].url} alt={data.name} width={32} height={32} className="rounded-full" />
