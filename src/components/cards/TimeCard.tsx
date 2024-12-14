@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function determineTimeGradient(time: Date) {
-    const hours = time.getHours();
+    const hours = time.getUTCHours();
 
     if (hours >= 0 && hours < 6) {
         return "morning-gradient";
