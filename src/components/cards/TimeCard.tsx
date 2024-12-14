@@ -4,7 +4,6 @@ import "@/styles/css/timecard.css";
 import { exo } from "@/styles/fonts";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { TiWeatherCloudy } from "react-icons/ti";
 
 function determineTimeGradient(time: Date) {
     const hours = time.getHours();

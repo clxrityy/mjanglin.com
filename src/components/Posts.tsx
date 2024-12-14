@@ -15,8 +15,8 @@ const postsPerPage = 2;
 export function Posts({ posts, mdxPosts }: Props) {
     const [postsToShow, setPostsToShow] = useState<Post[]>([]);
     const [mdxPostsToShow, setMdxPostsToShow] = useState<MdxPost[]>([]);
-    const [nextPosts, setNextPosts] = useState<number>(postsPerPage);
-    const [nextMdxPosts, setNextMdxPosts] = useState<number>(postsPerPage);
+    // const [nextPosts, setNextPosts] = useState<number>(postsPerPage);
+    // const [nextMdxPosts, setNextMdxPosts] = useState<number>(postsPerPage);
 
     const loopPostsWithSlice = (start: number, end: number) => {
         const slicedPosts = posts.slice(start, end);
@@ -33,12 +33,12 @@ export function Posts({ posts, mdxPosts }: Props) {
         loopMdxPostsWithSlice(0, postsPerPage);
     }, []);
 
-    const loadMorePosts = () => {
-        loopPostsWithSlice(nextPosts, nextPosts + postsPerPage);
-        loopMdxPostsWithSlice(nextMdxPosts, nextMdxPosts + postsPerPage);
-        setNextPosts(nextPosts + postsPerPage);
-        setNextMdxPosts(nextMdxPosts + postsPerPage);
-    }
+    // const loadMorePosts = () => {
+    //     loopPostsWithSlice(nextPosts, nextPosts + postsPerPage);
+    //     loopMdxPostsWithSlice(nextMdxPosts, nextMdxPosts + postsPerPage);
+    //     setNextPosts(nextPosts + postsPerPage);
+    //     setNextMdxPosts(nextMdxPosts + postsPerPage);
+    // }
 
 
 
