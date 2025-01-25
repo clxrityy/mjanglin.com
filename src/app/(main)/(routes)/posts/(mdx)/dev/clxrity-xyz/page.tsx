@@ -5,7 +5,7 @@ import Content from "./content.mdx";
 
 export default function Page() {
   return (
-    <div className="flex flex-col gap-4 mx-10 overflow-y-scroll mt-5 mb-20">
+    <div className="flex flex-col gap-4 mx-10 overflow-y-scroll mt-20 mb-20 w-screen px-8">
       <MDXProvider>
         <Content />
       </MDXProvider>

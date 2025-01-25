@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
 
 
-export default function RootLayout({
+export default async function RootLayout({
     children
 }: Readonly<{ children: React.ReactNode }>) {
     return (
@@ -58,7 +58,7 @@ export default function RootLayout({
 
             <body className={`${exo.variable}`}>
                 {/* <Navbar /> */}
-                <div className="w-full h-full z-30 relative">
+                <div className="w-full h-full relative z-10">
                     {children}
                 </div>
                 <Background />

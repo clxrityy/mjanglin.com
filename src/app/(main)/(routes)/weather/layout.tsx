@@ -1,5 +1,7 @@
 import { fetchIp, getLocationByIp } from "@/utils/ip";
-import "@/styles/css/weather.css"
+import "@/styles/css/weather.css";
+import Link from "next/link";
+import { MdArrowBack } from "react-icons/md";
 
 async function getStaticProps() {
     const ip = await fetchIp() as string;
@@ -27,6 +29,9 @@ export default async function Layout({children}: {children: React.ReactNode}) {
 
     return (
         <div className="w-screen h-screen relative">
+            <Link href="/" className="absolute top-0 px-3 py-4 link" aria-label="back">
+                 <MdArrowBack size={30} className="relative z-50" />
+            </Link>
             {children}
         </div>
     )

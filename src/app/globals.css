@@ -16,7 +16,7 @@ html, body {
     padding: 0;
     scroll-behavior: smooth;
 
-    @apply z-0 min-h-screen min-w-full overflow-auto relative;
+    @apply z-0 h-screen w-screen overflow-auto relative;
 }
 
 @layer utilities {

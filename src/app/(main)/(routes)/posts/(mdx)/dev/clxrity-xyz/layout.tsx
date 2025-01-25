@@ -1,5 +1,5 @@
 import { MdxPostContainer } from "@/components/layout/MdxPostContainer";
-import { mdxPosts } from "@/utils/constants";
+import { mdxPosts } from "@/config";
 import type { Metadata } from "next";
 
 const post = mdxPosts[1];

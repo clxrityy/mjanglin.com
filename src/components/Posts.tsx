@@ -44,7 +44,7 @@ export function Posts({ posts, mdxPosts }: Props) {
 
     return (
         <div className="flex flex-col gap-6 items-center justify-center w-full">
-            <div className="w-max grid grid-cols-1 2xl:grid-cols-2 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
+            <div className="w-max grid grid-cols-1 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
                 {
                     postsToShow.map((post, index) => (
                         <PostCard key={index} post={post} />

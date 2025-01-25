@@ -1,7 +1,7 @@
 import { MdxPostCard } from "@/components/cards/MdxPostCard";
 import { PostCard } from "@/components/cards/PostCard";
 import { getAllPosts } from "@/sanity/lib/queries";
-import { mdxPosts } from "@/utils/constants";
+import { mdxPosts } from "@/config";
 
 export default async function Page() {
     const posts = await getAllPosts();

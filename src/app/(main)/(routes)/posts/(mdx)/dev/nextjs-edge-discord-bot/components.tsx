@@ -1,4 +1,4 @@
-import { mdxPosts } from "@/utils/constants";
+import { mdxPosts } from "@/config";
 import Image from "next/image";
 import {GithubRepo} from "@birdgg/react-github";
 import Link from "next/link";

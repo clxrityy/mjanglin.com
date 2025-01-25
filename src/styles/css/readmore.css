@@ -1,17 +1,17 @@
 /* From Uiverse.io by vinodjangid07 */
 .readmore-btn {
   width: fit-contentd;
-  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-background-color: #1379ffd4;;
+  background-color: transparent;
   border: none;
   border-radius: 10px;
-  padding: 0px 15px;
+  padding: 5px 15px;
   gap: 0px;
   transition: all 0.4s;
+  color: #4996C0;
 
   @apply my-4;
 }
@@ -20,20 +20,22 @@ background-color: #1379ffd4;;
   align-items: center;
   justify-content: flex-end;
   position: relative;
-  width: 45px;
   height: 100%;
 }
 .book-wrapper .book-page {
   width: 50%;
   height: auto;
   position: absolute;
+
+  @apply bg-transparent;
 }
 .readmore-btn:hover .book-page {
   animation: paging 0.4s linear infinite;
   transform-origin: left;
 }
 .readmore-btn:hover {
-  background-color: #7898e980;
+  /* background-color: #4996C0; */
+  color: white;
 }
 @keyframes paging {
   0% {
@@ -47,12 +49,11 @@ background-color: #1379ffd4;;
   }
 }
 .text {
-  width: 105px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   font-size: 15px;
-  color: rgb(255, 255, 255);
+  /* color: rgb(255, 255, 255); */
 }
