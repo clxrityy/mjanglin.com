@@ -754,6 +754,9 @@ packages:
   '@codemirror/commands@6.7.1':
     resolution: {integrity: sha512-llTrboQYw5H4THfhN4U3qCnSZ1SOJ60ohhz+SzU0ADGtwlc533DtklQP0vSFaQuCPDn3BPpOd1GbbnUtwNjsrw==}
 
+  '@codemirror/commands@6.8.0':
+    resolution: {integrity: sha512-q8VPEFaEP4ikSlt6ZxjB3zW72+7osfAYW9i8Zu943uqbKuz6utc1+F170hyLUCUltXORjQXRyYQNfkckzA/bPQ==}
+
   '@codemirror/lang-css@6.3.1':
     resolution: {integrity: sha512-kr5fwBGiGtmz6l0LSJIbno9QrifNMUusivHbnA1H6Dmqy4HZFte3UAICix1VuKo0lMPKQr2rqB+0BkKi/S3Ejg==}
 
@@ -1488,6 +1491,7 @@ packages:
 
   '@nextui-org/accordion@2.2.5':
     resolution: {integrity: sha512-u7OXe6W+4JO1REbfC/zyO2B0/bGav6GL17VJa1qp8lT6uQMt3Cn7+vUe28XpIkeTnJv+WMkzWYs2+V/moYq1oQ==}
+    deprecated: This package has been deprecated. Please use @heroui/accordion instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1497,6 +1501,7 @@ packages:
 
   '@nextui-org/alert@2.2.7':
     resolution: {integrity: sha512-HOIroKCa3z6hE58lAgF+JS8vsNFblOXcuMJwB+92t19q+jkoDCgo7pkPVqi4Hm4MRY2GpUQp+iAGZklA2P4n4Q==}
+    deprecated: This package has been deprecated. Please use @heroui/alert instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1511,6 +1516,7 @@ packages:
 
   '@nextui-org/autocomplete@2.3.7':
     resolution: {integrity: sha512-bfGM59cKgDQCkKS9TR5zGD3aMNiHD1jLDh9uUciW0ij51CoqRBgvinIjOgocwHDJ0y5GbvijNK9djfYV9RYpSg==}
+    deprecated: This package has been deprecated. Please use @heroui/autocomplete instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1520,6 +1526,7 @@ packages:
 
   '@nextui-org/avatar@2.2.4':
     resolution: {integrity: sha512-YXEStFlK0/tMK31vzdEMvIYfUUGpHqqmwY1HA17dfKw0iL5UWMWK2lqN+QvBzfQfPTtbvDPW0ZcmyjOYHzx7Aw==}
+    deprecated: This package has been deprecated. Please use @heroui/avatar instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1528,6 +1535,7 @@ packages:
 
   '@nextui-org/badge@2.2.3':
     resolution: {integrity: sha512-Q1OYR3Kt1VReo/vmNESXea/sIgdQTTav4PgHfESAk6PD9UkBNmT8Xbil1E2glAbglSU3WpqL/uOKEpQANpHVzw==}
+    deprecated: This package has been deprecated. Please use @heroui/badge instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1536,6 +1544,7 @@ packages:
 
   '@nextui-org/breadcrumbs@2.2.4':
     resolution: {integrity: sha512-C+UyoYt1VFosD3leOrU1C3EsauUmjg+ZJEDCsO8WOlxvo2McEx0jqz9VmAqHCWrsIkPyZGxLfaiuhU8+T2AA6Q==}
+    deprecated: This package has been deprecated. Please use @heroui/breadcrumbs instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1544,6 +1553,7 @@ packages:
 
   '@nextui-org/button@2.2.7':
     resolution: {integrity: sha512-3o7uAD7nFAUKJkg2PZ5ktJR8qqMrjQgzewXBWfz62RWya/uTFXzqwljy0JYGwq3tfvbmBzA1GGsAZdj5wUEymw==}
+    deprecated: This package has been deprecated. Please use @heroui/button instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1553,6 +1563,7 @@ packages:
 
   '@nextui-org/calendar@2.2.7':
     resolution: {integrity: sha512-eZ4rmBFqJjmqg0n9F0QlfdfKQgZi4Z63kY0j6NCJ0f7fVtV61GHLNoZjVaaL1HDaMgcH3B7hVUvKtQOgKyzpkw==}
+    deprecated: This package has been deprecated. Please use @heroui/calendar instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1562,6 +1573,7 @@ packages:
 
   '@nextui-org/card@2.2.7':
     resolution: {integrity: sha512-66GB3+Zw6T1LD2JVMSypSvp8zeiWxb7r+00SmRdN13vf5twUepC1HkfRGOLs0yTqjiSRBSnA0veXl9z23dszbw==}
+    deprecated: This package has been deprecated. Please use @heroui/card instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1571,6 +1583,7 @@ packages:
 
   '@nextui-org/checkbox@2.3.6':
     resolution: {integrity: sha512-QiJuRNllmRACf2rDrA6/hT8o46PjC3P6ttzJxz1OeUH6ME8MUY+EyH0S+C4C+cWoBv4UC2JS5S5QXalQ0WSViw==}
+    deprecated: This package has been deprecated. Please use @heroui/checkbox instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1579,6 +1592,7 @@ packages:
 
   '@nextui-org/chip@2.2.4':
     resolution: {integrity: sha512-7fii39lPei8o/3TwdmB8e8W/ZS0FdsQxSHQKXDQpB4meS3Q7CC9dxV1MtwiniE3SXOnSQY7ChvGmu6wkGRFOOA==}
+    deprecated: This package has been deprecated. Please use @heroui/chip instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1587,6 +1601,7 @@ packages:
 
   '@nextui-org/code@2.2.4':
     resolution: {integrity: sha512-p39bvfI/8sPbau5v+JHZG4CVirVeXCrHXm25qpbwPhgm2TxcuPftuoJb5JQNF4x0j0ONLaHnz7Ilr/Ai2vo12w==}
+    deprecated: This package has been deprecated. Please use @heroui/code instead.
     peerDependencies:
       '@nextui-org/theme': '>=2.4.0'
       react: '>=18 || >=19.0.0-rc.0'
@@ -1594,6 +1609,7 @@ packages:
 
   '@nextui-org/date-input@2.3.6':
     resolution: {integrity: sha512-xLgDXAtyrgX1LbGOw3egKV2armcNeNQAnsdycTjy5nxDkcU6PqtJ7G3Oe28/MW7l0qTxUT7/JNnrbKCtxiap/w==}
+    deprecated: This package has been deprecated. Please use @heroui/date-input instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1602,6 +1618,7 @@ packages:
 
   '@nextui-org/date-picker@2.3.7':
     resolution: {integrity: sha512-AgUMw+pvlB6d5+LXQMZDxZhjzNFtCP/ONIZlK+kH/+X6N1JL5s7avfK0TSlFfV1x8yng6xtWBNl1vjy/ymLHpA==}
+    deprecated: This package has been deprecated. Please use @heroui/date-picker instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1611,6 +1628,7 @@ packages:
 
   '@nextui-org/divider@2.2.4':
     resolution: {integrity: sha512-fjFeHS9x4I1TgMBKS3uuBP9XXTV+I71+Wj5jJzTf5c0bqqvTQpL3WsrfuxIT0Tfmi5gpPRafSeTBt5vOPCkdgA==}
+    deprecated: This package has been deprecated. Please use @heroui/divider instead.
     peerDependencies:
       '@nextui-org/theme': '>=2.4.0'
       react: '>=18 || >=19.0.0-rc.0'
@@ -1623,6 +1641,7 @@ packages:
 
   '@nextui-org/drawer@2.2.5':
     resolution: {integrity: sha512-T3J1B/IX+ZPdllsNZbGoKry/jPKlniRyFGEfvY/yPpR88sEwDMMkAZVosZAx5Q+2KOiweq2jia+diGlFz+D59Q==}
+    deprecated: This package has been deprecated. Please use @heroui/drawer instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1631,6 +1650,7 @@ packages:
 
   '@nextui-org/dropdown@2.3.7':
     resolution: {integrity: sha512-7AWurG9ImHqpJzrhlZLtEbEdBTSze7wzaz1dXLiupdfkE8NV3KVT/2sBv+WqlddlMWxEedEiaGrZWhvODOkkdQ==}
+    deprecated: This package has been deprecated. Please use @heroui/dropdown instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1640,6 +1660,7 @@ packages:
 
   '@nextui-org/form@2.1.6':
     resolution: {integrity: sha512-bQ4TkmHcuAEvu2UKoRIYXwvZmjaAxhY8sFYqaX9Ma1Jis1tHeu9ScxhFXDKBN1q7RiNoRdWU6o9lBcFrvHEB6w==}
+    deprecated: This package has been deprecated. Please use @heroui/form instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1655,6 +1676,7 @@ packages:
 
   '@nextui-org/image@2.2.3':
     resolution: {integrity: sha512-erd+c7uA4FRoOOdwS6di97VVJSBbs8mXv9cOY2kZHU830e2//TKlNaE4nC7xR9ApFEAtfXjoRzSyUCIlyXmD9Q==}
+    deprecated: This package has been deprecated. Please use @heroui/image instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1663,6 +1685,7 @@ packages:
 
   '@nextui-org/input-otp@2.1.6':
     resolution: {integrity: sha512-I1f3qJy63N1s+RfyACGs5OYbMvb8glsBaarJ6qrMxjY1k54AIRf0gFGHvR6uDKIDZhUBzGDXo7KvXxJbvkdnHg==}
+    deprecated: This package has been deprecated. Please use @heroui/input-otp instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1671,6 +1694,7 @@ packages:
 
   '@nextui-org/input@2.4.6':
     resolution: {integrity: sha512-HuDwTarQ6N13CrXNkX/CmvxhdojjI+K5REaB7q9wkkOIs955+0zmdhuZkkt5vfQCmnDes7pY+73vt47NLA8Tqg==}
+    deprecated: This package has been deprecated. Please use @heroui/input instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1679,6 +1703,7 @@ packages:
 
   '@nextui-org/kbd@2.2.4':
     resolution: {integrity: sha512-hggGQPTiQ2EwU67kdz/dVW6DS4KcMRgbm0ak+3qfHePfvteCHtuCPyI6CgOhymGpQuVoDTYLzKUBXuu5ow65Og==}
+    deprecated: This package has been deprecated. Please use @heroui/kbd instead.
     peerDependencies:
       '@nextui-org/theme': '>=2.4.0'
       react: '>=18 || >=19.0.0-rc.0'
@@ -1686,6 +1711,7 @@ packages:
 
   '@nextui-org/link@2.2.5':
     resolution: {integrity: sha512-ZYDr9lZEmcXLP+fWgiYJi0sabkfCGCWWMdLUiC7fDWyXxLRmCD0AyA0UGP6FMfPAFI96YvUDQEs8HrbNGVXLIQ==}
+    deprecated: This package has been deprecated. Please use @heroui/link instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1694,6 +1720,7 @@ packages:
 
   '@nextui-org/listbox@2.3.7':
     resolution: {integrity: sha512-U6YDqGGeuRwQg73Im0iJ6s/Ry+phOq+OXWE3PHxqNMaL6UyoEIWyitsf8Va1/VeCjAL2Ad5sdMo29jh+lZh8fA==}
+    deprecated: This package has been deprecated. Please use @heroui/listbox instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1702,6 +1729,7 @@ packages:
 
   '@nextui-org/menu@2.2.7':
     resolution: {integrity: sha512-VWj11/Deti07eVH6YM2d+PdAONbrP5CtawCHCo13xDy6szvcSdFxNzLtcZzCpPVQ2BN35RM5Fon/VSXr1LGVgw==}
+    deprecated: This package has been deprecated. Please use @heroui/menu instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1710,6 +1738,7 @@ packages:
 
   '@nextui-org/modal@2.2.5':
     resolution: {integrity: sha512-Zp4YqLPBYyiIGcCofVQCZ7kqFXk/k+vAFZ/eulbK0lGpxCQeCZDgdXW+a4jsjVz4MXBMrZoPU90plKpr4BeVxA==}
+    deprecated: This package has been deprecated. Please use @heroui/modal instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1719,6 +1748,7 @@ packages:
 
   '@nextui-org/navbar@2.2.5':
     resolution: {integrity: sha512-nyFoq3i/Ru8nHKWxJLuQb2/N4wLuv9wa5C/4Hio99mMaSTlhN+dxa+vtlJBwlyxPr6/eTR1fBkgbi/ZZ1VBdkA==}
+    deprecated: This package has been deprecated. Please use @heroui/navbar instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1728,6 +1758,7 @@ packages:
 
   '@nextui-org/pagination@2.2.6':
     resolution: {integrity: sha512-JD467tBam5EQse34Q/bm8sf4LSFze4atZkCGZNZZP6rAcoNMpxXOJxVoo5DWflqYeaukInYYueyOarxnXn54HA==}
+    deprecated: This package has been deprecated. Please use @heroui/pagination instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1736,6 +1767,7 @@ packages:
 
   '@nextui-org/popover@2.3.7':
     resolution: {integrity: sha512-mntRQXrQt/fnNU5V8aQ/awnWEwTWfZCmPIOSYQWa8+r+5puZlICSR8m8N72jLr/6VBd7wX0Scv6XjGvrehheiQ==}
+    deprecated: This package has been deprecated. Please use @heroui/popover instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1745,6 +1777,7 @@ packages:
 
   '@nextui-org/progress@2.2.4':
     resolution: {integrity: sha512-2XwzIEwUvgVLvGHq2Neo3UFyzSm/FKFj55LUGCWFQ+SiZ1JRnMZDXUOCnIzZwhDmnfCL1TOp2a0EHj05ewxwsw==}
+    deprecated: This package has been deprecated. Please use @heroui/progress instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1753,6 +1786,7 @@ packages:
 
   '@nextui-org/radio@2.3.6':
     resolution: {integrity: sha512-zBr1LESZu8VrZZ1xj8tMdRd7HTXFfDPYeyqcxaNpqOI/ZZNHLpvoSxta9aKxDf3TbLFCt5WQz70S25DCGsljUQ==}
+    deprecated: This package has been deprecated. Please use @heroui/radio instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1771,6 +1805,7 @@ packages:
 
   '@nextui-org/react@2.6.8':
     resolution: {integrity: sha512-w6skiTItbrzjvHl+v4bHCYNkPjPpFz0UPM/s4vZZmaky6sxihguq+mdCcSe/qkXdhmSn7b+aY9E0ygQaMvibvw==}
+    deprecated: This package has been deprecated. Please use @heroui/react instead.
     peerDependencies:
       framer-motion: '>=11.5.6 || >=12.0.0-alpha.1'
       react: '>=18 || >=19.0.0-rc.0'
@@ -1778,6 +1813,7 @@ packages:
 
   '@nextui-org/ripple@2.2.5':
     resolution: {integrity: sha512-GNYcRbVrUtdkbHKyFGRb0W8dyudH6hYY6YxYtlE5I82YwN1FovLvTRajDBbd3Bh2qNIcyUoFlmbt4h/6mM8uOQ==}
+    deprecated: This package has been deprecated. Please use @heroui/ripple instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1787,6 +1823,7 @@ packages:
 
   '@nextui-org/scroll-shadow@2.3.3':
     resolution: {integrity: sha512-sI68rEt/CLEVhM+TPdk1QM7h9j4bK6oWaY4xYKCOC4UtMTUMaCdWt5kqHKwX+xr4iQTPBjMCGTduGSoG9RvBgQ==}
+    deprecated: This package has been deprecated. Please use @heroui/scroll-shadow instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1795,6 +1832,7 @@ packages:
 
   '@nextui-org/select@2.4.7':
     resolution: {integrity: sha512-MpplLt7kWVownuvX9wQMruy9wL3Rt2GcVUteRd6wriNwj/pP3wY7OnXOgih1aNWtbVM2+PpCpgummgau2AdaAg==}
+    deprecated: This package has been deprecated. Please use @heroui/select instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1812,6 +1850,7 @@ packages:
 
   '@nextui-org/skeleton@2.2.3':
     resolution: {integrity: sha512-G12blc41mCZBjOObteyqhQr4MZhEKgZGhJMVYVXr5yw+HiS9jY1LJIBPLOxs8PFo2GcYj9JVQN6rru8W9Eqxmg==}
+    deprecated: This package has been deprecated. Please use @heroui/skeleton instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1820,6 +1859,7 @@ packages:
 
   '@nextui-org/slider@2.4.5':
     resolution: {integrity: sha512-vQXcV+Zri5+5Yfug89ffcY33XgzEP91ObsLy2r9we0H784SwQYgjk41OzAPs7gkFAnWGP1TW22jALJh3S82+YA==}
+    deprecated: This package has been deprecated. Please use @heroui/slider instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1828,6 +1868,7 @@ packages:
 
   '@nextui-org/snippet@2.2.8':
     resolution: {integrity: sha512-zawFPrTAPi2HHxn+k9OLRvE3JoRa0YzdtIdcplAujv4T5g4zz4H+cfOKJKA6c6sCmhYHM5yBBv6q8EubmuzgTA==}
+    deprecated: This package has been deprecated. Please use @heroui/snippet instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1837,6 +1878,7 @@ packages:
 
   '@nextui-org/spacer@2.2.4':
     resolution: {integrity: sha512-RMkC2O3I+W6qwsax5Dge8CzF2tJIDxOiC84yiQxfwRHWVe1qPXbLRu1nM5lbvjAI/4aS9NegUQ3aYnFqZwvojQ==}
+    deprecated: This package has been deprecated. Please use @heroui/spacer instead.
     peerDependencies:
       '@nextui-org/theme': '>=2.4.0'
       react: '>=18 || >=19.0.0-rc.0'
@@ -1844,6 +1886,7 @@ packages:
 
   '@nextui-org/spinner@2.2.4':
     resolution: {integrity: sha512-QdCRD64+fjWmi5byO9sR3D4xbkFNh9cB01KnoR1/u7+7m/WWNFOhUkYbdkB2e53oQlNXxh0Mw02U346tC8B+5g==}
+    deprecated: This package has been deprecated. Please use @heroui/spinner instead.
     peerDependencies:
       '@nextui-org/theme': '>=2.4.0'
       react: '>=18 || >=19.0.0-rc.0'
@@ -1851,6 +1894,7 @@ packages:
 
   '@nextui-org/switch@2.2.6':
     resolution: {integrity: sha512-YlFOvc/WnkQeldTvtTUVF7KXx8LUz6sSJJoP+xhJZtPZcfcyQlApRTvc9LpVG+eyqfLWY9ng4n85BDR2rHzoOQ==}
+    deprecated: This package has been deprecated. Please use @heroui/switch instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1872,6 +1916,7 @@ packages:
 
   '@nextui-org/table@2.2.6':
     resolution: {integrity: sha512-0XZaxcsYMkIcWRbTGq9cW51pWHL6czdKUHAlj1tkRPXEcRbuUxkOWVccsz83pn2vyb56ftDA4nm1qeivcO+PkA==}
+    deprecated: This package has been deprecated. Please use @heroui/table instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1880,6 +1925,7 @@ packages:
 
   '@nextui-org/tabs@2.2.5':
     resolution: {integrity: sha512-lEQVO1iwnYv75+tIwwVVyUZlg2FyA9RPdXJXZWIJkCYP8xMUzPe3KFKvZkaT4UFny+typIW0pMpRrP8gJSubWg==}
+    deprecated: This package has been deprecated. Please use @heroui/tabs instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -1894,6 +1940,7 @@ packages:
 
   '@nextui-org/tooltip@2.2.5':
     resolution: {integrity: sha512-6P28S2p18uNpLHIi7trrHImtrkaxpWBimtqf3u+NZc33dYG44iBV4BfuOvp1TCFwCW+Dv5k1XLK+AMr54o1FYw==}
+    deprecated: This package has been deprecated. Please use @heroui/tooltip instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -2000,6 +2047,7 @@ packages:
 
   '@nextui-org/user@2.2.4':
     resolution: {integrity: sha512-dQVYSm26h9KzDqWjuKablBlDaa+IO8KKQXSvT84BFMPGBN8UY8FXZGeeopNmWHeF6hJBkK1Jn4HU+2K8GKo99Q==}
+    deprecated: This package has been deprecated. Please use @heroui/user instead.
     peerDependencies:
       '@nextui-org/system': '>=2.4.0'
       '@nextui-org/theme': '>=2.4.0'
@@ -3040,6 +3088,7 @@ packages:
 
   '@sanity/block-tools@3.68.0':
     resolution: {integrity: sha512-RD9SYjgpMFsS4JVKKy/JtQAJme6nwZP9SnCsUhDnh9GAHDJ+TgH5all8pcBjpbeByEjC8gCtf3Gb3ytVqjSpAg==}
+    deprecated: Renamed - use `@portabletext/block-tools` instead. `@sanity/block-tools` will no longer receive updates.
 
   '@sanity/browserslist-config@1.0.3':
     resolution: {integrity: sha512-UkJuiTyROgPcxbvpHYyXwr+T88Np4eLzu3h05gMgeZ2hv3EM7g/4VMyng5HuA1JdPQPEdq8bmmfQDR+u4KC+TA==}
@@ -3444,6 +3493,9 @@ packages:
 
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
+
+  '@types/node@22.10.10':
+    resolution: {integrity: sha512-X47y/mPNzxviAGY5TcYPtYL8JsY3kAq2n8fMmKoRCxq/c4v4pyGNCzM2R6+M5/umG4ZfHuT+sgqDYqWc9rJ6ww==}
 
   '@types/node@22.10.2':
     resolution: {integrity: sha512-Xxr6BBRCAOQixvonOye19wnzyDiUtTeqldOOmj3CkeblonbccA12PFwlufvRdrpjXxqnmUaeiU5EOA+7s5diUQ==}
@@ -3929,6 +3981,11 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
+  browserslist@4.24.4:
+    resolution: {integrity: sha512-KDi1Ny1gSePi1vm0q4oxSF8b4DR44GF4BbmS2YdhPLOEqd8pDviZOGH/GsmRwoWJ2+5Lr085X7naowMwKHDG1A==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+
   buffer-alloc-unsafe@1.1.0:
     resolution: {integrity: sha512-TEM2iMIEQdJ2yjPJoSIsldnleVaAk1oW3DBVUykyOLsEsFmEc9kn+SFFPz+gl54KQNxlDnAwCXosOS9Okx2xAg==}
 
@@ -3998,6 +4055,9 @@ packages:
 
   caniuse-lite@1.0.30001689:
     resolution: {integrity: sha512-CmeR2VBycfa+5/jOfnp/NpWPGd06nf1XYiefUvhXFfZE4GkRc9jv+eGPS4nT558WS/8lYCzV8SlANCIPvbWP1g==}
+
+  caniuse-lite@1.0.30001695:
+    resolution: {integrity: sha512-vHyLade6wTgI2u1ec3WQBxv+2BrTERV28UXQu9LO6lZ9pYeMk34vjXFLOxo1A4UBA8XTL4njRQZdno/yYaSmWw==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -4479,6 +4539,9 @@ packages:
   electron-to-chromium@1.5.74:
     resolution: {integrity: sha512-ck3//9RC+6oss/1Bh9tiAVFy5vfSKbRHAFh7Z3/eTRkEqJeWgymloShB17Vg3Z4nmDNp35vAd1BZ6CMW4Wt6Iw==}
 
+  electron-to-chromium@1.5.88:
+    resolution: {integrity: sha512-K3C2qf1o+bGzbilTDCTBhTQcMS9KW60yTAaTeeXsfvQuTDDwlokLam/AdqlqcSy9u4UainDgsHV23ksXAOgamw==}
+
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
 
@@ -4490,6 +4553,10 @@ packages:
 
   enhanced-resolve@5.17.1:
     resolution: {integrity: sha512-LMHl3dXhTcfv8gM4kEzIUeTQ+7fpdA0l2tUf34BddXPkz2A5xJ5L/Pchd5BL6rdccM9QGvu0sWZzK1Z1t4wwyg==}
+    engines: {node: '>=10.13.0'}
+
+  enhanced-resolve@5.18.0:
+    resolution: {integrity: sha512-0/r0MySGYG8YqlayBZ6MuCfECmHFdJ5qyPh8s8wa5Hnm6SaFLSK1VYCbj+NKp090Nm1caZhD+QTnmxO7esYGyQ==}
     engines: {node: '>=10.13.0'}
 
   entities@4.5.0:
@@ -4517,6 +4584,9 @@ packages:
 
   es-module-lexer@1.5.4:
     resolution: {integrity: sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==}
+
+  es-module-lexer@1.6.0:
+    resolution: {integrity: sha512-qqnD1yMU6tk/jnaMosogGySTZP8YtUgAffA9nMN+E/rjxcfRQ6IEk7IiozUjgxKoFHBGjTLnrHB/YC45r/59EQ==}
 
   es-object-atoms@1.0.0:
     resolution: {integrity: sha512-MZ4iQ6JwHOBQjahnjwaC1ZtIBH+2ohjamzAO3oaHcXYup7qxjF2fixyH+Q71voWHeOkI2q/TnJao/KfXYIZWbw==}
@@ -4775,8 +4845,8 @@ packages:
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
-  fast-uri@3.0.3:
-    resolution: {integrity: sha512-aLrHthzCjH5He4Z2H9YZ+v6Ujb9ocRuW6ZzkJQOrTxleEijANq4v1TsaPaVG1PZcuurEzrLcWRyYBYXD5cEiaw==}
+  fast-uri@3.0.6:
+    resolution: {integrity: sha512-Atfo14OibSv5wAp4VWNsFYE1AchQRTv9cBGWET4pZWHzYshFSS9NQI6I57rdKn9croWVMbYFbLhJ+yJvmZIIHw==}
 
   fastq@1.17.1:
     resolution: {integrity: sha512-sRVD3lWVIXWg6By68ZN7vho9a1pQcN/WBFaAAsDDFzlJjvoGx0P8z7V1t72grFJfJhu3YPZBuu25f7Kaw2jN1w==}
@@ -7521,6 +7591,12 @@ packages:
     peerDependencies:
       browserslist: '>= 4.21.0'
 
+  update-browserslist-db@1.1.2:
+    resolution: {integrity: sha512-PPypAm5qvlD7XMZC3BujecnaOxwhrtoFR+Dqkk5Aa/6DssiH0ibKoketaj9w8LP7Bont1rYeoV5plxD7RTEPRg==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
@@ -7638,8 +7714,8 @@ packages:
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
 
-  vite@5.4.11:
-    resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
+  vite@5.4.14:
+    resolution: {integrity: sha512-EK5cY7Q1D8JNhSaPKVK4pwBFvaTmZxEnoKXLG/U9gmdDcihQGNzFlgIvaxezFR4glP1LsuiedwMBqCXH3wZccA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -8634,6 +8710,13 @@ snapshots:
       '@lezer/common': 1.2.3
 
   '@codemirror/commands@6.7.1':
+    dependencies:
+      '@codemirror/language': 6.10.7
+      '@codemirror/state': 6.5.0
+      '@codemirror/view': 6.36.0
+      '@lezer/common': 1.2.3
+
+  '@codemirror/commands@6.8.0':
     dependencies:
       '@codemirror/language': 6.10.7
       '@codemirror/state': 6.5.0
@@ -12352,6 +12435,11 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
+  '@types/node@22.10.10':
+    dependencies:
+      undici-types: 6.20.0
+    optional: true
+
   '@types/node@22.10.2':
     dependencies:
       undici-types: 6.20.0
@@ -12522,14 +12610,14 @@ snapshots:
 
   '@vercel/stega@0.1.2': {}
 
-  '@vitejs/plugin-react@4.3.4(vite@5.4.11(@types/node@22.10.2)(terser@5.37.0))':
+  '@vitejs/plugin-react@4.3.4(vite@5.4.14(@types/node@22.10.2)(terser@5.37.0))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.0)
       '@babel/plugin-transform-react-jsx-source': 7.25.9(@babel/core@7.26.0)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.4.11(@types/node@22.10.2)(terser@5.37.0)
+      vite: 5.4.14(@types/node@22.10.2)(terser@5.37.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -12705,7 +12793,7 @@ snapshots:
   ajv@8.17.1:
     dependencies:
       fast-deep-equal: 3.1.3
-      fast-uri: 3.0.3
+      fast-uri: 3.0.6
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
     optional: true
@@ -12957,6 +13045,14 @@ snapshots:
       node-releases: 2.0.19
       update-browserslist-db: 1.1.1(browserslist@4.24.3)
 
+  browserslist@4.24.4:
+    dependencies:
+      caniuse-lite: 1.0.30001695
+      electron-to-chromium: 1.5.88
+      node-releases: 2.0.19
+      update-browserslist-db: 1.1.2(browserslist@4.24.4)
+    optional: true
+
   buffer-alloc-unsafe@1.1.0: {}
 
   buffer-alloc@1.2.0:
@@ -13022,6 +13118,9 @@ snapshots:
   camelize@1.0.1: {}
 
   caniuse-lite@1.0.30001689: {}
+
+  caniuse-lite@1.0.30001695:
+    optional: true
 
   ccount@2.0.1: {}
 
@@ -13108,7 +13207,7 @@ snapshots:
   codemirror@6.0.1:
     dependencies:
       '@codemirror/autocomplete': 6.18.4
-      '@codemirror/commands': 6.7.1
+      '@codemirror/commands': 6.8.0
       '@codemirror/language': 6.10.7
       '@codemirror/lint': 6.8.4
       '@codemirror/search': 6.5.8
@@ -13506,6 +13605,9 @@ snapshots:
 
   electron-to-chromium@1.5.74: {}
 
+  electron-to-chromium@1.5.88:
+    optional: true
+
   emoji-regex@8.0.0: {}
 
   emoji-regex@9.2.2: {}
@@ -13518,6 +13620,12 @@ snapshots:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.2.1
+
+  enhanced-resolve@5.18.0:
+    dependencies:
+      graceful-fs: 4.2.11
+      tapable: 2.2.1
+    optional: true
 
   entities@4.5.0: {}
 
@@ -13599,6 +13707,9 @@ snapshots:
       safe-array-concat: 1.1.3
 
   es-module-lexer@1.5.4: {}
+
+  es-module-lexer@1.6.0:
+    optional: true
 
   es-object-atoms@1.0.0:
     dependencies:
@@ -14004,7 +14115,7 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
-  fast-uri@3.0.3:
+  fast-uri@3.0.6:
     optional: true
 
   fastq@1.17.1:
@@ -14783,7 +14894,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.10.2
+      '@types/node': 22.10.10
       merge-stream: 2.0.0
       supports-color: 8.1.1
     optional: true
@@ -16605,7 +16716,7 @@ snapshots:
       '@types/speakingurl': 13.0.6
       '@types/tar-stream': 3.1.3
       '@types/use-sync-external-store': 0.0.6
-      '@vitejs/plugin-react': 4.3.4(vite@5.4.11(@types/node@22.10.2)(terser@5.37.0))
+      '@vitejs/plugin-react': 4.3.4(vite@5.4.14(@types/node@22.10.2)(terser@5.37.0))
       archiver: 7.0.1
       arrify: 2.0.1
       async-mutex: 0.4.1
@@ -16682,7 +16793,7 @@ snapshots:
       use-effect-event: 1.0.2(react@19.0.0)
       use-hot-module-reload: 2.0.0(react@19.0.0)
       use-sync-external-store: 1.4.0(react@19.0.0)
-      vite: 5.4.11(@types/node@22.10.2)(terser@5.37.0)
+      vite: 5.4.14(@types/node@22.10.2)(terser@5.37.0)
       yargs: 17.7.2
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
@@ -17470,6 +17581,13 @@ snapshots:
       escalade: 3.2.0
       picocolors: 1.1.1
 
+  update-browserslist-db@1.1.2(browserslist@4.24.4):
+    dependencies:
+      browserslist: 4.24.4
+      escalade: 3.2.0
+      picocolors: 1.1.1
+    optional: true
+
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
@@ -17586,7 +17704,7 @@ snapshots:
       d3-time: 3.1.0
       d3-timer: 3.0.1
 
-  vite@5.4.11(@types/node@22.10.2)(terser@5.37.0):
+  vite@5.4.14(@types/node@22.10.2)(terser@5.37.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.49
@@ -17629,10 +17747,10 @@ snapshots:
       '@webassemblyjs/wasm-parser': 1.14.1
       acorn: 8.14.0
       acorn-import-attributes: 1.9.5(acorn@8.14.0)
-      browserslist: 4.24.3
+      browserslist: 4.24.4
       chrome-trace-event: 1.0.4
-      enhanced-resolve: 5.17.1
-      es-module-lexer: 1.5.4
+      enhanced-resolve: 5.18.0
+      es-module-lexer: 1.6.0
       eslint-scope: 5.1.1
       events: 3.3.0
       glob-to-regexp: 0.4.1
