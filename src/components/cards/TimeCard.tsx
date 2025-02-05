@@ -72,7 +72,7 @@ export function TimeCard() {
                 <span className="time-sub-text">{amOrPm}</span>
             </p>
             <p className="day-text">{getDateString()}</p>
-            <div className="clock-icon py-2 px-2">
+            <div className="clock-icon py-2 px-2 my-16">
                 <div className="clock-container">
                     <div className="clock" />
                 </div>

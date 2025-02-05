@@ -12,8 +12,6 @@
   gap: 0px;
   transition: all 0.4s;
   color: #4996C0;
-
-  @apply my-4;
 }
 .book-wrapper {
   display: flex;

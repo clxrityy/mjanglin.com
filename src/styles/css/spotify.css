@@ -4,13 +4,13 @@
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
 
-  @apply my-10 duration-1000 ease-in-out transition-all delay-300 w-full;
+  @apply duration-1000 transition-all delay-300 w-full;
 }
 
 .spotify-card:hover {
   background-image: linear-gradient(144deg, #00ddeb, #5b42f3 50%, #af40ff);
 
-  @apply duration-1000 ease-in-out transition-all;
+  @apply duration-1000 transition-all;
 }
 
 .spotify-card__content {
@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
 
-  @apply px-10 py-5 flex items-center justify-center;
+  @apply flex items-center justify-center;
 }
 
 /* From Uiverse.io by Yaya12085
@@ -53,5 +53,5 @@
 .link-button:hover {
   box-shadow: none;
 
-  @apply transform scale-105 transition-transform duration-200 ease-in-out;
+  @apply transform scale-105 transition-transform duration-200;
 }

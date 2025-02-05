@@ -1,4 +1,103 @@
-import { Title } from "./components";
+import { Title, 
+    DockerHeading,
+    RunServerHeading,
+ } from "./components";
 
 <Title />
 
+## Overview
+
+- #### [Set up/install Docker](#docker)
+    - Login
+    - Create a new directory
+    - Set up the `Dockerfile`
+    - Set up the `docker-compose.yml` file
+- #### [Run the Minecraft server container](#run-server)
+    - Build the Docker image
+    - Start the Minecraft server container
+- #### Set up Azure virtual machine
+    - Create a new virtual machine
+    - Install Docker on the virtual machine
+    - Set up the Minecraft server container
+
+
+
+
+---
+
+<DockerHeading />
+
+
+To start off, you'll need a [Docker](https://www.docker.com/) account to run the Minecraft server container. If you don't have one, you can create one for free. Once you have an account, you can download the Docker Desktop application for your operating system.
+
+Once you have Docker Desktop installed, you can run the following command in your terminal to login to your Docker account:
+
+```bash
+docker login
+```
+
+---
+
+Next, set up a new directory to store the files for your Minecraft server. The folder will contain the server configuration files, as well as the Docker Compose file to run the server container.
+
+```
+~/
+└── minecraft-server/
+    ├── server.properties
+    ├── eula.txt
+    ├── ...
+└── Dockerfile
+└── docker-compose.yml
+```
+
+Set up the **Dockerfile**:
+- The `FROM` directive specifies the base image for the Minecraft server container.
+- The `ENV` directive sets the server type to Paper.
+- The `COPY` directive copies the plugin JAR files to the `/plugins/` directory in the container.
+
+```Dockerfile
+FROM itzg/minecraft-server
+
+ENV TYPE=PAPER
+
+COPY plugins/*.jar /plugins/
+```
+
+Set up the **docker-compose.yml** file:
+
+```yml
+services:
+    # Minecraft server container
+    mc:
+        # Use the itzg/minecraft-server image
+        image: itzg/minecraft-server
+        environment:
+            EULA: "TRUE" # Accept the Minecraft EULA
+            TYPE: "PAPER" # Set the server type to Paper
+            MOTD: "My Minecraft Server" # Set the server MOTD
+            MEMORY: "4G" # Set the server memory to 4GB
+        stdin_open: true # Enable stdin
+        tty: true # Enable tty
+        volumes: # Mount the server data directory
+            - ./server:/data
+        restart: on-failure:3 # Restart the container on failure 3 times
+        ports: # Expose the server port
+            - "25565:25565"
+```
+
+---
+
+<RunServerHeading />
+
+- To run the Minecraft server container, you'll need to build the Docker image and start the container.
+    - Build the Docker image:
+    ```bash
+    docker compose build
+    ```
+    - Start the Minecraft server container:
+    ```bash
+    docker compose up -d
+    ```
+
+- Once the server is running, you can connect to it using the Minecraft client.
+    - The server address will be `localhost:25565`.

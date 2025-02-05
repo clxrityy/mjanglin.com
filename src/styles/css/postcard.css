@@ -12,7 +12,7 @@
 }
 
 .post-card:hover {
-    @apply scale-105 transition-all shadow-md duration-150 ease-in;
+    @apply scale-105 transition-all duration-150;
 }
 
 .post-card-title {

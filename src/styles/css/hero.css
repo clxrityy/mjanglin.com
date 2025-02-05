@@ -7,7 +7,7 @@
   overflow: hidden;
   z-index: auto;
 
-  @apply transition-transform duration-300 hover:drop-shadow-lg w-[240px] h-[330px] sm:w-[420px];
+  @apply transition-transform duration-300 w-[240px] h-[330px];
 }
 
 .wave {
@@ -44,7 +44,7 @@
   align-items: center;
   flex-direction: column;
 
-  @apply text-[20px] sm:text-[24px] lg:text-[32px] sm:top-24;
+  @apply text-[20px];
 }
 
 .name {
@@ -54,7 +54,7 @@
   top: 1em;
   text-transform: lowercase;
 
-  @apply text-[14px] sm:text-[18px];
+  @apply text-[14px];
 }
 
 .wave:nth-child(2),
