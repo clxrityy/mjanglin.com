@@ -41,7 +41,7 @@ export function TimeCard() {
         return () => {
             clearInterval(interval);
         }
-    })
+    }, [time]);
 
     function tick() {
         setTime(new Date());

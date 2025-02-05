@@ -8,14 +8,19 @@ export const metadata: Metadata = {
     description: "A collection of posts written by MJ Anglin",
 }
 
+
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="w-screen min-h-fit mx-auto h-screen">
-            <Link href="/" className="absolute top-0 px-3 py-4 link" aria-label="back">
-                 <MdArrowBack size={30} className="relative z-50" />
+        <div className="relative min-h-screen w-full mx-auto">
+            <Link href="/" className="fixed top-0 left-0 px-3 py-4 link" aria-label="back">
+                <MdArrowBack size={30} className="relative z-50" />
             </Link>
-            <div className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-full mb-32">
-                {children}
+            <div className="flex items-center justify-center w-full">
+                <div className="w-full lg:w-2/3 xl:w-1/2">
+                    <div className="py-10 markdown-body">
+                        {children}
+                    </div>
+                </div>
             </div>
         </div>
     )
