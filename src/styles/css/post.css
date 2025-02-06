@@ -4,7 +4,6 @@
     color: #e1e1e1;
     margin: 0 auto;
     display: block;
-    width: 100%;
 
     @apply text-[16px] leading-[1.6] text-center;
 }
@@ -115,8 +114,20 @@ i {
     width: auto;
     border-radius: 10px;
     overflow-x: scroll;
-    max-width: 700px;
+    max-width: 300px;
     margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .markdown-body pre, code {
+        max-width: 500px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .markdown-body pre, code {
+        max-width: 700px;
+    }
 }
 
 .markdown-body pre {
