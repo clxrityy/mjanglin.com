@@ -14,11 +14,16 @@ html, body {
     padding: 0;
     scroll-behavior: smooth;
 
-    @apply z-0 h-screen max-w-screen relative overflow-y-auto;
+    @apply z-0 h-screen max-w-screen relative overflow-y-scroll;
 }
 
 @layer utilities {
     .font-exo {
         font-family: var(--font-exo);
     }
+}
+
+::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
 }
