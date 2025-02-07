@@ -1,7 +1,7 @@
 import { MdxPost } from "@/utils/types";
 import "@/styles/css/postcard.css";
-import Image from "next/image";
 import Link from "next/link";
+import { ImageComponent } from "../ui/ImageComponent";
 
 export function MdxPostCard({ post }: { post: MdxPost }) {
     
@@ -13,7 +13,17 @@ export function MdxPostCard({ post }: { post: MdxPost }) {
                 {
                     imageUrl && (
                         <div className="post-card-image flex items-center justify-center w-full">
-                            <Image unoptimized src={imageUrl} alt={title} width={500} height={500} className="rounded-md w-full max-w-[240px] post-card-actual-image" placeholder="blur" blurDataURL="/assets/blur-loading-img.png"/>
+                            <ImageComponent image={{
+                                src: imageUrl,
+                                alt: title,
+                                width: 500,
+                                height: 500,
+                                className: `rounded-md w-full max-w-[240px] post-card-actual-image`,
+                                placeholder: "blur",
+                                blurDataURL: "/assets/blur-loading-img.png",
+                                unoptimized: true,
+                            }} 
+                            />
                         </div>
                     )
                 }

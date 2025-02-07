@@ -1,14 +1,22 @@
 import "@/styles/css/description-card.css";
 import { exo } from "@/styles/fonts";
-import Image from "next/image";
 import { ReadMore } from "./ReadMore";
+import { ImageComponent } from "../ui/ImageComponent";
 
 export function DescriptionCard() {
     return (
         /* From Uiverse.io by gharsh11032000 */
         <div className={`desc-card ${exo.className} font-medium text-base grayscale-[50%]`}>
             <div className="content">
-                <Image src={"/apple-touch-icon.png"} alt="logo" width={100} height={100} className="grayscale brightness-200" />
+                <ImageComponent 
+                    image={{
+                        src: "/apple-touch-icon.png",
+                        alt: "logo",
+                        width: 100,
+                        height: 100,
+                        className: "grayscale brightness-200"
+                    }}
+                />
                 <ul className="para gap-2 flex flex-col items-center justify-center w-full">
                     <li>
                         Network specialist who loves to code and create.

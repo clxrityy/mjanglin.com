@@ -1,9 +1,9 @@
 import { urlFor } from "@/sanity/lib/image";
 import { getAuthor } from "@/sanity/lib/queries";
 import { Post } from "@/utils/types";
-import Image from "next/image";
 import "@/styles/css/postcard.css";
 import Link from "next/link";
+import { ImageComponent } from "../ui/ImageComponent";
 
 export async function PostCard({ post }: { post: Post }) {
 
@@ -18,7 +18,13 @@ export async function PostCard({ post }: { post: Post }) {
                 imageUrl && (
                     <div className="post-card-image flex items-center justify-center w-full">
                         <Link href={`/posts/${post.slug.current}`} className="w-4/5">
-                            <Image src={imageUrl} width={200} height={200} alt={title} className={`rounded-md w-full max-w-[240px] post-card-actual-image hover:border-4 border-[#4996C0] transition-all duration-150 ease-in`} />
+                            <ImageComponent image={{
+                                src: imageUrl,
+                                alt: title,
+                                width: 200,
+                                height: 200,
+                                className: `rounded-md w-full max-w-[240px] post-card-actual-image hover:border-4 border-[#4996C0] transition-all duration-150 ease-in`
+                            }} />
                         </Link>
                     </div>
                 )

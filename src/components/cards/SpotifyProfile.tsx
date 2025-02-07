@@ -6,6 +6,8 @@ import Link from "next/link";
 import { URLS } from "@/config";
 
 export function SpotifyProfile({ data }: { data: Artist }) {
+
+
     return (
         <div className={`spotify-card ${exo.className} my-4 mb-14`}>
             <div className="spotify-card__content px-5 py-4">
