@@ -47,8 +47,15 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
             await db.member.create({
                 data: {
                     user: {
-                        connect: {
-                            userId: id
+                        connectOrCreate: {
+                            where: {
+                                userId: id
+                            },
+                            create: {
+                                userId: id,
+                                accessToken: "",
+                                refreshToken: "",
+                            },
                         }
                     },
                     guilds: {
