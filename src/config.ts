@@ -11,7 +11,7 @@ export const CONFIG = {
         BASE_URL: process.env.NODE_ENV === "production" ? "https://hbd.mjanglin.com" : "http://localhost:3000",
         DISCORD_API_BASE_URL: "https://discord.com/api/v10",
         HOROSCOPE_API_BASE_URL: "http://theastrologer-api.herokuapp.com/api",
-        INVITE_URL: "https://discord.com/oauth2/authorize?client_id=1211045842362966077&permissions=268486720&response_type=code&redirect_uri=https%3A%2F%2Fhbd.mjanglin.com%2Fapi%2Fauth%2Fdiscord%2Fredirect&integration_type=0&scope=identify+applications.commands+bot+guilds+guilds.members.read",
+        INVITE_URL: process.env.NODE_ENV === "production" ? "https://discord.com/oauth2/authorize?client_id=1211045842362966077&permissions=268486720&response_type=code&redirect_uri=https%3A%2F%2Fhbd.mjanglin.com%2Fapi%2Fauth%2Fdiscord%2Fredirect&integration_type=0&scope=identify+applications.commands+bot+guilds+guilds.members.read" : "https://discord.com/oauth2/authorize?client_id=1209023823114936341&permissions=2048&integration_type=0&scope=bot",
         TEST_GUILD_URL: "https://discord.gg/n65AVpTFNf",
         GITHUB_REPO: "https://github.com/clxrityy/mjanglin.com/tree/hbd"
     },

@@ -1,15 +1,14 @@
 import { CONFIG } from "@/config";
 import { db } from "@/lib/db";
 import { CreateUserParams, OAuth2UserResponse } from "@/types/auth";
-import { User } from "@prisma/client";
 import axios from "axios";
 import { parse } from "cookie";
 import { verify } from "jsonwebtoken";
 import { cookies } from "next/headers";
 
-export function parseUser(): OAuth2UserResponse | null {
+export async function parseUser(): Promise<OAuth2UserResponse | null> {
 
-    const cookie = cookies().get(CONFIG.VALUES.COOKIE_NAME);
+    const cookie = (await cookies()).get(CONFIG.VALUES.COOKIE_NAME);
 
     if (!cookie?.value) {
         return null;
@@ -39,7 +38,7 @@ export async function getUserDetails(accessToken: string) {
     })
 };
 
-export async function createUser({ userId, accessToken, refreshToken }: CreateUserParams): Promise<User> {
+export async function createUser({ userId, accessToken, refreshToken }: CreateUserParams) {
     const existingUser = await db.user.findFirst({
         where: {
             userId: userId

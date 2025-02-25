@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
 
 :root {
   --foreground-rgb: 230, 230, 230;
@@ -181,12 +180,8 @@ input, textarea {
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[var(--background)] text-[var(--foreground)];
   }
 }
 
@@ -221,6 +216,6 @@ input, textarea {
     border-radius: 0.5rem;
     backdrop-filter: blur(100px);
 
-    @apply border border-white border-opacity-60;
+    @apply border border-white/60;
   }
 }

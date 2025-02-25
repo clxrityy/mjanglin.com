@@ -27,8 +27,8 @@ export async function fetchGuild(guildId: string): Promise<Guild> {
     }
 }
 
-export async function getGuildAvatar(guild: Guild): Promise<string> {
-    return guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png` : "/placeholder-discord.png";
+export async function getGuildAvatar({id, icon}: {id: string, icon?: string}): Promise<string> {
+    return icon ? `https://cdn.discordapp.com/icons/${id}/${icon}.png` : "/placeholder-discord.png";
 }
 
 export async function getGuildRoles(guildId: string): Promise<string[]> {

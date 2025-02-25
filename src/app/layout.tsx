@@ -22,7 +22,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const user = parseUser();
+  const user = await parseUser();
 
   return (
 
@@ -49,18 +49,19 @@ export default async function RootLayout({
           content="A Discord birthday bot"
         />
       </head>
-      <Providers>
-        <Suspense fallback={<Loading />}>
-          <body className={`${FONTS.nunito.variable} ${FONTS.roboto.variable} dark`}>
+
+      <body className={`${FONTS.nunito.variable} ${FONTS.roboto.variable} dark`}>
+        <Providers>
+          <Suspense fallback={<Loading />}>
             <Stars />
             <HomeIcon />
             {user && <UserIcon userId={user.id} />}
             {children}
             <Footer />
             <SpeedInsights />
-          </body>
-        </Suspense>
-      </Providers>
+          </Suspense>
+        </Providers>
+      </body>
     </html>
 
   );

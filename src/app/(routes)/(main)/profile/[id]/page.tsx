@@ -5,31 +5,31 @@ import Link from "next/link";
 import { FaHome } from "react-icons/fa";
 
 type Props = {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export default async function Page({ params }: Props) {
-    const user = await fetchUser(params.id);
-    const avatar = await fetchUserAvatar(params.id);
+    const user = await fetchUser((await params).id);
+    const avatar = await fetchUserAvatar((await params).id);
 
     const userData = await db.user.findFirst({
         where: {
-            userId: params.id
+            userId: (await params).id
         }
     });
     const wishesSent = await db.wish.findMany({
         where: {
-            userId: params.id
+            userId: (await params).id
         }
     });
     const wishesReceived = await db.wish.findMany({
         where: {
-            targetUserId: params.id
+            targetUserId: (await params).id
         }
     });
     const userGuilds = await db.user.findFirst({
         where: {
-            userId: params.id
+            userId: (await params).id
         },
         include: {
             guilds: true

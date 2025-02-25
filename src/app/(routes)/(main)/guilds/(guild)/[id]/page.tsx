@@ -7,11 +7,11 @@ import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 
 type Props = {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
-    const id = params.id;
+    const id = (await params).id;
 
     const guild = await fetchGuild(id);
 
@@ -22,12 +22,12 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
 }
 
 export default async function Page({ params }: Props) {
-    const guild = await fetchGuild(params.id);
-    const avatar = await getGuildAvatar(guild);
+    const guild = await fetchGuild((await params).id);
+    const avatar = await getGuildAvatar({id: guild.id, icon: guild.icon ?? ""});
 
     const guildData = await db.guild.findUnique({
         where: {
-            guildId: params.id
+            guildId: (await params).id
         },
         include: {
             members: true,

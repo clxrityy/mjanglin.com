@@ -28,7 +28,7 @@ const OAUTH_QS = new URLSearchParams({
     scope
 }).toString();
 
-const OAUTH_URL = `https://discord.com/api/oauth2/authorize?${OAUTH_QS}`;
+const OAUTH_URL = `https://discord.com/api/v10/oauth2/authorize?${OAUTH_QS}`;
 
 
 export async function GET(req: Request) {
@@ -60,28 +60,42 @@ export async function GET(req: Request) {
 
         const { access_token, refresh_token } = data;
 
+        console.log(`Access token: ${access_token}`);
+        console.log(`Refresh token: ${refresh_token}`);
+
         const user = await getUserDetails(access_token);
 
         const encryptedTokens = encryptTokens(access_token, refresh_token);
 
-        await createUser({
-            userId: user.data.id,
-            accessToken: encryptedTokens.accessToken,
-            refreshToken: encryptedTokens.refreshToken
-        });
+        try {
+            await createUser({
+                userId: user.data.id,
+                accessToken: encryptedTokens.accessToken,
+                refreshToken: encryptedTokens.refreshToken
+            });
+        } catch (e) {
+            console.log(`Error creating user: ${e}`);
+            return NextResponse.json(JSON.stringify(e), { status: 500 });
+        }
 
         if (!("id" in user.data)) return NextResponse.json(JSON.stringify("User not found"), { status: 404 });
 
         const token = sign(user.data, process.env.JWT_SECRET!, { expiresIn: "72h" });
 
-        cookies().set(CONFIG.VALUES.COOKIE_NAME, serialize(CONFIG.VALUES.COOKIE_NAME, token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "lax",
-            path: "/"
-        }));
+        try {
+            (await cookies()).set(CONFIG.VALUES.COOKIE_NAME, serialize(CONFIG.VALUES.COOKIE_NAME, token, {
+                httpOnly: true,
+                secure: process.env.NODE_ENV === "production",
+                sameSite: "lax",
+                path: "/"
+            }));
+    
+            return NextResponse.redirect(CONFIG.URLS.BASE_URL);
 
-        return NextResponse.redirect(CONFIG.URLS.BASE_URL);
+        } catch (err) {
+            console.log(`Error setting cookie: ${err}`);
+            return NextResponse.json(JSON.stringify(err), { status: 500});
+        }
 
     } catch (e) {
         console.log(`Error exchanging code for token: ${e}`);

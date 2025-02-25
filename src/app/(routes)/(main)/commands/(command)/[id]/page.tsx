@@ -5,7 +5,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 
 type Props = {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
 export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
             }
         }).then((res) => res.json() as Promise<CommandData[]>);
 
-        const command = commands.find(c => c.id === params.id);
+        const command = commands.find(async (c) => c.id === (await params).id);
 
         return {
             title: `hbd | ${command?.name}`,
@@ -46,7 +46,7 @@ export default async function CommandPage({ params }: Props) {
             }
         }).then((res) => res.json() as Promise<CommandData[]>);
 
-        const command = commands.find(c => c.id === params.id);
+        const command = commands.find(async (c) => c.id === (await params).id);
 
         if (!command) {
             return (

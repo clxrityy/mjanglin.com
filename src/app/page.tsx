@@ -1,14 +1,23 @@
-import Guild from "@/components/elements/Guild";
 import { Button } from "@/components/ui/Button";
 import MainButton from "@/components/ui/MainButton";
 import { CONFIG } from "@/config";
+import { fetchGuild, getGuildAvatar } from "@/data/util/functions/guild";
 import { db } from "@/lib/db";
 import { parseUser } from "@/utils/parseUser";
 import Image from "next/image";
 import Link from "next/link";
+import { type Guild as GuildType } from "@/types/guild";
 
 export default async function Page() {
-    const user = parseUser();
+    const user = await parseUser();
+
+    const Guild = (await import("@/components/elements/Guild")).default;
+
+    const getGuildInfo = async ({guildId}: { guildId:string }) => {
+        const guild = await fetchGuild(guildId);
+        const avatar = await getGuildAvatar({id: guild.id, icon: guild.icon ?? ""});
+        return {guild, avatar};
+    }
 
     if (!user) {
         return <main>
@@ -45,7 +54,7 @@ export default async function Page() {
                     <h2>
                         Sign in to add guilds!
                     </h2>
-                    <Button>
+                    <Button className="bg-[#5865F2] text-white text-lg opacity-75 hover:opacity-100 focus:ring focus:ring-offset-4" >
                         <Link href={CONFIG.URLS.OAUTH2_INVITE_URL}>Sign in</Link>
                     </Button>
                 </div>
@@ -60,7 +69,7 @@ export default async function Page() {
         include: {
             guilds: true
         }
-    });
+    }) as {guilds: {guildId: string}[]};
 
     return (
         <main>
@@ -104,9 +113,17 @@ export default async function Page() {
                     </h2>
                     <div className="flex items-center justify-center">
                         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 px-4">
-                            {userGuilds?.guilds.map((guild) => (
-                                <Guild key={guild.guildId} {...guild} />
-                            ))}
+                            {userGuilds?.guilds.map((guild) => {
+                                let avatar: string = "";
+                                let gld: GuildType = {id: "", name: "", icon: null, owner_id: ""};
+
+                                getGuildInfo({guildId: guild.guildId}).then((r) => {
+                                    avatar = r.avatar;
+                                    gld = r.guild;
+                                });
+                                
+                                return <Guild key={guild.guildId} guildData={guild as {guildId: string, id: string, userId: string, changeable: boolean, adminRoleId: string | null, birthdayMessage: string | null, birthdayRoleId: string | null}} avatar={avatar} guild={gld} />
+                            })}
                             <Link href={CONFIG.URLS.INVITE_URL} className="px-4 py-4 text-4xl border rounded-md flex items-center justify-center hover:scale-95 transition-all shadow hover:opacity-90 hover:text-emerald-400 hover:border-emerald-400 font-extrabold hover:bg-emerald-400/15 box-shadow-box-important focus:ring focus:ring-emerald-300/50" aria-label="Add to guild">
                                 +
                             </Link>

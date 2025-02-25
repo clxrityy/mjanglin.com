@@ -15,9 +15,9 @@ export default async function Page() {
 
 
         if (commands.length <= 0) {
-            return (<h3 className="font-semibold font-mono uppercase tracking-wide">
+            return (<div className="font-semibold font-mono uppercase tracking-wide">
                 No commands found
-            </h3>)
+            </div>)
         }
 
         return (
