@@ -69,7 +69,7 @@ export default async function Page() {
         include: {
             guilds: true
         }
-    }) as {guilds: {guildId: string}[]};
+    }) as { guilds: {guildId: string}[] };
 
     return (
         <main>

@@ -14,8 +14,8 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
             guilds: true
         },
         cacheStrategy: {
-            ttl: 60,
-            swr: 60
+            ttl: 30,
+            swr: 30
         }
     });
 
@@ -24,13 +24,22 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
             guildId: guildId
         },
         cacheStrategy: {
-            ttl: 60,
-            swr: 60
+            ttl: 30,
+            swr: 30
         }
     });
 
     if (!guild) {
-        return false;
+        try {
+            await db.guild.create({
+                data: {
+                    guildId: guildId,
+                    userId: id
+                },
+            });
+        } catch (e) {
+            console.error(`Error creating guild: ${e}`);
+        }
     }
 
     if (!member) {
@@ -50,7 +59,7 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                 },
             });
         } catch (e: any) {
-            console.error(e);
+            console.error(`Error creating member: ${e}`);
         }
         
     } else {
@@ -60,8 +69,8 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                 userId: id
             },
             cacheStrategy: {
-                ttl: 60,
-                swr: 60
+                ttl: 30,
+                swr: 30
             }
         });
 
@@ -80,7 +89,7 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                     }
                 })
             } catch (e: any) {
-                console.error(e);
+                console.error(`Error updating member: ${e}`);
             }
 
 
@@ -104,7 +113,7 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                     },
                 })
             } catch (e: any) {
-                console.error(e);
+                console.error(`Error updating member: ${e}`);
             }
         }
 
