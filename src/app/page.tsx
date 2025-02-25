@@ -129,7 +129,7 @@ export default async function Page() {
                             </Link>
                         </div>
                         <pre className="text-sm md:text-base lg:text-lg text-center">
-                            Note: Guilds won't appear if you've not ran a command in them.
+                            Note: Guilds won&apos;t appear if you&apos;ve not ran a command in them.
                         </pre>
                     </div>
                 </div>
