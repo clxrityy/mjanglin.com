@@ -115,7 +115,7 @@ export default async function Page() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 px-4">
                             {userGuilds?.guilds.map((guild) => {
                                 let avatar: string = "";
-                                let gld: GuildType = {id: "", name: "", icon: null, owner_id: ""};
+                                let gld: GuildType = {id: "", name: "", icon: undefined, owner_id: ""};
 
                                 getGuildInfo({guildId: guild.guildId}).then((r) => {
                                     avatar = r.avatar;
