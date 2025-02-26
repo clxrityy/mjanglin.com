@@ -15,7 +15,7 @@ export const ImageComponent = (props: {
     const [loading, setLoading] = useState(true);
 
     return (
-        <div className="relative w-full h-full">
+        <div className="relative w-full flex items-center justify-center">
             {loading && (
                 <Skeleton
                     size={{
@@ -27,7 +27,7 @@ export const ImageComponent = (props: {
             <Image
                 className={props.className}
                 {...props.image}
-                onLoadingComplete={() => setLoading(false)}
+                onLoad={() => setLoading(false)}
             />
         </div>
     );

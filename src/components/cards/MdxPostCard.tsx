@@ -18,7 +18,7 @@ export function MdxPostCard({ post }: { post: MdxPost }) {
                                 alt: title,
                                 width: 500,
                                 height: 500,
-                                className: `rounded-md w-full max-w-[240px] post-card-actual-image`,
+                                className: `rounded-md w-full post-card-actual-image`,
                                 placeholder: "blur",
                                 blurDataURL: "/assets/blur-loading-img.png",
                                 unoptimized: true,

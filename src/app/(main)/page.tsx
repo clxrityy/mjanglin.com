@@ -25,7 +25,7 @@ export default async function Page() {
     return (
         <main className="max-h-screen w-screen z-20 h-full">
             <div className="mx-auto w-full max-h-screen h-full bg-fixed">
-                <div className="grid grid-flow-row 2xl:grid-flow-col w-full items-center 2xl:justify-sretch 2xl:max-w-2/3 gap-10 lg:gap-20 xl:gap-40 max-h-screen h-full">
+                <div className="grid grid-flow-row 2xl:grid-flow-col w-full items-center 2xl:justify-stretch gap-10 lg:gap-20 xl:gap-40 max-h-screen h-full">
                     <div className="w-full flex flex-col gap-12 items-center justify-center 2xl:border-r px-10 border-r-zinc-800 2xl:z-0 flex-1 border-b border-b-zinc-800 2xl:border-b-0">
                         <div className="flex flex-col gap-10 items-center justify-center w-full">
                             <div className="flex flex-col xl:flex-row w-full gap-0 items-center justify-between lg:gap-5 2xl:gap-10">

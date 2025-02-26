@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
     return (
         <div className="relative min-h-screen w-full mx-auto">
-            <Link href="/" className="fixed top-0 left-0 px-3 py-4 link" aria-label="back">
+            <Link href="/posts" className="fixed top-0 left-0 px-3 py-4 link" aria-label="back">
                 <MdArrowBack size={30} className="relative z-50" />
             </Link>
             <div className="flex items-center justify-center w-full">
