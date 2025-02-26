@@ -19,7 +19,7 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
         }
     });
 
-    const guild = await db.guild.findFirst({
+    let guild = await db.guild.findFirst({
         where: {
             guildId: guildId
         },
@@ -29,17 +29,8 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
         }
     });
 
-    if (!guild) {
-        try {
-            await db.guild.create({
-                data: {
-                    guildId: guildId,
-                    userId: id
-                },
-            });
-        } catch (e) {
-            console.error(`Error creating guild: ${e}`);
-        }
+    if (!guild && member && member.guilds) {
+        guild = member.guilds.map((g) => g.guildId).includes(guildId) ? guild : null;
     }
 
     if (!member) {

@@ -271,16 +271,33 @@ export async function POST(req: Request) {
             // /horoscope
             case commands.horoscope.name:
 
-                embed = await generalCommandHandlers.astrologyHandlers.horoscope(interaction.member!.user!.id, interaction.guild_id!);
+                try {
+                    embed = await generalCommandHandlers.astrologyHandlers.horoscope(interaction.member!.user!.id, interaction.guild_id!);
 
-                return NextResponse.json({
-                    type: InteractionResponseType.ChannelMessageWithSource,
-                    data: {
-                        embeds: [
-                            JSON.parse(JSON.stringify(embed))
-                        ]
+                    return NextResponse.json({
+                        type: InteractionResponseType.ChannelMessageWithSource,
+                        data: {
+                            embeds: [
+                                JSON.parse(JSON.stringify(embed))
+                            ]
+                        }
+                    });
+                } catch (e) {
+                    embed = {
+                        title: "Error",
+                        description: "An error occured while generating the horoscope",
+                        color: Colors.RED
                     }
-                });
+
+                    return NextResponse.json({
+                        type: InteractionResponseType.ChannelMessageWithSource,
+                        data: {
+                            embeds: [
+                                JSON.parse(JSON.stringify(embed))
+                            ]
+                        }
+                    });
+                }
 
             // /avatar
             case commands.avatar.name:
@@ -322,7 +339,7 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
-            
+
             // /embed
             case commands.embed.name:
 
@@ -336,7 +353,7 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
-            
+
             // /holidays
             case commands.holidays.name:
 
@@ -350,7 +367,7 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
-            
+
             // /hbd
 
             case commands.hbd.name:
@@ -364,13 +381,13 @@ export async function POST(req: Request) {
                         ]
                     }
                 });
-            
+
             // /friend
 
             case commands.friend.name:
                 switch (interactionSubcommand.name) {
                     case "request":
-                        embed = await generalCommandHandlers.friendHandlers.friendRequest( interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
+                        embed = await generalCommandHandlers.friendHandlers.friendRequest(interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -381,7 +398,7 @@ export async function POST(req: Request) {
                             }
                         });
                     case "accept":
-                        embed = await generalCommandHandlers.friendHandlers.friendAccept( interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
+                        embed = await generalCommandHandlers.friendHandlers.friendAccept(interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
 
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
@@ -393,7 +410,7 @@ export async function POST(req: Request) {
                         });
                     case "remove":
                         embed = await generalCommandHandlers.friendHandlers.friendRemove(interaction.member!.user!.id, interaction.guild_id!, interactionSubcommandOptions!);
-                        
+
                         return NextResponse.json({
                             type: InteractionResponseType.ChannelMessageWithSource,
                             data: {
@@ -413,7 +430,7 @@ export async function POST(req: Request) {
                                 ]
                             }
                         });
-                 }
+                }
 
             default:
                 return NextResponse.json({
