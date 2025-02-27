@@ -1,7 +1,7 @@
 import { MdxPost } from "@/utils/types";
-import "@/styles/css/postcard.css";
 import Link from "next/link";
 import { ImageComponent } from "../ui/ImageComponent";
+import "@/styles/css/postcard.css";
 
 export function MdxPostCard({ post }: { post: MdxPost }) {
     

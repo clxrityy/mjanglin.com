@@ -4,22 +4,22 @@ import { DescriptionCard } from "@/components/cards/DescriptionCard";
 import { SpotifyProfile } from "@/components/cards/SpotifyProfile";
 // import { TimeCard } from "@/components/cards/TimeCard";
 import { spotifyProfile } from "@/lib/spotifyApi";
-import { getAllPosts } from "@/sanity/lib/queries";
 import { mdxPosts } from "@/config";
 import { Clock } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 
+const Posts = dynamic(() => import("@/components/Posts").then(mod => mod.Posts), {
+    loading: () => <div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />,
+})
 
-
-const Posts = dynamic(() => import("@/components/Posts").then(mod => mod.Posts));
 const TimeCard = dynamic(() => import("@/components/cards/TimeCard").then(mod => mod.TimeCard), {
     loading: () => <Clock className="animate-spin" />,
 });
 
 export default async function Page() {
 
-    const posts = await getAllPosts();
+    // const posts = await getAllPosts();
     const spotifyData = await spotifyProfile();
 
     return (
@@ -46,7 +46,7 @@ export default async function Page() {
                     </div>
                     <div className="flex flex-col gap-5 items-center justify-center w-full 2xl:w-max 2xl:px-10 mt-5 2xl:z-50">
                         <Suspense fallback={<div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />}>
-                            <Posts posts={posts} mdxPosts={mdxPosts} />
+                            <Posts mdxPosts={mdxPosts} />
                         </Suspense>
                         <AllPostsBtn />
                     </div>

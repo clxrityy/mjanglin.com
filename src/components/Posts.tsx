@@ -1,27 +1,28 @@
 "use client";
 
-import { MdxPost, Post } from "@/utils/types"
+import { MdxPost } from "@/utils/types"
 import { useEffect, useState } from "react";
-import { PostCard } from "./cards/PostCard";
 import { MdxPostCard } from "./cards/MdxPostCard";
 
 type Props = {
-    posts: Post[];
+   // posts: Post[];
     mdxPosts: MdxPost[];
 }
 
 const postsPerPage = 2;
 
-export function Posts({ posts, mdxPosts }: Props) {
-    const [postsToShow, setPostsToShow] = useState<Post[]>([]);
+export function Posts({ 
+    // posts, 
+    mdxPosts }: Props) {
+    // const [postsToShow, setPostsToShow] = useState<Post[]>([]);
     const [mdxPostsToShow, setMdxPostsToShow] = useState<MdxPost[]>([]);
     // const [nextPosts, setNextPosts] = useState<number>(postsPerPage);
     // const [nextMdxPosts, setNextMdxPosts] = useState<number>(postsPerPage);
 
-    const loopPostsWithSlice = (start: number, end: number) => {
-        const slicedPosts = posts.slice(start, end);
-        setPostsToShow([...postsToShow, ...slicedPosts]);
-    }
+    // const loopPostsWithSlice = (start: number, end: number) => {
+    //     const slicedPosts = posts.slice(start, end);
+    //     setPostsToShow([...postsToShow, ...slicedPosts]);
+    // }
 
     const loopMdxPostsWithSlice = (start: number, end: number) => {
         const slicedMdxPosts = mdxPosts.slice(start, end);
@@ -29,7 +30,7 @@ export function Posts({ posts, mdxPosts }: Props) {
     }
 
     useEffect(() => {
-        loopPostsWithSlice(0, postsPerPage);
+        // loopPostsWithSlice(0, postsPerPage);
         loopMdxPostsWithSlice(0, postsPerPage);
     }, []);
 
@@ -45,11 +46,11 @@ export function Posts({ posts, mdxPosts }: Props) {
     return (
         <div className="flex flex-col gap-6 items-center justify-center w-full">
             <div className="w-max grid grid-cols-1 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
-                {
+                {/* {
                     postsToShow.map((post, index) => (
                         <PostCard key={index} post={post} />
                     ))
-                }
+                } */}
                 {
                     mdxPostsToShow.map((mdxPost, index) => (
                         <MdxPostCard key={index} post={mdxPost} />

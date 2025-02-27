@@ -45,7 +45,7 @@ export default async function RootLayout({
                 {/** 
                  * @see https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/?utm_source=lighthouse&utm_medium=devtools
                  */}
-                <meta http-equiv="Content-Security-Policy" content="script-src 'none'" />
+                {/* <meta httpEquiv="Content-Security-Policy" content="script-src 'none'" /> */}
                 <Script
                     strategy="afterInteractive"
                     src="https://www.googletagmanager.com/gtag/js?id=G-DH9C4WZGMK"
