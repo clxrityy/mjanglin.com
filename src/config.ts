@@ -1,4 +1,4 @@
-import { FaInstagram } from "react-icons/fa"
+import { FaInstagram } from 'react-icons/fa';
 import { MdxPost } from "./utils/types"
 
 export const ICONS = {

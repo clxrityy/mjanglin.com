@@ -3,6 +3,7 @@ import "./globals.css";
 import { Metadata } from "next";
 import { Background } from "@/components/layout/Background";
 import { exo } from "@/styles/fonts";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
     title: "MJ Anglin",
@@ -70,6 +71,7 @@ export default async function RootLayout({
             gtag('config', 'G-DH9C4WZGMK');
           `}
                 </Script>
+                <SpeedInsights />
             </body>
         </html>
     )
