@@ -46,6 +46,20 @@ const nextConfig = {
   },
   pageExtensions: ["ts", "tsx", "mdx"],
   reactStrictMode: false,
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "Cross-Origin-Opener-Policy", value: "unsafe-none" },
+          {
+            key: "Strict-Transport-Security",
+            value: 'max-age=63072000; includeSubDomains; preload',
+          }
+        ],
+      },
+    ]
+  }
 };
 
 export default withMdx({

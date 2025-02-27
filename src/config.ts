@@ -36,7 +36,7 @@ export const mdxPosts: MdxPost[] = [
         title: "How to host a Discord bot on Vercel (Edge Functions)",
         slug: "dev/nextjs-edge-discord-bot",
         publishedAt: "2024-11-14",
-        mainImage: "https://i.gyazo.com/4941de2269b2410000479e7c9fb4cac0.webp",
+        mainImage: "/assets/discord-edge-bot.webp",
         preview: "An overview of how I built a Discord birthday bot, with an interactive dashboard, that runs on Edge runtime.",
         keywords: ["discord", "bot", "vercel", "edge functions", "javascript", "typescript", "nextjs", "react", "api"],
         author: "MJ Anglin"
@@ -45,7 +45,7 @@ export const mdxPosts: MdxPost[] = [
         title: "A website for displaying and downloading audio files",
         slug: "dev/clxrity-xyz",
         publishedAt: "2024-11-14",
-        mainImage: "https://i.gyazo.com/bebb1509068c91fc360d6717c5a4d7f9.gif",
+        mainImage: "/assets/clxrity-xyz.gif",
         preview: "A short dev blog about creating a website for producers to display and allow downloads of their audio files.",
         keywords: ["audio", "website", "react", "nextjs", "javascript", "typescript", "tailwindcss", "react-audio", "clxrity", "audio files", "display", "download", "waveform", "wav", "mp3", "web audio api"],
         author: "MJ Anglin"
@@ -73,7 +73,7 @@ export const mdxPosts: MdxPost[] = [
         title: "Host a Minecraft server for free",
         slug: "dev/free-minecraft-server",
         publishedAt: "2025-01-25",
-        mainImage: "https://i.gyazo.com/35bc2ea5d62e68ebfdb8a77ac92da660.webp",
+        mainImage: "/assets/mc-server.webp",
         preview: "How to host a Minecraft server for free using Docker and Microsoft Azure",
         keywords: ["minecraft", "server", "free", "docker", "microsoft", "azure", "cloud", "hosting"],
         author: "MJ Anglin"
