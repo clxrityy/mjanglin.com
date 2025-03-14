@@ -13,7 +13,6 @@ export function HeroCard() {
             <div className="wave"></div>
             <div className="wave"></div>
 
-
             <div className="infotop">
                 <Image src={IMAGES.LOGO} alt="logo" width={100} height={100} className="icon filter drop-shadow bg-blend-overlay mix-blend-darken" priority />
                 <p className="font-bold">
