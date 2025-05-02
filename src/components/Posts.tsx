@@ -32,6 +32,7 @@ export function Posts({
     useEffect(() => {
         // loopPostsWithSlice(0, postsPerPage);
         loopMdxPostsWithSlice(0, postsPerPage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     // const loadMorePosts = () => {

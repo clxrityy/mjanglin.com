@@ -41,6 +41,8 @@ export function TimeCard() {
         return () => {
             clearInterval(interval);
         }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [time]);
 
     function tick() {

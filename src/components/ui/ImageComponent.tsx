@@ -5,9 +5,10 @@ import { useState } from "react";
 import { Skeleton } from "@/components/ui/Skeleton";
 
 export const ImageComponent = (props: {
-    image: Omit<ImageProps, "width" | "height"> & {
+    image: Omit<ImageProps, "width" | "height" | "alt"> & {
         width: number;
         height: number;
+        alt: string;
     },
     className?: string;
 }) => {
@@ -25,8 +26,9 @@ export const ImageComponent = (props: {
                 />
             )}
             <Image
-                className={props.className}
                 {...props.image}
+                className={props.className}
+                alt={props.image.alt}
                 onLoad={() => setLoading(false)}
             />
         </div>
