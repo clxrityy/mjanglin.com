@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const mappedMdxPosts = () => {
         return mdxPosts.map(post => ({
-            url: `https://mjanglin.com/posts/${post.slug}`,
+            url: `https://mjanglin.com/posts/dev/${post.slug}`,
             lastModified: new Date(post.publishedAt),
             images: [post.mainImage]
         })) as MetadataRoute.Sitemap
