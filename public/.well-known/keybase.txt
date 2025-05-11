@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/clxrity
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://mjanglin.com
+  * I am clxrity (https://keybase.io/clxrity) on keybase.
+  * I have a public key with fingerprint BF08 EB3D 3249 CF37 3E5D  5ABD 50F8 8386 B7D6 635A
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120e397d6ceb6e005367072761de241b94868c119422815edf9475aa3ac96f2e9270a",
+      "fingerprint": "bf08eb3d3249cf373e5d5abd50f88386b7d6635a",
+      "host": "keybase.io",
+      "key_id": "50f88386b7d6635a",
+      "kid": "0101d392ee3295ad12184c9061e72c84d54765637ebc176b258ddc3ce56dad4096f00a",
+      "uid": "fcea1c720ae9dba690543d130883bc19",
+      "username": "clxrity"
+    },
+    "service": {
+      "hostname": "mjanglin.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1746923345,
+  "expire_in": 157680000,
+  "prev": "16568d20b49054b57bd3ba81e079fb925991de14a988786dd2cd4f2b6a6c314d",
+  "seqno": 17,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMNwAnicbVJ7UFRVGF+EpZYtcSIEbWaBm9Qy7Mh9P+jhMIyNEyFZaYrgzr33nLtc
+3Re7ywrxmEFCMiHEcdCBbdqEhCl5FDkC7WgLlYUpWJEgMJiz1DBFD5PYdBi6l9H/
+Ov+cOd/5vb7vnC8ejdTERLwcrjl8/kcxP+Jy8GSJpijpjx3liOAAZUhmOXIArm7Q
+CqDbYz4gAyQTQTEchQTHAFqEAg1RlCJoBmVwhsYAxElM4EiWZkUM40gcZzEKAokj
+GYrnCV7kaAmHHM6gPGJCJNlugS6nS7Z7FFlBQlkoEIDASU6UCIaAFKB4AVCoxLIE
+SwuKIU1QKrHI4VYZSjiBd8PNskOpKQfzarz/wT/IjWKA4HAICZyjeIDhGEuKHEpj
+kMFFlgQUydAUTTBQEDGGFnCKBUAkREjRgAckqmRHV3OXrMpJIuQxkcFRHnJA4GkO
+pUgCYASquCsCnAp0Q5edt0EFLVpLXbKnDKk0IUrRK4tQnavayH2AbT9vt1hl+2bR
+YVOoTpfD4xAdVuWmyONxujNVpqfMqUIPQsF8X8QsyHagjFFheKHLLTvsSCamIEWP
+rKpiDElzOEGQlAmBpU7ZBc2yiqAYmkWVpfpAryKJKY2zAEcFUm1DoBgBEALPYhBl
+OEngcIrjlMfFSJ5jWYalAcBFQEq4QPO0SGAkQNS2iu0O1VLJyVsUTbdssfOeEhdE
+KoeCBVGaiBhNtHaN+r80Mbp1D35dQiB2pXTDvRlQHQycu/FBR9RQ6OYU090WmK95
+ciqpPzKrvjB82HVpJLd55Xhn6IlnsOx1+V0ppyqKa39fQw1fD84n3tvkj8n1l98d
+mNgyatqX0Fu7oC/5Su8buHX1tSXfrtqmmdajsUFt1+cTZ1r2bzkUsJ3urjfuwNJ9
+yz//FmG8uzizwTj+ranQ34SMLJqHy9uq4g4l40/1xpLjc3vi22LHjOfPDr4/Lg7Z
+Ro/m5WV93RdquH0S3QRmfons12vfS2susSYY6tovLk4v/3miq4H0GYw9R16p2pj0
+08ip3Raf/6PaLwtmt4eds0+HycJAmyVTV/3Xu6mJf2envTCpaajof6Rn4UTAPHSz
+tKOdT01BEhoHL8SFBF+Kf8lizIEF6xtRvdDODT+XF7V1UNv8WFHjtUrd/LWslrOf
+1IQblt/qPJ5IbOSc0fG3dfU5Bb6efxeb2NaQab6i+/sW7XRVjoHLTd1phTek2fTh
+jFfPlC2Fv5k79t2zTvnOQ7dyg5Nv7I6MtbUUa/Lr1k4H08Wwvlynjzp2cEWfc+TD
+bdF9EczeOkH7+E7DQPzajF0ZSb17vFs7q2ax0it7/b9+Kj2fXNHxz5WPh0evt/VV
+pCW3Nrz4w5tj64V9kw+bxl7vfHsurnYq+3Sy17DdMLGwMki+k2i7euml5tCdCwO0
+91x6su7yZ8uDnRe3VP8HkJ7Blw==
+=8FOQ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/clxrity
+
+==================================================================
