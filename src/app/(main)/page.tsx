@@ -1,8 +1,7 @@
-import { AllPostsBtn } from "@/components/AllPostsBtn";
+import { AllPostsBtn } from "@/components/buttons/AllPostsBtn";
 import { HeroCard } from "@/components/Hero";
 import { DescriptionCard } from "@/components/cards/DescriptionCard";
 import { SpotifyProfile } from "@/components/cards/SpotifyProfile";
-// import { TimeCard } from "@/components/cards/TimeCard";
 import { spotifyProfile } from "@/lib/spotifyApi";
 import { mdxPosts } from "@/config";
 import { Clock } from "lucide-react";
@@ -19,7 +18,6 @@ const TimeCard = dynamic(() => import("@/components/cards/TimeCard").then(mod =>
 
 export default async function Page() {
 
-    // const posts = await getAllPosts();
     const spotifyData = await spotifyProfile();
 
     return (
