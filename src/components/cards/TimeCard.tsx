@@ -3,7 +3,7 @@
 import "@/styles/css/timecard.css";
 import { exo } from "@/styles/fonts";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function determineTimeGradient(time: Date) {
     const hours = time.getUTCHours();
@@ -57,9 +57,11 @@ export function TimeCard() {
         return time.toLocaleTimeString().split(":")[1];
     }
 
-    function getDateString() {
-        return time.toLocaleDateString();
-    }
+    const getDateString = useCallback(() => {
+        return time.toLocaleDateString("en-US", {
+            
+        })
+    }, [time]);
 
     function getAmOrPm() {
         return time.toLocaleTimeString().split(" ")[1];
@@ -82,6 +84,7 @@ export function TimeCard() {
             {/* <Link href={`/weather`} className="absolute bottom-0 right-0 px-1 py-1 drop-shadow-md hover:scale-105 transition-all ease-linear hover:text-blue-400 focus:text-blue-500 text-inherit">
                 <TiWeatherCloudy size={40} />
             </Link> */}
+            <time dateTime={time.toString()} suppressHydrationWarning />
         </Link>
     )
 }
