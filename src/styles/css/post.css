@@ -1,11 +1,17 @@
 .markdown-body {
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.4;
     color: #e1e1e1;
     margin: 0 auto;
     display: block;
 
     @apply text-[16px] leading-[1.6] text-center;
+}
+
+.markdown-body figure {
+    margin: 0;
+    padding: 0 !important;
+    height: fit-content !important;
 }
 
 /**
@@ -106,7 +112,7 @@ i {
 }
 
 .markdown-body pre, code {
-    padding: 0.2em 0.4em;
+    padding-bottom: none;
     margin: 0 auto;
     font-size: 85%;
     background-color: inherit;
@@ -115,7 +121,8 @@ i {
     border-radius: 10px;
     overflow-x: scroll;
     max-width: 300px;
-    margin: 0 auto;
+    padding-left: 2.5px;
+    padding-right: 2.5px;
 }
 
 @media screen and (min-width: 768px) {
@@ -137,6 +144,11 @@ i {
     background-color: #1e1e1e;
     z-index: 1;
     width: wrap;
+}
+
+.markdown-body pre:only-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .markdown-body hr {
