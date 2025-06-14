@@ -28,7 +28,7 @@ export default async function Page() {
                         <div className="flex flex-col gap-10 items-center justify-center w-full">
                             <div className="flex flex-col xl:flex-row w-full gap-0 items-center justify-between lg:gap-5 2xl:gap-10">
                                 <HeroCard />
-                                <div className="flex flex-col w-max items-center justify-start gap-10 2xl:pb-20">
+                                <div className="flex flex-col w-1/3 items-center justify-start gap-10 2xl:pb-20 lg:pb-20">
                                     <Suspense fallback={<Clock className="animate-spin" />}>
                                         <TimeCard />
                                     </Suspense>

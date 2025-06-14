@@ -35,14 +35,6 @@ export function Posts({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    // const loadMorePosts = () => {
-    //     loopPostsWithSlice(nextPosts, nextPosts + postsPerPage);
-    //     loopMdxPostsWithSlice(nextMdxPosts, nextMdxPosts + postsPerPage);
-    //     setNextPosts(nextPosts + postsPerPage);
-    //     setNextMdxPosts(nextMdxPosts + postsPerPage);
-    // }
-
-
 
     return (
         <div className="flex flex-col gap-6 items-center justify-center w-full">
@@ -54,7 +46,7 @@ export function Posts({
                 } */}
                 {
                     mdxPostsToShow.map((mdxPost, index) => (
-                        <MdxPostCard key={index} post={mdxPost} />
+                        <MdxPostCard key={index + mdxPost.slug} post={mdxPost} />
                     ))
                 }
             </div>

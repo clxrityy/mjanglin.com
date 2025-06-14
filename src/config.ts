@@ -68,24 +68,4 @@ export const mdxPosts: MdxPost[] = [
         keywords: ["audio", "website", "react", "nextjs", "javascript", "typescript", "tailwindcss", "react-audio", "clxrity", "audio files", "display", "download", "waveform", "wav", "mp3", "web audio api"],
         author: "MJ Anglin"
     },
-    // {
-    //     title: "My best applications so far | 2024",
-    //     slug: "dev/2024-hall-of-fame",
-    //     publishedAt: "2024-11-14",
-    //     mainImage: "https://i.gyazo.com/1f3b68264d0df4a4d0e1ee2a0b7a589b.png",
-    //     preview: "A collection of my best web applications up to the year 2024",
-    //     keywords: ["web", "react", "nextjs", "javascript", "typescript", "tailwindcss", "react-audio", "clxrity", "applications", "collection", "best", "2024"],
-    //     author: "MJ Anglin"
-    // }
-
-    // {
-    //     title: "2025 Web Development Tips",
-    //     slug: "dev/2025-web-dev-tips",
-    //     publishedAt: "2025-01-09",
-    //     mainImage: "https://i.gyazo.com/0d4471a0369c70aa03eb91dcdd02b348.png",
-    //     preview: "A cultivated list of the best tips & tricks for web development in 2025",
-    //     keywords: ["web", "react", "nextjs", "javascript", "typescript", "tailwindcss", "clerk", "clxrity", "applications", "collection", "best", "2025", "prisma", "prisma-client", "socket.io", "socket.io-client"],
-    //     author: "MJ Anglin"
-    // }
-    
 ]

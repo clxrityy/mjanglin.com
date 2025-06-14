@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 
 function determineTimeGradient(time: Date) {
-    const hours = time.getUTCHours();
+    const hours = time.getHours();
 
     if (hours >= 0 && hours < 6) {
         return "morning-gradient";
@@ -70,7 +70,7 @@ export function TimeCard() {
 
     return (
         /* From Uiverse.io by akshat-patel28 */
-        <Link href={`/weather`} className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className} w-full`}>
+        <Link href={`/weather`} className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className} w-full px-4 py-3`}>
             <p className="time-text">
                 <span>{`${hours} : ${minutes}`}</span>
                 <span className="time-sub-text">{amOrPm}</span>
