@@ -33,12 +33,30 @@ export const COLORS = {
 
 export const mdxPosts: MdxPost[] = [
     {
+        title: "React Audio",
+        slug: "https://react-audio-docs.vercel.app/",
+        publishedAt: "2025-06-13",
+        mainImage: "/assets/react-audio.webp",
+        preview: "A React library for playing audio files with a simple and customizable interface.",
+        keywords: ["react", "audio", "library", "javascript", "typescript", "web audio api"],
+        author: "MJ Anglin"
+    },
+    {
         title: "How to host a Discord bot on Vercel (Edge Functions)",
         slug: "dev/nextjs-edge-discord-bot",
         publishedAt: "2024-11-14",
         mainImage: "/assets/discord-edge-bot.webp",
         preview: "An overview of how I built a Discord birthday bot, with an interactive dashboard, that runs on Edge runtime.",
         keywords: ["discord", "bot", "vercel", "edge functions", "javascript", "typescript", "nextjs", "react", "api"],
+        author: "MJ Anglin"
+    },
+    {
+        title: "Host a Minecraft server for free",
+        slug: "dev/free-minecraft-server",
+        publishedAt: "2025-01-25",
+        mainImage: "/assets/mc-server.webp",
+        preview: "How to host a Minecraft server for free using Docker and Microsoft Azure",
+        keywords: ["minecraft", "server", "free", "docker", "microsoft", "azure", "cloud", "hosting"],
         author: "MJ Anglin"
     },
     {
@@ -69,13 +87,5 @@ export const mdxPosts: MdxPost[] = [
     //     keywords: ["web", "react", "nextjs", "javascript", "typescript", "tailwindcss", "clerk", "clxrity", "applications", "collection", "best", "2025", "prisma", "prisma-client", "socket.io", "socket.io-client"],
     //     author: "MJ Anglin"
     // }
-    {
-        title: "Host a Minecraft server for free",
-        slug: "dev/free-minecraft-server",
-        publishedAt: "2025-01-25",
-        mainImage: "/assets/mc-server.webp",
-        preview: "How to host a Minecraft server for free using Docker and Microsoft Azure",
-        keywords: ["minecraft", "server", "free", "docker", "microsoft", "azure", "cloud", "hosting"],
-        author: "MJ Anglin"
-    }
+    
 ]
