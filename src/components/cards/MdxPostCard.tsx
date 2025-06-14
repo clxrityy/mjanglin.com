@@ -7,6 +7,13 @@ export function MdxPostCard({ post }: { post: MdxPost }) {
     
         const { title, publishedAt, mainImage, preview, author, slug } = post
         const imageUrl = mainImage;
+
+        const checkLink = (link: string) => {
+            if (link.startsWith("http://") || link.startsWith("https://")) {
+                return link;
+            }
+            return `/posts/${link}`;
+        }
     
         return (
             <div className="post-card">
@@ -27,7 +34,7 @@ export function MdxPostCard({ post }: { post: MdxPost }) {
                         </div>
                     )
                 }
-                <Link href={`/posts/${slug}`}>
+                <Link href={checkLink(slug)}>
                     <p className="post-card-title focus:text-blue-600 transition duration-150 hover:text-blue-500 ease-in-out">
                         {title}
                     </p>
