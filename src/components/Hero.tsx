@@ -6,7 +6,7 @@ import { exo } from "@/styles/fonts";
 
 export function HeroCard() {
     return (
-        <div className={`e-card playing z-20 ${exo.className}`}>
+        <div className={`e-card playing z-20 overflow-x-clip ${exo.className}`}>
             <div className="image"></div>
 
             <div className="wave"></div>
