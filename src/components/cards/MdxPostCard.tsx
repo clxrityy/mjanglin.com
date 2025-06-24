@@ -3,48 +3,48 @@ import Link from "next/link";
 import { ImageComponent } from "../ui/ImageComponent";
 import "@/styles/css/postcard.css";
 
-export function MdxPostCard({ post }: { post: MdxPost }) {
-    
-        const { title, publishedAt, mainImage, preview, author, slug } = post
-        const imageUrl = mainImage;
+export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
 
-        const checkLink = (link: string) => {
-            if (link.startsWith("http://") || link.startsWith("https://")) {
-                return link;
-            }
-            return `/posts/${link}`;
+    const { title, publishedAt, mainImage, preview, author, slug } = post
+    const imageUrl = mainImage;
+
+    const checkLink = (link: string) => {
+        if (link.startsWith("http://") || link.startsWith("https://")) {
+            return link;
         }
-    
-        return (
-            <div className="post-card">
-                {
-                    imageUrl && (
-                        <div className="post-card-image flex items-center justify-center w-full">
-                            <ImageComponent image={{
-                                src: imageUrl,
-                                alt: title,
-                                width: 500,
-                                height: 500,
-                                className: `rounded-md w-full post-card-actual-image`,
-                                placeholder: "blur",
-                                blurDataURL: "/assets/blur-loading-img.png",
-                                unoptimized: true,
-                            }} 
-                            />
-                        </div>
-                    )
-                }
-                <Link href={checkLink(slug)}>
-                    <p className="post-card-title focus:text-blue-600 transition duration-150 hover:text-blue-500 ease-in-out">
-                        {title}
-                    </p>
-                </Link>
-                {
-                    preview && <p className="post-card-body">
-                        {preview}
-                    </p>
-                }
-                <p className="post-card-footer">Written by <span className="post-card-by-name">{author}</span> on <span className="date">{new Date(publishedAt).toLocaleDateString()}</span></p>
-            </div>
-        )
+        return `/posts/${link}`;
+    }
+
+    return (
+        <div className="post-card">
+            {
+                imageUrl && (
+                    <div className="post-card-image flex items-center justify-center w-full">
+                        <ImageComponent image={{
+                            src: imageUrl,
+                            alt: title,
+                            width: 500,
+                            height: 500,
+                            className: `rounded-md w-full post-card-actual-image`,
+                            placeholder: "blur",
+                            blurDataURL: "/assets/blur-loading-img.png",
+                            unoptimized: true,
+                        }}
+                        />
+                    </div>
+                )
+            }
+            <Link href={checkLink(slug)}>
+                <p className="post-card-title focus:text-blue-600 transition duration-150 hover:text-blue-500 ease-in-out">
+                    {title}
+                </p>
+            </Link>
+            {
+                preview && <p className="post-card-body">
+                    {preview}
+                </p>
+            }
+            <p className="post-card-footer">Written by <span className="post-card-by-name">{author}</span> on <span className="date">{new Date(publishedAt).toLocaleDateString()}</span></p>
+        </div>
+    )
 }

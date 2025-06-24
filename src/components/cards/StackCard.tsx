@@ -1,6 +1,6 @@
 import "@/styles/css/stackcard.css";
 
-export function StackCard({ children }: { children: React.ReactNode }) {
+export function StackCard({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <div className="stack-container">
             <div className="stack-card1"></div>

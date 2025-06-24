@@ -4,7 +4,7 @@ import "@/styles/css/readmore.css";
 import { COLORS } from "@/config";
 import { useRouter } from "next/navigation";
 
-export function ReadMore({ children }: { children: React.ReactNode }) {
+export function ReadMore({ children }: Readonly<{ children: React.ReactNode }>) {
 
     const router = useRouter();
 
