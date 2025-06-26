@@ -23,9 +23,9 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
                         <ImageComponent image={{
                             src: imageUrl,
                             alt: title,
-                            width: 500,
-                            height: 500,
-                            className: `rounded-md w-full post-card-actual-image`,
+                            width: 250,
+                            height: 250,
+                            className: `rounded-md w-fit post-card-actual-image`,
                             placeholder: "blur",
                             blurDataURL: "/assets/blur-loading-img.png",
                             unoptimized: true,
@@ -44,7 +44,7 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
                     {preview}
                 </p>
             }
-            <p className="post-card-footer">Written by <span className="post-card-by-name">{author}</span> on <span className="date">{new Date(publishedAt).toLocaleDateString()}</span></p>
+            <p className="post-card-footer">Published by <span className="post-card-by-name">{author}</span> on <span className="date">{new Date(publishedAt).toLocaleDateString()}</span></p>
         </div>
     )
 }
