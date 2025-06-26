@@ -64,7 +64,7 @@ export default async function RootLayout({
 
             <body className={`${exo.variable}`}>
                 {/* <Navbar /> */}
-                <div className="w-full h-full relative z-10 max-w-screen">
+                <div className="w-full h-full relative z-10 max-w-screen overflow-y-scroll">
                     {children}
                 </div>
                 <Background />

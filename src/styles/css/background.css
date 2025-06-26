@@ -6,6 +6,12 @@
     --c1: #1d1d1d;
     --c2: #4e4f5198;
     --c3: #3c3c3c;
+    top: 0;
+    bottom: 0;
+
+    position: fixed;
+    overflow: hidden;
+    overflow-y: hidden;
 
     background: repeating-conic-gradient(from 30deg,
             #0000 0 120deg,
@@ -24,5 +30,5 @@
         --s: 50px;
     }
 
-    @apply fixed opacity-10 z-[0];
+    @apply opacity-10 z-[0];
 }
