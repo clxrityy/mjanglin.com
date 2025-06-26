@@ -42,6 +42,15 @@ export const mdxPosts: MdxPost[] = [
         author: "MJ Anglin"
     },
     {
+        title: "Gatenet",
+        slug: "https://gatenet.readthedocs.io/en/latest/",
+        publishedAt: "2025-06-26",
+        mainImage: "/assets/gatenet.png",
+        preview: "A Python library for building asynchronous networking applications, supporting TCP, UDP, HTTP, and WebSocket protocols.",
+        keywords: ["gatenet", "python", "library", "networking", "asynchronous", "asyncio", "network", "devices", "TCP", "UDP", "HTTP", "WebSocket"],
+        author: "MJ Anglin"
+    },
+    {
         title: "How to host a Discord bot on Vercel (Edge Functions)",
         slug: "dev/nextjs-edge-discord-bot",
         publishedAt: "2024-11-14",
