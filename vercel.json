@@ -1,0 +1,8 @@
+{
+    "crons": [
+        {
+            "path": "/api/cron/birthdays",
+            "schedule": "0 9 * * *"
+        }
+    ]
+}

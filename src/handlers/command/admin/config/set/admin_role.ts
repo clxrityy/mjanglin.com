@@ -55,41 +55,39 @@ export default async function adminRoleConfigHandler(roleId: string, userId: str
                     color: Colors.RED,
                     description: "You must be the owner of the server to change this configuration.",
                 }
+            } else if (!member) {
+                embed = EMBEDS.error;
             } else {
-                if (!member) {
-                    embed = EMBEDS.error;
-                } else {
-                    if (member.roles.find((role) => role === existingGuild.adminRoleId)) {
+                if (member.roles.find((role) => role === existingGuild.adminRoleId)) {
 
-                        try {
-                            await db.guild.update({
-                                where: {
-                                    guildId: guildId
-                                },
-                                data: {
-                                    adminRoleId: roleId
-                                }
-                            });
+                    try {
+                        await db.guild.update({
+                            where: {
+                                guildId: guildId
+                            },
+                            data: {
+                                adminRoleId: roleId
+                            }
+                        });
 
-                            embed = {
-                                color: Colors.GREEN,
-                                description: `Configuration updated!\n\n**Admin role:** <@&${roleId}>`,
-                                footer: {
-                                    text: "/config view"
-                                }
-                            }
-                        } catch (e: any) {
-                            console.error(e);
-                            embed = {
-                                ...EMBEDS.error,
-                                description: `\`\`\`json\n${JSON.stringify(e.message, null, 2)}\`\`\``,
-                            }
-                        }
-                    } else {
                         embed = {
-                            color: Colors.RED,
-                            description: `You must have the admin role to change this configuration. (<@&${existingGuild.adminRoleId}>)`
+                            color: Colors.GREEN,
+                            description: `Configuration updated!\n\n**Admin role:** <@&${roleId}>`,
+                            footer: {
+                                text: "/config view"
+                            }
                         }
+                    } catch (e: any) {
+                        console.error(e);
+                        embed = {
+                            ...EMBEDS.error,
+                            description: `\`\`\`json\n${JSON.stringify(e.message, null, 2)}\`\`\``,
+                        }
+                    }
+                } else {
+                    embed = {
+                        color: Colors.RED,
+                        description: `You must have the admin role to change this configuration. (<@&${existingGuild.adminRoleId}>)`
                     }
                 }
             }

@@ -40,6 +40,12 @@ const CONFIG_COMMAND: ApplicationCommand = {
                     description: "The message to send when it's someone's birthday (use {user} for the user's mention)",
                     type: ApplicationCommandOptionType.String,
                     required: false
+                },
+                {
+                    name: "birthday_channel",
+                    description: "The channel to send birthday messages in",
+                    type: ApplicationCommandOptionType.Channel,
+                    required: false
                 }
             ]
         }

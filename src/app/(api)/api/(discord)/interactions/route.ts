@@ -1,6 +1,5 @@
 import { CONFIG } from "@/config";
 import { commands } from "@/data/commands";
-import { env } from "@/env.mjs";
 import { adminCommandHandlers, generalCommandHandlers } from "@/handlers/command";
 import { Colors } from "@/types/constants";
 import { EmbedType } from "@/types/general";
@@ -236,6 +235,17 @@ export async function POST(req: Request) {
                                 });
                             case "birthday_message":
                                 embed = await adminCommandHandlers.configHandlers.set.birthdayMessage(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
+
+                                return NextResponse.json({
+                                    type: InteractionResponseType.ChannelMessageWithSource,
+                                    data: {
+                                        embeds: [
+                                            JSON.parse(JSON.stringify(embed))
+                                        ]
+                                    }
+                                });
+                            case "birthday_channel":
+                                embed = await adminCommandHandlers.configHandlers.set.birthdayChannelId(interactionSubcommandOptions[0].value as string, interaction.member!.user!.id, interaction.guild_id!);
 
                                 return NextResponse.json({
                                     type: InteractionResponseType.ChannelMessageWithSource,

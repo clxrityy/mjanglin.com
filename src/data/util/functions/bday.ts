@@ -39,3 +39,27 @@ export function checkIfBirthdayToday(month: number, day: number): boolean {
         return false;
     }
 }
+
+export async function getBirthdaysToday() {
+    const today = new Date();
+    const currentMonth = today.getMonth() + 1;
+    const currentDay = today.getDate();
+
+    try {
+        const birthdays = await db.birthday.findMany({
+            where: {
+                month: currentMonth,
+                day: currentDay
+            },
+            cacheStrategy: {
+                ttl: 60,
+                swr: 60,
+            }
+        });
+
+        return birthdays;
+    } catch (error) {
+        console.error("Error fetching today's birthdays:", error);
+        return [];
+    }
+}

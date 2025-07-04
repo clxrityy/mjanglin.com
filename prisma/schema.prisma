@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  // previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -28,16 +27,17 @@ model Birthday {
 }
 
 model Guild {
-  id          String     @id @default(uuid())
-  guildId     String     @unique
-  userId      String
-  changeable  Boolean    @default(false)
-  adminRoleId String?
-  user        User       @relation(fields: [userId], references: [id])
-  wishes      Wish[]
-  members     Member[]   @relation("GuildToMember")
-  birthdayRoleId String?
-  birthdayMessage String?
+  id                String   @id @default(uuid())
+  guildId           String   @unique
+  userId            String
+  changeable        Boolean  @default(false)
+  adminRoleId       String?
+  birthdayRoleId    String?
+  birthdayMessage   String?
+  birthdayChannelId String?
+  user              User     @relation(fields: [userId], references: [id])
+  wishes            Wish[]
+  members           Member[] @relation("GuildToMember")
 }
 
 model Cooldown {
@@ -50,12 +50,12 @@ model Cooldown {
 }
 
 model Member {
-  id     String  @id @default(uuid())
-  userId String
-  user   User    @relation(fields: [userId], references: [id])
-  guilds Guild[] @relation("GuildToMember")
-  friends String[]
+  id             String   @id @default(uuid())
+  userId         String
+  friends        String[]
   friendRequests String[]
+  user           User     @relation(fields: [userId], references: [id])
+  guilds         Guild[]  @relation("GuildToMember")
 }
 
 model Wish {
@@ -66,25 +66,4 @@ model Wish {
   message      String
   year         Int    @default(2024)
   guild        Guild  @relation(fields: [guildId], references: [id])
-}
-
-// sleepgraph.mjanglin.com
-
-model SleepData {
-  id        String    @id
-  userId    String
-  date      DateTime
-  duration  Int
-  SleepUser SleepUser @relation(fields: [userId], references: [userId])
-}
-
-model SleepUser {
-  id        String      @id
-  userId    String      @unique
-  username  String
-  avatar    String      @default("https://cdn.discordapp.com/attachments/1020419727731986613/1257156315466174526/default_clock.png?ex=6683618e&is=6682100e&hm=3149313c2ed7e676c5dffe39f2461c0d9f85f882564a208c404ff31905ee4b72&")
-  updatedAt DateTime    @default(now())
-  createdAt DateTime    @default(now())
-  sessionId String
-  SleepData SleepData[]
 }

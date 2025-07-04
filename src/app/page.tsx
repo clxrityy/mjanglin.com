@@ -122,7 +122,7 @@ export default async function Page() {
                                     gld = r.guild;
                                 });
 
-                                return <Guild key={guild.guildId} guildData={guild as { guildId: string, id: string, userId: string, changeable: boolean, adminRoleId: string | null, birthdayMessage: string | null, birthdayRoleId: string | null }} avatar={avatar} guild={gld} />
+                                return <Guild key={guild.guildId} guildData={guild as { guildId: string, id: string, userId: string, changeable: boolean, adminRoleId: string | null, birthdayMessage: string | null, birthdayRoleId: string | null, birthdayChannelId: string | null }} avatar={avatar} guild={gld} />
                             })}
                             <Link href={CONFIG.URLS.INVITE_URL} className="px-4 py-4 text-4xl border rounded-md flex items-center justify-center hover:scale-95 transition-all shadow hover:opacity-90 hover:text-emerald-400 hover:border-emerald-400 font-extrabold hover:bg-emerald-400/15 box-shadow-box-important focus:ring focus:ring-emerald-300/50" aria-label="Add to guild">
                                 +
