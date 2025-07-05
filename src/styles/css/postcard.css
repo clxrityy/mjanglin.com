@@ -8,7 +8,7 @@
     border-radius: 20px;
     background: #212121;
     box-shadow: 5px 5px 8px #1b1b1b,
-        -5px -5px 8px #272727;
+        -5px -5px 8px #7c8cd22f;
     transition: 0.4s;
     height: fit-content;
     display: flex;
@@ -17,6 +17,13 @@
     align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+.external {
+    background: #1a1a1a;
+    box-shadow: 5px 5px 8px #141414,
+        -5px -5px 8px #1f1f1f;
+    border: 2px solid #333333;
 }
 
 .post-card:hover {

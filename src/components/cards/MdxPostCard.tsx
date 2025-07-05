@@ -15,8 +15,14 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
         return `/posts/${link}`;
     }
 
+    const isExternalLink = (link: string) => {
+        return !checkLink(link).startsWith("/posts/");
+    }
+
+    const external = isExternalLink(slug);
+
     return (
-        <div className="post-card">
+        <div className={`post-card ${external ? "external" : ""}`}>
             {
                 imageUrl && (
                     <div className="post-card-image flex items-center justify-center w-full">
@@ -34,7 +40,7 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
                     </div>
                 )
             }
-            <Link href={checkLink(slug)}>
+            <Link href={checkLink(slug)} rel={external ? "noopener noreferrer" : undefined} target={external ? "_blank" : undefined}>
                 <p className="post-card-title focus:text-blue-600 transition duration-150 hover:text-blue-500 ease-in-out">
                     {title}
                 </p>

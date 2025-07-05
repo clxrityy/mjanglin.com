@@ -51,6 +51,15 @@ export const mdxPosts: MdxPost[] = [
         author: "MJ Anglin"
     },
     {
+        title: "FarLanders",
+        slug: "https://www.farlanders.cc",
+        publishedAt: "2025-07-04",
+        mainImage: "/assets/farlanders.png",
+        preview: "A Minecraft plugin developed for a dystopian and unique experience.",
+        keywords: ["minecraft", "plugin", "spigot", "paper", "java", "game", "gaming", "dystopian", "unique", "experience"],
+        author: "MJ Anglin"
+    },
+    {
         title: "How to host a Discord bot on Vercel (Edge Functions)",
         slug: "dev/nextjs-edge-discord-bot",
         publishedAt: "2024-11-14",

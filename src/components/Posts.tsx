@@ -8,7 +8,7 @@ type Props = {
     mdxPosts: MdxPost[];
 }
 
-const postsPerPage = 2;
+const postsPerPage = 4;
 
 export function Posts({
     mdxPosts }: Readonly<Props>) {
@@ -27,7 +27,7 @@ export function Posts({
 
     return (
         <div className="flex flex-col gap-6 items-center justify-center w-full">
-            <div className="w-max grid grid-cols-1 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
+            <div className="w-max grid grid-cols-1 md:grid-cols-2 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
                 {
                     mdxPostsToShow.map((mdxPost, index) => (
                         <MdxPostCard key={index + mdxPost.slug} post={mdxPost} />
