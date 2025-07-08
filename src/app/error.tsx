@@ -1,6 +1,6 @@
 "use client";
 
-export default function Error({ error, reset }: { error: Error, reset: () => void }) {
+export default function SomeError({ error, reset }: Readonly<{ error: Error, reset: () => void }>) {
     return (
         <div className="flex flex-col items-center justify-center">
             <h1>Error</h1>
