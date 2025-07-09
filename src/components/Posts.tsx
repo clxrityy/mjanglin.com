@@ -3,12 +3,11 @@
 import { MdxPost } from "@/utils/types"
 import { useEffect, useState } from "react";
 import { MdxPostCard } from "./cards/MdxPostCard";
+import { CONSTANTS } from "@/utils/constants";
 
 type Props = {
     mdxPosts: MdxPost[];
 }
-
-const postsPerPage = 4;
 
 export function Posts({
     mdxPosts }: Readonly<Props>) {
@@ -20,7 +19,7 @@ export function Posts({
     }
 
     useEffect(() => {
-        loopMdxPostsWithSlice(0, postsPerPage);
+        loopMdxPostsWithSlice(0, CONSTANTS.POSTS_PER_PAGE);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

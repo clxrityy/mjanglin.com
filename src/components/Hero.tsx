@@ -3,6 +3,7 @@ import "@/styles/css/hero.css";
 import Image from "next/image";
 import { SocialsMenu } from "./layout/SocialsMenu";
 import { exo } from "@/styles/fonts";
+import { COMPONENT_SIZES } from "@/utils/constants";
 
 export function HeroCard() {
     return (
@@ -14,7 +15,14 @@ export function HeroCard() {
             <div className="wave"></div>
 
             <div className="infotop">
-                <Image src={IMAGES.LOGO} alt="logo" width={100} height={100} className="icon filter drop-shadow bg-blend-overlay mix-blend-darken" priority />
+                <Image
+                    src={IMAGES.LOGO}
+                    alt="logo"
+                    width={COMPONENT_SIZES.HERO_ICON.width}
+                    height={COMPONENT_SIZES.HERO_ICON.height}
+                    className="icon filter drop-shadow bg-blend-overlay mix-blend-darken"
+                    priority
+                />
                 <p className="font-bold">
                     Developer & Creator
                 </p>

@@ -1,13 +1,13 @@
 import { FaInstagram } from 'react-icons/fa';
-import { MdxPost } from "./utils/types"
+import { MdxPost } from "./utils/types";
 
 export const ICONS = {
     instagram: FaInstagram
-}
+} as const;
 
 export const IMAGES = {
     LOGO: "/apple-touch-icon.png"
-}
+} as const;
 
 export const URLS = {
     github: "https://github.com/clxrityy",
@@ -22,14 +22,16 @@ export const URLS = {
         weather: "https://api.open-meteo.com/v1/forecast",
         spotify: "https://api.spotify.com/v1",
     },
-    spotify_auth_redirect: process.env.NODE_ENV === "production" ? "https://mjanglin.com/api/spotify/callback" : "http://localhost:3000/api/spotify/callback",
+    spotify_auth_redirect: process.env.NODE_ENV === "production"
+        ? "https://mjanglin.com/api/spotify/callback"
+        : "http://localhost:3000/api/spotify/callback",
     apple_music: "https://music.apple.com/us/artist/clxrity/1702200875",
     linkedin: "https://www.linkedin.com/in/mjanglin1/"
-}
+} as const;
 
 export const COLORS = {
     primary_blue: "#4996C0"
-}
+} as const;
 
 export const mdxPosts: MdxPost[] = [
     {

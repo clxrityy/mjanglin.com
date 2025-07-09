@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Background } from "@/components/layout/Background";
 import { exo } from "@/styles/fonts";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { CONSTANTS } from "@/utils/constants";
 
 export const metadata: Metadata = {
     title: "MJ Anglin",
@@ -49,7 +50,7 @@ export default async function RootLayout({
                 {/* <meta httpEquiv="Content-Security-Policy" content="script-src 'none'" /> */}
                 <Script
                     strategy="afterInteractive"
-                    src="https://www.googletagmanager.com/gtag/js?id=G-DH9C4WZGMK"
+                    src={`https://www.googletagmanager.com/gtag/js?id=${CONSTANTS.GOOGLE_ANALYTICS_ID}`}
                 />
                 <meta property="og:url" content="https://mjanglin.com" />
                 <meta property="twitter:image" content="https://mjanglin.com/apple-touch-icon.png" />
@@ -73,7 +74,7 @@ export default async function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-DH9C4WZGMK');
+            gtag('config', '${CONSTANTS.GOOGLE_ANALYTICS_ID}');
           `}
                 </Script>
                 <SpeedInsights />

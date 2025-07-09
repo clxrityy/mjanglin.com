@@ -1,6 +1,6 @@
 import "@/styles/css/404.css";
 
-export default function Error() {
+export default function NotFound() {
     return (
         /* From Uiverse.io by Subaashbala */
         <div className="not-found font-exo">

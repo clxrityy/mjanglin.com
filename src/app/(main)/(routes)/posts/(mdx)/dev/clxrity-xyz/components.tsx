@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { GithubRepo } from "@birdgg/react-github";
+import { ANIMATION_CLASSES } from "@/utils/constants";
 
 export function Title() {
     return (
@@ -15,10 +16,10 @@ export function Title() {
 export function Example() {
     return (
         <div className="flex w-full items-center justify-center">
-            <video autoPlay loop muted playsInline className="w-2/3 lg:w-1/3"> 
-            <source src="/assets/waveform-example.webm" type="video/webm" />
-            <source src="/assets/waveform-example.mp4" type="video/mp4" />
-        </video>
+            <video autoPlay loop muted playsInline className="w-2/3 lg:w-1/3">
+                <source src="/assets/waveform-example.webm" type="video/webm" />
+                <source src="/assets/waveform-example.mp4" type="video/mp4" />
+            </video>
         </div>
     )
 }
@@ -27,8 +28,8 @@ function AnalyserNodeImg() {
 
     return (
         <div className="w-full flex items-center justify-center">
-            <div className="w-fit bg-white/90 hover:scale-125 transition-all duration-300 ease-in-out rounded-lg hover:bg-white">
-            <Image src={"https://i.gyazo.com/74b92d3122d9686b2ce0704c092a359c.png"} alt="AnalyserNode" width={500} height={500} className="w-fit sm:w-96" />
+            <div className={`w-fit bg-white/90 rounded-lg hover:bg-white ${ANIMATION_CLASSES.HOVER_SCALE_LARGE}`}>
+                <Image src={"https://i.gyazo.com/74b92d3122d9686b2ce0704c092a359c.png"} alt="AnalyserNode" width={500} height={500} className="w-fit sm:w-96" />
             </div>
         </div>
     )
@@ -37,8 +38,8 @@ function AnalyserNodeImg() {
 function AudioContextImg() {
     return (
         <div className="w-full flex items-center justify-center">
-            <div className="w-fit bg-white/90 hover:scale-125 transition-all duration-300 ease-in-out rounded-lg hover:bg-white">
-            <Image src={"https://i.gyazo.com/9e1ae8ccb12a32ef447f4fed47ab45f0.png"} alt="AnalyserNode" width={500} height={500} className="w-fit sm:w-96" />
+            <div className={`w-fit bg-white/90 rounded-lg hover:bg-white ${ANIMATION_CLASSES.HOVER_SCALE_LARGE}`}>
+                <Image src={"https://i.gyazo.com/9e1ae8ccb12a32ef447f4fed47ab45f0.png"} alt="AnalyserNode" width={500} height={500} className="w-fit sm:w-96" />
             </div>
         </div>
     )
@@ -55,7 +56,7 @@ export function WebAudioAPIImgs() {
 
 export function ReactAudioRepo() {
     return (
-        <div className="hover:scale-105 cursor-pointer rounded-lg hover:drop-shadow-2xl transition-all w-full flex items-center justify-center">
+        <div className={`cursor-pointer rounded-lg hover:drop-shadow-2xl w-full flex items-center justify-center ${ANIMATION_CLASSES.HOVER_SCALE}`}>
             <GithubRepo repo="clxrityy/react-audio" />
         </div>
     )

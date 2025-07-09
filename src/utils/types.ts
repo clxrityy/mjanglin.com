@@ -7,8 +7,7 @@ export interface Post {
     publishedAt: string;
     mainImage: string;
     preview: string;
-    /* eslint-disable @typescript-eslint/no-explicit-any */
-    body: any;
+    body: unknown; // Better than any
     tags: Array<Tag>;
     _id: string;
     author: {
@@ -24,7 +23,7 @@ export interface Tag {
         current: string;
     };
     _id: string;
-    icon: any; /* eslint-disable @typescript-eslint/no-explicit-any */
+    icon: unknown; // Better than any
 }
 
 export interface Author {
@@ -34,18 +33,18 @@ export interface Author {
         current: string;
         _type: string;
     };
-    image: any; /* eslint-disable @typescript-eslint/no-explicit-any */
-    bio: any; /* eslint-disable @typescript-eslint/no-explicit-any */
+    image: unknown; // Better than any
+    bio: unknown; // Better than any
     _createdAt: string;
     _ref: string;
 }
 
 export interface MdxPost {
     title: string;
-    publishedAt: string;
+    publishedAt: string; // Consider using Date in the future
     mainImage: string;
     preview: string;
-    keywords: string[];
+    keywords: string[]; // Keep mutable for Next.js metadata compatibility
     author: string;
     slug: string;
 }
@@ -73,4 +72,22 @@ export interface WeatherForecast {
         temperature_2m: number;
         rain: number;
     }
+}
+
+// Add new error types
+export interface ApiError {
+    message: string;
+    code?: string;
+    details?: unknown;
+}
+
+export interface WeatherData {
+    temp: number;
+    rain: Float32Array;
+}
+
+// Add component prop types
+export interface ComponentSize {
+    width: number;
+    height: number;
 }
