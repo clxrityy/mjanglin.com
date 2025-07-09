@@ -56,10 +56,18 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                     }
                 },
             });
+
+            await db.user.create({
+                data: {
+                    userId: id,
+                    accessToken: "",
+                    refreshToken: "",
+                }
+            })
         } catch (e: any) {
             console.error(`Error creating member: ${e}`);
         }
-        
+
     } else {
 
         const user = await db.user.findFirst({
@@ -85,7 +93,15 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
                             }
                         }
                     }
-                })
+                });
+
+                await db.user.create({
+                    data: {
+                        userId: id,
+                        accessToken: "",
+                        refreshToken: "",
+                    }
+                });
             } catch (e: any) {
                 console.error(`Error updating member: ${e}`);
             }
@@ -115,6 +131,6 @@ export async function checkMember(id: string, guildId: string): Promise<boolean 
             }
         }
 
-        
+
     }
 }
