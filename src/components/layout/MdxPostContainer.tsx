@@ -6,7 +6,7 @@ interface Props extends ComponentProps<"div"> {
 }
 
 
-export function MdxPostContainer({ children, ...props }: Readonly<Props>) {
+export default function MdxPostContainer({ children, ...props }: Readonly<Props>) {
     return (
         <div className={cn("h-full text-center mx-auto w-full", props.className)} {...props}>
             <div className="flex items-center justify-center w-full">

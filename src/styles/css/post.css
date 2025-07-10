@@ -4,8 +4,11 @@
     color: #e1e1e1;
     margin: 0 auto;
     display: block;
+    border-radius: 10px;
+    box-shadow: 2.5px 2.5px 15px rgba(17, 17, 17, 0.731);
+    border: 1.5px dashed #414141;
 
-    @apply text-[16px] leading-[1.6] text-center;
+    @apply text-[16px] leading-[1.6] text-start;
 }
 
 .markdown-body figure {
@@ -111,7 +114,8 @@ i {
     margin-bottom: 0;
 }
 
-.markdown-body pre, code {
+.markdown-body pre,
+code {
     padding-bottom: none;
     margin: 0 auto;
     font-size: 85%;
@@ -126,13 +130,17 @@ i {
 }
 
 @media screen and (min-width: 768px) {
-    .markdown-body pre, code {
+
+    .markdown-body pre,
+    code {
         max-width: 500px;
     }
 }
 
 @media screen and (min-width: 1024px) {
-    .markdown-body pre, code {
+
+    .markdown-body pre,
+    code {
         max-width: 700px;
     }
 }

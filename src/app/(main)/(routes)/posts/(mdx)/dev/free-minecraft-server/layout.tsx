@@ -1,8 +1,8 @@
-import { MdxPostContainer } from "@/components/layout/MdxPostContainer";
+import MdxPostContainer from "@/components/layout/MdxPostContainer";
 import { mdxPosts } from "@/config";
 import type { Metadata } from "next";
 
-const post = mdxPosts[2];
+const post = mdxPosts[4];
 
 export async function generateMetadata(): Promise<Metadata> {
 
@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     }
 }
 
-export default async function Layout({children}: {children: React.ReactNode}) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
     return (
         <MdxPostContainer>
             {children}

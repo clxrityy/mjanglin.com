@@ -1,6 +1,7 @@
 import { MdxPost } from "@/utils/types";
 import Link from "next/link";
 import { ImageComponent } from "../ui/ImageComponent";
+import { ICONS } from "@/config";
 import "@/styles/css/postcard.css";
 
 export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
@@ -21,20 +22,46 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
 
     const external = isExternalLink(slug);
 
+    const ExternalIcon = ICONS.external;
+    const PostIcon = ICONS.post;
+
     return (
-        <div className={`post-card ${external ? "external" : ""}`}>
+        <div className={`post-card relative ${external ? "external" : ""}`}>
+            {
+                external ? (
+                    <div className="absolute bottom-2 left-2 w-full py-1 px-1 z-100">
+                        <p className="text-xs text-blue-400 flex items-center gap-1 bg-black/95 w-fit py-1 px-1 rounded-lg">
+                            <ExternalIcon className="text-blue-400" size={20} aria-label="External Link" /> <span className="sr-only">
+                                External Link
+                            </span>
+                        </p>
+                    </div>
+                ) : (
+                    <div className="absolute bottom-2 left-2 w-full py-1 px-1 z-100">
+                        <p className="text-xs text-gray-300 flex items-center gap-1 bg-black/85 w-fit py-1 px-1 rounded-lg">
+                            <PostIcon size={20} aria-label="Internal Post" /> <span className="sr-only">
+                                Internal Post
+                            </span>
+                        </p>
+                    </div>
+                )
+            }
             {
                 imageUrl && (
                     <div className="post-card-image flex items-center justify-center w-full">
                         <ImageComponent image={{
                             src: imageUrl,
                             alt: title,
-                            width: 250,
-                            height: 250,
+                            width: 175,
+                            height: 175,
                             className: `rounded-md w-fit post-card-actual-image`,
                             placeholder: "blur",
                             blurDataURL: "/assets/blur-loading-img.png",
                             unoptimized: true,
+                            style: {
+                                width: "auto",
+                                height: "auto",
+                            }
                         }}
                         />
                     </div>
@@ -51,6 +78,6 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
                 </p>
             }
             <p className="post-card-footer">Published by <span className="post-card-by-name">{author}</span> on <span className="date">{new Date(publishedAt).toLocaleDateString()}</span></p>
-        </div>
+        </div >
     )
 }

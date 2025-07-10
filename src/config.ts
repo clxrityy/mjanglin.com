@@ -1,8 +1,11 @@
 import { FaInstagram } from 'react-icons/fa';
+import { HiOutlineExternalLink, HiOutlineDocumentText } from "react-icons/hi";
 import { MdxPost } from "./utils/types";
 
 export const ICONS = {
-    instagram: FaInstagram
+    instagram: FaInstagram,
+    external: HiOutlineExternalLink,
+    post: HiOutlineDocumentText
 } as const;
 
 export const IMAGES = {

@@ -28,24 +28,23 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "media2.dev.to"
+        hostname: "media2.dev.to",
       },
       {
         protocol: "https",
-        hostname: "clxrity.xyz"
+        hostname: "clxrity.xyz",
       },
       {
         protocol: "https",
-        hostname: "flagsapi.com"
+        hostname: "flagsapi.com",
       },
       {
         protocol: "https",
         hostname: "i.scdn.co",
-      }
+      },
     ],
   },
-  pageExtensions: ["ts", "tsx", "mdx"],
-  reactStrictMode: false,
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   async headers() {
     return [
       {
@@ -54,12 +53,12 @@ const nextConfig = {
           { key: "Cross-Origin-Opener-Policy", value: "unsafe-none" },
           {
             key: "Strict-Transport-Security",
-            value: 'max-age=63072000; includeSubDomains; preload',
-          }
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
         ],
       },
-    ]
-  }
+    ];
+  },
 };
 
 export default withMdx({

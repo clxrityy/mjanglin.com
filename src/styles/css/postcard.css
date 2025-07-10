@@ -17,16 +17,26 @@
     align-items: center;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .external {
-    background: #1a1a1a;
-    box-shadow: 5px 5px 8px #141414,
+    background: #191c23;
+    box-shadow: 5px 5px 8px #1f2020,
         -5px -5px 8px #1f1f1f;
     border: 2px solid #333333;
 }
 
+.external:hover {
+    box-shadow: 5px 5px 8px #1f2020,
+        -5px -5px 8px #1f1f1f;
+    background: #182133;
+}
+
 .post-card:hover {
+    box-shadow: 5px 5px 8px #1b1b1b,
+        -5px -5px 10px #6e7ec52f;
+
     @apply scale-105 transition-all duration-150;
 }
 
@@ -52,9 +62,12 @@
 
 .post-card-actual-image {
     border-radius: 15px;
-    width: 100%;
-    /* box-shadow: inset 5px 5px 3px #2f2f2f,
-        inset -5px -5px 3px #333333; */
+    width: auto;
+    height: auto;
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    transition: 0.3s;
 }
 
 .post-card-body {

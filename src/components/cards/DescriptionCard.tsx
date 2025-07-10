@@ -8,13 +8,14 @@ export function DescriptionCard() {
         /* From Uiverse.io by gharsh11032000 */
         <div className={`desc-card ${exo.className} font-medium text-base grayscale-[50%]`}>
             <div className="content">
-                <ImageComponent 
+                <ImageComponent
                     image={{
                         src: "/apple-touch-icon.png",
                         alt: "logo",
                         width: 100,
                         height: 100,
-                        className: "grayscale brightness-200"
+                        className: "grayscale brightness-200",
+                        priority: true
                     }}
                 />
                 <ul className="para gap-2 flex flex-col items-center justify-center w-full">
@@ -26,11 +27,11 @@ export function DescriptionCard() {
                     </li>
                 </ul>
                 <div className="w-full flex items-center justify-center">
-                <ReadMore>
-                    <span className="sr-only">
-                        Read more
-                    </span>
-                </ReadMore>
+                    <ReadMore>
+                        <span className="sr-only">
+                            Read more
+                        </span>
+                    </ReadMore>
                 </div>
             </div>
         </div>
