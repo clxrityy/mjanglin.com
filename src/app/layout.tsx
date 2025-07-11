@@ -23,7 +23,13 @@ export const metadata: Metadata = {
             "https://mjanglin.com/favicon-16x16.png",
             "https://mjanglin.com/android-chrome-192x192.png",
             "https://mjanglin.com/android-chrome-512x512.png"
-        ]
+        ],
+    },
+    twitter: {
+        card: "summary",
+        title: "MJ Anglin",
+        description: "Developer & Creator",
+        images: ["https://www.mjanglin.com/apple-touch-icon.png"],
     }
 }
 
