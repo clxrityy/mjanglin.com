@@ -158,12 +158,11 @@ export function trackWebVitals(): void {
     if (typeof window === 'undefined') return;
 
     // Track Core Web Vitals when they become available
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-        getCLS(metric => logMetric('CLS', metric.value));
-        getFID(metric => logMetric('FID', metric.value));
-        getFCP(metric => logMetric('FCP', metric.value));
-        getLCP(metric => logMetric('LCP', metric.value));
-        getTTFB(metric => logMetric('TTFB', metric.value));
+    import('web-vitals').then((webVitals) => {
+        webVitals.onCLS(metric => logMetric('CLS', metric.value));
+        webVitals.onFCP(metric => logMetric('FCP', metric.value));
+        webVitals.onLCP(metric => logMetric('LCP', metric.value));
+        webVitals.onTTFB(metric => logMetric('TTFB', metric.value));
     }).catch(error => {
         console.warn('Failed to load web-vitals:', error);
     });

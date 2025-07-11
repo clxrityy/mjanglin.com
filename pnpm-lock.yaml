@@ -77,6 +77,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@4.1.11)
+      web-vitals:
+        specifier: ^5.0.3
+        version: 5.0.3
     devDependencies:
       '@types/node':
         specifier: ^24.0.12
@@ -2687,6 +2690,9 @@ packages:
 
   web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
+
+  web-vitals@5.0.3:
+    resolution: {integrity: sha512-4KmOFYxj7qT6RAdCH0SWwq8eKeXNhAFXR4PmgF6nrWFmrJ41n7lq3UCA6UK0GebQ4uu+XP8e8zGjaDO3wZlqTg==}
 
   webpack-sources@3.3.3:
     resolution: {integrity: sha512-yd1RBzSGanHkitROoPFd6qsrxt+oFhg/129YzheDGqeustzX0vTZJZsSsQjVQC4yzBQ56K55XU8gaNCtIzOnTg==}
@@ -6011,6 +6017,8 @@ snapshots:
     optional: true
 
   web-namespaces@2.0.1: {}
+
+  web-vitals@5.0.3: {}
 
   webpack-sources@3.3.3:
     optional: true
