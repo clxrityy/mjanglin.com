@@ -33,6 +33,7 @@ export const metadata: Metadata = {
     }
 }
 
+export const dynamic = "force-dynamic"; // Force dynamic rendering for this layout
 
 
 export default async function RootLayout({
