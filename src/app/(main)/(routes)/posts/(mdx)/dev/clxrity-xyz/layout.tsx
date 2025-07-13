@@ -1,8 +1,8 @@
 import MdxPostContainer from "@/components/layout/MdxPostContainer";
-import { mdxPosts } from "@/config";
+import { findPost } from "@/utils/findPost";
 import type { Metadata } from "next";
 
-const post = mdxPosts[5];
+const post = findPost("A website for displaying and downloading audio files");
 
 
 export async function generateMetadata(): Promise<Metadata> {

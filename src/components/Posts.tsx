@@ -4,6 +4,7 @@ import { MdxPost } from "@/utils/types"
 import { useEffect, useState } from "react";
 import { MdxPostCard } from "./cards/MdxPostCard";
 import { CONSTANTS } from "@/utils/constants";
+import { randomizePosts } from "@/utils/randomize";
 
 type Props = {
     mdxPosts: MdxPost[];
@@ -14,7 +15,9 @@ export function Posts({
     const [mdxPostsToShow, setMdxPostsToShow] = useState<MdxPost[]>([]);
 
     const loopMdxPostsWithSlice = (start: number, end: number) => {
-        const slicedMdxPosts = mdxPosts.slice(start, end);
+        // Randomize the posts before slicing to show different posts each time
+        const randomizedPosts = randomizePosts(mdxPosts);
+        const slicedMdxPosts = randomizedPosts.slice(start, end);
         setMdxPostsToShow([...mdxPostsToShow, ...slicedMdxPosts]);
     }
 

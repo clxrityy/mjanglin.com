@@ -1,3 +1,5 @@
+import { IconType } from "react-icons/lib";
+
 export interface Post {
     title: string;
     slug: {
@@ -47,6 +49,7 @@ export interface MdxPost {
     keywords: string[]; // Keep mutable for Next.js metadata compatibility
     author: string;
     slug: string;
+    tags?: TagRecord[];
 }
 
 export interface IpGeolocation {
@@ -90,4 +93,10 @@ export interface WeatherData {
 export interface ComponentSize {
     width: number;
     height: number;
+}
+
+export interface TagRecord {
+    title: string;
+    description?: string;
+    Icon: IconType;
 }

@@ -1,8 +1,8 @@
 import MdxPostContainer from "@/components/layout/MdxPostContainer";
-import { mdxPosts } from "@/config";
+import { findPost } from "@/utils/findPost";
 import type { Metadata } from "next";
 
-const post = mdxPosts[3];
+const post = findPost("How to host a Discord bot on Vercel");
 
 export async function generateMetadata(): Promise<Metadata> {
 
