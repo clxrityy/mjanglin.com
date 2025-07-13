@@ -49,7 +49,6 @@ export interface MdxPost {
     keywords: string[]; // Keep mutable for Next.js metadata compatibility
     author: string;
     slug: string;
-    tags?: TagRecord[];
 }
 
 export interface IpGeolocation {
@@ -93,10 +92,4 @@ export interface WeatherData {
 export interface ComponentSize {
     width: number;
     height: number;
-}
-
-export interface TagRecord {
-    title: string;
-    description?: string;
-    Icon: IconType;
 }

@@ -1,9 +1,4 @@
-import { type TagRecord } from "./types";
-import { FaRust, FaPython, FaReact, FaHtml5, FaCss3, FaGamepad, FaDiscord, FaRobot, FaJava } from "react-icons/fa6";
-import { RiJavascriptFill } from "react-icons/ri";
-import { TbBrandTypescript } from "react-icons/tb";
-import { GiNetworkBars } from "react-icons/gi";
-import { LuAudioLines } from "react-icons/lu";
+
 
 
 
@@ -40,73 +35,3 @@ export const ANIMATION_CLASSES = {
     PULSE: "animate-pulse",
     SPIN: "animate-spin",
 } as const;
-
-
-
-export const TAGS: Record<string, TagRecord> = {
-    rust: {
-        title: "Rust",
-        description: "A systems programming language focused on safety, speed, and concurrency.",
-        Icon: FaRust,
-    },
-    python: {
-        title: "Python",
-        description: "A versatile programming language known for its readability and wide range of applications.",
-        Icon: FaPython,
-    },
-    javascript: {
-        title: "JavaScript",
-        description: "A dynamic programming language commonly used for web development.",
-        Icon: RiJavascriptFill,
-    },
-    typescript: {
-        title: "TypeScript",
-        description: "A superset of JavaScript that adds static types, enhancing code quality and maintainability.",
-        Icon: TbBrandTypescript,
-    },
-    react: {
-        title: "React",
-        description: "A JavaScript library for building user interfaces, particularly single-page applications.",
-        Icon: FaReact,
-    },
-    html: {
-        title: "HTML",
-        description: "The standard markup language for creating web pages and web applications.",
-        Icon: FaHtml5,
-    },
-    css: {
-        title: "CSS",
-        description: "A style sheet language used for describing the presentation of a document written in HTML or XML.",
-        Icon: FaCss3,
-    },
-    networking: {
-        title: "Networking",
-        description: "The practice of connecting computers and other devices to share resources and information.",
-        Icon: GiNetworkBars,
-    },
-    audio: {
-        title: "Audio",
-        description: "Technologies and techniques related to sound processing, playback, and manipulation.",
-        Icon: LuAudioLines,
-    },
-    game: {
-        title: "Game Development",
-        description: "The art and science of creating interactive games and/or enhancing gaming experiences.",
-        Icon: FaGamepad,
-    },
-    discord: {
-        title: "Discord",
-        description: "A communication platform popular among gamers and communities for voice, video, and text chat.",
-        Icon: FaDiscord,
-    },
-    ai: {
-        title: "AI",
-        description: "Artificial Intelligence, the simulation of human intelligence processes by machines, especially computer systems.",
-        Icon: FaRobot,
-    },
-    java: {
-        title: "Java",
-        description: "A high-level, class-based, object-oriented programming language designed to have as few implementation dependencies as possible.",
-        Icon: FaJava,
-    },
-}
