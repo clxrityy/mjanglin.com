@@ -17,7 +17,7 @@ import { MainImage, TemplateRepository, DemoRespository } from "./components";
 This page is a comprehensive guide on how to host a Discord bot on Vercel with Edge Functions. I'll cover everything from setting up a new Discord bot to deploying it to Vercel.
 
 ### Throughout this guide, here are the tools that will be utilized:
-- **Database & Storage**: [Prisma](https://www.prisma.io/) & [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres)
+- **Database & Storage**: [Prisma](https://www.prisma.io/) & [Vercel Postgres](https://vercel.com/docs/storage/vercel-projectgres)
     - Prisma is a modern database toolkit that makes it easy to work with databases. Vercel Postgres is a managed PostgreSQL database that is easy to set up and use.
     - The extension [Prisma Accelerate](https://www.prisma.io/accelerate) is also utilized for edge caching.
 - **Discord API**: [discord-api-types](https://www.npmjs.com/package/discord-api-types) is a package that provides TypeScript types for the Discord API.
@@ -266,7 +266,7 @@ switch (name) {
 
 Prisma is a modern database toolkit that makes it easy to work with databases. It provides a type-safe and auto-generated query builder that's tailored to your database schema.
 
-- Data is stored with [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres).
+- Data is stored with [Vercel Postgres](https://vercel.com/docs/storage/vercel-projectgres).
 - Additionally, [Prisma Accelerate](https://www.prisma.io/data-platform/accelerate) is utilized for edge caching.
 
 ```zsh
@@ -296,7 +296,7 @@ function makePrisma() {
 }
 ```
 
-- See [Nextjs Prisma Postgres](https://vercel.com/guides/nextjs-prisma-postgres) for more information on setting up Prisma with Vercel Postgres.
+- See [Nextjs Prisma Postgres](https://vercel.com/guides/nextjs-prisma-projectgres) for more information on setting up Prisma with Vercel Postgres.
 
 ### Schemas & Models
 

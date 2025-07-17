@@ -1,15 +1,15 @@
-import { AllPostsBtn } from "@/components/buttons/AllPostsBtn";
+import { AllProjectsBtn } from "@/components/buttons/AllProjectsBtn";
 import { HeroCard } from "@/components/Hero";
 import { DescriptionCard } from "@/components/cards/DescriptionCard";
 import { SpotifyProfile } from "@/components/cards/SpotifyProfile";
 import { spotifyProfile } from "@/lib/spotifyApi";
-import { mdxPosts } from "@/config";
+import { projects } from "@/config";
 import { Clock } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
-const Posts = dynamic(() => import("@/components/Posts").then(mod => mod.Posts), {
+const Projects = dynamic(() => import("@/components/Projects").then(mod => mod.Projects), {
     loading: () => <div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />,
 })
 
@@ -52,10 +52,10 @@ export default async function Page() {
                     <div className="flex flex-col gap-5 items-center justify-center w-full 2xl:w-max 2xl:px-10 mt-5 2xl:z-50">
                         <ErrorBoundary>
                             <Suspense fallback={<div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />}>
-                                <Posts mdxPosts={mdxPosts} />
+                                <Projects projects={projects} />
                             </Suspense>
                         </ErrorBoundary>
-                        <AllPostsBtn />
+                        <AllProjectsBtn />
                     </div>
                 </div>
             </div>

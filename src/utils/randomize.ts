@@ -1,4 +1,4 @@
-import { MdxPost } from "./types";
+import { Project } from "./types";
 
 /**
  * Fisher-Yates shuffle algorithm to randomize an array
@@ -17,21 +17,21 @@ export function shuffleArray<T>(array: T[]): T[] {
 }
 
 /**
- * Randomize the order of MDX posts
- * @param posts - Array of MDX posts to randomize
- * @returns A new array with posts in random order
+ * Randomize the order of MDX projects
+ * @param projects - Array of MDX projects to randomize
+ * @returns A new array with projects in random order
  */
-export function randomizePosts(posts: MdxPost[]): MdxPost[] {
-    return shuffleArray(posts);
+export function randomizeProjects(projects: Project[]): Project[] {
+    return shuffleArray(projects);
 }
 
 /**
- * Get a random subset of posts
- * @param posts - Array of MDX posts
- * @param count - Number of posts to return
- * @returns A new array with a random subset of posts
+ * Get a random subset of projects
+ * @param projects - Array of MDX projects
+ * @param count - Number of projects to return
+ * @returns A new array with a random subset of projects
  */
-export function getRandomPosts(posts: MdxPost[], count: number): MdxPost[] {
-    const shuffled = shuffleArray(posts);
-    return shuffled.slice(0, Math.min(count, posts.length));
+export function getRandomProjects(projects: Project[], count: number): Project[] {
+    const shuffled = shuffleArray(projects);
+    return shuffled.slice(0, Math.min(count, projects.length));
 }

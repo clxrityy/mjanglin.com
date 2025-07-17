@@ -1,5 +1,5 @@
 /* From Uiverse.io by Sashank02 */
-.post-card {
+.project-card {
     padding: 20px;
     width: auto;
     min-width: 330px;
@@ -33,21 +33,21 @@
     background: #182133;
 }
 
-.post-card:hover {
+.project-card:hover {
     box-shadow: 5px 5px 8px #1b1b1b,
         -5px -5px 10px #6e7ec52f;
 
     @apply scale-105 transition-all duration-150;
 }
 
-.post-card-title {
+.project-card-title {
     font-size: 18px;
     font-weight: 600;
     color: rgb(73, 150, 192);
     margin: 15px 0 0 10px;
 }
 
-.post-card-image {
+.project-card-image {
     background-color: transparent;
     margin: 0 auto;
     width: 100%;
@@ -59,7 +59,7 @@
     align-items: center;
 }
 
-.post-card-actual-image {
+.project-card-actual-image {
     border-radius: 15px;
     width: auto;
     height: auto;
@@ -69,19 +69,19 @@
     transition: 0.3s;
 }
 
-.post-card-body {
+.project-card-body {
     margin: 13px 0 0 10px;
     color: rgb(184, 184, 184);
     font-size: 15px;
 }
 
-.post-card-footer {
+.project-card-footer {
     float: right;
     margin: 28px 0 0 18px;
     font-size: 13px;
     color: #b3b3b3;
 }
 
-.post-card-by-name {
+.project-card-by-name {
     font-weight: 700;
 }

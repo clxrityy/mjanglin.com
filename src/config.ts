@@ -1,11 +1,11 @@
 import { FaInstagram } from 'react-icons/fa';
 import { HiOutlineExternalLink, HiOutlineDocumentText } from "react-icons/hi";
-import { MdxPost } from "./utils/types";
+import { type Project } from "./utils/types";
 
 export const ICONS = {
     instagram: FaInstagram,
     external: HiOutlineExternalLink,
-    post: HiOutlineDocumentText
+    project: HiOutlineDocumentText
 } as const;
 
 export const IMAGES = {
@@ -36,9 +36,9 @@ export const COLORS = {
     primary_blue: "#4996C0"
 } as const;
 
-export const mdxPosts: MdxPost[] = [
+export const projects: Project[] = [
     {
-        title: "React Audio",
+        title: "React Audio — A library for displaying and interacting with audio",
         slug: "https://react-audio-docs.vercel.app/",
         publishedAt: "2025-06-13",
         mainImage: "/assets/react-audio.webp",
@@ -47,7 +47,7 @@ export const mdxPosts: MdxPost[] = [
         author: "MJ Anglin",
     },
     {
-        title: "Gatenet",
+        title: "Gatenet — Python Library",
         slug: "https://gatenet.readthedocs.io/en/latest/",
         publishedAt: "2025-06-26",
         mainImage: "/assets/gatenet.png",
@@ -56,7 +56,7 @@ export const mdxPosts: MdxPost[] = [
         author: "MJ Anglin",
     },
     {
-        title: "FarLanders",
+        title: "FarLanders — Minecraft Plugin",
         slug: "https://www.farlanders.cc",
         publishedAt: "2025-07-04",
         mainImage: "/assets/farlanders.png",
@@ -94,10 +94,19 @@ export const mdxPosts: MdxPost[] = [
     {
         title: "Cyl — Programming Language",
         slug: "https://cyl-lang.org",
-        publishedAt: "2025-07-13",
+        publishedAt: "2025-08-13",
         mainImage: "/assets/cyl-lang.png",
         preview: "A modern systems programming language designed for performance and safety, with a focus on simplicity and expressiveness.",
         keywords: ["cyl", "programming language", "systems programming", "performance", "safety", "simplicity", "expressiveness", "compiler", "language design", "rust", "python", "javascript", "typescript", "css", "html", "cargo"],
+        author: "MJ Anglin",
+    },
+    {
+        title: "Sleep Graph — Visualize your sleep patterns",
+        slug: "https://sleepgraph.mjanglin.com",
+        publishedAt: "2025-08-13",
+        mainImage: "/assets/sleepgraph.webp",
+        preview: "A web application that allows users to visualize their sleep patterns and track their sleep quality over time.",
+        keywords: ["sleep", "visualization", "web application", "javascript", "typescript", "react", "nextjs", "tailwindcss", "data visualization", "health", "wellness", "sleep quality", "tracking", "patterns", "graph", "chart", "api", "prisma", "projectgres"],
         author: "MJ Anglin",
     }
 ]

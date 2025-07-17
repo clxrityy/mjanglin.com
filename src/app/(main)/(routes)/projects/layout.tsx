@@ -5,7 +5,7 @@ import { MdArrowBack } from "react-icons/md";
 
 export const metadata: Metadata = {
     title: "MJ Anglin | Posts",
-    description: "A collection of posts written by MJ Anglin",
+    description: "A collection of projects written by MJ Anglin",
 }
 
 

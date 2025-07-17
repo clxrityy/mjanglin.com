@@ -39,7 +39,7 @@ export interface Author {
     _ref: string;
 }
 
-export interface MdxPost {
+export interface Project {
     title: string;
     publishedAt: string; // Consider using Date in the future
     mainImage: string;

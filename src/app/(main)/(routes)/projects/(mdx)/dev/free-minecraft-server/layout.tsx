@@ -1,15 +1,15 @@
-import MdxPostContainer from "@/components/layout/MdxPostContainer";
-import { findPost } from "@/utils/findPost";
+import MdxPostContainer from "@/components/layout/ProjectContainer";
+import { findProject } from "@/utils/findProject";
 import type { Metadata } from "next";
 
-const post = findPost("Host a Minecraft server for free");
+const project = findProject("Host a Minecraft server for free");
 
 export async function generateMetadata(): Promise<Metadata> {
 
     return {
-        title: post.title,
-        description: post.preview,
-        keywords: post.keywords
+        title: project.title,
+        description: project.preview,
+        keywords: project.keywords
     }
 }
 

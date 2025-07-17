@@ -1,32 +1,32 @@
-import { MdxPost } from "@/utils/types";
+import type { Project } from "@/utils/types";
 import Link from "next/link";
 import { ImageComponent } from "../ui/ImageComponent";
 import { ICONS } from "@/config";
-import "@/styles/css/postcard.css";
+import "@/styles/css/projectcard.css";
 
-export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
+export function MdxPostCard({ project }: Readonly<{ project: Project }>) {
 
-    const { title, publishedAt, mainImage, preview, author, slug } = post
+    const { title, publishedAt, mainImage, preview, author, slug } = project
     const imageUrl = mainImage;
 
     const checkLink = (link: string) => {
         if (link.startsWith("http://") || link.startsWith("https://")) {
             return link;
         }
-        return `/posts/${link}`;
+        return `/projects/${link}`;
     }
 
     const isExternalLink = (link: string) => {
-        return !checkLink(link).startsWith("/posts/");
+        return !checkLink(link).startsWith("/projects/");
     }
 
     const external = isExternalLink(slug);
 
     const ExternalIcon = ICONS.external;
-    const PostIcon = ICONS.post;
+    const PostIcon = ICONS.project;
 
     return (
-        <div className={`post-card relative ${external ? "external" : ""}`}>
+        <div className={`project-card relative ${external ? "external" : ""}`}>
             {
                 external ? (
                     <div className="absolute bottom-2 left-2 w-full py-1 px-1 z-100">
@@ -48,13 +48,13 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
             }
             {
                 imageUrl && (
-                    <div className="post-card-image flex items-center justify-center w-full">
+                    <div className="project-card-image flex items-center justify-center w-full">
                         <ImageComponent image={{
                             src: imageUrl,
                             alt: title,
                             width: 175,
                             height: 175,
-                            className: `rounded-md w-fit post-card-actual-image`,
+                            className: `rounded-md w-fit project-card-actual-image`,
                             placeholder: "blur",
                             blurDataURL: "/assets/blur-loading-img.png",
                             unoptimized: true,
@@ -68,16 +68,16 @@ export function MdxPostCard({ post }: Readonly<{ post: MdxPost }>) {
                 )
             }
             <Link href={checkLink(slug)} rel={external ? "noopener noreferrer" : undefined} target={external ? "_blank" : undefined}>
-                <p className="post-card-title focus:text-blue-600 transition duration-150 hover:text-blue-500 ease-in-out">
+                <p className="project-card-title focus:text-blue-600 transition duration-150 hover:text-blue-500 ease-in-out">
                     {title}
                 </p>
             </Link>
             {
-                preview && <p className="post-card-body">
+                preview && <p className="project-card-body">
                     {preview}
                 </p>
             }
-            <p className="post-card-footer">Published by <span className="post-card-by-name">{author}</span> on <span className="date">{new Date(publishedAt).toLocaleDateString()}</span></p>
+            <p className="project-card-footer">Published by <span className="project-card-by-name">{author}</span> on <span className="date">{new Date(publishedAt).toLocaleDateString()}</span></p>
         </div >
     )
 }

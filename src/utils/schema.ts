@@ -51,20 +51,20 @@ export function generatePersonSchema(): PersonSchema {
     };
 }
 
-export function generateBlogPostSchema(post: MdxPost): BlogPostSchema {
+export function generateBlogPostSchema(project: MdxPost): BlogPostSchema {
     return {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        headline: post.title,
-        description: post.preview,
-        datePublished: post.publishedAt,
+        headline: project.title,
+        description: project.preview,
+        datePublished: project.publishedAt,
         author: {
             "@type": "Person",
-            name: post.author
+            name: project.author
         },
-        image: `https://mjanglin.com${post.mainImage}`,
-        url: post.slug,
-        keywords: [...post.keywords]
+        image: `https://mjanglin.com${project.mainImage}`,
+        url: project.slug,
+        keywords: [...project.keywords]
     };
 }
 
