@@ -1,4 +1,4 @@
-import { MdxPost } from './types';
+import { Project } from './types';
 
 export interface PersonSchema {
     "@context": "https://schema.org";
@@ -51,7 +51,7 @@ export function generatePersonSchema(): PersonSchema {
     };
 }
 
-export function generateBlogPostSchema(project: MdxPost): BlogPostSchema {
+export function generateBlogPostSchema(project: Project): BlogPostSchema {
     return {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
