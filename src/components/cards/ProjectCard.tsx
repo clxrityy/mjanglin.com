@@ -4,7 +4,7 @@ import { ImageComponent } from "../ui/ImageComponent";
 import { ICONS } from "@/config";
 import "@/styles/css/projectcard.css";
 
-export function MdxPostCard({ project }: Readonly<{ project: Project }>) {
+export function ProjectCard({ project }: Readonly<{ project: Project }>) {
 
     const { title, publishedAt, mainImage, preview, author, slug } = project
     const imageUrl = mainImage;

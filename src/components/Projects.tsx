@@ -2,7 +2,7 @@
 
 import type { Project } from "@/utils/types"
 import { useEffect, useState } from "react";
-import { MdxPostCard } from "./cards/ProjectCard";
+import { ProjectCard } from "./cards/ProjectCard";
 import { CONSTANTS } from "@/utils/constants";
 import { randomizeProjects } from "@/utils/randomize";
 
@@ -33,7 +33,7 @@ export function Projects({
             <div className="w-max grid grid-cols-1 md:grid-cols-2 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
                 {
                     projectsToShow.map((project, index) => (
-                        <MdxPostCard key={index + project.slug} project={project} />
+                        <ProjectCard key={index + project.slug} project={project} />
                     ))
                 }
             </div>
