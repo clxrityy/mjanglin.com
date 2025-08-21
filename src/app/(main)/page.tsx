@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 import { Suspense } from "react";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
+
 const Projects = dynamic(() => import("@/components/Projects").then(mod => mod.Projects), {
     loading: () => <div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />,
 })
@@ -29,7 +30,7 @@ export default async function Page() {
                         <div className="flex flex-col gap-10 items-center justify-center w-full">
                             <div className="flex flex-col xl:flex-row w-full gap-0 items-center justify-between lg:gap-5 2xl:gap-10">
                                 <HeroCard />
-                                <div className="flex flex-col w-1/3 items-center justify-start gap-10 2xl:pb-20 lg:pb-20">
+                                <div className="flex flex-col w-1/3 items-center justify-start gap-10 2xl:pb-20 lg:pb-10 lg:pt-10">
                                     <ErrorBoundary>
                                         <Suspense fallback={<Clock className="animate-spin" />}>
                                             <TimeCard />

@@ -22,13 +22,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
             url: "https://mjanglin.com/weather",
             lastModified: new Date(),
             changeFrequency: "always",
-            priority: 0.9
+            priority: 0.8
         },
         {
             url: "https://mjanglin.com/projects",
             lastModified: new Date(),
             changeFrequency: "monthly",
             priority: 0.5
+        },
+        {
+            url: "https://mjanglin.com/vitals",
+            lastModified: new Date(),
+            changeFrequency: "always",
+            priority: 0.9
         },
         ...mappedProjects(),
     ]
