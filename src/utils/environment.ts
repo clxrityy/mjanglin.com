@@ -9,6 +9,11 @@ interface EnvironmentVariables {
     SPOTIFY_API_CLIENT_ID: string;
     SPOTIFY_API_CLIENT_SECRET: string;
     NODE_ENV: NodeEnvironment;
+    R2_ACCOUNT_API_TOKEN: string;
+    R2_ACCESS_KEY_ID: string;
+    R2_SECRET_ACCESS_KEY: string;
+    S3_ENDPOINT_URL: string;
+    R2_BUCKET_NAME: string;
 }
 
 class EnvironmentError extends Error {
@@ -39,6 +44,11 @@ export function validateEnvironment(): EnvironmentVariables {
             SPOTIFY_API_CLIENT_ID: validateEnvironmentVariable('SPOTIFY_API_CLIENT_ID', process.env.SPOTIFY_API_CLIENT_ID),
             SPOTIFY_API_CLIENT_SECRET: validateEnvironmentVariable('SPOTIFY_API_CLIENT_SECRET', process.env.SPOTIFY_API_CLIENT_SECRET),
             NODE_ENV: validateNodeEnv(process.env.NODE_ENV),
+            R2_ACCOUNT_API_TOKEN: validateEnvironmentVariable('R2_ACCOUNT_API_TOKEN', process.env.R2_ACCOUNT_API_TOKEN),
+            R2_ACCESS_KEY_ID: validateEnvironmentVariable('R2_ACCESS_KEY_ID', process.env.R2_ACCESS_KEY_ID),
+            R2_SECRET_ACCESS_KEY: validateEnvironmentVariable('R2_SECRET_ACCESS_KEY', process.env.R2_SECRET_ACCESS_KEY),
+            S3_ENDPOINT_URL: validateEnvironmentVariable('S3_ENDPOINT_URL', process.env.S3_ENDPOINT_URL),
+            R2_BUCKET_NAME: validateEnvironmentVariable('R2_BUCKET_NAME', process.env.R2_BUCKET_NAME),
         };
     } catch (error) {
         console.error('Environment validation failed:', error);

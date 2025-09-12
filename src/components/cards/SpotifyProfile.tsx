@@ -4,6 +4,7 @@ import { Artist } from "@spotify/web-api-ts-sdk";
 import Image from "next/image";
 import Link from "next/link";
 import { URLS } from "@/config";
+import { r2AssetPath } from '@/utils/assets';
 import { COMPONENT_SIZES } from "@/utils/constants";
 
 export function SpotifyProfile({ data }: Readonly<{ data: Artist }>) {
@@ -27,7 +28,7 @@ export function SpotifyProfile({ data }: Readonly<{ data: Artist }>) {
                     <div className="flex flex-row gap-4 items-center justify-center">
                         <Link href={data.external_urls.spotify} className="link-button" aria-label="Listen on Spotify">
                             <Image
-                                src={"/assets/spotify.svg"}
+                                src={r2AssetPath('assets/spotify.svg')}
                                 alt="Spotify"
                                 width={COMPONENT_SIZES.SOCIAL_ICON.width}
                                 height={COMPONENT_SIZES.SOCIAL_ICON.height}
@@ -36,7 +37,7 @@ export function SpotifyProfile({ data }: Readonly<{ data: Artist }>) {
                         </Link>
                         <Link href={URLS.apple_music} aria-label="Listen on Apple Music" className="link-button">
                             <Image
-                                src={"/assets/apple-music.svg"}
+                                src={r2AssetPath('assets/apple-music.svg')}
                                 alt="Apple Music"
                                 width={COMPONENT_SIZES.SOCIAL_ICON.width}
                                 height={COMPONENT_SIZES.SOCIAL_ICON.height}

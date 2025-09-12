@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { r2AssetPath } from '@/utils/assets';
 import { GithubRepo } from "@birdgg/react-github";
 import { ANIMATION_CLASSES } from "@/utils/constants";
 
@@ -17,8 +18,8 @@ export function Example() {
     return (
         <div className="flex w-full items-center justify-center">
             <video autoPlay loop muted playsInline className="w-2/3 lg:w-1/3">
-                <source src="/assets/waveform-example.webm" type="video/webm" />
-                <source src="/assets/waveform-example.mp4" type="video/mp4" />
+                <source src={r2AssetPath('assets/waveform-example.webm')} type="video/webm" />
+                <source src={r2AssetPath('assets/waveform-example.mp4')} type="video/mp4" />
             </video>
         </div>
     )

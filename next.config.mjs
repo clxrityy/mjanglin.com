@@ -24,10 +24,6 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdn.sanity.io",
-      },
-      {
-        protocol: "https",
         hostname: "media2.dev.to",
       },
       {
@@ -42,6 +38,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "i.scdn.co",
       },
+      // {
+      //   protocol: "https",
+      //   hostname: "distrokid.imgix.net",
+      // },
+      {
+        protocol: "https",
+        hostname: "*.r2.cloudflarestorage.com",
+      },
     ],
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
@@ -53,7 +57,7 @@ const nextConfig = {
           { key: "Cross-Origin-Opener-Policy", value: "unsafe-none" },
           {
             key: "Strict-Transport-Security",
-            value: "max-age=63072000; includeSubDomains; preload",
+            value: "max-age=63072000;", // includeSubDomains; preload
           },
         ],
       },

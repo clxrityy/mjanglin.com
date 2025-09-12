@@ -2,6 +2,7 @@ import type { Project } from "@/utils/types";
 import Link from "next/link";
 import { ImageComponent } from "../ui/ImageComponent";
 import { ICONS } from "@/config";
+import { r2AssetPath } from '@/utils/assets';
 import "@/styles/css/projectcard.css";
 
 export function ProjectCard({ project }: Readonly<{ project: Project }>) {
@@ -56,7 +57,7 @@ export function ProjectCard({ project }: Readonly<{ project: Project }>) {
                             height: 175,
                             className: `rounded-md w-fit project-card-actual-image`,
                             placeholder: "blur",
-                            blurDataURL: "/assets/blur-loading-img.png",
+                            blurDataURL: r2AssetPath('assets/blur-loading-img.png'),
                             unoptimized: true,
                             style: {
                                 width: "auto",
