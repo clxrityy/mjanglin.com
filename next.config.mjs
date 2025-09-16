@@ -63,6 +63,64 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/spotify",
+        destination: "https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/the-undertow",
+        destination: "https://distrokid.com/hyperfollow/clxrity/the-undertow",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/discord",
+        destination: "https://discord.gg/RnwJEdsmy2",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/github",
+        destination: "https://github.com/clxrityy",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/soundcloud",
+        destination: "https://soundcloud.com/clxrityy",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/youtube",
+        destination: "https://www.youtube.com/@clxrity_",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/instagram",
+        destination: "https://www.instagram.com/mjxnglin/",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/linkedin",
+        destination: "https://www.linkedin.com/in/mjanglin1/",
+        permanent: true,
+        statusCode: 302,
+      },
+      {
+        source: "/apple-music",
+        destination: "https://music.apple.com/us/artist/clxrity/1702200875",
+        permanent: true,
+        statusCode: 302,
+      },
+    ];
+  },
 };
 
 export default withMdx({
