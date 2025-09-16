@@ -1,5 +1,4 @@
 import type { Project } from "@/utils/types";
-import Link from "next/link";
 import { ImageComponent } from "../ui/ImageComponent";
 import { ICONS } from "@/config";
 import { r2AssetPath } from '@/utils/assets';
@@ -68,11 +67,11 @@ export function ProjectCard({ project }: Readonly<{ project: Project }>) {
                     </div>
                 )
             }
-            <Link href={checkLink(slug)} rel={external ? "noopener noreferrer" : undefined} target={external ? "_blank" : undefined}>
+            <a href={checkLink(slug)} rel={external ? "noopener noreferrer" : undefined} target={external ? "_blank" : undefined}>
                 <p className="project-card-title focus:text-blue-600 transition duration-150 hover:text-blue-500 ease-in-out">
                     {title}
                 </p>
-            </Link>
+            </a>
             {
                 preview && <p className="project-card-body">
                     {preview}

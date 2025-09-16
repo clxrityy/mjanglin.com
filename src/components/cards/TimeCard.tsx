@@ -42,7 +42,7 @@ export function TimeCard() {
             clearInterval(interval);
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [time]);
 
     function tick() {
@@ -59,7 +59,7 @@ export function TimeCard() {
 
     const getDateString = useCallback(() => {
         return time.toLocaleDateString("en-US", {
-            
+
         })
     }, [time]);
 
@@ -70,7 +70,7 @@ export function TimeCard() {
 
     return (
         /* From Uiverse.io by akshat-patel28 */
-        <Link href={`/weather`} className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className} w-full px-4 py-3`}>
+        <Link prefetch={false} href={`/weather`} className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className} w-full px-4 py-3`}>
             <p className="time-text">
                 <span>{`${hours} : ${minutes}`}</span>
                 <span className="time-sub-text">{amOrPm}</span>

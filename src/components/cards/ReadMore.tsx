@@ -10,7 +10,7 @@ export function ReadMore({ children }: Readonly<{ children: React.ReactNode }>) 
 
     return (
         /* From Uiverse.io by vinodjangid07 */
-        <button className="readmore-btn focus:ring ring-offset-1" onClick={() => router.push("/about")} aria-label="about">
+        <button type="button" className="readmore-btn focus:ring ring-offset-1" onClick={() => router.push("/about")} aria-label="about">
             <span className="book-wrapper">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
