@@ -111,4 +111,13 @@ export const projects: Project[] = [
         author: "MJ Anglin",
     },
     // add daily set project here
+    {
+        title: "Daily Set — A daily online puzzle game",
+        slug: "https://daily-set.fly.dev",
+        publishedAt: "2025-09-19",
+        mainImage: r2AssetPath('assets/daily-set-example.gif'),
+        preview: "A daily online puzzle game where players find sets of three cards based on their attributes. Real-time multiplayer and global leaderboards.",
+        keywords: ["daily set", "puzzle game", "react", "tailwindcss", "javascript", "typescript", "web development", "game development", "cards", "sets", "attributes", "fun", "challenging", "brain teaser", "go", "python", "docker", "multiplayer", "real-time", "leaderboards", "social"],
+        author: "MJ Anglin",
+    }
 ]
