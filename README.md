@@ -1,9 +1,8 @@
 # hbd
 
-> [!IMPORTANT]  
+> [!CAUTION]  
 > Moved to [hbd.clxrity.xyz](https://github.com/clxrityy/clxrity.xyz/tree/hbd), this branch will no longer be updated.
 
-> **https://hbd.mjanglin.com**
 
 - A dynamic Discord birthday bot with Vercel... Runs with [edge runtime](https://vercel.com/docs/functions/runtimes/edge-runtime).
 - Utilizes [`discord-api-types`](https://discord-api-types.dev/) to facilitate requests and responses to/from the [interactions endpoint](https://discord.com/developers/docs/interactions/slash-commands#receiving-an-interaction)
