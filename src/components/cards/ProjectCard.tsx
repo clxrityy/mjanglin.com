@@ -2,7 +2,7 @@ import type { Project } from "@/utils/types";
 import { ImageComponent } from "../ui/ImageComponent";
 import { ICONS } from "@/config";
 import { r2AssetPath } from '@/utils/assets';
-import "@/styles/css/projectcard.css";
+import "@/styles/cards/projectcard.css";
 
 export function ProjectCard({ project }: Readonly<{ project: Project }>) {
 

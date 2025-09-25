@@ -1,5 +1,5 @@
 import { IMAGES } from "@/config";
-import "@/styles/css/hero.css";
+import "@/styles/layout/hero.css";
 import Image from "next/image";
 import { SocialsMenu } from "./layout/SocialsMenu";
 import { exo } from "@/styles/fonts";

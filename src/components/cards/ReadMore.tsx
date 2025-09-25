@@ -1,6 +1,6 @@
 "use client";
 
-import "@/styles/css/readmore.css";
+import "@/styles/buttons/readmore.css";
 import { COLORS } from "@/config";
 import { useRouter } from "next/navigation";
 

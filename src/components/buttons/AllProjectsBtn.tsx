@@ -1,4 +1,4 @@
-import "@/styles/css/allprojectsbtn.css"
+import "@/styles/buttons/allprojectsbtn.css"
 import Link from "next/link"
 
 export function AllProjectsBtn() {

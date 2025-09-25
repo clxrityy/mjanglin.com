@@ -12,8 +12,10 @@
 
 .wave {
   position: absolute;
-  width: 540px;
-  height: 700px;
+  min-width: 460px;
+  max-width: 540px;
+  min-height: 540px;
+  max-height: 700px;
   opacity: 0.6;
   left: 0;
   top: 0;

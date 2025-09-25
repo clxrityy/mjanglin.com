@@ -1,4 +1,4 @@
-import "@/styles/css/404.css";
+import "@/styles/page/404.css";
 
 export default function NotFound() {
     return (

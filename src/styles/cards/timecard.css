@@ -1,94 +1,83 @@
-/* From Uiverse.io by akshat-patel28 */ 
+/* From Uiverse.io by akshat-patel28 */
 .time-card {
-    width: 280px;
-    height: 150px;
-    /* background: rgb(59, 125, 160); */
-    border-radius: 15px;
-    box-shadow: rgb(0,0,0,0.45) 5px 10px 25px ,rgb(0,0,0,0.45) -5px 0px 250px;
-    display: flex;
-    color: white;
-    justify-content: center;
-    position: relative;
-    flex-direction: column;
-    /* background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85)); */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
+  min-width: 200px;
+  max-width: 280px;
+  height: 150px;
+  border-radius: 15px;
+  box-shadow: rgb(0, 0, 0, 0.45) 5px 10px 25px, rgb(0, 0, 0, 0.45) -5px 0px 250px;
+  display: flex;
+  color: white;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
 
-    @apply transition-all duration-300;
-  }
-  
-  .time-text {
-    font-size: 50px;
-    margin-top: 0px;
-    margin-left: 15px;
-    font-weight: 600;
-  }
-  
-  .time-sub-text {
-    font-size: 15px;
-    margin-left: 5px;
-  }
-  
-  .day-text {
-    font-size: 18px;
-    margin-top: 0px;
-    margin-left: 15px;
-    font-weight: 500;
-  }
-  
-  .clock-icon {
-    font-size: 20px;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .time-card:hover > .clock-icon {
-    font-size: 23px;
-  }
-  
+  @apply transition-all duration-300;
+}
+
+.time-text {
+  font-size: 50px;
+  margin-top: 0px;
+  margin-left: 15px;
+  font-weight: 600;
+}
+
+.time-sub-text {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.day-text {
+  font-size: 18px;
+  margin-top: 0px;
+  margin-left: 15px;
+  font-weight: 500;
+}
+
+.clock-icon {
+  font-size: 20px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.time-card:hover>.clock-icon {
+  font-size: 23px;
+}
+
 .morning-gradient {
   background: #FF5F6D;
-  background: linear-gradient(
-    to right,
-    #FF5F6D,#FFC371
-  );
+  background: linear-gradient(to right,
+      #FF5F6D, #FFC371);
   width: 100%;
   height: 100%;
 }
 
 .day-gradient {
   background: #56cbf288;
-  background: linear-gradient(
-    to right,
-    #56cbf29e,#2F80ED
-  );
+  background: linear-gradient(to right,
+      #56cbf29e, #2F80ED);
 }
 
 .afternoon-gradient {
   background: #ffcd6ab7;
-  background: linear-gradient(
-    to right,
-    #7583c15e,#c9af68
-  );
+  background: linear-gradient(to right,
+      #7583c15e, #c9af68);
 }
 
 .evening-gradient {
   background: #f7b633b0;
-  background: linear-gradient(
-    to right,
-    #f7b633ad,#fc4b1a73
-  );
+  background: linear-gradient(to right,
+      #f7b633ad, #fc4b1a73);
 }
 
 .night-gradient {
   background: #141E30;
-  background: linear-gradient(
-    to right,
-    #141E30,#243B55
-  );
+  background: linear-gradient(to right,
+      #141E30, #243B55);
 }
 
 .clock {
@@ -134,6 +123,7 @@
   0% {
     transform: rotate(-180deg);
   }
+
   100% {
     transform: rotate(180deg);
   }

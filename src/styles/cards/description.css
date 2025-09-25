@@ -4,7 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 320px;
+  max-width: 320px;
+
   border-radius: 24px;
   line-height: 1.6;
   transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
@@ -31,7 +32,7 @@
   width: 90%;
   height: 90%;
   transform: translate(-50%);
-  background: #5a42f39d ;
+  background: #5a42f39d;
   z-index: -1;
   transform-origin: bottom;
 

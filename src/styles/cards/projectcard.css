@@ -1,9 +1,9 @@
 /* From Uiverse.io by Sashank02 */
 .project-card {
     padding: 20px;
-    width: auto;
-    min-width: 330px;
-    max-width: 330px;
+    width: fit-content;
+    min-width: 280px;
+    max-width: 320px;
     min-height: 370px;
     border-radius: 20px;
     background: #212121;

@@ -98,6 +98,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.25
         },
+        {
+            url: "https://mjanglin.com/music",
+            lastModified: new Date(),
+            changeFrequency: "yearly",
+            priority: 0.25
+        },
         ...mappedProjects(),
     ]
 }

@@ -1,12 +1,18 @@
 import { FaInstagram } from 'react-icons/fa';
-import { HiOutlineExternalLink, HiOutlineDocumentText } from "react-icons/hi";
+import { HiOutlineExternalLink, HiOutlineDocumentText } from 'react-icons/hi';
+import { SiApplemusic, SiSpotify, SiYoutubemusic } from "react-icons/si";
+import { ImSoundcloud2 } from "react-icons/im";
 import { type Project } from "@/utils/types";
 import { r2AssetPath } from '@/utils/assets';
 
 export const ICONS = {
     instagram: FaInstagram,
     external: HiOutlineExternalLink,
-    project: HiOutlineDocumentText
+    project: HiOutlineDocumentText,
+    applemusic: SiApplemusic,
+    spotify: SiSpotify,
+    soundcloud: ImSoundcloud2,
+    youtubemusic: SiYoutubemusic,
 } as const;
 
 export const IMAGES = {

@@ -1,4 +1,4 @@
-import "@/styles/css/description-card.css";
+import "@/styles/cards/description.css";
 import { exo } from "@/styles/fonts";
 import { ReadMore } from "./ReadMore";
 import { ImageComponent } from "../ui/ImageComponent";
@@ -6,7 +6,7 @@ import { ImageComponent } from "../ui/ImageComponent";
 export function DescriptionCard() {
     return (
         /* From Uiverse.io by gharsh11032000 */
-        <div className={`desc-card ${exo.className} font-medium text-base grayscale-[50%]`}>
+        <div className={`desc-card ${exo.className} font-medium text-base grayscale-[50%] scale-[0.85] sm:scale-90 md:scale-100`}>
             <div className="content">
                 <ImageComponent
                     image={{

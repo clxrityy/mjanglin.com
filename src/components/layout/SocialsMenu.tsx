@@ -1,5 +1,5 @@
 import { URLS } from "@/config"
-import "@/styles/css/socials.css"
+import "@/styles/buttons/socials.css"
 import Link from "next/link"
 import { FaDiscord, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa"
 

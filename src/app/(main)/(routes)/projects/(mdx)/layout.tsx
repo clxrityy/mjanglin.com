@@ -1,4 +1,4 @@
-import "@/styles/css/project.css";
+import "@/styles/page/project.css";
 import { ReactNode } from "react";
 
 export default function Layout({ children }: { children: ReactNode }) {

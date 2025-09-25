@@ -1,0 +1,80 @@
+.bars-wrapper {
+    display: flex;
+    background-color:
+        #efdecd;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+.bars-container {
+    position: relative;
+    display: flex;
+    height: 12px;
+    align-items: flex-end;
+    transform: scale(1.5);
+
+    @apply **:transition-transform **:duration-50;
+}
+
+[class^=bar-] {
+    height: 1.5px;
+    width: 1.5px;
+    background-color:
+        #4996C0;
+    border-radius: 4px;
+    margin: 0 1px;
+}
+
+[class^=bar-]:nth-child(2n) {
+    background-color:
+        #318bbca4;
+}
+
+.bar-1 {
+    animation: lineWaveAnim1 0.3s 0.5s both infinite alternate;
+}
+
+.bar-2 {
+    animation: lineWaveAnim2 0.3s 0.575s both infinite alternate;
+}
+
+.bar-3 {
+    animation: lineWaveAnim1 0.3s 0.5s both infinite alternate;
+}
+
+.bar-4 {
+    animation: lineWaveAnim2 0.33s both infinite alternate;
+}
+
+.bar-5 {
+    animation: lineWaveAnim1 0.3s 0.65s both infinite alternate;
+}
+
+.bar-6 {
+    animation: lineWaveAnim2 0.3s 0.5s both infinite alternate;
+}
+
+.bar-7 {
+    animation: lineWaveAnim1 0.25s 0.4s both infinite alternate;
+}
+
+@keyframes lineWaveAnim1 {
+    from {
+        height: 1px;
+    }
+
+    to {
+        height: 10px;
+    }
+}
+
+@keyframes lineWaveAnim2 {
+    from {
+        height: 2px;
+    }
+
+    to {
+        height: 16px;
+    }
+}

@@ -11,7 +11,7 @@ export async function GET(req: NextRequest, context: any) {
     const { params } = await context;
     const bucket = process.env.R2_BUCKET_NAME;
     if (!bucket) return new Response('R2_BUCKET_NAME not configured', { status: 500 });
-    const keyParts = await params?.key;
+    const keyParts = (await params).key;
     if (!keyParts || keyParts.length === 0) return new Response('No key provided', { status: 400 });
     const key = keyParts.join('/');
 
