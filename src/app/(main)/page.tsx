@@ -1,8 +1,6 @@
 import { AllProjectsBtn } from "@/components/buttons/AllProjectsBtn";
 import { HeroCard } from "@/components/Hero";
 import { DescriptionCard } from "@/components/cards/DescriptionCard";
-// import { SpotifyProfile } from "@/components/cards/SpotifyProfile";
-// import { spotifyProfile } from "@/lib/spotifyApi";
 import { projects } from "@/config";
 import { Clock } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -35,16 +33,6 @@ export default async function Page() {
                                             <TimeCard />
                                         </Suspense>
                                     </ErrorBoundary>
-                                    {/* {
-                                        spotifyData && (
-                                            <ErrorBoundary>
-                                                <SpotifyProfile data={spotifyData} />
-                                            </ErrorBoundary>
-                                        )
-
-                                        ### REPLACE WITH WAVE ANIMATION THAT LINKS TO ALL MUSIC PLATFORMS
-
-                                    } */}
                                     <MusicCard />
                                 </div>
                             </div>
