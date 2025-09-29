@@ -1,4 +1,4 @@
-import { fetchIp, getLocationByIp } from "@/utils/ip";
+import { fetchIp, getLocationByIp } from "@/lib/ip";
 import "@/styles/page/weather.css";
 import Link from "next/link";
 import { MdArrowBack } from "react-icons/md";

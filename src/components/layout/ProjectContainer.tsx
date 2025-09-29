@@ -1,4 +1,4 @@
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 import { ComponentProps } from "react";
 
 interface Props extends ComponentProps<"div"> {

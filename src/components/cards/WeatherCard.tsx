@@ -1,6 +1,6 @@
 "use server";
-import forecast from "@/utils/forecast";
-import { fetchIp, getLocationByIp } from "@/utils/ip";
+import forecast from "@/lib/forecast";
+import { fetchIp, getLocationByIp } from "@/lib/ip";
 import { FaTemperatureEmpty, FaTemperatureQuarter, FaTemperatureHalf, FaTemperatureThreeQuarters, FaTemperatureFull, FaTemperatureHigh, FaTemperatureArrowUp } from "react-icons/fa6";
 import { FaTemperatureLow } from "react-icons/fa";
 import { BsCloudRain } from "react-icons/bs";

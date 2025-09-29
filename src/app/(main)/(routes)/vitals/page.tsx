@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { trackWebVitals, performanceMonitor } from "@/utils/performance";
+import { trackWebVitals, performanceMonitor } from "@/lib/performance";
 
 // Pie chart coloring and thresholds for each metric
 const METRIC_THRESHOLDS: Record<string, { good: number; medium: number; max: number }> = {
