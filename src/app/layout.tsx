@@ -17,19 +17,15 @@ export const metadata: Metadata = {
         locale: "en_US",
         emails: ["contact@mjanglin.com"],
         siteName: "MJ Anglin",
-        images: [
-            "https://mjanglin.com/apple-touch-icon.png",
-            "https://mjanglin.com/favicon-32x32.png",
-            "https://mjanglin.com/favicon-16x16.png",
-            "https://mjanglin.com/android-chrome-192x192.png",
-            "https://mjanglin.com/android-chrome-512x512.png"
-        ],
+        countryName: "United States of America",
     },
     twitter: {
         card: "summary",
         title: "MJ Anglin",
         description: "Developer & Creator",
-        images: ["https://www.mjanglin.com/apple-touch-icon.png"],
+    },
+    pinterest: {
+        richPin: true,
     }
 }
 
