@@ -2,7 +2,7 @@ import MdxPostContainer from "@/components/layout/ProjectContainer";
 import { findProject } from "@/utils/findProject";
 import type { Metadata } from "next";
 
-const project = findProject("How to host a Discord bot on Vercel");
+const project = findProject("How to host a Discord bot");
 
 export async function generateMetadata(): Promise<Metadata> {
 
