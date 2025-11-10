@@ -1,17 +1,9 @@
-import withMdx from "@next/mdx";
-import remarkGfm from "remark-gfm";
-import rehypePrettyCode from "rehype-pretty-code";
-
-/** @type {import('rehype-pretty-code').Options} */
-const options = {
-  keepBackground: true,
-  theme: "one-dark-pro",
-  defaultLang: "plaintext",
-};
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  experimental: {
+    mdxRs: true,
+  },
   images: {
     remotePatterns: [
       {
@@ -123,10 +115,4 @@ const nextConfig = {
   },
 };
 
-export default withMdx({
-  extension: /\.mdx?$/,
-  options: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [[rehypePrettyCode, options]],
-  },
-})(nextConfig);
+export default nextConfig;
