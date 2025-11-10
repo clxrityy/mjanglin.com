@@ -41,3 +41,4 @@ next-env.d.ts
 __archive__
 test.md
 .hintrc
+_assets/*

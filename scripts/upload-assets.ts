@@ -42,7 +42,7 @@ async function walk(dir: string, files: string[] = []) {
 }
 
 async function run() {
-  const root = join(process.cwd(), "public", "assets");
+  const root = join(process.cwd(), "_assets");
   const files = await walk(root);
   let success = 0;
   let failed = 0;
