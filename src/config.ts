@@ -125,5 +125,15 @@ export const projects: Project[] = [
         preview: "A daily online puzzle game where players find sets of three cards based on their attributes. Real-time multiplayer and global leaderboards.",
         keywords: ["daily set", "puzzle game", "react", "tailwindcss", "javascript", "typescript", "web development", "game development", "cards", "sets", "attributes", "fun", "challenging", "brain teaser", "go", "python", "docker", "multiplayer", "real-time", "leaderboards", "social"],
         author: "MJ Anglin",
+    },
+    // enotion
+    {
+        title: "enotion - Packages for building interactive apps",
+        slug: "https://enotion-beta.vercel.app/",
+        publishedAt: "2025-11-10",
+        mainImage: r2AssetPath('assets/enotion-banner.png'),
+        preview: "A turbo monorepo with packages for building responsive, customizable, and interactive applications.",
+        keywords: ["react", "hooks", "npm", "library", "typescript", "javascript", "monorepo", "turbo", "tailwindcss", "components", "ui", "design system"],
+        author: "MJ Anglin",
     }
 ]
