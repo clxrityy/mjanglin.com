@@ -72,10 +72,10 @@ export const projects: Project[] = [
     //     author: "MJ Anglin",
     // },
     {
-        title: "How to host a Discord bot on Vercel (Edge Functions)",
+        title: "Discord Bot Dashboard on Next.js Edge Functions",
         slug: "dev/nextjs-edge-discord-bot",
         publishedAt: "2024-11-14",
-        mainImage: r2AssetPath('assets/discord-edge-bot.webp'),
+        mainImage: "https://hbd.clxrity.xyz/android-chrome-192x192.png",
         preview: "An overview of how I built a Discord birthday bot, with an interactive dashboard, that runs on Edge runtime.",
         keywords: ["discord", "bot", "vercel", "edge functions", "javascript", "typescript", "nextjs", "react", "api"],
         author: "MJ Anglin",

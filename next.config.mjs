@@ -20,7 +20,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "clxrity.xyz",
+        hostname: "hbd.clxrity.xyz",
       },
       {
         protocol: "https",
