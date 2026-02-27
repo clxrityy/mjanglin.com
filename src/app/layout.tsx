@@ -26,7 +26,39 @@ export const metadata: Metadata = {
     },
     pinterest: {
         richPin: true,
-    }
+    },
+		publisher: "MJ Anglin",
+		manifest: "/site.webmanifest",
+		metadataBase: new URL("https://mjanglin.com"),
+		icons: {
+			icon: "/favicon.ico",
+			apple: [
+				{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+			],
+			other: [
+				{ url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+				{ url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+				{ url: "/site.webmanifest", type: "application/manifest+json" },
+				{ url: "/android-chrome-192x192.png", sizes: "192x192", type: "image/png" },
+				{ url: "/android-chrome-512x512.png", sizes: "512x512", type: "image/png" },
+			],
+		},
+		appleWebApp: {
+			title: "MJ Anglin",
+			statusBarStyle: "black-translucent",
+			startupImage: [
+				{
+					url: "/apple-touch-icon.png",
+					media:
+						"(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)",
+				},
+			],
+			capable: true,
+		},
+		verification: {
+			me: ["https://mjanglin.com", "mailto:contact@mjanglin.com", "https://clxrity.xyz"],
+			google: process.env.GOOGLE_SITE_VERIFICATION || process.env.GOOGLE_SITE_VERIFICATION?.split('=')[1] || "",
+		},
 }
 
 export const dynamic = "force-dynamic"; // Force dynamic rendering for this layout
@@ -47,7 +79,7 @@ export default async function RootLayout({
                 <meta name="mobile-web-app-capable" content="yes" />
                 <meta content="width=device-width, initial-scale=1" name="viewport" />
                 <meta name="theme-color" content="currentColor" />
-                {/** 
+                {/**
                  * @see https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/?utm_source=lighthouse&utm_medium=devtools
                  */}
                 {/* <meta httpEquiv="Content-Security-Policy" content="script-src 'none'" /> */}
