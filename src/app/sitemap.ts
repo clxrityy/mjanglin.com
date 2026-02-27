@@ -1,16 +1,16 @@
 import { MetadataRoute } from "next";
-import { projects } from "@/config";
+// import { projects } from "@/config";
 import { r2AssetPath } from "@/utils/assets";
 
 export default function sitemap(): MetadataRoute.Sitemap {
 
-    const mappedProjects = () => {
-        return projects.map(project => ({
-            url: project.slug.startsWith("http") ? project.slug : `https://mjanglin.com/projects/dev/${project.slug}`,
-            lastModified: new Date(project.publishedAt),
-            images: [project.mainImage]
-        })) as MetadataRoute.Sitemap
-    }
+    // const mappedProjects = () => {
+    //     return projects.map(project => ({
+    //         url: project.slug.startsWith("http") ? project.slug : `https://mjanglin.com/projects/dev/${project.slug}`,
+    //         lastModified: new Date(project.publishedAt),
+    //         images: [project.mainImage]
+    //     })) as MetadataRoute.Sitemap
+    // }
 
     return [
         {
@@ -104,6 +104,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.25
         },
-        ...mappedProjects(),
+        // ...mappedProjects(),
     ]
 }
