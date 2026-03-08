@@ -3,6 +3,7 @@ import { ImageComponent } from "../ui/ImageComponent";
 import { ICONS } from "@/config";
 import { r2AssetPath } from '@/utils/assets';
 import "@/styles/cards/projectcard.css";
+import { Suspense } from "react";
 
 export function ProjectCard({ project }: Readonly<{ project: Project }>) {
 
@@ -49,6 +50,7 @@ export function ProjectCard({ project }: Readonly<{ project: Project }>) {
             {
                 imageUrl && (
                     <div className="project-card-image flex items-center justify-center w-full">
+											<Suspense fallback={<div className="w-44 h-44 bg-gray-500 rounded-md animate-pulse" />}>
                         <ImageComponent image={{
                             src: imageUrl,
                             alt: title,
@@ -64,6 +66,7 @@ export function ProjectCard({ project }: Readonly<{ project: Project }>) {
                             }
                         }}
                         />
+											</Suspense>
                     </div>
                 )
             }
