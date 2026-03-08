@@ -135,5 +135,14 @@ export const projects: Project[] = [
         preview: "A turbo monorepo with packages for building responsive, customizable, and interactive applications.",
         keywords: ["react", "hooks", "npm", "library", "typescript", "javascript", "monorepo", "turbo", "tailwindcss", "components", "ui", "design system"],
         author: "MJ Anglin",
-    }
+    },
+		{
+			title: "Licensor - Document Management Application",
+			slug: "https://github.com/clxrityy/licensor",
+			publishedAt: "2026-03-08",
+			mainImage: r2AssetPath("assets/licensor_example.gif"),
+			preview: "A desktop app for managing document templates with variable substitution, rendering, and export capabilities.",
+			keywords: ["rust", "tauri", "desktop app", "export", "preview", "templates", "download", "license", "tailwindcss", "typescript"],
+			author: "MJ Anglin",
+		}
 ]
