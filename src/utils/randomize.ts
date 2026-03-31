@@ -1,4 +1,4 @@
-import { Project } from "./types";
+import type { Project } from "./types";
 
 /**
  * Fisher-Yates shuffle algorithm to randomize an array
@@ -6,14 +6,14 @@ import { Project } from "./types";
  * @returns A new shuffled array
  */
 export function shuffleArray<T>(array: T[]): T[] {
-    const shuffled = [...array]; // Create a copy to avoid mutating the original
+	const shuffled = [...array]; // Create a copy to avoid mutating the original
 
-    for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
+	for (let i = shuffled.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+	}
 
-    return shuffled;
+	return shuffled;
 }
 
 /**
@@ -22,7 +22,7 @@ export function shuffleArray<T>(array: T[]): T[] {
  * @returns A new array with projects in random order
  */
 export function randomizeProjects(projects: Project[]): Project[] {
-    return shuffleArray(projects);
+	return shuffleArray(projects);
 }
 
 /**
@@ -31,7 +31,10 @@ export function randomizeProjects(projects: Project[]): Project[] {
  * @param count - Number of projects to return
  * @returns A new array with a random subset of projects
  */
-export function getRandomProjects(projects: Project[], count: number): Project[] {
-    const shuffled = shuffleArray(projects);
-    return shuffled.slice(0, Math.min(count, projects.length));
+export function getRandomProjects(
+	projects: Project[],
+	count: number,
+): Project[] {
+	const shuffled = shuffleArray(projects);
+	return shuffled.slice(0, Math.min(count, projects.length));
 }

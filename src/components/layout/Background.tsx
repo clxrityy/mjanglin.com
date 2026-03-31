@@ -1,5 +1,5 @@
 import "@/styles/layout/background.css";
 
 export function Background() {
-    return <div className="bg" />
+	return <div className="bg" />;
 }

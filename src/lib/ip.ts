@@ -1,21 +1,53 @@
-import axios from 'axios';
-import { URLS } from '../config';
-import { IpGeolocation } from '../utils/types';
-
+import { URLS } from "../config";
+import type { IpGeolocation } from "../utils/types";
 
 export async function fetchIp(): Promise<string> {
-    const { ip } = await axios.get<{ ip: string }>(`${URLS.API.ipify}?format=json`).then(res => res.data);
+	const { ip } = await fetch(`${URLS.API.ipify}?format=json`).then((res) =>
+		res.json(),
+	);
 
-    return ip;
+	return ip;
 }
 
-export async function getLocationByIp(ip: string): Promise<IpGeolocation | undefined> {
-    try {
-        const { query, status, country, countryCode, region, regionName, city, zip, lat, lon, timezone, isp, org, as } = await axios.get<IpGeolocation>(`${URLS.API.ip_api}${ip}`).then(res => res.data);
+export async function getLocationByIp(
+	ip: string,
+): Promise<IpGeolocation | undefined> {
+	try {
+		const {
+			query,
+			status,
+			country,
+			countryCode,
+			region,
+			regionName,
+			city,
+			zip,
+			lat,
+			lon,
+			timezone,
+			isp,
+			org,
+			as,
+		} = await fetch(`${URLS.API.ip_api}${ip}`).then((res) => res.json());
 
-        return { query, status, country, countryCode, region, regionName, city, zip, lat, lon, timezone, isp, org, as };
-    } catch (e) {
-        console.error(e);
-        return undefined;
-    }
+		return {
+			query,
+			status,
+			country,
+			countryCode,
+			region,
+			regionName,
+			city,
+			zip,
+			lat,
+			lon,
+			timezone,
+			isp,
+			org,
+			as,
+		};
+	} catch (e) {
+		console.error(e);
+		return undefined;
+	}
 }

@@ -1,157 +1,155 @@
 /* From Uiverse.io by akshat-patel28 */
 .time-card {
-  min-width: 200px;
-  max-width: 280px;
-  height: 150px;
-  border-radius: 15px;
-  box-shadow: rgb(0, 0, 0, 0.45) 5px 10px 25px, rgb(0, 0, 0, 0.45) -5px 0px 250px;
-  display: flex;
-  color: white;
-  justify-content: center;
-  position: relative;
-  flex-direction: column;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-
-  @apply transition-all duration-300;
+	min-width: 200px;
+	max-width: 280px;
+	height: 150px;
+	border-radius: 15px;
+	box-shadow:
+		rgb(0, 0, 0, 0.45) 5px 10px 25px,
+		rgb(0, 0, 0, 0.45) -5px 0px 250px;
+	display: flex;
+	color: white;
+	justify-content: center;
+	position: relative;
+	flex-direction: column;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+	overflow: hidden;
 }
 
 .time-text {
-  font-size: 50px;
-  margin-top: 0px;
-  margin-left: 15px;
-  font-weight: 600;
+	font-size: 50px;
+	margin-top: 0px;
+	margin-left: 15px;
+	font-weight: 600;
 }
 
 .time-sub-text {
-  font-size: 15px;
-  margin-left: 5px;
+	font-size: 15px;
+	margin-left: 5px;
 }
 
 .day-text {
-  font-size: 18px;
-  margin-top: 0px;
-  margin-left: 15px;
-  font-weight: 500;
+	font-size: 18px;
+	margin-top: 0px;
+	margin-left: 15px;
+	font-weight: 500;
 }
 
 .clock-icon {
-  font-size: 20px;
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  transition: all 0.3s ease-in-out;
+	font-size: 20px;
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	transition: all 0.3s ease-in-out;
 }
 
-.time-card:hover>.clock-icon {
-  font-size: 23px;
+.time-card:hover > .clock-icon {
+	font-size: 23px;
 }
 
 .morning-gradient {
-  background: #FF5F6D;
-  background: linear-gradient(to right,
-      #FF5F6D, #FFC371);
-  width: 100%;
-  height: 100%;
+	background: #ff5f6d;
+	background-image: linear-gradient(to right, #ff5f6d, #ffc371);
+	width: 100%;
+	height: 100%;
 }
 
 .day-gradient {
-  background: #56cbf288;
-  background: linear-gradient(to right,
-      #56cbf29e, #2F80ED);
+	background: #56cbf288;
+	background-image: linear-gradient(to right, #56cbf29e, #2f80ed);
 }
 
 .afternoon-gradient {
-  background: #ffcd6ab7;
-  background: linear-gradient(to right,
-      #7583c15e, #c9af68);
+	background: #ffcd6ab7;
+	background-image: linear-gradient(to right, #7583c15e, #c9af68);
 }
 
 .evening-gradient {
-  background: #f7b633b0;
-  background: linear-gradient(to right,
-      #f7b633ad, #fc4b1a73);
+	background: #f7b633b0;
+	background-image: linear-gradient(to right, #f7b633ad, #fc4b1a73);
 }
 
 .night-gradient {
-  background: #141E30;
-  background: linear-gradient(to right,
-      #141E30, #243B55);
+	background: #141e30;
+	background-image: linear-gradient(to right, #141e30, #243b55);
 }
 
 .clock {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border: 2px solid rgb(17, 8, 8);
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-  background: #fefbf2;
-  transform: translate(-50%, -50%);
-  box-shadow: inset 0px 0px 2px rgb(39, 60, 73);
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	border: 2px solid rgb(17, 8, 8);
+	border-radius: 50%;
+	left: 50%;
+	top: 50%;
+	background: #fefbf2;
+	transform: translate(-50%, -50%);
+	box-shadow: inset 0px 0px 2px rgb(39, 60, 73);
 }
 
 .clock::before {
-  position: absolute;
-  content: '';
-  height: 10px;
-  width: 1px;
-  background: rgb(39, 60, 73);
-  top: 50%;
-  left: calc(50% - 0.5px);
-  border-radius: 0.5px;
-  animation: spin 6s linear infinite;
-  transform-origin: top;
+	position: absolute;
+	content: "";
+	height: 10px;
+	width: 1px;
+	background: rgb(39, 60, 73);
+	top: 50%;
+	left: calc(50% - 0.5px);
+	border-radius: 0.5px;
+	animation: spin 6s linear infinite;
+	transform-origin: top;
 }
 
 .clock::after {
-  position: absolute;
-  content: '';
-  height: 8px;
-  width: 1px;
-  background: rgb(39, 60, 73);
-  top: 50%;
-  left: calc(50% - 0.5px);
-  border-radius: 0.5px;
-  animation: spin 72s linear infinite;
-  transform-origin: top;
+	position: absolute;
+	content: "";
+	height: 8px;
+	width: 1px;
+	background: rgb(39, 60, 73);
+	top: 50%;
+	left: calc(50% - 0.5px);
+	border-radius: 0.5px;
+	animation: spin 72s linear infinite;
+	transform-origin: top;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(-180deg);
-  }
+	0% {
+		transform: rotate(-180deg);
+	}
 
-  100% {
-    transform: rotate(180deg);
-  }
+	100% {
+		transform: rotate(180deg);
+	}
 }
 
 .clock-container::before {
-  content: '';
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: black;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+	content: "";
+	position: absolute;
+	width: 2px;
+	height: 2px;
+	border-radius: 50%;
+	background: black;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
 }
 
 .clock-container::after {
-  content: '';
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  border-radius: 50%;
-  background: rgb(39, 60, 73);
-  left: 50%;
-  top: calc(50% - 12px);
-  z-index: 2;
-  transform: translateX(-50%);
-  box-shadow: 12px 12px 0 0 rgb(39, 60, 73), -12px 12px 0 0 rgb(39, 60, 73), 0 24px 0 0 rgb(39, 60, 73);
+	content: "";
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	border-radius: 50%;
+	background: rgb(39, 60, 73);
+	left: 50%;
+	top: calc(50% - 12px);
+	z-index: 2;
+	transform: translateX(-50%);
+	box-shadow:
+		12px 12px 0 0 rgb(39, 60, 73),
+		-12px 12px 0 0 rgb(39, 60, 73),
+		0 24px 0 0 rgb(39, 60, 73);
 }
