@@ -1,7 +1,9 @@
 "use client";
 
 import { MDXProvider } from "@mdx-js/react";
-import Content from "./content.mdx";
+import dynamic from "next/dynamic";
+
+const Content = dynamic(() => import("./content.mdx"));
 
 export default function Page() {
 	return (
