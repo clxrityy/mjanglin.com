@@ -8,7 +8,7 @@ export const runtime = "nodejs"; // Using AWS SDK v3 Node adapter
 
 // Next.js route handler context generic typing
 export async function GET(
-	_: NextRequest,
+	_req: NextRequest,
 	context: Promise<{ params: Promise<{ key: string[] }> }>,
 ) {
 	const { params } = await context;
