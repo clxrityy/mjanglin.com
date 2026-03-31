@@ -9,7 +9,8 @@ export const runtime = "nodejs"; // Using AWS SDK v3 Node adapter
 // Next.js route handler context generic typing
 export async function GET(
 	_req: NextRequest,
-	context: Promise<{ params: Promise<{ key: string[] }> }>,
+	// biome-ignore lint/suspicious/noExplicitAny: Next.js route handler context typing is not well-defined, using any for now
+	context: any,
 ) {
 	const { params } = await context;
 	const bucket = process.env.R2_BUCKET_NAME;
