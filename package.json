@@ -56,7 +56,6 @@
 			"@tailwindcss/oxide",
 			"@vercel/speed-insights",
 			"esbuild",
-			"plain-crypto-js",
 			"sharp",
 			"unrs-resolver"
 		]
