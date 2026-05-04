@@ -1,6 +1,6 @@
-import { Clock } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
+import { FaClock } from "react-icons/fa";
 import { AllProjectsBtn } from "@/components/buttons/AllProjectsBtn";
 import { DescriptionCard } from "@/components/cards/DescriptionCard";
 import { MusicCard } from "@/components/cards/MusicCard";
@@ -20,7 +20,7 @@ const Projects = dynamic(
 const TimeCard = dynamic(
 	() => import("@/components/cards/TimeCard").then((mod) => mod.TimeCard),
 	{
-		loading: () => <Clock className="animate-spin" />,
+		loading: () => <FaClock className="animate-spin" />,
 	},
 );
 
@@ -35,7 +35,7 @@ export default async function Page() {
 								<HeroCard />
 								<div className="flex flex-col w-1/3 items-center justify-start pb-22 gap-20 2xl:pb-20 lg:pb-10 lg:pt-10">
 									<ErrorBoundary>
-										<Suspense fallback={<Clock className="animate-spin" />}>
+										<Suspense fallback={<FaClock className="animate-spin" />}>
 											<TimeCard />
 										</Suspense>
 									</ErrorBoundary>

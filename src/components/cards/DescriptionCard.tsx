@@ -7,7 +7,7 @@ export function DescriptionCard() {
 	return (
 		/* From Uiverse.io by gharsh11032000 */
 		<div
-			className={`desc-card ${exo.className} font-medium text-base grayscale-[50%] scale-[0.85] sm:scale-90 md:scale-100`}
+			className={`desc-card ${exo.className} font-medium text-base grayscale-50 scale-[0.85] sm:scale-90 md:scale-100`}
 		>
 			<div className="content">
 				<ImageComponent
