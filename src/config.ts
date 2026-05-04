@@ -296,5 +296,5 @@ export const projects: Project[] = [
 			"developer tools",
 		],
 		author: "MJ Anglin",
-	}
+	},
 ];
