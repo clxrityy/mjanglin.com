@@ -281,7 +281,7 @@ export const projects: Project[] = [
 		title: "Bonds - Create and manage symlinks between files and directories",
 		slug: "https://bonds.fyi/latest",
 		publishedAt: "2026-05-03",
-		mainImage: r2AssetPath("assets/bonds.png"),
+		mainImage: r2AssetPath("assets/bonds-v017.png"),
 		preview:
 			"A command-line tool for creating and managing symlinks between files and directories, with a focus on simplicity and ease of use.",
 		keywords: [
