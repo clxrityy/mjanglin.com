@@ -60,12 +60,6 @@ const nextConfig = {
 				statusCode: 302,
 			},
 			{
-				source: "/the-undertow",
-				destination: "https://distrokid.com/hyperfollow/clxrity/the-undertow",
-				permanent: true,
-				statusCode: 302,
-			},
-			{
 				source: "/discord",
 				destination: "https://discord.gg/RnwJEdsmy2",
 				permanent: true,
