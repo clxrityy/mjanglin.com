@@ -101,6 +101,30 @@ const nextConfig = {
 				permanent: true,
 				statusCode: 302,
 			},
+			{
+				source: "/shop",
+				destination: "https://ko-fi.com/clxrity/shop",
+				permanent: true,
+				statusCode: 302,
+			},
+			{
+				source: "/donate",
+				destination: "https://ko-fi.com/clxrity",
+				permanent: true,
+				statusCode: 302,
+			},
+			{
+				source: "/tip",
+				destination: "https://ko-fi.com/clxrity",
+				permanent: true,
+				statusCode: 302,
+			},
+			{
+				source: "/paypal",
+				destination: "https://paypal.me/mjanglin",
+				permanent: true,
+				statusCode: 302,
+			}
 		];
 	},
 };
