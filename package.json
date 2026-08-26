@@ -49,14 +49,5 @@
 		"tailwindcss": "^4.3.0",
 		"typescript": "^6.0.3"
 	},
-	"packageManager": "pnpm@10.33.3",
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@tailwindcss/oxide",
-			"@vercel/speed-insights",
-			"esbuild",
-			"sharp",
-			"unrs-resolver"
-		]
-	}
+	"packageManager": "pnpm@11.24.0"
 }
