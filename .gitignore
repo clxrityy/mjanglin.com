@@ -42,3 +42,5 @@ __archive__
 test.md
 .hintrc
 _assets/*
+
+.idea/
