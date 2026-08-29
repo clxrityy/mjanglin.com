@@ -116,7 +116,7 @@ export function CrateLootCommands() {
 	return (
 		<div className="flex flex-col items-center justify-center gap-2 w-full">
 			<div className="w-fit">
-				<table className="w-2/3 border border-gray-300 rounded-md overflow-hidden">
+				<table className="w-full lg:w-2/3 border border-gray-300 rounded-md overflow-auto text-xs md:text-sm lg:text-base">
 					<thead className="">
 						<tr className="">
 							<th>Command</th>
