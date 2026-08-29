@@ -47,7 +47,8 @@
 		"mime": "^4.1.0",
 		"postcss": "^8.5.14",
 		"tailwindcss": "^4.3.0",
-		"typescript": "^6.0.3"
+		"typescript": "^6.0.3",
+		"vercel": "^59.6.2"
 	},
 	"packageManager": "pnpm@11.24.0"
 }
