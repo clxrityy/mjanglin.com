@@ -115,8 +115,8 @@ export function SupportedPlugins() {
 export function CrateLootCommands() {
 	return (
 		<div className="flex flex-col items-center justify-center gap-2 w-full">
-			<div className="w-fit">
-				<table className="w-full lg:w-2/3 border border-gray-300 rounded-md overflow-auto text-xs md:text-sm lg:text-base">
+			<div className="w-full">
+				<table className="w-5/7 md:w-6/7 lg:w-2/3 border border-gray-300 rounded-md overflow-auto text-xs lg:text-sm xl:text-base">
 					<thead className="">
 						<tr className="">
 							<th>Command</th>
@@ -214,4 +214,21 @@ export function CrateLootDownload() {
 			</Link>
 		</div>
 	)
+}
+
+export function CrateLootStatusImage() {
+	return (
+		<ImageComponent
+			image={{
+				src: r2AssetPath("assets/crateloot-status.png"),
+				alt: "CrateLoot Status",
+				width: 2220,
+				height: 764,
+				className: "rounded-sm w-auto h-auto",
+				unoptimized: true,
+				placeholder: "blur",
+				blurDataURL: r2AssetPath("assets/blur-loading-img.png"),
+			}}
+		/>
+	);
 }
