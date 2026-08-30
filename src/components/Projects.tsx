@@ -30,7 +30,7 @@ export function Projects({ projects }: Readonly<Props>) {
 		<div className="flex flex-col gap-6 items-center justify-center w-full">
 			<div className="w-max grid grid-cols-1 md:grid-cols-2 items-center justify-center 2xl:justify-between mb-20 gap-16 2xl:gap-20 lg:mt-10 lg:-mx-10">
 				{projectsToShow.map((project) => (
-					<ProjectCard key={project.slug} project={project} />
+					<ProjectCard key={Math.random()} project={project} />
 				))}
 			</div>
 		</div>
