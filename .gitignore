@@ -44,3 +44,5 @@ test.md
 _assets/*
 
 .idea/
+
+*lock*
