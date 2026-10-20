@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useCallback, useLayoutEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { exo } from "@/styles/fonts";
 import "@/styles/cards/timecard.css";
 
@@ -21,40 +21,70 @@ function determineTimeGradient(time: Date) {
 }
 
 export function TimeCard() {
-	const [time, setTime] = useState<Date>(new Date());
+	const [time, setTime] = useState<Date | null>(null);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
+		setTime(new Date());
+
 		const interval = setInterval(() => {
 			setTime(new Date());
 		}, 1000);
+
 		return () => clearInterval(interval);
 	}, []);
 
-	const getHours = () => time.toLocaleTimeString().split(":")[0];
-	const getMinutes = () => time.toLocaleTimeString().split(":")[1];
-	const getAmOrPm = () => time.toLocaleTimeString().split(" ")[1];
+	const timeParts = useMemo(() => {
+		if (!time) {
+			return {
+				hours: "--",
+				minutes: "--",
+				dayPeriod: "--",
+			};
+		}
 
-	const getDateString = useCallback(() => {
-		return time.toLocaleDateString("en-US", {});
+		const parts = new Intl.DateTimeFormat("en-US", {
+			hour: "numeric",
+			minute: "2-digit",
+			hour12: true,
+		}).formatToParts(time);
+
+		return {
+			hours: parts.find((part) => part.type === "hour")?.value ?? "--",
+			minutes: parts.find((part) => part.type === "minute")?.value ?? "--",
+			dayPeriod:
+				parts.find((part) => part.type === "dayPeriod")?.value?.toUpperCase() ??
+				"--",
+		};
 	}, [time]);
+
+	const dateString = time
+		? new Intl.DateTimeFormat("en-US").format(time)
+		: "--/--/----";
+
+	const timeGradient = time ? determineTimeGradient(time) : "night-gradient";
+	const isoDateTime = time ? time.toISOString() : undefined;
 
 	return (
 		<Link
 			prefetch={false}
 			href={`/weather`}
-			className={`time-card hover:scale-110 transition-transform ${determineTimeGradient(time)} ${exo.className} w-full px-0 sm:px-4 py-3 saturate-[0.75]`}
+			className={`time-card hover:scale-110 transition-transform ${timeGradient} ${exo.className} w-full px-0 sm:px-4 py-3 saturate-[0.75]`}
 		>
 			<p className="time-text">
-				<span>{`${getHours()} : ${getMinutes()}`}</span>
-				<span className="time-sub-text hidden md:block">{getAmOrPm()}</span>
+				<span>{`${timeParts.hours} : ${timeParts.minutes}`}</span>
+				<span className="time-sub-text hidden md:block">
+					{timeParts.dayPeriod}
+				</span>
 			</p>
-			<p className="day-text">{getDateString()}</p>
+			<p className="day-text">{dateString}</p>
 			<div className="clock-icon mt-1 px-2 my-16 hidden lg:block">
 				<div className="clock-container">
 					<div className="clock" />
 				</div>
 			</div>
-			<time dateTime={time.toString()} suppressHydrationWarning />
+			<time dateTime={isoDateTime} className="sr-only">
+				{dateString}
+			</time>
 		</Link>
 	);
 }
