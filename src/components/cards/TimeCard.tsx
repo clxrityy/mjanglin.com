@@ -7,16 +7,17 @@ import "@/styles/cards/timecard.css";
 function determineTimeGradient(time: Date) {
 	const hours = time.getHours();
 
-	if (hours >= 0 && hours < 6) {
-		return "morning-gradient";
-	} else if (hours >= 6 && hours < 12) {
-		return "day-gradient";
-	} else if (hours >= 12 && hours < 14) {
-		return "afternoon-gradient";
-	} else if (hours >= 14 && hours < 18) {
-		return "evening-gradient";
-	} else {
-		return "night-gradient";
+	switch (true) {
+		case hours >= 0 && hours <= 4:
+			return "night-gradient";
+		case hours >= 5 && hours < 11:
+			return "morning-gradient";
+		case hours >= 12 && hours < 15:
+			return "afternoon-gradient";
+		case hours >= 15 && hours < 18:
+			return "evening-gradient";
+		default:
+			return "night-gradient";
 	}
 }
 
