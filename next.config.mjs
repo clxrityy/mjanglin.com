@@ -8,15 +8,7 @@ const nextConfig = {
 		remotePatterns: [
 			{
 				protocol: "https",
-				hostname: "i.gyazo.com",
-			},
-			{
-				protocol: "https",
 				hostname: "github.com",
-			},
-			{
-				protocol: "https",
-				hostname: "media2.dev.to",
 			},
 			{
 				protocol: "https",
@@ -25,10 +17,6 @@ const nextConfig = {
 			{
 				protocol: "https",
 				hostname: "flagsapi.com",
-			},
-			{
-				protocol: "https",
-				hostname: "i.scdn.co",
 			},
 			{
 				protocol: "https",
