@@ -3,6 +3,7 @@
 import Image, { type ImageProps } from "next/image";
 import { useState } from "react";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { cn } from "@/lib/cn";
 
 export const ImageComponent = (props: {
 	image: Omit<ImageProps, "width" | "height" | "alt"> & {
@@ -13,22 +14,27 @@ export const ImageComponent = (props: {
 	className?: string;
 }) => {
 	const [loading, setLoading] = useState(true);
+	const { image, className } = props;
+	const { onLoad, className: imageClassName, ...imageProps } = image;
 
 	return (
 		<div className="relative w-full flex items-center justify-center">
 			{loading && (
 				<Skeleton
 					size={{
-						width: props.image.width,
-						height: props.image.height,
+						width: image.width,
+						height: image.height,
 					}}
 				/>
 			)}
 			<Image
-				{...props.image}
-				className={props.className}
-				alt={props.image.alt}
-				onLoad={() => setLoading(false)}
+				{...imageProps}
+				className={cn(imageClassName, className)}
+				alt={image.alt}
+				onLoad={(event) => {
+					setLoading(false);
+					onLoad?.(event);
+				}}
 			/>
 		</div>
 	);
