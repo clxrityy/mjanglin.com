@@ -57,8 +57,8 @@ export function ProjectCard({ project }: Readonly<{ project: Project }>) {
 							image={{
 								src: imageUrl,
 								alt: title,
-								width: 175,
-								height: 175,
+								width: 400,
+								height: 400,
 								className: `rounded-md w-fit project-card-actual-image`,
 								placeholder: "blur",
 								blurDataURL: r2AssetPath("assets/blur-loading-img.png"),

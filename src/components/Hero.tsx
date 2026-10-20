@@ -23,7 +23,7 @@ export function HeroCard() {
 					className="icon filter drop-shadow bg-blend-overlay mix-blend-darken"
 					priority
 				/>
-				<p className="font-bold">Developer & Creator</p>
+				<p className="font-bold">Network Developer</p>
 				<div className="name">mjanglin</div>
 			</div>
 			<SocialsMenu />

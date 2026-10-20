@@ -21,9 +21,9 @@ export function DescriptionCard() {
 					}}
 				/>
 				<ul className="para gap-2 flex flex-col items-center justify-center w-full">
-					<li>Network specialist who loves to code and create.</li>
+					<li>Network specialist who loves creating and innovating.</li>
 					<li>
-						I build websites and applications that interact with the world.
+						I articulate and maintain networks, applications, and software that interact with the world.
 					</li>
 				</ul>
 				<div className="w-full flex items-center justify-center">
