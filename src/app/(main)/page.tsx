@@ -6,16 +6,8 @@ import { DescriptionCard } from "@/components/cards/DescriptionCard";
 import { MusicCard } from "@/components/cards/MusicCard";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { HeroCard } from "@/components/Hero";
+import { Projects } from "@/components/Projects";
 import { projects } from "@/config";
-
-const Projects = dynamic(
-	() => import("@/components/Projects").then((mod) => mod.Projects),
-	{
-		loading: () => (
-			<div className="w-full bg-gray-500 h-full rounded-lg animate-pulse" />
-		),
-	},
-);
 
 const TimeCard = dynamic(
 	() => import("@/components/cards/TimeCard").then((mod) => mod.TimeCard),
@@ -23,6 +15,8 @@ const TimeCard = dynamic(
 		loading: () => <FaClock className="animate-spin" />,
 	},
 );
+
+export const revalidate = 3600;
 
 export default async function Page() {
 	return (

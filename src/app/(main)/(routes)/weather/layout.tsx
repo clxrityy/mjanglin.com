@@ -13,6 +13,8 @@ async function getStaticProps() {
 }
 
 export async function generateMetadata() {
+	await connection();
+
 	const {
 		props: { ip },
 	} = await getStaticProps();

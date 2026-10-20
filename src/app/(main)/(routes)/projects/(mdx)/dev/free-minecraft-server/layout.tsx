@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MdxPostContainer from "@/components/layout/ProjectContainer";
 import { findProject } from "@/utils/findProject";
 
-const project = findProject("Host a Minecraft server for free");
+const project = findProject("dev/free-minecraft-server");
 
 export async function generateMetadata(): Promise<Metadata> {
 	return {

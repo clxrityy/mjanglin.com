@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import MdxPostContainer from "@/components/layout/ProjectContainer";
 import { findProject } from "@/utils/findProject";
 
-const project = findProject(
-	"A website for displaying and downloading audio files",
-);
+const project = findProject("dev/clxrity-xyz");
 
 export async function generateMetadata(): Promise<Metadata> {
 	return {

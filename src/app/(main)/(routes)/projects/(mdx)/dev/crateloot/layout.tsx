@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MdxPostContainer from "@/components/layout/ProjectContainer";
 import { findProject } from "@/utils/findProject";
 
-const project = findProject("CrateLoot");
+const project = findProject("dev/crateloot");
 
 export async function generateMetadata(): Promise<Metadata> {
 	return {

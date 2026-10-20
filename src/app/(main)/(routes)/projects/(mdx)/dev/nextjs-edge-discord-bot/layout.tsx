@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MdxPostContainer from "@/components/layout/ProjectContainer";
 import { findProject } from "@/utils/findProject";
 
-const project = findProject("How to host a Discord bot");
+const project = findProject("dev/nextjs-edge-discord-bot");
 
 export async function generateMetadata(): Promise<Metadata> {
 	return {
