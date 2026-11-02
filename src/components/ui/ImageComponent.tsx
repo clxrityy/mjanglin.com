@@ -29,6 +29,7 @@ export const ImageComponent = (props: {
 			)}
 			<Image
 				{...imageProps}
+				unoptimized
 				className={cn(imageClassName, className)}
 				alt={image.alt}
 				onLoad={(event) => {
