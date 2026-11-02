@@ -3,58 +3,30 @@ import "@/styles/buttons/socials.css";
 import Link from "next/link";
 import { FaDiscord, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
+const SOCIALS = [
+	{ label: "linkedin", href: URLS.linkedin, Icon: FaLinkedin },
+	{ label: "github", href: URLS.github, Icon: FaGithub },
+	{ label: "instagram", href: URLS.instagram, Icon: FaInstagram },
+	{ label: "discord", href: URLS.discord, Icon: FaDiscord },
+] as const;
+
 export function SocialsMenu() {
 	return (
 		/* From Uiverse.io by akshat-patel28 */
 		<div className="socials-button-container z-50">
-			<button type="button" className="socials-button" aria-label="spotify">
+			{SOCIALS.map(({ label, href, Icon }) => (
 				<Link
-					href={URLS.linkedin}
+					key={label}
+					href={href}
 					prefetch={false}
 					rel="noopener noreferrer"
 					target="_blank"
-					className="text-inherit hover:text-inherit"
-					aria-label="spotify"
+					className="socials-button text-inherit hover:text-inherit"
+					aria-label={label}
 				>
-					<FaLinkedin className="socials-icon" />
+					<Icon className="socials-icon" aria-hidden="true" />
 				</Link>
-			</button>
-			<button type="button" className="socials-button" aria-label="github">
-				<Link
-					href={URLS.github}
-					prefetch={false}
-					rel="noopener noreferrer"
-					target="_blank"
-					className="text-inherit hover:text-inherit"
-					aria-label="github"
-				>
-					<FaGithub className="socials-icon" />
-				</Link>
-			</button>
-			<button type="button" className="socials-button" aria-label="instagram">
-				<Link
-					href={URLS.instagram}
-					prefetch={false}
-					rel="noopener noreferrer"
-					target="_blank"
-					className="text-inherit hover:text-inherit"
-					aria-label="instagram"
-				>
-					<FaInstagram className="socials-icon" />
-				</Link>
-			</button>
-			<button type="button" className="socials-button" aria-label="discord">
-				<Link
-					href={URLS.discord}
-					prefetch={false}
-					rel="noopener noreferrer"
-					target="_blank"
-					className="text-inherit hover:text-inherit"
-					aria-label="discord"
-				>
-					<FaDiscord className="socials-icon" />
-				</Link>
-			</button>
+			))}
 		</div>
 	);
 }

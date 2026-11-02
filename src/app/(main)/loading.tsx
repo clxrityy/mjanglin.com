@@ -1,6 +1,6 @@
 export default function Loading() {
 	return (
-		<main className="max-h-screen w-full z-20 h-full">
+		<div className="max-h-screen w-full z-20 h-full">
 			<div className="mx-auto w-full max-h-screen h-full bg-fixed">
 				<div className="grid grid-flow-row 2xl:grid-flow-col w-full items-center 2xl:justify-stretch gap-10 lg:gap-20 xl:gap-40 max-h-screen h-full">
 					{/* Left Side */}
@@ -31,6 +31,6 @@ export default function Loading() {
 					</div>
 				</div>
 			</div>
-		</main>
+		</div>
 	);
 }

@@ -3,6 +3,7 @@
 const nextConfig = {
 	experimental: {
 		mdxRs: true,
+		inlineCss: true,
 	},
 	images: {
 		remotePatterns: [
@@ -25,6 +26,8 @@ const nextConfig = {
 		],
 	},
 	pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+	// Keep <meta> in <head> for dynamic routes (e.g. /weather) so SEO audits see it
+	htmlLimitedBots: /.*/,
 	async headers() {
 		return [
 			{

@@ -1,5 +1,5 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Background } from "@/components/layout/Background";
 import { exo } from "@/styles/fonts";
@@ -76,6 +76,11 @@ export const metadata: Metadata = {
 	},
 };
 
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+};
+
 export default async function RootLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -83,10 +88,6 @@ export default async function RootLayout({
 		<html lang="en" data-scroll-behavior="smooth">
 			<head>
 				<link rel="icon" href="/favicon.ico" />
-				<meta
-					name="viewport"
-					content="width=device-width, initial-scale=1, user-scalable=0"
-				/>
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
@@ -106,14 +107,12 @@ export default async function RootLayout({
 				/>
 				<link rel="manifest" href="/site.webmanifest" />
 				<meta name="mobile-web-app-capable" content="yes" />
-				<meta content="width=device-width, initial-scale=1" name="viewport" />
-				<meta name="theme-color" content="currentColor" />
 				{/**
 				 * @see https://developer.chrome.com/docs/lighthouse/best-practices/csp-xss/?utm_source=lighthouse&utm_medium=devtools
 				 */}
 				{/* <meta httpEquiv="Content-Security-Policy" content="script-src 'none'" /> */}
 				<Script
-					strategy="afterInteractive"
+					strategy="lazyOnload"
 					src={`https://www.googletagmanager.com/gtag/js?id=${CONSTANTS.GOOGLE_ANALYTICS_ID}`}
 				/>
 				<meta property="og:url" content="https://mjanglin.com" />
@@ -135,11 +134,11 @@ export default async function RootLayout({
 
 			<body className={`${exo.variable}`}>
 				{/* <Navbar /> */}
-				<div className="w-full h-full relative z-10 max-w-screen overflow-y-scroll">
+				<main className="w-full h-full relative z-10 max-w-screen overflow-y-scroll">
 					{children}
-				</div>
+				</main>
 				<Background />
-				<Script id="google-analytics" strategy="afterInteractive">
+				<Script id="google-analytics" strategy="lazyOnload">
 					{`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

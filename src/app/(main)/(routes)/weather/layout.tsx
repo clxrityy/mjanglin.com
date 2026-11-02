@@ -22,6 +22,7 @@ export async function generateMetadata() {
 
 	return {
 		title: `Weather in ${city}`,
+		description: `Current weather and forecast for ${city}`,
 	};
 }
 

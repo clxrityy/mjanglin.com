@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ICONS } from "@/config";
 
 const {
@@ -20,41 +19,45 @@ export default function Page() {
 				</header>
 				<ul className="flex flex-row items-center gap-8 list-none text-5xl h-full">
 					<li>
-						<Link
+						<a
 							href={"/spotify"}
 							title="Spotify"
+							aria-label="Spotify"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:scale-125 transition-all duration-150 hover:text-[#1DB954] hover:drop-shadow-[0_0_4px_rgba(0,0,0,0.4)] focus:invert-25"
 						>
-							<Spotify />
-						</Link>
+							<Spotify aria-hidden="true" />
+						</a>
 					</li>
 					<li>
-						<Link
+						<a
 							href={"/soundcloud"}
 							title="Soundcloud"
+							aria-label="Soundcloud"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:scale-125 transition-all duration-150 hover:text-[#FF5500] hover:drop-shadow-[0_0_4px_rgba(0,0,0,0.4)] focus:invert-25"
 						>
-							<Soundcloud />
-						</Link>
+							<Soundcloud aria-hidden="true" />
+						</a>
 					</li>
 					<li>
-						<Link
+						<a
 							href={"/apple-music"}
 							title="Apple Music"
+							aria-label="Apple Music"
 							target="_blank"
 							rel="noopener noreferrer"
 							className="hover:scale-125 transition-all duration-150 hover:text-[rgb(232,81,96)] hover:drop-shadow-[0_0_4px_rgba(0,0,0,0.4)] focus:invert-25"
 						>
-							<AppleMusic />
-						</Link>
+							<AppleMusic aria-hidden="true" />
+						</a>
 					</li>
 					<li>
 						<a
 							title="YouTube Music"
+							aria-label="YouTube Music"
 							target="_blank"
 							rel="noopener noreferrer"
 							href={
@@ -62,7 +65,7 @@ export default function Page() {
 							}
 							className="hover:scale-125 transition-all duration-150 hover:text-[#FF0000] hover:drop-shadow-[0_0_4px_rgba(0,0,0,0.4)] focus:invert-25"
 						>
-							<YouTubeMusic />
+							<YouTubeMusic aria-hidden="true" />
 						</a>
 					</li>
 				</ul>

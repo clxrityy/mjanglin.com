@@ -13,14 +13,6 @@ const METRIC_THRESHOLDS: Record<
 	LCP: { good: 2500, medium: 4000, max: 6000 },
 	CLS: { good: 0.1, medium: 0.25, max: 1 },
 };
-function Spinner() {
-	return (
-		<div className="flex items-center justify-center p-8 w-screen h-screen">
-			<div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
-		</div>
-	);
-}
-
 function renderMetricValue(metric: MetricDisplay, loading: boolean) {
 	if (metric.value !== null) {
 		return (
@@ -163,8 +155,6 @@ export default function Page() {
 			clearTimeout(timeout);
 		};
 	}, []);
-
-	if (loading) return <Spinner />;
 
 	return (
 		<div className="p-6">
