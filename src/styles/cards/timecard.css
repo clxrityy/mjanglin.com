@@ -13,7 +13,10 @@
 	position: relative;
 	flex-direction: column;
 	cursor: pointer;
-	transition: all 0.3s ease-in-out;
+	transition:
+		scale 0.6s var(--ease-smooth),
+		transform 0.6s var(--ease-smooth),
+		box-shadow 0.6s var(--ease-smooth);
 	overflow: hidden;
 }
 
@@ -152,4 +155,50 @@
 		12px 12px 0 0 rgb(39, 60, 73),
 		-12px 12px 0 0 rgb(39, 60, 73),
 		0 24px 0 0 rgb(39, 60, 73);
+}
+
+/* Compact time card (phone home screen) */
+.time-mini {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	height: 3.5rem;
+	padding: 0 0.9rem;
+	border-radius: 15px;
+	color: white;
+	filter: saturate(0.75);
+	box-shadow: rgb(0 0 0 / 0.45) 3px 6px 16px;
+	transition:
+		transform 0.5s var(--ease-smooth),
+		box-shadow 0.5s var(--ease-smooth);
+}
+
+.time-mini:active {
+	transform: scale(0.97);
+}
+
+.time-mini-clock {
+	position: relative;
+	flex-shrink: 0;
+	width: 1.75rem;
+	height: 1.75rem;
+}
+
+.time-mini-text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.15;
+	min-width: 0;
+}
+
+.time-mini-time {
+	font-size: 1.15rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.time-mini-date {
+	font-size: 0.72rem;
+	opacity: 0.85;
+	white-space: nowrap;
 }

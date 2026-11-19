@@ -7,7 +7,7 @@ export function DescriptionCard() {
 	return (
 		/* From Uiverse.io by gharsh11032000 */
 		<div
-			className={`desc-card ${exo.className} font-medium text-base grayscale-50 scale-[0.85] sm:scale-90 md:scale-100`}
+			className={`desc-card ${exo.className} font-medium text-base grayscale-50`}
 		>
 			<div className="content">
 				<ImageComponent
@@ -23,7 +23,8 @@ export function DescriptionCard() {
 				<ul className="para gap-2 flex flex-col items-center justify-center w-full">
 					<li>Network specialist who loves creating and innovating.</li>
 					<li>
-						I articulate and maintain networks, applications, and software that interact with the world.
+						I articulate and maintain networks, applications, and software that
+						interact with the world.
 					</li>
 				</ul>
 				<div className="w-full flex items-center justify-center">

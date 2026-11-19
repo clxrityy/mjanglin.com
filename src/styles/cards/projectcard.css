@@ -1,91 +1,182 @@
-/* From Uiverse.io by Sashank02 */
+@property --edge-glow {
+	syntax: "<color>";
+	inherits: true;
+	initial-value: rgb(255 255 255 / 0.28);
+}
+
+/* Originally from Uiverse.io by Sashank02, now a frosted lens: the faint network
+ * behind the page shows through softly, and the colour lives on the rim. */
 .project-card {
-	padding: 20px;
-	width: fit-content;
-	min-width: 280px;
-	max-width: 320px;
-	min-height: 370px;
-	border-radius: 20px;
-	background: #212121;
-	box-shadow:
-		5px 5px 8px #1b1b1b,
-		-5px -5px 8px #7c8cd22f;
-	transition: 0.4s;
-	height: fit-content;
+	--glass-tint: 255 255 255;
+	--edge-glow: rgb(255 255 255 / 0.28);
+	--edge-color: 118 104 160;
+	--lens-hue: 32deg;
+	--lens-light: 1.9;
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	position: relative;
+	gap: 0.75rem;
+	width: 100%;
+	height: 100%;
+	min-height: 370px;
+	padding: 20px;
+	border-radius: 20px;
+	background:
+		radial-gradient(
+			120% 80% at 0% 0%,
+			rgb(var(--glass-tint) / 0.05),
+			transparent 60%
+		),
+		linear-gradient(
+			160deg,
+			rgb(var(--glass-tint) / 0.035),
+			rgb(var(--glass-tint) / 0.008)
+		);
+	/* Just enough lift and tint that the lines read as seen through glass.
+	 * Unprefixed only: the build adds -webkit- for Safari, and writing both
+	 * makes it keep just the prefixed one, which Chrome ignores. */
+	backdrop-filter: blur(2.5px) brightness(var(--lens-light)) saturate(1.15)
+		hue-rotate(var(--lens-hue));
+	box-shadow:
+		0 18px 40px -22px rgb(0 0 0 / 0.75),
+		inset 0 1px 0 rgb(255 255 255 / 0.08),
+		inset 0 0 24px -8px rgb(var(--edge-color) / 0.2);
+	transition:
+		transform 0.5s var(--ease-smooth),
+		box-shadow 0.5s var(--ease-smooth),
+		backdrop-filter 0.6s var(--ease-smooth),
+		--edge-glow 0.5s var(--ease-smooth);
 	overflow: hidden;
 	cursor: pointer;
 }
 
+/* External projects lean teal instead of violet */
 .external {
-	background: #191c23;
-	box-shadow:
-		5px 5px 8px #1f2020,
-		-5px -5px 8px #1f1f1f;
-	border: 2px solid #333333;
+	--glass-tint: 150 180 255;
+	--edge-color: 82 128 140;
+	--lens-hue: -38deg;
 }
 
-.external:hover {
-	box-shadow:
-		5px 5px 8px #1f2020,
-		-5px -5px 8px #1f1f1f;
-	background: #182133;
+/* Hairline gradient border that catches the light */
+.project-card::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	padding: 1px;
+	border-radius: inherit;
+	background: linear-gradient(
+		135deg,
+		var(--edge-glow),
+		rgb(var(--edge-color) / 0.5) 22%,
+		rgb(var(--edge-color) / 0.12) 50%,
+		rgb(var(--edge-color) / 0.45) 82%,
+		rgb(var(--edge-color) / 0.2)
+	);
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask:
+		linear-gradient(#000 0 0) content-box exclude,
+		linear-gradient(#000 0 0);
+	pointer-events: none;
 }
 
 .project-card:hover {
+	--edge-glow: rgb(255 255 255 / 0.55);
+	--lens-light: 2.5;
+	transform: scale(1.03);
 	box-shadow:
-		5px 5px 8px #1b1b1b,
-		-5px -5px 10px #6e7ec52f;
-	transform: scale(1.05);
-	transition: transform 0.3s ease-in-out;
+		0 24px 50px -24px rgb(0 0 0 / 0.85),
+		0 0 18px -6px rgb(var(--edge-color) / 0.2),
+		inset 0 1px 0 rgb(255 255 255 / 0.14),
+		inset 0 0 28px -8px rgb(var(--edge-color) / 0.3);
 }
 
-.project-card-title {
-	font-size: 18px;
-	font-weight: 600;
-	color: rgb(73, 150, 192);
-	margin: 15px 0 0 10px;
+/* Keyboard focus lands on the title link; show it on the whole card. */
+.project-card:has(.project-card-link:focus-visible) {
+	outline: 2px solid rgb(73, 150, 192);
+	outline-offset: 3px;
 }
 
+/* Same-size image area on every card, so titles line up. */
 .project-card-image {
-	background-color: transparent;
-	margin: 0 auto;
+	position: relative;
+	flex-shrink: 0;
 	width: 100%;
+	height: 150px;
 	border-radius: 15px;
 	overflow: hidden;
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	background: rgb(0 0 0 / 0.18);
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.05);
 }
 
 .project-card-actual-image {
-	border-radius: 15px;
-	width: auto;
-	height: auto;
-	max-width: 150px;
-	max-height: 150px;
-	object-fit: cover;
-	transition: 0.3s;
+	object-fit: contain;
+	padding: 10px;
+	transition: transform 0.5s var(--ease-smooth);
+}
+
+.project-card:hover .project-card-actual-image {
+	transform: scale(1.04);
+}
+
+.project-card-title {
+	margin: 0.25rem 0 0;
+	font-size: 18px;
+	line-height: 1.35;
+	font-weight: 600;
+	color: rgb(73, 150, 192);
+	transition: color 0.3s var(--ease-smooth);
+}
+
+.project-card:hover .project-card-title {
+	color: rgb(110, 180, 220);
+}
+
+.project-card-link {
+	outline: none;
+}
+
+/* Makes the whole card the click target */
+.project-card-link::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
 }
 
 .project-card-body {
-	margin: 13px 0 0 10px;
 	color: rgb(184, 184, 184);
-	font-size: 15px;
+	font-size: 14px;
+	line-height: 1.55;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
+/* Pinned to the bottom so cards in a row line up */
 .project-card-footer {
-	float: right;
-	margin: 28px 0 0 18px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin-top: auto;
+	padding-top: 0.75rem;
+	border-top: 1px solid rgb(255 255 255 / 0.08);
 	font-size: 13px;
-	color: #b3b3b3;
+	color: #a1a1aa;
 }
 
-.project-card-by-name {
-	font-weight: 700;
+.project-card-kind {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	color: #d4d4d8;
+}
+
+.project-card-kind[data-external] {
+	color: rgb(96, 165, 250);
 }

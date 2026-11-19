@@ -148,6 +148,7 @@ export async function WeatherCard({
 					width="342"
 					xmlns="http://www.w3.org/2000/svg"
 					className="background"
+					preserveAspectRatio="none"
 				>
 					<title id="weather-background-title">Weather Background</title>
 					<path

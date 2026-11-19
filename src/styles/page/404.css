@@ -15,15 +15,17 @@
 	flex-direction: column;
 }
 
-h1 {
-	font-size: 10rem;
+/* Scoped: this stylesheet stays loaded after client navigation */
+.not-found h1 {
+	font-size: clamp(5rem, 22vw, 10rem);
+	line-height: 1;
 	color: #fff;
 	margin: 0;
 	padding: 0;
 }
 
-p {
-	font-size: 2rem;
+.not-found p {
+	font-size: clamp(1.25rem, 4vw, 2rem);
 	color: #fff;
 	margin: 0;
 	padding: 0;
@@ -204,4 +206,22 @@ p {
 	100% {
 		opacity: 0;
 	}
+}
+
+.not-found-home {
+	margin-top: 1.25rem;
+	padding: 0.55rem 1.25rem;
+	border-radius: 999px;
+	border: 1px solid rgb(255 255 255 / 0.18);
+	color: #fff;
+	font-size: 0.95rem;
+	transition:
+		background 0.4s var(--ease-smooth),
+		border-color 0.4s var(--ease-smooth);
+}
+
+.not-found-home:hover,
+.not-found-home:focus-visible {
+	background: rgb(255 255 255 / 0.08);
+	border-color: rgb(255 255 255 / 0.4);
 }

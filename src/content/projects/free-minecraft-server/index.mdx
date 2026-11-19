@@ -1,0 +1,100 @@
+## Overview
+
+This guide runs a Paper Minecraft (Java) server in Docker using the [itzg/minecraft-server](https://docker-minecraft-server.readthedocs.io/) image. You'll:
+
+1. Set up Docker and the server files
+2. Build the image and start the container
+3. Connect from the Minecraft client
+
+<Callout type="note">
+  A follow-up section on hosting the container on an Azure virtual machine is still being written.
+</Callout>
+
+## Set up Docker
+
+<Steps>
+
+### Sign in to Docker
+
+You'll need a [Docker](https://www.docker.com/) account (free) and Docker Desktop for your operating system. Once it's installed, sign in from your terminal:
+
+```bash
+docker login
+```
+
+### Create a project folder
+
+Make a folder for the server. It holds the server configuration files and the Docker files that run the container:
+
+<FileTree>
+- minecraft-server/
+  - server/ Server data (mounted into the container)
+    - server.properties
+    - eula.txt
+  - plugins/ Plugin JARs
+  - Dockerfile
+  - docker-compose.yml
+</FileTree>
+
+### Write the Dockerfile
+
+- `FROM` sets the base image for the container.
+- `ENV` sets the server type to Paper.
+- `COPY` copies plugin JARs into the container's `/plugins/` folder.
+
+```dockerfile title="Dockerfile"
+FROM itzg/minecraft-server
+
+ENV TYPE=PAPER
+
+COPY plugins/*.jar /plugins/
+```
+
+### Write docker-compose.yml
+
+```yaml title="docker-compose.yml"
+services:
+  # Minecraft server container
+  mc:
+    image: itzg/minecraft-server
+    environment:
+      EULA: "TRUE" # Accept the Minecraft EULA
+      TYPE: "PAPER" # Server type
+      MOTD: "My Minecraft Server" # Message of the day
+      MEMORY: "4G" # Server memory
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./server:/data # Persist server data
+    restart: on-failure:3 # Restart up to 3 times on failure
+    ports:
+      - "25565:25565"
+```
+
+</Steps>
+
+## Run the server
+
+<Steps>
+
+### Build the image
+
+```bash
+docker compose build
+```
+
+### Start the container
+
+```bash
+docker compose up -d
+```
+
+### Connect
+
+Once the server is running, add it in the Minecraft client using your machine's address and port `25565`.
+
+</Steps>
+
+<Callout type="tip">
+  Run `docker compose logs -f mc` to watch the server start up and see its console output.
+</Callout>

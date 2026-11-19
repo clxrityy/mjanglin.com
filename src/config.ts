@@ -327,8 +327,8 @@ export const projects: Project[] = [
 			"1.21.8",
 			"26.2",
 			"NuVotifier",
-			"Votifier"
+			"Votifier",
 		],
 		author: "MJ Anglin",
-	}
+	},
 ];

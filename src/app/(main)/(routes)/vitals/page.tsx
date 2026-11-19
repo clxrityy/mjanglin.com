@@ -16,12 +16,12 @@ const METRIC_THRESHOLDS: Record<
 function renderMetricValue(metric: MetricDisplay, loading: boolean) {
 	if (metric.value !== null) {
 		return (
-			<>
+			<span className="inline-flex items-center gap-2.5">
 				<MetricPie metric={metric.name} value={metric.value} />
 				{metric.name === "CLS"
 					? metric.value.toFixed(3)
-					: metric.value.toFixed(0)}
-			</>
+					: `${metric.value.toFixed(0)} ms`}
+			</span>
 		);
 	} else if (loading) {
 		return (
@@ -60,30 +60,14 @@ function getPieColor(metric: string, value: number) {
 	return "#ef4444"; // red
 }
 
+/** Small status ring coloured by the metric's rating; the number sits next to it. */
 function MetricPie({ metric, value }: { metric: string; value: number }) {
-	const size = 44;
-	const stroke = 4;
+	const size = 16;
+	const stroke = 3;
 	const radius = (size - stroke) / 2;
-	const circumference = 2 * Math.PI * radius;
 	const color = getPieColor(metric, value);
 	return (
-		<svg
-			width={size}
-			height={size}
-			className="inline-block align-middle mr-2"
-			style={{ verticalAlign: "middle" }}
-		>
-			<title id={`${metric}-title`}>
-				{metric} - {value}
-			</title>
-			<circle
-				cx={size / 2}
-				cy={size / 2}
-				r={radius}
-				fill="#18181b"
-				stroke="#27272a"
-				strokeWidth={stroke}
-			/>
+		<svg width={size} height={size} className="shrink-0" aria-hidden="true">
 			<circle
 				cx={size / 2}
 				cy={size / 2}
@@ -91,23 +75,8 @@ function MetricPie({ metric, value }: { metric: string; value: number }) {
 				fill="none"
 				stroke={color}
 				strokeWidth={stroke}
-				strokeDasharray={circumference}
-				strokeDashoffset={0}
-				strokeLinecap="round"
 				style={{ transition: "stroke 0.5s" }}
 			/>
-			<text
-				x="50%"
-				y="50%"
-				textAnchor="middle"
-				dominantBaseline="central"
-				fontSize="1.05rem"
-				fill="#fff"
-				fontFamily="monospace"
-				style={{ pointerEvents: "none" }}
-			>
-				{metric === "CLS" ? value.toFixed(3) : value.toFixed(0)}
-			</text>
 		</svg>
 	);
 }
@@ -157,25 +126,28 @@ export default function Page() {
 	}, []);
 
 	return (
-		<div className="p-6">
-			<h1 className="text-2xl font-bold mb-4">Web Vitals</h1>
-			<div className="overflow-x-auto">
-				<table className="min-w-full border border-gray-300">
+		<div className="mx-auto w-full max-w-3xl px-6 pt-20 pb-16">
+			<h1 className="mb-2 text-3xl font-bold">Web Vitals</h1>
+			<p className="mb-8 text-sm text-zinc-400">
+				Measured live in your browser for this page load.
+			</p>
+			<div className="overflow-x-auto rounded-xl border border-white/10">
+				<table className="min-w-full text-sm">
 					<thead>
-						<tr className="bg-gray-800">
-							<th className="py-2 px-4 text-left">Metric</th>
-							<th className="py-2 px-4 text-left">Value</th>
-							<th className="py-2 px-4 text-left">Timestamp</th>
+						<tr className="bg-white/5 text-zinc-300">
+							<th className="py-3 px-4 text-left font-semibold">Metric</th>
+							<th className="py-3 px-4 text-left font-semibold">Value</th>
+							<th className="py-3 px-4 text-left font-semibold">Timestamp</th>
 						</tr>
 					</thead>
 					<tbody>
 						{metrics.map((metric) => (
-							<tr key={metric.name} className="border-t">
-								<td className="py-1 px-2 font-semibold">{metric.name}</td>
-								<td className="py-1 px-2 font-mono">
+							<tr key={metric.name} className="border-t border-white/10">
+								<td className="py-3 px-4 font-semibold">{metric.name}</td>
+								<td className="py-3 px-4 font-mono">
 									{renderMetricValue(metric, loading)}
 								</td>
-								<td className="py-1 px-2 text-xs">
+								<td className="py-3 px-4 text-zinc-400">
 									{renderMetricTimestamp(metric, loading)}
 								</td>
 							</tr>

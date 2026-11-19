@@ -7,10 +7,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		return projects.map((project) => ({
 			url: project.slug.startsWith("http")
 				? project.slug
-				: `https://mjanglin.com/projects/dev/${project.slug}`,
+				: `https://mjanglin.com/projects/${project.slug}`,
 			lastModified: new Date(project.publishedAt),
 			images: [project.mainImage],
-			priority: 0.15
+			priority: 0.15,
 		})) as MetadataRoute.Sitemap;
 	};
 

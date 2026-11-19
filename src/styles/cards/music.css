@@ -75,3 +75,42 @@
 		height: 16px;
 	}
 }
+
+/* Compact music card (phone home screen) */
+.music-mini {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	height: 3.5rem;
+	padding: 0 1rem;
+	border-radius: 15px;
+	border: 1px solid rgb(129 140 248 / 0.25);
+	background: linear-gradient(
+		to top left,
+		rgb(129 140 248 / 0.1),
+		rgb(0 0 0 / 0.1),
+		rgb(0 0 0 / 0.2)
+	);
+	backdrop-filter: blur(16px);
+	transition:
+		transform 0.5s var(--ease-smooth),
+		border-color 0.5s var(--ease-smooth);
+}
+
+.music-mini:active {
+	transform: scale(0.97);
+}
+
+.music-mini-bars {
+	margin-right: 0.25rem;
+}
+
+.music-mini-handle {
+	position: absolute;
+	right: 0.5rem;
+	bottom: 0.2rem;
+	font-size: 0.6rem;
+	color: rgb(161 161 170 / 0.9);
+}

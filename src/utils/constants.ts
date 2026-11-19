@@ -1,9 +1,22 @@
 export const CONSTANTS = {
-	POSTS_PER_PAGE: 4,
 	SPOTIFY_ARTIST_ID: "0HaFO6TLXEZ2De3d67dThV",
 	WEATHER_CACHE_DURATION: 300000, // 5 minutes
 	DEFAULT_WEATHER_TEMP: 0,
 	GOOGLE_ANALYTICS_ID: "G-DH9C4WZGMK",
+} as const;
+
+/**
+ * Home page project dashboard.
+ * After START_DELAY_MS of the dashboard being on screen (tab visible, not hovered),
+ * tiles swap one at a time every ROTATE_INTERVAL_MS until every project has been
+ * shown PASSES times, then the dashboard settles.
+ */
+export const DASHBOARD = {
+	SLOTS: 4,
+	START_DELAY_MS: 6000,
+	ROTATE_INTERVAL_MS: 4500,
+	TRANSITION_MS: 700,
+	PASSES: 1,
 } as const;
 
 export const COMPONENT_SIZES = {

@@ -46,3 +46,4 @@ _assets/*
 .idea/
 
 *lock*
+.claude

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 :root {
+	/* One easing curve for every hover and entrance on the site */
+	--ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
 	--foreground-rgba: 230, 230, 230;
 	--background-start-rgba: 20, 15, 20, 0.5;
 	--background-end-rgba: 1, 3, 1, 0.5;
@@ -38,4 +40,23 @@ body {
 ::-webkit-scrollbar {
 	width: 0px;
 	background: transparent;
+}
+
+/* Gentle staggered entrance. Set --i on each element for its place in the order. */
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		transform: translateY(14px);
+	}
+}
+
+.rise-in {
+	animation: rise-in 0.9s var(--ease-smooth) both;
+	animation-delay: calc(var(--i, 0) * 110ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rise-in {
+		animation: none;
+	}
 }

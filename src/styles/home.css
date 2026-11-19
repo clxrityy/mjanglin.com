@@ -1,0 +1,219 @@
+/* Home page: always one screen, no scrolling. */
+
+.home {
+	position: relative;
+	z-index: 20;
+	display: flex;
+	flex-direction: column;
+	height: 100dvh;
+	overflow: hidden;
+}
+
+/* ---------- Fit-to-screen wrapper (see Fit.tsx) ---------- */
+
+.fit {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 0;
+	min-height: 0;
+}
+
+.fit-inner {
+	flex-shrink: 0;
+	width: 100%;
+	transform: scale(var(--fit-scale, 1));
+	transform-origin: center;
+}
+
+/* Hold everything back until the first measurement, so nothing jumps in size. */
+.fit:not([data-ready]) .fit-inner {
+	opacity: 0;
+}
+
+.fit:not([data-ready]) .rise-in {
+	animation-play-state: paused;
+}
+
+.home-main {
+	flex: 1 1 auto;
+}
+
+/* ---------- Phone: hero, dock, About / Projects switch ---------- */
+
+.home-stage {
+	display: grid;
+	grid-template-areas:
+		"hero"
+		"dock"
+		"tabs"
+		"panel";
+	justify-items: center;
+	align-items: start;
+	row-gap: 1.25rem;
+	padding: 1.5rem 1.25rem;
+}
+
+.home-hero {
+	grid-area: hero;
+}
+
+.home-side,
+.home-rail {
+	display: none;
+}
+
+.home-dock {
+	grid-area: dock;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.75rem;
+	width: 100%;
+	max-width: 22rem;
+}
+
+.home-tabs {
+	grid-area: tabs;
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	width: 100%;
+	max-width: 22rem;
+	padding: 4px;
+	border-radius: 999px;
+	border: 1px solid rgb(255 255 255 / 0.1);
+	background: rgb(255 255 255 / 0.04);
+}
+
+.home-tabs-indicator {
+	position: absolute;
+	top: 4px;
+	bottom: 4px;
+	left: 4px;
+	width: calc(50% - 4px);
+	border-radius: 999px;
+	background: rgb(255 255 255 / 0.1);
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+	transition: transform 0.5s var(--ease-smooth);
+}
+
+.home[data-tab="projects"] .home-tabs-indicator {
+	transform: translateX(100%);
+}
+
+.home-tab {
+	position: relative;
+	z-index: 1;
+	padding: 0.5rem;
+	border-radius: 999px;
+	font-size: 0.9rem;
+	font-weight: 500;
+	color: rgb(161 161 170);
+	cursor: pointer;
+	transition: color 0.3s var(--ease-smooth);
+}
+
+.home-tab[aria-selected="true"] {
+	color: #fff;
+}
+
+/* Both panels share one cell, so switching never changes the page height. */
+.home-panel {
+	grid-area: panel;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	max-width: 22rem;
+	transition:
+		opacity 0.5s var(--ease-smooth),
+		transform 0.5s var(--ease-smooth),
+		visibility 0.5s;
+}
+
+/* Room for the description card's stacked layers, which reach above the card */
+.home-about {
+	padding-top: 2rem;
+}
+
+.home[data-tab="about"] [data-panel="projects"],
+.home[data-tab="projects"] [data-panel="about"] {
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(10px);
+	pointer-events: none;
+}
+
+/* ---------- Tablet: hero beside time + music, projects strip at the bottom ---------- */
+
+@media (min-width: 768px) {
+	.home-dock,
+	.home-tabs,
+	.home-projects-mobile {
+		display: none;
+	}
+
+	.home-stage {
+		grid-template-areas:
+			"hero side"
+			"about about";
+		grid-template-columns: auto auto;
+		justify-content: center;
+		align-items: center;
+		column-gap: 6rem;
+		row-gap: 2.5rem;
+		padding: 2.5rem;
+	}
+
+	.home-side {
+		grid-area: side;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4rem;
+		width: 16rem;
+	}
+
+	/* The About panel is always shown here, whatever was picked on a phone. */
+	.home-about {
+		grid-area: about;
+		max-width: none;
+		padding-top: 1rem;
+	}
+
+	.home[data-tab="projects"] [data-panel="about"] {
+		opacity: 1;
+		visibility: visible;
+		transform: none;
+		pointer-events: auto;
+	}
+
+	.home-rail {
+		display: block;
+		flex: none;
+		padding: 1.25rem 2.5rem 1.5rem;
+		border-top: 1px solid rgb(255 255 255 / 0.05);
+	}
+}
+
+/* ---------- Laptop and up: projects in a rail on the right ---------- */
+
+@media (min-width: 1024px) {
+	.home {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 22rem;
+		grid-template-rows: minmax(0, 1fr);
+	}
+
+	.home-rail {
+		display: flex;
+		height: 100dvh;
+		padding: 2rem;
+		border-top: 0;
+		border-left: 1px solid rgb(255 255 255 / 0.05);
+	}
+
+	.home-rail-fit {
+		flex: 1;
+	}
+}

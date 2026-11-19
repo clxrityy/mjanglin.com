@@ -10,7 +10,7 @@ function determineTimeGradient(time: Date) {
 	switch (true) {
 		case hours >= 0 && hours <= 4:
 			return "night-gradient";
-		case hours >= 5 && hours < 11:
+		case hours >= 5 && hours < 12:
 			return "morning-gradient";
 		case hours >= 12 && hours < 15:
 			return "afternoon-gradient";
@@ -21,7 +21,8 @@ function determineTimeGradient(time: Date) {
 	}
 }
 
-export function TimeCard() {
+/** Current time, ticking every second. Null until mounted (avoids a hydration mismatch). */
+function useNow() {
 	const [time, setTime] = useState<Date | null>(null);
 
 	useEffect(() => {
@@ -33,6 +34,12 @@ export function TimeCard() {
 
 		return () => clearInterval(interval);
 	}, []);
+
+	return time;
+}
+
+export function TimeCard() {
+	const time = useNow();
 
 	const timeParts = useMemo(() => {
 		if (!time) {
@@ -69,7 +76,7 @@ export function TimeCard() {
 		<Link
 			prefetch={false}
 			href={`/weather`}
-			className={`time-card hover:scale-110 transition-transform ${timeGradient} ${exo.className} w-full px-0 sm:px-4 py-3 saturate-[0.75]`}
+			className={`time-card hover:scale-105 ${timeGradient} ${exo.className} w-full px-0 sm:px-4 py-3 saturate-[0.75]`}
 		>
 			<p className="time-text">
 				<span>{`${timeParts.hours} : ${timeParts.minutes}`}</span>
@@ -86,6 +93,44 @@ export function TimeCard() {
 			<time dateTime={isoDateTime} className="sr-only">
 				{dateString}
 			</time>
+		</Link>
+	);
+}
+
+/** Compact version for the phone home screen: tap to open the weather page. */
+export function MiniTimeCard() {
+	const time = useNow();
+	const label = time
+		? new Intl.DateTimeFormat("en-US", {
+				hour: "numeric",
+				minute: "2-digit",
+				hour12: true,
+			}).format(time)
+		: "--:--";
+	const date = time
+		? new Intl.DateTimeFormat("en-US", {
+				month: "short",
+				day: "numeric",
+			}).format(time)
+		: "\u00a0";
+	const timeGradient = time ? determineTimeGradient(time) : "night-gradient";
+
+	return (
+		<Link
+			prefetch={false}
+			href="/weather"
+			className={`time-mini ${timeGradient} ${exo.className}`}
+			aria-label={`Time ${label}. Open weather`}
+		>
+			<span className="time-mini-clock" aria-hidden="true">
+				<span className="clock-container">
+					<span className="clock" />
+				</span>
+			</span>
+			<span className="time-mini-text">
+				<span className="time-mini-time">{label}</span>
+				<span className="time-mini-date">{date} · weather</span>
+			</span>
 		</Link>
 	);
 }

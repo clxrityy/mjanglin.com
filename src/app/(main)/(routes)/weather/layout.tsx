@@ -33,5 +33,5 @@ export default async function Layout({
 }) {
 	await connection();
 
-	return <div className="w-screen h-screen relative">{children}</div>;
+	return <div className="relative w-full">{children}</div>;
 }

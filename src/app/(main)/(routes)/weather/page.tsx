@@ -26,16 +26,14 @@ export default async function Page() {
 	};
 
 	return (
-		<div className="weather-main">
-			<div className="absolute top-10 right-10">
+		<div className="weather-main flex min-h-screen flex-col items-center justify-center gap-12 px-6 pt-20 pb-12 md:flex-row md:gap-16">
+			<WeatherCard
+				location={`${city}, ${regionName}`}
+				country={country}
+				countryCode={countryCode}
+			/>
+			<div className="w-64">
 				<TimeCard />
-			</div>
-			<div className="flex flex-col gap-4 items-center justify-center h-screen">
-				<WeatherCard
-					location={`${city}, ${regionName}`}
-					country={country}
-					countryCode={countryCode}
-				/>
 			</div>
 		</div>
 	);
