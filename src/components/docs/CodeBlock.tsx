@@ -1,6 +1,11 @@
 "use client";
 
-import { type ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
+import {
+	type ComponentPropsWithoutRef,
+	useEffect,
+	useRef,
+	useState,
+} from "react";
 import { FiCheck, FiCopy } from "react-icons/fi";
 
 type Props = ComponentPropsWithoutRef<"pre"> & { "data-language"?: string };
