@@ -12,6 +12,8 @@
 		"format": "pnpx @biomejs/biome format",
 		"check": "pnpx @biomejs/biome check",
 		"type-check": "tsc --noEmit",
+		"clean": "rm -rf .next && rm -rf node_modules && rm -rf pnpm-lock.yaml",
+		"prepublish": "pnpm clean && pnpm install && pnpm lint &&pnpm type-check && pnpm format && pnpm build && pnpm start",
 		"build:analyze": "ANALYZE=true npm run build",
 		"upload:assets": "node scripts/upload-assets.ts"
 	},
