@@ -36,18 +36,15 @@
 	transition: 0.5s;
 	margin-right: 0px;
 	transform: scale(0.6);
+	width: 20px;
+	margin-left: 15px;
+	position: relative;
+	top: 6%;
 }
 
 .btn-content:hover .icon-arrow {
 	transition: 0.5s;
 	margin-right: 25px;
-}
-
-.btn-content .icon-arrow {
-	width: 20px;
-	margin-left: 15px;
-	position: relative;
-	top: 6%;
 }
 
 /* SVG */

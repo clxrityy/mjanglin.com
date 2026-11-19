@@ -61,30 +61,30 @@
 	top: 210px;
 }
 
-.playing .wave {
-	border-radius: 40%;
-	animation: wave 3000ms infinite linear;
-}
-
 .wave {
 	border-radius: 40%;
 	animation: wave 55s infinite linear;
-}
-
-.playing .wave:nth-child(2) {
-	animation-duration: 4000ms;
 }
 
 .wave:nth-child(2) {
 	animation-duration: 50s;
 }
 
-.playing .wave:nth-child(3) {
-	animation-duration: 5000ms;
-}
-
 .wave:nth-child(3) {
 	animation-duration: 45s;
+}
+
+.playing .wave {
+	border-radius: 40%;
+	animation: wave 3000ms infinite linear;
+}
+
+.playing .wave:nth-child(2) {
+	animation-duration: 4000ms;
+}
+
+.playing .wave:nth-child(3) {
+	animation-duration: 5000ms;
 }
 
 @keyframes wave {

@@ -1,3 +1,4 @@
+/* biome-ignore-all lint/style/noDescendingSpecificity: rules are grouped by component; every flagged pair differs in specificity, so source order has no effect */
 /* Project docs: shell, typography, and MDX components */
 
 :root {
