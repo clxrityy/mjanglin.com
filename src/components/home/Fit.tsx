@@ -1,6 +1,11 @@
 "use client";
 
-import { type ReactNode, useLayoutEffect, useRef } from "react";
+import {
+	type ReactNode,
+	useLayoutEffect,
+	useRef,
+	useSyncExternalStore,
+} from "react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -11,8 +16,23 @@ import { cn } from "@/lib/cn";
  */
 const FIT_SCRIPT = `(function(){function fit(o){var n=o.firstElementChild;if(!n)return false;var h=n.offsetHeight,w=n.scrollWidth;if(!h||!w)return false;var s=Math.min(1,o.clientHeight/h,o.clientWidth/w);var prev=parseFloat(o.style.getPropertyValue('--fit-scale'));if(isNaN(prev)||Math.abs(prev-s)>=0.005)o.style.setProperty('--fit-scale',String(s));o.setAttribute('data-ready','');return true}var tries=0;function run(){var all=document.querySelectorAll('.fit:not([data-ready])'),pending=0;for(var i=0;i<all.length;i++)if(!fit(all[i]))pending++;if(pending&&++tries<250)setTimeout(run,16)}run()})();`;
 
-/** Place once after the fitted content so the first paint is already sized. */
+const noopSubscribe = () => () => {};
+
+/**
+ * Place once after the fitted content so the first paint is already sized.
+ *
+ * The script only matters in the server HTML: React never executes a `<script>` it
+ * creates on the client (and warns about it), and on client-side navigations `Fit`'s
+ * layout effect sizes everything before paint anyway. So render it for SSR and keep it
+ * through hydration (the server snapshot), but skip it on fresh client mounts.
+ */
 export function FitScript() {
+	const fromServer = useSyncExternalStore(
+		noopSubscribe,
+		() => false,
+		() => true,
+	);
+	if (!fromServer) return null;
 	// biome-ignore lint/security/noDangerouslySetInnerHtml: static, first-party sizing script
 	return <script dangerouslySetInnerHTML={{ __html: FIT_SCRIPT }} />;
 }
