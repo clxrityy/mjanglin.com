@@ -1,8 +1,9 @@
+import createMDX from "@next/mdx";
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
 	experimental: {
-		mdxRs: true,
 		inlineCss: true,
 	},
 	images: {
@@ -115,9 +116,37 @@ const nextConfig = {
 				destination: "https://paypal.me/mjanglin",
 				permanent: true,
 				statusCode: 302,
-			}
+			},
 		];
 	},
 };
 
-export default nextConfig;
+/**
+ * Plugins are referenced by name (with JSON-serializable options) so they work under Turbopack.
+ * @see https://nextjs.org/docs/app/guides/mdx#using-plugins-with-turbopack
+ */
+const withMDX = createMDX({
+	options: {
+		remarkPlugins: ["remark-gfm"],
+		rehypePlugins: [
+			"rehype-slug",
+			[
+				"rehype-autolink-headings",
+				{
+					behavior: "wrap",
+					properties: { className: ["heading-anchor"] },
+				},
+			],
+			[
+				"rehype-pretty-code",
+				{
+					theme: "github-dark-dimmed",
+					keepBackground: false,
+					defaultLang: { block: "plaintext" },
+				},
+			],
+		],
+	},
+});
+
+export default withMDX(nextConfig);

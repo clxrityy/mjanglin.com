@@ -2,6 +2,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Background } from "@/components/layout/Background";
+import { GlassPointer } from "@/components/layout/GlassPointer";
 import { exo } from "@/styles/fonts";
 import { CONSTANTS } from "@/utils/constants";
 import "./globals.css";
@@ -138,6 +139,7 @@ export default async function RootLayout({
 					{children}
 				</main>
 				<Background />
+				<GlassPointer />
 				<Script id="google-analytics" strategy="lazyOnload">
 					{`
             window.dataLayer = window.dataLayer || [];

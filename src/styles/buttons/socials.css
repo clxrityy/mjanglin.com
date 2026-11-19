@@ -24,7 +24,7 @@
 	align-items: center;
 	justify-content: center;
 	color: #fff;
-	transition: all ease-in-out 0.3s;
+	transition: all 0.4s var(--ease-smooth);
 	cursor: pointer;
 }
 

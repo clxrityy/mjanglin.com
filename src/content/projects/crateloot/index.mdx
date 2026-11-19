@@ -1,0 +1,78 @@
+import { r2AssetPath } from "@/utils/assets";
+
+<Figure
+  src={r2AssetPath("assets/crateloot-crate-example.png")}
+  alt="A CrateLoot crate opening in game"
+  width={2366}
+  height={848}
+  priority
+/>
+
+## Overview
+
+CrateLoot is a Minecraft plugin for loot crates. Crates are bound to containers in the world and opened with configurable keys.
+
+- Customizable loot tables
+- Customizable crate items and rewards
+- Customizable crate GUI
+- Customizable keys
+
+## Compatibility
+
+Works on <Badge tone="accent">1.19.2+</Badge>. These versions are supported natively:
+
+| Minecraft | Java |
+| --- | --- |
+| `1.19.2` | Java 17 |
+| `1.21.8` | Java 21 |
+| `26.2` | Java 25 |
+
+### Plugin integrations
+
+- [Towny](https://www.spigotmc.org/resources/towny.72694/)
+- [Vault](https://www.spigotmc.org/resources/vault.34315/)
+- [NuVotifier](https://www.spigotmc.org/resources/nuvotifier.13449/)
+- [Votifier](https://www.spigotmc.org/resources/votifier.13449/)
+
+## Commands
+
+<Callout type="note" title="Permission">
+  Every command requires `crateloot.admin`.
+</Callout>
+
+| Command | Description |
+| --- | --- |
+| `/crateloot compat` | Shows the compatibility report |
+| `/crateloot status` | Shows the status report |
+| `/crateloot reload` | Reloads the plugin's configuration |
+| `/crateloot bind` | Binds a crate to the container you're facing |
+| `/crateloot unbind` | Unbinds the crate you're facing |
+| `/crateloot key …` | Manages crate keys (see below) |
+
+### Key commands
+
+| Subcommand | Description |
+| --- | --- |
+| `create [id]` | Creates a key from the item in your hand |
+| `name [id] [display-name...]` | Sets a key's display name |
+| `lore [id] [line1\|line2\|line3]` | Sets a key's lore |
+| `give [player] [id] [amount]` | Gives a player one or more keys |
+| `info [id]` | Shows information about a key |
+| `delete [id]` | Deletes a key |
+| `list` | Lists all keys |
+
+### Status report
+
+<Figure
+  src={r2AssetPath("assets/crateloot-status.png")}
+  alt="Output of /crateloot status"
+  width={2220}
+  height={764}
+  caption={<>Output of <code>/crateloot status</code></>}
+/>
+
+## Download
+
+<DownloadButton href={r2AssetPath("assets/CrateLoot-0.4.0.jar")} note="Version 0.4.0">
+  CrateLoot-0.4.0.jar
+</DownloadButton>

@@ -1,155 +1,240 @@
-/* From Uiverse.io by akshat-patel28 */
+/* Time cards (see components/cards/TimeCard.tsx): glass, tinted by the time of day. */
+
+.time-card,
+.time-mini {
+	--tint: 130 140 255;
+	--glass-rim: var(--tint);
+	--glass-glow: var(--tint);
+	color: #fff;
+	text-decoration: none;
+	overflow: hidden;
+	transition:
+		transform 0.7s var(--ease-smooth),
+		box-shadow 0.7s var(--ease-smooth);
+}
+
+[data-part="night"] {
+	--tint: 130 140 255;
+	--tint-2: 90 70 200;
+}
+
+[data-part="dawn"] {
+	--tint: 255 150 150;
+	--tint-2: 150 110 230;
+}
+
+[data-part="morning"] {
+	--tint: 255 196 120;
+	--tint-2: 255 140 130;
+}
+
+[data-part="day"] {
+	--tint: 110 190 255;
+	--tint-2: 120 220 230;
+}
+
+[data-part="dusk"] {
+	--tint: 255 140 85;
+	--tint-2: 170 80 170;
+}
+
+/* The colour of the hour, glowing from behind the glass */
+.time-glow {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: inherit;
+	background:
+		radial-gradient(
+			90% 120% at 100% 0%,
+			rgb(var(--tint) / 0.34),
+			transparent 62%
+		),
+		radial-gradient(
+			80% 90% at 0% 110%,
+			rgb(var(--tint-2, var(--tint)) / 0.2),
+			transparent 60%
+		);
+	opacity: 0.85;
+	transition:
+		opacity 0.7s var(--ease-smooth),
+		background 1.5s var(--ease-smooth);
+}
+
+.time-card:hover .time-glow,
+.time-mini:hover .time-glow {
+	opacity: 1;
+}
+
+/* ---------- Full card ---------- */
+
 .time-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 100%;
 	min-width: 200px;
 	max-width: 280px;
 	height: 150px;
-	border-radius: 15px;
-	box-shadow:
-		rgb(0, 0, 0, 0.45) 5px 10px 25px,
-		rgb(0, 0, 0, 0.45) -5px 0px 250px;
-	display: flex;
-	color: white;
-	justify-content: center;
-	position: relative;
-	flex-direction: column;
+	padding: 0.95rem 1.15rem 1rem;
 	cursor: pointer;
-	transition: all 0.3s ease-in-out;
-	overflow: hidden;
+}
+
+.time-card:hover {
+	transform: translateY(-3px);
+	box-shadow:
+		0 30px 56px -26px rgb(0 0 0 / 0.9),
+		0 0 30px -10px rgb(var(--tint) / 0.35),
+		inset 0 1px 0 rgb(255 255 255 / 0.16),
+		inset 0 0 40px -12px rgb(var(--tint) / 0.4);
+}
+
+.time-card:focus-visible,
+.time-mini:focus-visible {
+	outline: 2px solid rgb(73 150 192);
+	outline-offset: 3px;
+}
+
+.time-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.time-part {
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: rgb(var(--tint) / 0.95);
+	text-shadow: 0 0 12px rgb(var(--tint) / 0.5);
 }
 
 .time-text {
-	font-size: 50px;
-	margin-top: 0px;
-	margin-left: 15px;
+	display: flex;
+	align-items: baseline;
+	gap: 0.4rem;
+	line-height: 1;
+}
+
+.time-hm {
+	font-size: 46px;
 	font-weight: 600;
+	letter-spacing: -0.01em;
+	font-variant-numeric: tabular-nums;
+	text-shadow: 0 2px 18px rgb(var(--tint) / 0.35);
 }
 
-.time-sub-text {
-	font-size: 15px;
-	margin-left: 5px;
+.time-colon {
+	display: inline-block;
+	margin: 0 0.04em;
+	transform: translateY(-0.06em);
+	animation: colon-breathe 2s ease-in-out infinite;
 }
 
-.day-text {
-	font-size: 18px;
-	margin-top: 0px;
-	margin-left: 15px;
+@keyframes colon-breathe {
+	50% {
+		opacity: 0.35;
+	}
+}
+
+.time-period {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: rgb(255 255 255 / 0.7);
+}
+
+.time-date {
+	font-size: 0.85rem;
 	font-weight: 500;
+	color: rgb(228 228 235 / 0.78);
 }
 
-.clock-icon {
-	font-size: 20px;
-	position: absolute;
-	right: 15px;
-	top: 15px;
-	transition: all 0.3s ease-in-out;
-}
+/* ---------- Clock face ---------- */
 
-.time-card:hover > .clock-icon {
-	font-size: 23px;
-}
-
-.morning-gradient {
-	background: #ff5f6d;
-	background-image: linear-gradient(to right, #ff5f6d, #ffc371);
-	width: 100%;
-	height: 100%;
-}
-
-.day-gradient {
-	background: #56cbf288;
-	background-image: linear-gradient(to right, #56cbf29e, #2f80ed);
-}
-
-.afternoon-gradient {
-	background: #ffcd6ab7;
-	background-image: linear-gradient(to right, #7583c15e, #c9af68);
-}
-
-.evening-gradient {
-	background: #f7b633b0;
-	background-image: linear-gradient(to right, #f7b633ad, #fc4b1a73);
-}
-
-.night-gradient {
-	background: #141e30;
-	background-image: linear-gradient(to right, #141e30, #243b55);
-}
-
-.clock {
-	position: absolute;
-	width: 24px;
-	height: 24px;
-	border: 2px solid rgb(17, 8, 8);
+.clock-face {
+	position: relative;
+	flex-shrink: 0;
+	width: 26px;
+	height: 26px;
 	border-radius: 50%;
-	left: 50%;
-	top: 50%;
-	background: #fefbf2;
-	transform: translate(-50%, -50%);
-	box-shadow: inset 0px 0px 2px rgb(39, 60, 73);
-}
-
-.clock::before {
-	position: absolute;
-	content: "";
-	height: 10px;
-	width: 1px;
-	background: rgb(39, 60, 73);
-	top: 50%;
-	left: calc(50% - 0.5px);
-	border-radius: 0.5px;
-	animation: spin 6s linear infinite;
-	transform-origin: top;
-}
-
-.clock::after {
-	position: absolute;
-	content: "";
-	height: 8px;
-	width: 1px;
-	background: rgb(39, 60, 73);
-	top: 50%;
-	left: calc(50% - 0.5px);
-	border-radius: 0.5px;
-	animation: spin 72s linear infinite;
-	transform-origin: top;
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(-180deg);
-	}
-
-	100% {
-		transform: rotate(180deg);
-	}
-}
-
-.clock-container::before {
-	content: "";
-	position: absolute;
-	width: 2px;
-	height: 2px;
-	border-radius: 50%;
-	background: black;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 1;
-}
-
-.clock-container::after {
-	content: "";
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	border-radius: 50%;
-	background: rgb(39, 60, 73);
-	left: 50%;
-	top: calc(50% - 12px);
-	z-index: 2;
-	transform: translateX(-50%);
+	background: radial-gradient(
+		circle at 35% 30%,
+		rgb(255 255 255 / 0.22),
+		rgb(255 255 255 / 0.05) 70%
+	);
 	box-shadow:
-		12px 12px 0 0 rgb(39, 60, 73),
-		-12px 12px 0 0 rgb(39, 60, 73),
-		0 24px 0 0 rgb(39, 60, 73);
+		inset 0 0 0 1px rgb(255 255 255 / 0.25),
+		inset 0 1px 1px rgb(255 255 255 / 0.3),
+		0 0 12px -2px rgb(var(--tint) / 0.5);
+}
+
+.clock-hand {
+	position: absolute;
+	left: calc(50% - 0.75px);
+	bottom: 50%;
+	width: 1.5px;
+	border-radius: 1px;
+	background: #fff;
+	transform-origin: 50% 100%;
+}
+
+.clock-hand-hour {
+	height: 6px;
+}
+
+.clock-hand-minute {
+	height: 9px;
+	background: rgb(255 255 255 / 0.8);
+}
+
+.clock-pin {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+	background: rgb(var(--tint));
+	transform: translate(-50%, -50%);
+}
+
+/* ---------- Compact card (phone home screen) ---------- */
+
+.time-mini {
+	--glass-radius: 15px;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	height: 3.5rem;
+	padding: 0 0.9rem;
+}
+
+.time-mini:active {
+	transform: scale(0.97);
+}
+
+.time-mini-text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.15;
+	min-width: 0;
+}
+
+.time-mini-time {
+	font-size: 1.15rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.time-mini-date {
+	font-size: 0.72rem;
+	opacity: 0.8;
+	white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.time-colon {
+		animation: none;
+	}
 }

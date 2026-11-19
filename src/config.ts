@@ -38,6 +38,7 @@ export const URLS = {
 			: "http://localhost:3000/api/spotify/callback",
 	apple_music: "https://music.apple.com/us/artist/clxrity/1702200875",
 	linkedin: "https://www.linkedin.com/in/mjanglin1/",
+	email: "contact@mjanglin.com",
 } as const;
 
 export const COLORS = {
@@ -327,8 +328,8 @@ export const projects: Project[] = [
 			"1.21.8",
 			"26.2",
 			"NuVotifier",
-			"Votifier"
+			"Votifier",
 		],
 		author: "MJ Anglin",
-	}
+	},
 ];

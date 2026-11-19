@@ -1,11 +1,27 @@
-import { BackBtn } from "@/components/buttons/BackBtn";
+import { TopNav } from "@/components/layout/TopNav";
+import { projects } from "@/config";
+import { splitProjectTitle } from "@/utils/projectTitle";
 
-export default async function Layout({
+// Breadcrumb labels for every page under this layout. Doc pages use the short
+// project name ("CrateLoot", not "CrateLoot - Minecraft Plugin").
+const labels: Record<string, string> = {
+	"/projects": "Projects",
+	"/music": "Music",
+	"/weather": "Weather",
+	"/vitals": "Vitals",
+	...Object.fromEntries(
+		projects
+			.filter((p) => !/^https?:\/\//.test(p.slug))
+			.map((p) => [`/projects/${p.slug}`, splitProjectTitle(p.title).name]),
+	),
+};
+
+export default function Layout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<>
-			<BackBtn />
+			<TopNav labels={labels} />
 			{children}
 		</>
 	);

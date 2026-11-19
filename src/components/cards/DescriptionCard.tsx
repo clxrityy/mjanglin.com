@@ -1,35 +1,42 @@
 import "@/styles/cards/description.css";
 import { exo } from "@/styles/fonts";
 import { ImageComponent } from "../ui/ImageComponent";
+import { MailLink } from "./MailLink";
 import { ReadMore } from "./ReadMore";
 
+/**
+ * About card: a glass pane with two tinted sheets stacked behind it that fan
+ * out on hover. The outer element never moves, so the hover can't flicker as
+ * the card lifts out from under the pointer.
+ */
 export function DescriptionCard() {
 	return (
-		/* From Uiverse.io by gharsh11032000 */
-		<div
-			className={`desc-card ${exo.className} font-medium text-base grayscale-50 scale-[0.85] sm:scale-90 md:scale-100`}
-		>
-			<div className="content">
+		<div className={`desc-card ${exo.className}`}>
+			<span className="desc-sheet desc-sheet-back" aria-hidden="true" />
+			<span className="desc-sheet desc-sheet-mid" aria-hidden="true" />
+			<div className="desc-body glass">
 				<ImageComponent
 					image={{
 						src: "/apple-touch-icon.png",
 						alt: "logo",
 						width: 100,
 						height: 100,
-						className: "grayscale brightness-200",
+						className: "desc-logo grayscale brightness-200",
 						priority: true,
 					}}
 				/>
-				<ul className="para gap-2 flex flex-col items-center justify-center w-full">
+				<ul className="desc-text">
 					<li>Network specialist who loves creating and innovating.</li>
 					<li>
-						I articulate and maintain networks, applications, and software that interact with the world.
+						I articulate and maintain networks, applications, and software that
+						interact with the world.
 					</li>
 				</ul>
-				<div className="w-full flex items-center justify-center">
+				<div className="desc-action">
 					<ReadMore>
 						<span className="sr-only">Read more</span>
 					</ReadMore>
+					<MailLink />
 				</div>
 			</div>
 		</div>

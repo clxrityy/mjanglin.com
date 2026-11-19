@@ -1,36 +1,18 @@
-.bg {
-	width: screen;
-	height: screen;
-	--s: 150px;
-	/* control the size */
-	--c1: #1d1d1d;
-	--c2: #4e4f5198;
-	--c3: #3c3c3c;
-	top: 0;
-	bottom: 0;
-	opacity: 0.1;
-	z-index: 0;
-
+/* The faint 3D network behind every page (see components/layout/Background.tsx) */
+.bg-network {
 	position: fixed;
-	overflow: hidden;
-	overflow-y: hidden;
+	inset: 0;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	/* A flat base, close to the old gradient's middle: the card lens brightens
+	 * whatever is behind it, and a gradient would come through as bands. */
+	background: rgb(6 6 8);
+	opacity: 0;
+	transition: opacity 1.6s var(--ease-smooth);
+}
 
-	background:
-		repeating-conic-gradient(from 30deg, #0000 0 120deg, var(--c3) 0 180deg)
-		calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
-		repeating-conic-gradient(
-			from 30deg,
-			var(--c1) 0 60deg,
-			var(--c2) 0 120deg,
-			var(--c3) 0 180deg
-		);
-	background-size: var(--s) calc(var(--s) * 0.577);
-
-	@media screen and (max-width: 768px) {
-		--s: 100px;
-	}
-
-	@media screen and (max-width: 480px) {
-		--s: 50px;
-	}
+.bg-network[data-ready] {
+	opacity: 1;
 }

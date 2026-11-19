@@ -1,0 +1,288 @@
+import { r2AssetPath } from "@/utils/assets";
+
+<Video
+  sources={[
+    { src: r2AssetPath("assets/waveform-example.webm"), type: "video/webm" },
+    { src: r2AssetPath("assets/waveform-example.mp4"), type: "video/mp4" },
+  ]}
+  caption="The waveform player in action"
+/>
+
+## Introduction
+
+- As a music producer, I'm always looking for sounds and samples to use in my music. I also end up with a lot of audio files that I don't always use, or even remember I have.
+- I wanted a simple way to display and listen to those files, and to download them easily.
+- Sites like [looperman](https://www.looperman.com/), [splice](https://splice.com/), and [freesound](https://freesound.org/) do this too, but I wanted my own version that I could customize and control, in my own style.
+  - None of them has an interactive player that visualizes the audio's waveform, which is something I wanted to include.
+
+<Callout type="note">
+  The website ([clxrity.xyz](https://clxrity.xyz), named after my artist name) is still **very much** in the works. This is a prototype of what I want to achieve.
+</Callout>
+
+## Part 1: An audio waveform visualizer package
+
+At the core of this project is an audio waveform visualizer package. It visualizes an audio file's waveform and lets you interact with it: play, pause, seek, and so on.
+
+<RepoCard repo="clxrityy/react-audio" />
+
+<InstallTabs packages="@clxrity/react-audio" />
+
+<Callout type="warning">
+  This package is still a work in progress.
+</Callout>
+
+### Web Audio API
+
+Working with audio in the browser starts with the [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API), using interfaces such as [AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext), [MediaElementAudioSourceNode](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode), and [AnalyserNode](https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode).
+
+<Figures>
+  <Figure
+    src="https://i.gyazo.com/9e1ae8ccb12a32ef447f4fed47ab45f0.png"
+    alt="AudioContext diagram"
+    width={500}
+    height={500}
+    light
+    caption="AudioContext"
+  />
+  <Figure
+    src="https://i.gyazo.com/74b92d3122d9686b2ce0704c092a359c.png"
+    alt="AnalyserNode diagram"
+    width={500}
+    height={500}
+    light
+    caption="AnalyserNode"
+  />
+</Figures>
+
+### Canvas
+
+To draw the waveform, I used the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API), with interfaces such as [CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) and [CanvasGradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient).
+
+I created a [`<Canvas />`](https://github.com/clxrityy/react-audio/blob/main/src/components/ui/Canvas/index.tsx) component that takes these props:
+
+```tsx
+import { ComponentPropsWithRef } from "react";
+
+interface CanvasProps extends ComponentPropsWithRef<"canvas"> {
+  analyzerData: AnalyzerData;
+  color: string;
+  size?: {
+    width: number;
+    height: number;
+  };
+}
+```
+
+A ref to the canvas element is created with `useRef`:
+
+```tsx
+import { ElementRef, useRef } from "react";
+
+const canvasRef = useRef<ElementRef<"canvas">>(null);
+```
+
+A `draw()` function runs inside a [`useEffect`](https://react.dev/reference/react/useEffect) whenever the data changes, and calls an `animateBars()` helper that fills the canvas with waveform data:
+
+```tsx {12-13}
+const draw = (
+  analyzerNode: AnalyserNode,
+  bufferLengthCount: number,
+  dataArrayDigits: Uint8Array,
+) => {
+  const canvas = canvasRef.current;
+  if (!canvas || !analyzerNode) return;
+
+  const canvasCtx = canvas.getContext("2d");
+
+  const animate = () => {
+    requestAnimationFrame(animate);
+    canvas.width = canvas.width;
+    animateBars({
+      analyzer: analyzerNode,
+      canvas,
+      canvasCtx,
+      dataArray: dataArrayDigits,
+      bufferLength: bufferLengthCount,
+      color,
+    });
+  };
+
+  animate();
+};
+```
+
+- `animate()` calls itself through `requestAnimationFrame`.
+- `canvas.width = canvas.width` clears the canvas on every frame.
+- `animateBars()` then draws the current waveform data.
+
+```tsx title="utils/animateBars.ts"
+interface AnimateBarsParams {
+  analyzer: AnalyserNode;
+  canvas: HTMLCanvasElement;
+  canvasCtx: CanvasRenderingContext2D;
+  dataArray: Uint8Array;
+  bufferLength: number;
+  color: string;
+}
+
+export default function animateBars({
+  analyzer,
+  canvas,
+  canvasCtx,
+  dataArray,
+  bufferLength,
+  color,
+}: AnimateBarsParams) {
+  /**
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/AnalyserNode/getByteFrequencyData
+   */
+  analyzer.getByteFrequencyData(dataArray);
+  canvasCtx.fillStyle = color; // color of the bars
+  const HEIGHT = canvas.height;
+  const barWidth = Math.ceil(canvas.width / bufferLength) * 2.5;
+
+  let barHeight;
+  let x = 0;
+
+  for (let i = 0; i < bufferLength; i++) {
+    barHeight = (dataArray[i] / 255) * HEIGHT;
+
+    canvasCtx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
+
+    x += barWidth + 1;
+  }
+}
+```
+
+### Waveform component
+
+Of the components for playing and interacting with audio, the most important one that uses `<Canvas />` is [`<Waveform />`](https://github.com/clxrityy/react-audio/blob/main/src/lib/Waveform/index.tsx). It holds several pieces of state and refs:
+
+| Kept in | Value |
+| --- | --- |
+| State ([useState](https://react.dev/reference/react/useState)) | The analyzer data (`AnalyzerData`) |
+| State | The audio context ([AudioContext](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext)) |
+| State | The audio source (URL or path to the file) |
+| Ref ([useRef](https://react.dev/reference/react/useRef)) | The audio element ([HTMLAudioElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement)) |
+| Ref | The source node ([MediaElementAudioSourceNode](https://developer.mozilla.org/en-US/docs/Web/API/MediaElementAudioSourceNode)) |
+
+Its props extend React's `ComponentProps` and the shared `Props` interface every component in the package uses:
+
+```ts
+import { ComponentProps } from "react";
+
+export interface WaveformProps extends ComponentProps<"div">, Props {
+  color?: string;
+  size?: {
+    width: number;
+    height: number;
+  };
+  /**
+   * Size of the Fast Fourier Transform used to get the frequency domain.
+   * Default: 2048.
+   * One of: 32 | 64 | 128 | 256 | 512 | 1024 | 2048 | 4096 | 8192 | 16384 | 32768
+   */
+  fftsize: number;
+}
+```
+
+#### Loading the track
+
+When a track source is present, the source is set and the audio element is loaded:
+
+```tsx
+useEffect(() => {
+  if (track.src) {
+    setAudioSrc(track.src);
+    audioElement.current.load();
+  }
+}, [track.src, audioElement]);
+```
+
+#### Handling the autoplay policy
+
+<Callout type="tip" title="Lesson learned">
+  After **many** hours stuck on audio that wouldn't play, I realized browsers block audio until the user interacts with the page (the [Autoplay Policy](https://developer.chrome.com/blog/autoplay/)).
+</Callout>
+
+A `handleUserGesture()` function creates or resumes the audio context:
+
+```tsx
+const handleUserGesture = () => {
+  if (!audioCtx) {
+    setAudioCtx(new AudioContext());
+  }
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+};
+```
+
+For now, it runs when the user clicks anywhere on the page:
+
+```tsx
+useEffect(() => {
+  window.addEventListener("click", handleUserGesture);
+
+  return () => {
+    window.removeEventListener("click", handleUserGesture);
+  };
+}, [audioCtx]);
+```
+
+#### Analyzing the audio
+
+An `audioAnalyzer()` function sets the `AnalyzerData` state:
+
+```tsx
+const audioAnalyzer = () => {
+  if (sourceNode.current) {
+    return; // source node is already set
+  }
+  if (audioElement.current && audioCtx) {
+    setAnalyzerData(audioElement.current, audioCtx, sourceNode, fftsize);
+  }
+};
+```
+
+It runs whenever the audio element plays:
+
+```tsx {6,13-14}
+useEffect(() => {
+  const current = audioElement.current;
+
+  if (current) {
+    audioElement.current.src = audioSrc;
+    current.addEventListener("play", audioAnalyzer);
+
+    audioAnalyzer();
+  }
+
+  return () => {
+    // Clean up when the component unmounts
+    audioElement.current.removeEventListener("play", audioAnalyzer);
+    audioCtx.close();
+  };
+}, [audioElement, audioCtx]);
+```
+
+#### Putting it together
+
+With that and a few UI components, the result is a simple player that visualizes the waveform. The [full `<Waveform />` source](https://github.com/clxrityy/react-audio/blob/main/src/lib/Waveform/index.tsx) is on GitHub.
+
+```tsx
+return (
+  <div {...props}>
+    <Player audioElement={audioElement} />
+    {analyzerData && (
+      <Canvas analyzerData={analyzerData} color={color} size={size} />
+    )}
+  </div>
+);
+```
+
+## Part 2: Building the website
+
+<Callout type="note">
+  This part is still being written.
+</Callout>

@@ -1,28 +1,15 @@
-import { fetchIp, getLocationByIp } from "@/lib/ip";
-import "@/styles/page/weather.css";
 import { connection } from "next/server";
-
-async function getStaticProps() {
-	const ip = (await fetchIp()) as string;
-
-	return {
-		props: {
-			ip,
-		},
-	};
-}
+import { resolvePlace } from "@/lib/weather";
+import "@/styles/page/weather.css";
 
 export async function generateMetadata() {
 	await connection();
-
-	const {
-		props: { ip },
-	} = await getStaticProps();
-	const { city } = (await getLocationByIp(ip)) as { city: string };
+	const place = await resolvePlace();
+	const where = place?.city ?? "your area";
 
 	return {
-		title: `Weather in ${city}`,
-		description: `Current weather and forecast for ${city}`,
+		title: `Weather in ${where}`,
+		description: `Current weather and forecast for ${where}`,
 	};
 }
 
@@ -33,5 +20,5 @@ export default async function Layout({
 }) {
 	await connection();
 
-	return <div className="w-screen h-screen relative">{children}</div>;
+	return <div className="relative w-full">{children}</div>;
 }

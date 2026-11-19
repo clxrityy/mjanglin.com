@@ -13,7 +13,7 @@ export function ReadMore({
 		/* From Uiverse.io by vinodjangid07 */
 		<button
 			type="button"
-			className="readmore-btn focus:ring ring-offset-1"
+			className="readmore-btn"
 			onClick={() => router.push("/about")}
 			aria-label="about"
 		>
@@ -93,7 +93,7 @@ export function ReadMore({
 					></path>
 				</svg>
 			</span>
-			<span className="text">{children}</span>
+			{children}
 		</button>
 	);
 }
