@@ -131,9 +131,9 @@
 		visibility 0.5s;
 }
 
-/* Room for the description card's stacked layers, which reach above the card */
+/* The description card makes its own room for the sheets behind it */
 .home-about {
-	padding-top: 2rem;
+	padding-top: 0.25rem;
 }
 
 .home[data-tab="about"] [data-panel="projects"],
@@ -178,7 +178,7 @@
 	.home-about {
 		grid-area: about;
 		max-width: none;
-		padding-top: 1rem;
+		padding-top: 0;
 	}
 
 	.home[data-tab="projects"] [data-panel="about"] {

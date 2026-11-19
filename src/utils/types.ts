@@ -81,11 +81,6 @@ export interface ApiError {
 	details?: unknown;
 }
 
-export interface WeatherData {
-	temp: number;
-	rain: Float32Array;
-}
-
 // Add component prop types
 export interface ComponentSize {
 	width: number;

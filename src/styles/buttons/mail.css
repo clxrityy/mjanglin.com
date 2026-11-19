@@ -1,0 +1,62 @@
+/* Envelope in the mail pill (see components/cards/MailLink.tsx).
+ * Opening: closed flap folds up, open flap unfolds behind, letter rises.
+ * Closing runs the same steps in reverse (the delays swap on hover). */
+
+.mail-btn .mail {
+	width: 30px;
+	height: 22px;
+	overflow: visible;
+}
+
+.mail-flap,
+.mail-flap-open,
+.mail-letter {
+	transform-box: fill-box;
+}
+
+.mail-flap {
+	transform-origin: 50% 0;
+	transition: transform 0.2s ease-out 0.42s;
+}
+
+.mail-flap-open {
+	transform-origin: 50% 100%;
+	transform: scaleY(0);
+	transition: transform 0.2s ease-in 0.24s;
+}
+
+.mail-letter {
+	opacity: 0;
+	transform: translateY(3px);
+	transition:
+		transform 0.32s var(--ease-smooth),
+		opacity 0.24s ease;
+}
+
+.mail-btn:hover .mail-flap,
+.mail-btn:focus-visible .mail-flap {
+	transform: scaleY(0);
+	transition: transform 0.18s ease-in;
+}
+
+.mail-btn:hover .mail-flap-open,
+.mail-btn:focus-visible .mail-flap-open {
+	transform: scaleY(1);
+	transition: transform 0.22s ease-out 0.18s;
+}
+
+.mail-btn:hover .mail-letter,
+.mail-btn:focus-visible .mail-letter {
+	opacity: 1;
+	transform: translateY(-8px);
+	transition:
+		transform 0.5s var(--ease-smooth) 0.34s,
+		opacity 0.2s ease 0.34s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	/* Same specificity as the hover rules above, and later, so it wins */
+	.mail-btn .mail :is(.mail-flap, .mail-flap-open, .mail-letter) {
+		transition: none;
+	}
+}

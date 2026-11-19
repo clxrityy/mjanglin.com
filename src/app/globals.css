@@ -60,3 +60,88 @@ body {
 		animation: none;
 	}
 }
+
+/* ---------- Liquid glass ----------
+ * Shared translucent surface: the page shows through blurred and a little
+ * brighter, a hairline rim catches the light, and a soft sheen follows the
+ * pointer (see components/layout/GlassPointer.tsx). Tune per surface with:
+ *   --glass-tint  rgb triplet washed over the surface
+ *   --glass-rim   rgb triplet for the rim
+ *   --glass-glow  rgb triplet for the inner glow
+ *   --glass-radius
+ */
+.glass {
+	--glass-tint: 255 255 255;
+	--glass-rim: 150 160 215;
+	--glass-glow: 120 140 230;
+	--mx: 30%;
+	--my: 0%;
+	position: relative;
+	isolation: isolate;
+	border-radius: var(--glass-radius, 20px);
+	background:
+		radial-gradient(
+			120% 90% at 0% 0%,
+			rgb(var(--glass-tint) / 0.075),
+			transparent 55%
+		),
+		linear-gradient(
+			160deg,
+			rgb(var(--glass-tint) / 0.05),
+			rgb(var(--glass-tint) / 0.012)
+		);
+	/* Unprefixed only: the build adds -webkit- for Safari (see projectcard.css). */
+	backdrop-filter: blur(14px) saturate(1.5) brightness(1.2);
+	box-shadow:
+		0 22px 48px -26px rgb(0 0 0 / 0.85),
+		inset 0 1px 0 rgb(255 255 255 / 0.13),
+		inset 0 -1px 0 rgb(255 255 255 / 0.03),
+		inset 0 0 36px -12px rgb(var(--glass-glow) / 0.28);
+}
+
+/* Hairline rim: bright where the light hits, tinted the rest of the way round */
+.glass::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	padding: 1px;
+	border-radius: inherit;
+	background: linear-gradient(
+		135deg,
+		rgb(255 255 255 / 0.38),
+		rgb(var(--glass-rim) / 0.42) 22%,
+		rgb(var(--glass-rim) / 0.08) 52%,
+		rgb(var(--glass-rim) / 0.34) 84%,
+		rgb(255 255 255 / 0.14)
+	);
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask:
+		linear-gradient(#000 0 0) content-box exclude,
+		linear-gradient(#000 0 0);
+	pointer-events: none;
+}
+
+/* Sheen under the pointer. z-index -1 keeps it above the surface, below the text. */
+.glass::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	border-radius: inherit;
+	background: radial-gradient(
+		280px circle at var(--mx) var(--my),
+		rgb(255 255 255 / 0.1),
+		transparent 65%
+	);
+	opacity: 0;
+	transition: opacity 0.7s var(--ease-smooth);
+	pointer-events: none;
+}
+
+.glass:hover::after {
+	opacity: 1;
+}
