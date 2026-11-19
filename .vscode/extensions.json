@@ -1,3 +1,7 @@
 {
-	"recommendations": ["unifiedjs.vscode-mdx"]
+	"recommendations": [
+		"unifiedjs.vscode-mdx",
+		"ms-vscode.live-server",
+		"typescriptteam.native-preview"
+	]
 }
