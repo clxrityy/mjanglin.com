@@ -12,6 +12,7 @@ import {
 import { Figure, Figures, Video } from "@/components/docs/Figure";
 import { FileTree } from "@/components/docs/FileTree";
 import { InstallTabs } from "@/components/docs/InstallTabs";
+import { Mermaid } from "@/components/docs/Mermaid";
 import { RepoCard } from "@/components/docs/RepoCard";
 import { Steps } from "@/components/docs/Steps";
 import { Tab, Tabs } from "@/components/docs/Tabs";
@@ -30,6 +31,7 @@ const docsComponents = {
 	InstallTabs,
 	LinkCard,
 	LinkCards,
+	Mermaid,
 	RepoCard,
 	Steps,
 	Tab,

@@ -1,0 +1,500 @@
+import { r2AssetPath } from "@/utils/assets";
+
+{/* 📸 IMAGE PLACEHOLDER — hero. Suggested: the chat screenshot from the aster repo (.github/assets/chat.png, 3002×714). Upload to R2 as assets/aster-chat.png */}
+<Figure
+  src={r2AssetPath("assets/aster-chat.png")}
+  alt="Talking to aster on the web dashboard"
+  width={3002}
+  height={714}
+  priority
+  caption="Talking to aster on its dashboard"
+/>
+
+> aster learns and decides what aster is.
+> you help shape that process.
+
+## Overview
+
+aster is a private, persistent mind that learns **only from you**.
+
+- No ChatGPT. No Claude. No Llama. No pretrained weights. No external AI APIs.
+- Every word it knows, every reply it gives, came from you teaching it, rating it, or handing it text to read.
+- It runs on your own machine (or your own server) and keeps everything in your own database.
+- It keeps running when you close the window. It has internal levels like energy and curiosity that rise and fall over time, and it'll ask you things on its own when it's idle.
+
+<Callout type="danger" title="Built from scratch">
+  aster is **not** a wrapper around an existing AI model. There's no API key for OpenAI, Anthropic, or anyone else, and there are no downloaded model files. The language model, the memory search, the reply scoring and the neural network are all written in Rust in this repo, and they all start empty.
+</Callout>
+
+<RepoCard repo="clxrityy/aster" description="A private, persistent mind that learns only from you. No external AI." />
+
+## Why build it this way
+
+Almost every "AI" product right now is the same thing underneath: a giant model trained by a big company on a huge chunk of the internet, with an app on top. That works, but it means:
+
+- **You don't know what it knows.** It was trained on things you never saw.
+- **You can't really teach it.** You can prompt it, but it forgets when the chat ends, and its core never changes because of you.
+- **It isn't yours.** Your conversations go to someone else's servers, and the model can change or disappear any time.
+- **It'll confidently make things up.** It's built to always produce an answer.
+
+I wanted the opposite. Something that starts out knowing nothing (or close to it), and grows **only** from what I give it. Something I can open up and see *why* it said what it said. Something that says "I don't know, what does that mean?" instead of guessing.
+
+### In plain terms
+
+If you're not a developer, think of it like this:
+
+| Typical AI chatbot | aster |
+| --- | --- |
+| Already "read the internet" before you met it | Starts nearly blank, learns from you |
+| Lives on a company's servers | Lives on your computer or your server |
+| Can't explain where an answer came from | Shows every option it considered and the score each got |
+| Guesses when it's unsure | Asks you when it's unsure |
+| Forgets you between chats (or "remembers" in ways you can't see) | Remembers what you tell it, and you can see and delete any of it |
+| Same model for everyone | Becomes something different for every person who raises it |
+
+It's less like downloading an assistant and more like raising one.
+
+## What it looks like to use
+
+When you first say `hello`, aster doesn't know what that means. So it asks.
+
+```txt title="a first conversation"
+you    hello
+aster  I don't know what "hello" means yet. What does it mean?
+you    it's a friendly greeting
+aster  Got it. "hello" means a friendly greeting.
+you    hello
+aster  I'm not sure how to answer that yet. How would you reply to "hello"?
+you    /answer 1 Hi! Good to see you.
+you    hello
+aster  Hi! Good to see you.
+you    +
+you    what does hello mean
+aster  "hello" means a friendly greeting.
+```
+
+> aster can ask questions even after chatting to follow up on things it doesn't understand.
+
+<Figure
+  src={r2AssetPath("assets/aster-ask.png")}
+  alt="Aster asking a follow-up question after a conversation"
+  width={1600}
+  height={900}
+  caption="Aster asking a follow-up question after a conversation"
+/>
+
+### Ways it learns
+
+| How | Example | What it learns |
+| --- | --- | --- |
+| **Teaching** | `/teach hello => Hi, I'm Aster.` | A reply to a prompt |
+| **Rating** | `+` or `-` after a reply | Which replies are good |
+| **Correcting** | `/correct Better reply.` | Replaces a bad reply |
+| **Answering its questions** | `/answer 1 <text>` | Whatever it asked about |
+| **Just talking** | `a nebula means a cloud of gas` | A meaning |
+| **Memories** | `/remember Rust is my main language.` | Something to recall later |
+| **Reading files** | `/ingest notes.txt` | Vocabulary, sentence shape, things to recall |
+
+### Starter pack
+
+A truly blank mind is a pain to talk to, so aster ships with a small **starter pack**: a plain-text file I wrote by hand with a few hundred everyday meanings, small-talk replies and synonym groups (`hello, hi, hey, howdy…`). It's not a model. It's a text file you can read top to bottom, and you can turn it off before the first start with `cognition.starter_pack = false`.
+
+You can write your own packs in the same format:
+
+```txt title="data/ingest/space.aster"
+# my pack
+[meanings]
+quasar: a very bright galactic core
+[replies]
+good morning aster => Morning! Ready when you are.
+[synonyms]
+quasar, qso, quasi-stellar object
+```
+
+Anything you teach always wins over a pack.
+
+## How it's designed
+
+This is the part I'm most proud of. aster is split into separate pieces, each with one job, so no single piece "is" the AI.
+
+```txt title="the workspace"
+aster-core      identity, internal levels, what aster is allowed to do
+aster-mind      the mind itself: understanding, memory, language model, neural net
+aster-runtime   the heartbeat: ticks, levels over time, taking initiative, snapshots
+aster-storage   PostgreSQL: everything durable lives here
+aster-api       the HTTP server, auth, and the web dashboard
+aster-console   the terminal client
+```
+
+<Mermaid
+  alt="Diagram of aster's crates: the dashboard and console talk to aster-api over HTTP; aster-api uses aster-runtime, which drives aster-mind; aster-storage persists everything to PostgreSQL; aster-core is shared by all of them."
+  caption="How the pieces fit together. Arrows point from a crate to what it depends on."
+  chart={`
+flowchart TD
+    subgraph you["you"]
+        dashboard["🌐 web dashboard<br/><small>browser</small>"]
+        console["⌨️ aster-console<br/><small>terminal UI</small>"]
+    end
+
+    api["aster-api<br/><small>HTTP server · auth · serves the dashboard</small>"]
+    runtime["aster-runtime<br/><small>ticks · levels · initiative · snapshots</small>"]
+    mind["aster-mind<br/><small>intent · recall · n-gram · scoring</small>"]
+    neural["neural engine<br/><small>optional · trained in-process</small>"]
+    storage["aster-storage<br/><small>migrations · reads · writes</small>"]
+    core["aster-core<br/><small>identity · levels · permissions</small>"]
+    db[("PostgreSQL<br/><small>source of truth</small>")]
+
+    dashboard -- "HTTP + events" --> api
+    console -- "HTTP + events" --> api
+    api --> runtime
+    api --> storage
+    runtime --> mind
+    runtime --> storage
+    mind -.-> neural
+    storage --> db
+
+    api --> core
+    runtime --> core
+    mind --> core
+    storage --> core
+
+    classDef client fill:#141418,stroke:#71717a,color:#d4d4d8
+    classDef heart fill:#18222b,stroke:#6eb4dc,stroke-width:2px,color:#f4f4f5
+    classDef base fill:#1c1c21,stroke:#4996c0,color:#f4f4f5
+    class dashboard,console client
+    class mind,neural heart
+    class core,db base
+`}
+/>
+
+### 1. Identity: who aster is, and what it can't change
+
+aster has a **protected identity** that nothing at runtime can edit, not even aster itself:
+
+- **Clarity** without coldness.
+- **Honesty** without cruelty.
+- **Guidance** without control.
+- Help the owner think clearly and build things they're proud of.
+
+There's no setter in the code and no API route that changes it. On top of that sits an **evolving identity** (interests, preferences, a self-description) that's meant to grow over time.
+
+There's also a permissions policy built in from day one:
+
+| Decision | Actions |
+| --- | --- |
+| **Allowed** | Read its own identity, manage memory, plan internal tasks, regulate its levels |
+| **Needs your approval** | Browse a source, run code, send a message, spend money, change infrastructure |
+| **Denied** | Edit its protected identity, change its own permissions |
+
+The idea is autonomy **without** unrestricted authority. aster can think on its own, but it can't hand itself more power.
+
+### 2. Understanding: what kind of message is this?
+
+Before aster scores any reply, it takes a first read of your message and sorts it into one of three intents:
+
+```rust title="crates/aster-mind/src/understand.rs"
+pub enum Intent {
+    /// "what is X", "what does X mean", "define X", "tell me about X".
+    AskMeaning { subject: String },
+    /// "X means Y" or "X is Y".
+    State { subject: String, meaning: String, means: bool },
+    /// Anything else: answered from learned replies.
+    Talk,
+}
+```
+
+This is what keeps **meanings** and **replies** apart. If you say "it's a friendly greeting" right after aster asks what "hello" means, it resolves the `it` to `hello` and stores the meaning, without the "it's" framing.
+
+### 3. Thinking: how a reply gets picked
+
+Every message goes through the same pipeline. aster gathers **candidates** from a few different places, scores them, and only answers if the best one clears a confidence threshold.
+
+```txt title="one turn"
+your message
+   │
+   ├─▶ read intent ─── asking a meaning? ──▶ look it up (or ask you)
+   │
+   └─▶ gather candidates
+         ├─ taught replies      (things you /teach'd, corrected, preferred)
+         ├─ recalled memories   (BM25 search over memories + ingested text)
+         ├─ n-gram model        (generates a new sentence from what it's read)
+         └─ neural network      (optional, see below)
+                │
+                ▼
+         score each one
+                │
+                ▼
+     best score ≥ threshold? ──no──▶ ask you how to reply
+                │
+               yes
+                ▼
+             reply  (+ the full thought trace)
+```
+
+Here's what each candidate source actually is:
+
+- **Taught replies** are matched by word overlap with your message. Filler words like "the" and "is" only count a quarter as much as real words, and then the overlap is scaled by how strong that reply is (how much you've rated it up):
+
+  ```rust title="crates/aster-mind/src/mind.rs"
+  fn similarity(a: &[String], b: &[String]) -> f64 {
+      let weight = |w: &String| if is_stopword(w) { 0.25 } else { 1.0 };
+      // ...
+      shared / (mass_a * mass_b).sqrt()
+  }
+
+  let weight_factor = association.weight / (association.weight + 0.5);
+  let score = similarity * weight_factor;
+  ```
+
+- **Recall** uses [BM25](https://en.wikipedia.org/wiki/Okapi_BM25), the same ranking idea classic search engines use, written by hand over your memories and ingested files.
+- **The n-gram model** is a word-level language model. It counts which words follow which in everything you've given it, and samples new sentences from those counts. It's the oldest trick in language modeling, and it's completely transparent: the "model" is literally a table of counts.
+
+  ```rust title="crates/aster-mind/src/ngram.rs"
+  //! Word n-gram language model with stupid-backoff scoring and temperature
+  //! sampling. Trained only on text the owner provides or teaches.
+  pub struct NgramModel {
+      /// context -> next token -> count
+      counts: HashMap<String, HashMap<String, u32>>,
+      // ...
+  }
+  ```
+
+### 4. The thought trace: aster shows its work
+
+Every reply comes with a **thought trace**: every candidate it considered, where each came from, its score, and the threshold it had to beat. Click **Why?** on any reply on the dashboard to open it.
+
+<Figure
+  src={r2AssetPath("assets/aster-trace-1.png")}
+  alt="The thought trace showing every candidate aster considered for a reply"
+  className="max-h-[300px]"
+  width={100}
+  height={100}
+  caption="The thought trace: every candidate, its source, and its score"
+/>
+
+From the trace you can **steer** it:
+
+| Action | What happens |
+| --- | --- |
+| **Use this** | That candidate becomes the reply for this prompt from now on. The one it picked gets weaker. |
+| **▲ / ▼** | Rate any candidate, even ones that lost |
+| **Not relevant here** | A recalled memory didn't belong. It'll score much lower for these words from now on. |
+| **Reconsider** | Ask for a different reply to the same message. Nothing is learned until you rate it. |
+
+The original reply is never rewritten. Every signal you give is stored next to it, so the history stays honest.
+
+This is a big deal for non-developers too: you're not stuck asking "why did it say that?" The answer is right there.
+
+### 5. Regulation: levels, not feelings
+
+aster has seven internal levels, each from 0 to 100:
+
+`energy` · `focus` · `cognitive_load` · `curiosity` · `stimulation` · `stress` · `confidence`
+
+<Callout type="note" title="These aren't emotions">
+  They model internal regulation, the same way a thermostat models temperature. They don't claim feelings or consciousness, and a high `confidence` doesn't make anything aster says more true.
+</Callout>
+
+Events move them (a bad rating lowers confidence and raises stress), and over time they drift back toward a baseline. They actually change behavior:
+
+| Level | Effect |
+| --- | --- |
+| curiosity ↑ | Asks more, and asks on its own when idle |
+| stress ↑ / confidence ↓ | Raises the threshold, so it asks instead of guessing |
+| cognitive_load ↑ | Shorter generated replies |
+| energy low | Requests rest, which you approve or deny |
+
+**You** set the baselines, bounds and how hard each event hits. **aster** regulates the values within your bounds. It also tunes two of its own knobs: how often it explores its second-best answer, and how cautious it is. Both go up when it's getting bad ratings.
+
+```toml title="data/aster.toml"
+[regulation.levels]
+stress = { baseline = 10.0, decay_per_min = 0.08, min = 0.0, max = 60.0 }
+
+[regulation.events]
+negative_feedback = { confidence = -3.0, stress = 3.0 }
+```
+
+{/* 📸 IMAGE PLACEHOLDER — the Mind page: levels now and over time. Suggested: the mind screenshot from the aster repo (.github/assets/mind.png, 2198×1120). Upload as assets/aster-mind.png */}
+<Figure
+  src={r2AssetPath("assets/aster.png")}
+  alt="The Mind page showing aster's levels over time"
+  width={2198}
+  height={1120}
+  caption="The Mind page: levels now and over time"
+/>
+
+### 6. The runtime: it keeps going without you
+
+aster isn't a request/response function that only exists while you're typing. The runtime **ticks** on an interval. Every tick it:
+
+- Lets levels decay toward their baselines
+- Trains the neural network a little (if enabled)
+- Checks if it's been idle long enough to take **initiative**, like asking you about a word it saw but never learned
+
+Questions and requests land in an **inbox** so nothing gets lost while you're away. Closing the dashboard or console doesn't stop aster.
+
+### 7. Memory: everything is durable, and everything is versioned
+
+PostgreSQL is the single source of truth. The mind saves **snapshots** on a schedule and on shutdown, so you can experiment and roll back:
+
+```txt
+/snapshot before-experiment
+/snapshots
+/rollback 12
+```
+
+You can also seed its randomness (`/set cognition.rng_seed 42`) to make sessions reproducible, which matters when you're trying to figure out why it did something.
+
+## The neural engine
+
+The statistical engine above is the default. There's also an optional **neural engine**. It does everything the statistical one does and adds a small neural network that competes as one more candidate.
+
+<Callout type="danger" title="Still from scratch">
+  The network starts from random weights and trains **inside aster, while it runs**, only on what you taught it. There's no pretrained checkpoint, no downloaded model. I use [candle](https://github.com/huggingface/candle) as the tensor math library (the same role NumPy plays in Python), but the network design, training data and training loop are all aster's.
+</Callout>
+
+How it's built:
+
+- **Byte-level.** It reads raw bytes instead of words, so its vocabulary is fixed at 256 values and never "freezes". It can handle words it's never seen.
+- **Small.** An embedding layer, one hidden layer, and an output layer. It's meant to run on a regular CPU, between turns.
+- **Trained from your data.** Its training text is built from your learned replies (stronger ones repeated more), your meanings, and your memories and ingested text:
+
+  ```txt
+  <prompt>⇥<reply>        every learned reply
+  what is <x>⇥<meaning>   every meaning
+  <line>                  recalled memories and ingested text
+  ```
+
+- **Has to earn its answers.** It stays silent for the first 50 training steps. After that, its candidate is scored by how sure the network was, times a weight you control. It only wins if it beats every other candidate **and** the threshold.
+
+Switching engines keeps everything aster has learned:
+
+```bash
+aster-set cognition.engine '"neural"'
+```
+
+{/* 📸 IMAGE PLACEHOLDER — the Neural page: engine switch, training steps, and the live loss curve falling. Suggested: assets/aster-neural.png */}
+<Figure
+  src={r2AssetPath("assets/aster-neural.png")}
+  alt="The Neural page showing the training loss curve"
+  width={1600}
+  height={900}
+  caption="Watching the network's loss fall as it trains on what you taught it"
+/>
+
+If you prefer a neural candidate with **Use this**, it becomes a learned reply, and the network trains on that too. Your feedback loops back into it.
+
+## Interfaces
+
+### Web dashboard
+
+Served by aster itself on the same port as the API. No build step, no third-party scripts.
+
+| Page | Does |
+| --- | --- |
+| **Talk** | Chat or train mode, rate, correct, reply in a thread, open the thought trace |
+| **Inbox** | Answer aster's questions, approve or deny its requests |
+| **Mind** | Levels now and over time, what aster knows |
+| **Neural** | Engine switch, training steps, live loss curve |
+| **Memories** | Remember and forget |
+| **Teach & ingest** | Teach a reply, ingest a file |
+| **Config** | Every setting, validated before it applies |
+| **Snapshots** | Save, list, roll back |
+| **Logs** | Newest entries of each log |
+
+### Terminal console
+
+The same thing in a terminal UI, for when you live in one:
+
+```txt
+ ✶ aster  chat  ● live  ✉ 1 waiting
+┌ conversation ───────────────────┐┌ levels ─────────────┐
+│ 10:00 you   hello               ││ energy   ████░░ 75↓ │
+│ 10:00 aster Hi, I'm Aster. ▲    │└─────────────────────┘
+│                                 │┌ inbox ──────────────┐
+│                                 ││ 1. ? What is "x"?   │
+│                                 │└─────────────────────┘
+│                                 │┌ thought trace ──────┐
+│                                 ││ reply conf .66/.40  │
+└─────────────────────────────────┘└─────────────────────┘
+ › _
+```
+
+{/* 📸 IMAGE PLACEHOLDER — a real screenshot of `aster console` in a terminal. Suggested: assets/aster-console.png */}
+<Figure
+  src={r2AssetPath("assets/aster-console.png")}
+  alt="aster's terminal console"
+  width={1600}
+  height={900}
+  caption={<><code>aster console</code></>}
+/>
+
+## Private by default
+
+aster is meant to be **yours**, so security isn't an afterthought:
+
+- Everything is owner-only behind a random 64-character token. The server only keeps its SHA-256 digest and compares in constant time.
+- The dashboard uses `HttpOnly`, `SameSite=Strict`, `Secure` session cookies, CSRF tokens, and a strict Content-Security-Policy. Failed sign-ins lock out with growing waits.
+- It binds to localhost by default. Exposing it takes an explicit opt-in.
+- Nothing leaves your machine. There's no external AI API to send your conversations to in the first place.
+
+## Getting started
+
+<Steps>
+
+### Configure
+
+Create a `.env` from `.env.example`:
+
+```bash title=".env"
+POSTGRES_PASSWORD=<openssl rand -hex 16>
+ASTER_OWNER_TOKEN=<openssl rand -hex 32>
+ASTER_CONFIG=data/aster.toml
+```
+
+### Start it
+
+```bash
+mkdir -p data/ingest
+cp aster.example.toml data/aster.toml   # optional; defaults apply without it
+podman-compose up --build -d
+```
+
+Compose starts Postgres, initializes aster once, then serves it. Everything aster writes lands in `./data`.
+
+### Say hello
+
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000) and sign in with your `ASTER_OWNER_TOKEN`, or use the terminal:
+
+```bash
+source bin/activate
+aster console
+```
+
+Type `hello`. It'll ask you what that means. That's where it starts.
+
+</Steps>
+
+<Callout type="tip" title="Running it on a server">
+  The repo includes a private VPS setup with podman, nginx and Cloudflare Tunnel, plus `bin/` helpers like `aster-up`, `aster-logs`, `aster-backup` and `aster-token`. See the docs folder in the repo.
+</Callout>
+
+## Built with
+
+| Area | Tools |
+| --- | --- |
+| Language | [Rust](https://www.rust-lang.org/) (2024 edition) |
+| Server | [Axum](https://github.com/tokio-rs/axum), [Tokio](https://tokio.rs/) |
+| Storage | [PostgreSQL](https://www.postgresql.org/) via [SQLx](https://github.com/launchbadge/sqlx) |
+| Terminal UI | [Ratatui](https://ratatui.rs/), [crossterm](https://github.com/crossterm-rs/crossterm) |
+| Tensor math (neural engine) | [candle](https://github.com/huggingface/candle) |
+| Dashboard | Plain HTML, CSS and ES modules, embedded in the binary |
+| Deploy | Podman / Docker Compose, nginx, Cloudflare Tunnel |
+
+Everything that makes aster *think* (the intent reader, BM25 recall, the n-gram model, reply scoring, regulation, the neural network and its training loop) is written from scratch in the repo.
+
+## License
+
+aster is open source under the [GPL v3](https://github.com/clxrityy/aster/blob/main/LICENSE).
+
+<RepoCard repo="clxrityy/aster" />
