@@ -18,6 +18,17 @@ export type DocEntry = {
  */
 export const docs: DocEntry[] = [
 	{
+		slug: "aster",
+		load: () => import("./aster/index.mdx"),
+		links: [
+			{
+				kind: "repo",
+				label: "Source",
+				href: "https://github.com/clxrityy/aster",
+			},
+		],
+	},
+	{
 		slug: "crateloot",
 		load: () => import("./crateloot/index.mdx"),
 		links: [

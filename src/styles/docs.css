@@ -1018,3 +1018,32 @@ div.doc-figure-frame {
 .tabs-panel .code-block-lang {
 	display: none;
 }
+
+/* Mermaid diagrams (components/docs/Mermaid.tsx) */
+.doc-mermaid .doc-figure-frame {
+	cursor: default;
+	padding: 1.25rem;
+	overflow-x: auto;
+}
+
+.doc-mermaid-svg {
+	display: flex;
+	justify-content: center;
+	min-width: min-content;
+}
+
+.doc-mermaid-svg svg {
+	max-width: 100%;
+	height: auto;
+}
+
+.doc-mermaid-svg[data-state="loading"] {
+	min-height: 12rem;
+}
+
+.doc-mermaid-fallback {
+	margin: 0;
+	font-size: 0.8rem;
+	color: var(--doc-muted);
+	white-space: pre;
+}
