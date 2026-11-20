@@ -57,13 +57,19 @@ export function Mermaid({ chart, caption, alt }: Readonly<Props>) {
 			.then((mermaid) => mermaid.render(id, chart.trim()))
 			.then(({ svg }) => {
 				if (cancelled || !container.current) return;
-				const doc = new DOMParser().parseFromString(svg, "image/svg+xml");
-				const node = doc.documentElement;
-				if (node.nodeName !== "svg") throw new Error("invalid svg");
+				// Parse as HTML, not "image/svg+xml": mermaid's HTML labels live in
+				// <foreignObject> and use HTML serialization (e.g. `<br>`, `&nbsp;`),
+				// which is not well-formed XML and makes the XML parser fail.
+				const doc = new DOMParser().parseFromString(svg, "text/html");
+				const node = doc.body.querySelector("svg");
+				if (!node) throw new Error("invalid svg");
 				container.current.replaceChildren(document.importNode(node, true));
 				setState("ready");
 			})
-			.catch(() => {
+			.catch((error: unknown) => {
+				if (process.env.NODE_ENV !== "production") {
+					console.error("[Mermaid] render failed:", error);
+				}
 				if (!cancelled) setState("failed");
 			});
 		return () => {
