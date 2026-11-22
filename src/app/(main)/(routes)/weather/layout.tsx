@@ -1,5 +1,6 @@
 import { connection } from "next/server";
 import { resolvePlace } from "@/lib/weather";
+import "@/styles/readout.css";
 import "@/styles/page/weather.css";
 
 export async function generateMetadata() {
@@ -20,5 +21,5 @@ export default async function Layout({
 }) {
 	await connection();
 
-	return <div className="relative w-full">{children}</div>;
+	return children;
 }

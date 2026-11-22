@@ -1,0 +1,164 @@
+/* Readout: the quiet, slightly retro look shared by /vitals, /weather and the
+ * home time card. Set in DM Sans (soft, readable) with tabular numbers.
+ * Anything with data-tone sets --tone (an rgb triplet) for itself and its children.
+ *
+ * Layout rule: nothing here changes size after first paint. Tables use fixed
+ * layout, bars are fixed cells, and late text sits in boxes sized up front,
+ * so live updates never shift the page (CLS). */
+
+body {
+	--ro-good: 150 205 150;
+	--ro-mid: 225 195 130;
+	--ro-poor: 225 140 130;
+	--ro-cold: 145 185 225;
+	--ro-none: 125 125 130;
+	--ro-text: 232 230 225;
+	--ro-muted: 150 150 155;
+	--ro-rule: 255 255 255 / 0.1;
+	/* On body, where next/font defines --font-soft, so the var() resolves */
+	--ro-font: var(--font-soft), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.ro {
+	width: 100%;
+	max-width: 44rem;
+	margin: 0 auto;
+	padding: 5.5rem 1.25rem 4rem;
+	display: flex;
+	flex-direction: column;
+	gap: 3.25rem;
+	font-family: var(--ro-font);
+	font-variant-numeric: tabular-nums;
+	font-size: 1rem;
+	line-height: 1.7;
+	letter-spacing: 0.005em;
+	color: rgb(var(--ro-text));
+}
+
+[data-tone] {
+	--tone: var(--ro-none);
+}
+[data-tone="good"] {
+	--tone: var(--ro-good);
+}
+[data-tone="mid"] {
+	--tone: var(--ro-mid);
+}
+[data-tone="poor"] {
+	--tone: var(--ro-poor);
+}
+[data-tone="cold"] {
+	--tone: var(--ro-cold);
+}
+
+.ro-h1 {
+	font-size: 2rem;
+	font-weight: 500;
+	letter-spacing: -0.005em;
+	line-height: 1.2;
+}
+
+.ro-h2 {
+	margin-bottom: 1rem;
+	padding-bottom: 0.55rem;
+	border-bottom: 1px dashed rgb(var(--ro-rule));
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.ro-muted {
+	color: rgb(var(--ro-muted));
+	font-weight: 400;
+}
+
+.ro-tone {
+	color: rgb(var(--tone));
+}
+
+.ro-link {
+	text-decoration: underline;
+	text-decoration-color: rgb(255 255 255 / 0.3);
+	text-underline-offset: 3px;
+	transition: text-decoration-color 0.3s var(--ease-smooth);
+}
+.ro-link:hover {
+	text-decoration-color: currentColor;
+}
+
+/* One line, always: long text is cut short (full text in title) instead of wrapping */
+.ro-line {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* ---------- Table ---------- */
+
+.ro-table {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+.ro-table th,
+.ro-table td {
+	padding: 0.5rem 1rem 0.5rem 0;
+	overflow: hidden;
+	text-align: left;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.ro-table td {
+	font-variant-numeric: tabular-nums;
+}
+
+.ro-table tbody th {
+	font-weight: 400;
+	color: rgb(var(--ro-muted));
+}
+
+.ro-table td:last-child {
+	padding-right: 0;
+	text-align: right;
+}
+
+.ro-table abbr {
+	text-decoration: none;
+	cursor: help;
+}
+
+/* ---------- Bar: fixed, softly rounded cells, filled in --tone ---------- */
+
+.ro-bar {
+	display: flex;
+	gap: 3px;
+	height: 0.55rem;
+}
+
+.ro-cell {
+	flex: 1;
+	border-radius: 2px;
+	background: rgb(255 255 255 / 0.07);
+}
+.ro-cell[data-on] {
+	background: rgb(var(--tone, var(--ro-none)) / 0.85);
+}
+
+/* ---------- Facts: "label value" pairs ---------- */
+
+.ro-facts {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+	gap: 0.5rem 2rem;
+}
+
+.ro-facts dt {
+	display: inline;
+	margin-right: 0.5rem;
+	color: rgb(var(--ro-muted));
+}
+.ro-facts dd {
+	display: inline;
+	font-variant-numeric: tabular-nums;
+}

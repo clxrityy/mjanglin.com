@@ -7,9 +7,9 @@ import { Fit } from "./Fit";
 type Slots = {
 	hero: ReactNode;
 	time: ReactNode;
-	music: ReactNode;
+	vitals: ReactNode;
 	miniTime: ReactNode;
-	miniMusic: ReactNode;
+	miniVitals: ReactNode;
 	about: ReactNode;
 	projects: ReactNode;
 };
@@ -25,16 +25,16 @@ const stagger = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
 /**
  * Home layout. Always fits one screen:
- * - Phone: hero, a dock of mini time/music cards, and an About / Projects switch.
- * - Tablet: hero beside time + music, description below, projects in a strip at the bottom.
+ * - Phone: hero, a dock of mini time/vitals, and an About / Projects switch.
+ * - Tablet: hero beside time + vitals, description below, projects in a strip at the bottom.
  * - Desktop: the same, with projects in a rail on the right.
  */
 export function HomeShell({
 	hero,
 	time,
-	music,
+	vitals,
 	miniTime,
-	miniMusic,
+	miniVitals,
 	about,
 	projects,
 }: Readonly<Slots>) {
@@ -61,18 +61,18 @@ export function HomeShell({
 						<div className="rise-in w-full" style={stagger(1)}>
 							{time}
 						</div>
-						<div className="rise-in" style={stagger(2)}>
-							{music}
+						<div className="rise-in w-full" style={stagger(2)}>
+							{vitals}
 						</div>
 					</div>
 
 					<nav
 						className="home-dock rise-in"
 						style={stagger(1)}
-						aria-label="Time and music"
+						aria-label="Time and vitals"
 					>
 						{miniTime}
-						{miniMusic}
+						{miniVitals}
 					</nav>
 
 					<div

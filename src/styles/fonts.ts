@@ -1,4 +1,4 @@
-import { Exo } from "next/font/google";
+import { DM_Sans, Exo } from "next/font/google";
 
 const exo = Exo({
 	subsets: ["latin"],
@@ -7,4 +7,12 @@ const exo = Exo({
 	variable: "--font-exo",
 });
 
-export { exo };
+/** Soft, readable sans for readouts (/vitals, /weather, the time card) */
+const dmSans = DM_Sans({
+	subsets: ["latin"],
+	weight: ["400", "500", "600"],
+	preload: true,
+	variable: "--font-soft",
+});
+
+export { dmSans, exo };

@@ -1,32 +1,21 @@
-import { IMAGES } from "@/config";
-import "@/styles/layout/hero.css";
-import Image from "next/image";
-import { exo } from "@/styles/fonts";
-import { COMPONENT_SIZES } from "@/utils/constants";
-import { SocialsMenu } from "./layout/SocialsMenu";
+import { MusicLink } from "@/components/home/MusicLink";
+import { Logo } from "@/components/Logo";
+import { SocialsMenu } from "@/components/layout/SocialsMenu";
 
+/** Name, roles and profiles. The only place the logo appears on the page. */
 export function HeroCard() {
 	return (
-		<div className={`e-card playing z-20 overflow-x-clip ${exo.className}`}>
-			<div className="image"></div>
-
-			<div className="wave"></div>
-			<div className="wave"></div>
-			<div className="wave"></div>
-
-			<div className="infotop">
-				<Image
-					src={IMAGES.LOGO}
-					alt="logo"
-					width={COMPONENT_SIZES.HERO_ICON.width}
-					height={COMPONENT_SIZES.HERO_ICON.height}
-					className="icon filter drop-shadow bg-blend-overlay mix-blend-darken"
-					priority
-				/>
-				<p className="font-bold">Network Developer</p>
-				<div className="name">mjanglin</div>
-			</div>
+		<section className="hero" aria-labelledby="hero-name">
+			<Logo className="hero-logo" />
+			<h1 id="hero-name" className="hero-name">
+				MJ Anglin
+			</h1>
+			<ul className="hero-roles">
+				<li>Network Developer</li>
+				<li>Systems Administrator</li>
+			</ul>
 			<SocialsMenu />
-		</div>
+			<MusicLink />
+		</section>
 	);
 }

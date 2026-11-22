@@ -1,0 +1,96 @@
+/* Vitals page. Shared look lives in styles/readout.css. */
+
+.vt-col-metric {
+	width: 3.5rem;
+}
+.vt-col-value {
+	width: 8.5rem;
+}
+.vt-col-rating {
+	width: 7rem;
+}
+
+@media (max-width: 30rem) {
+	.vt-col-value {
+		width: 7rem;
+	}
+	.vt-col-rating {
+		width: 5.5rem;
+	}
+}
+
+.vt-facts {
+	margin-bottom: 0.75rem;
+}
+
+.vt-note {
+	margin-top: 0.5rem;
+	font-size: 0.8rem;
+}
+
+/* Badges fold away behind their heading */
+.vt-summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	list-style: none;
+	transition: color 0.3s var(--ease-smooth);
+}
+.vt-summary::-webkit-details-marker {
+	display: none;
+}
+.vt-summary::after {
+	content: "+";
+	color: rgb(var(--ro-muted));
+	font-weight: 400;
+}
+.vt-spoiler[open] .vt-summary::after {
+	content: "−";
+}
+.vt-summary:hover::after {
+	color: rgb(var(--ro-text));
+}
+.vt-summary:focus-visible {
+	outline: 2px solid rgb(var(--ro-cold));
+	outline-offset: 4px;
+	border-radius: 4px;
+}
+
+/* Fixed slots, so badge images loading in (and [copy] -> [copied]) move nothing */
+.vt-badges {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: 0.5rem 1.25rem;
+	list-style: none;
+}
+
+.vt-badges li {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 8ch;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.vt-badge {
+	display: block;
+	height: 20px;
+	overflow: hidden;
+}
+
+.vt-badge img {
+	height: 20px;
+	width: auto;
+	max-width: 100%;
+}
+
+.vt-copy {
+	text-align: left;
+	font-size: 0.85rem;
+	color: rgb(var(--ro-muted));
+	cursor: pointer;
+}
+.vt-copy:hover,
+.vt-copy:focus-visible {
+	color: rgb(var(--ro-good));
+}

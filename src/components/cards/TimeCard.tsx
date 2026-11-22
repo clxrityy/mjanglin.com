@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Bar } from "@/components/readout/Bar";
 import { type Daypart, daypartOf } from "@/lib/daypart";
-import { exo } from "@/styles/fonts";
+import "@/styles/readout.css";
 import "@/styles/cards/timecard.css";
 
 /** Current time, ticking every second. Null until mounted (avoids a hydration mismatch). */
@@ -26,28 +27,8 @@ const LABELS: Record<Daypart, string> = {
 	dusk: "Evening",
 };
 
-/** A small glass clock face with real hands. */
-function ClockFace({ time }: Readonly<{ time: Date | null }>) {
-	const h = time ? time.getHours() % 12 : 10;
-	const m = time ? time.getMinutes() : 10;
-	const s = time ? time.getSeconds() : 0;
-	const hourDeg = (h + m / 60) * 30;
-	const minuteDeg = (m + s / 60) * 6;
-
-	return (
-		<span className="clock-face" aria-hidden="true">
-			<span
-				className="clock-hand clock-hand-hour"
-				style={{ transform: `rotate(${hourDeg}deg)` }}
-			/>
-			<span
-				className="clock-hand clock-hand-minute"
-				style={{ transform: `rotate(${minuteDeg}deg)` }}
-			/>
-			<span className="clock-pin" />
-		</span>
-	);
-}
+/** How far through the day it is, 0..1 */
+const dayProgress = (t: Date) => (t.getHours() * 60 + t.getMinutes()) / 1440;
 
 export function TimeCard() {
 	const time = useNow();
@@ -63,43 +44,40 @@ export function TimeCard() {
 	const hours = parts.find((p) => p.type === "hour")?.value ?? "--";
 	const minutes = parts.find((p) => p.type === "minute")?.value ?? "--";
 	const dayPeriod =
-		parts.find((p) => p.type === "dayPeriod")?.value?.toUpperCase() ?? "";
+		parts.find((p) => p.type === "dayPeriod")?.value?.toLowerCase() ?? "";
 
 	const date = time
 		? new Intl.DateTimeFormat("en-US", {
-				weekday: "long",
+				weekday: "short",
 				month: "short",
 				day: "numeric",
 			}).format(time)
-		: " ";
+		: " ";
 
 	return (
 		<Link
 			prefetch={false}
 			href="/weather"
 			data-part={part}
-			data-ready={time ? "" : undefined}
-			className={`time-card glass ${exo.className}`}
+			className="time-card"
 			aria-label={
 				time
 					? `${hours}:${minutes} ${dayPeriod}, ${date}. Open weather`
 					: "Open weather"
 			}
 		>
-			<span className="time-glow" aria-hidden="true" />
 			<span className="time-top">
-				<span className="time-part">{LABELS[part]}</span>
-				<ClockFace time={time} />
+				<span>{time ? LABELS[part] : " "}</span>
+				<span className="time-go">weather →</span>
 			</span>
 			<span className="time-text">
 				<span className="time-hm">
-					{hours}
-					<span className="time-colon">:</span>
-					{minutes}
+					{hours}:{minutes}
 				</span>
 				<span className="time-period">{dayPeriod}</span>
 			</span>
-			<span className="time-date">
+			<span className="time-foot">
+				<Bar value={time ? dayProgress(time) : null} cells={24} />
 				<time dateTime={time?.toISOString()}>{date}</time>
 			</span>
 		</Link>
@@ -115,29 +93,27 @@ export function MiniTimeCard() {
 				hour: "numeric",
 				minute: "2-digit",
 				hour12: true,
-			}).format(time)
+			})
+				.format(time)
+				.toLowerCase()
 		: "--:--";
 	const date = time
 		? new Intl.DateTimeFormat("en-US", {
 				month: "short",
 				day: "numeric",
 			}).format(time)
-		: " ";
+		: " ";
 
 	return (
 		<Link
 			prefetch={false}
 			href="/weather"
 			data-part={part}
-			className={`time-mini glass ${exo.className}`}
+			className="time-mini"
 			aria-label={`Time ${label}. Open weather`}
 		>
-			<span className="time-glow" aria-hidden="true" />
-			<ClockFace time={time} />
-			<span className="time-mini-text">
-				<span className="time-mini-time">{label}</span>
-				<span className="time-mini-date">{date} · weather</span>
-			</span>
+			<span className="time-mini-time">{label}</span>
+			<span className="time-mini-date">{date} · weather →</span>
 		</Link>
 	);
 }
