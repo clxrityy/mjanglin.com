@@ -42,10 +42,13 @@ body {
 	background: transparent;
 }
 
-/* Gentle staggered entrance. Set --i on each element for its place in the order. */
+/* Gentle staggered entrance. Set --i on each element for its place in the order.
+ * Starts at 1% opacity, not 0: Chrome skips anything painted fully transparent
+ * when picking the Largest Contentful Paint, so a 0 start hides the real content
+ * and LCP lands on whatever appears later (e.g. a rotating project tile). */
 @keyframes rise-in {
 	from {
-		opacity: 0;
+		opacity: 0.01;
 		transform: translateY(14px);
 	}
 }

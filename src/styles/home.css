@@ -28,8 +28,9 @@
 }
 
 /* Hold everything back until the first measurement, so nothing jumps in size. */
+/* 1%, not 0, so this content still counts for LCP (see rise-in in globals.css) */
 .fit:not([data-ready]) .fit-inner {
-	opacity: 0;
+	opacity: 0.01;
 }
 
 .fit:not([data-ready]) .rise-in {
@@ -57,6 +58,8 @@
 
 .home-hero {
 	grid-area: hero;
+	width: 100%;
+	max-width: 22rem;
 }
 
 .home-side,
@@ -131,7 +134,6 @@
 		visibility 0.5s;
 }
 
-/* The description card makes its own room for the sheets behind it */
 .home-about {
 	padding-top: 0.25rem;
 }
@@ -144,7 +146,7 @@
 	pointer-events: none;
 }
 
-/* ---------- Tablet: hero beside time + music, projects strip at the bottom ---------- */
+/* ---------- Tablet: hero beside time + vitals, projects strip at the bottom ---------- */
 
 @media (min-width: 768px) {
 	.home-dock,
@@ -170,7 +172,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 4rem;
+		gap: 2.25rem;
 		width: 16rem;
 	}
 
@@ -215,5 +217,417 @@
 
 	.home-rail-fit {
 		flex: 1;
+	}
+}
+
+/* ---------- Sections: hero and about sit on the page, divided by quiet rules ---------- */
+
+.hero,
+.about {
+	font-family: var(--ro-font);
+	color: rgb(var(--ro-text));
+	letter-spacing: 0.005em;
+}
+
+.home-label {
+	margin-bottom: 0.9rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px dashed rgb(var(--ro-rule));
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: rgb(var(--ro-muted));
+}
+
+/* ---------- Hero (see components/Hero.tsx) ---------- */
+
+.hero {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	max-width: 22rem;
+}
+
+.hero-logo {
+	width: 3.25rem;
+	height: 3.25rem;
+	margin-bottom: 1.1rem;
+	color: rgb(var(--ro-text));
+}
+
+.hero-name {
+	font-size: 2rem;
+	font-weight: 600;
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+}
+
+.hero-roles {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
+	margin: 0.6rem 0 0;
+	padding: 0;
+	list-style: none;
+	color: rgb(var(--ro-muted));
+}
+
+/* A small cell, like the ones the logo is made of */
+.hero-roles li {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+}
+.hero-roles li::before {
+	content: "";
+	width: 0.4rem;
+	height: 0.4rem;
+	flex-shrink: 0;
+	border-radius: 1.5px;
+	background: rgb(var(--ro-text) / 0.35);
+}
+
+/* Profiles, under a rule so they read as their own row */
+.socials {
+	display: grid;
+	grid-template-columns: repeat(5, 2.6rem);
+	gap: 0.5rem;
+	width: 100%;
+	margin: 1.25rem 0 0;
+	padding: 1.1rem 0 0;
+	border-top: 1px dashed rgb(var(--ro-rule));
+	list-style: none;
+}
+
+.social {
+	display: grid;
+	place-items: center;
+	width: 2.6rem;
+	height: 2.6rem;
+	border-radius: 10px;
+	font-size: 1.15rem;
+	color: rgb(var(--ro-text) / 0.85);
+	background: rgb(255 255 255 / 0.04);
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.09);
+	transition:
+		color 0.3s var(--ease-smooth),
+		background 0.3s var(--ease-smooth),
+		box-shadow 0.3s var(--ease-smooth),
+		transform 0.3s var(--ease-smooth);
+}
+
+.social:hover,
+.social:focus-visible {
+	color: rgb(var(--ro-text));
+	background: rgb(255 255 255 / 0.08);
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+	transform: translateY(-1px);
+}
+
+.social:focus-visible {
+	outline: 2px solid rgb(var(--ro-cold));
+	outline-offset: 2px;
+}
+
+/* ---------- About (see components/cards/DescriptionCard.tsx) ---------- */
+
+.about {
+	width: 100%;
+	line-height: 1.65;
+}
+
+.about-lead {
+	font-size: 1.05rem;
+	font-weight: 500;
+	text-wrap: pretty;
+}
+
+.about-body {
+	margin-top: 0.35rem;
+	color: rgb(var(--ro-muted));
+	text-wrap: pretty;
+}
+
+.about-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.6rem;
+	margin-top: 1.1rem;
+}
+
+.about-action {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	height: 2.4rem;
+	padding: 0 0.95rem;
+	border-radius: 10px;
+	font-size: 0.9rem;
+	color: rgb(var(--ro-text) / 0.9);
+	background: rgb(255 255 255 / 0.04);
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.09);
+	transition:
+		color 0.3s var(--ease-smooth),
+		background 0.3s var(--ease-smooth),
+		box-shadow 0.3s var(--ease-smooth);
+}
+
+.about-action svg {
+	width: 1rem;
+	height: 1rem;
+	color: rgb(var(--ro-muted));
+	transition: color 0.3s var(--ease-smooth);
+}
+
+.about-action:hover,
+.about-action:focus-visible {
+	color: rgb(var(--ro-text));
+	background: rgb(255 255 255 / 0.08);
+	box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+}
+.about-action:hover svg {
+	color: rgb(var(--ro-text));
+}
+
+.about-action:focus-visible {
+	outline: 2px solid rgb(var(--ro-cold));
+	outline-offset: 2px;
+}
+
+/* On phones the About tab already names the section */
+@media (max-width: 767px) {
+	.about .home-label {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) {
+	.home-hero {
+		justify-self: start;
+		width: 17rem;
+	}
+}
+
+/* ---------- Vital sign (see components/home/VitalsLink.tsx) ----------
+ * No box: a heartbeat trace on the page, tinted by this visit's readings. */
+
+.vital,
+.vital-mini {
+	font-family: var(--ro-font);
+	color: rgb(var(--ro-text) / 0.9);
+	text-decoration: none;
+	transition: color 0.4s var(--ease-smooth);
+}
+
+.vital:focus-visible,
+.vital-mini:focus-visible {
+	outline: 2px solid rgb(var(--tone));
+	outline-offset: 4px;
+	border-radius: 8px;
+}
+
+.vital {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	width: 100%;
+	max-width: 280px;
+	padding: 0.25rem 0;
+}
+
+.vital-head {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.85rem;
+}
+
+.vital-go {
+	color: rgb(var(--ro-muted));
+	transition: color 0.4s var(--ease-smooth);
+}
+
+.vital:hover .vital-go {
+	color: rgb(var(--ro-text));
+}
+
+.vital-trace {
+	overflow: visible;
+}
+
+.vital-trace-wide {
+	width: 100%;
+	height: 2rem;
+}
+
+.vital-trace-small {
+	width: 3rem;
+	height: 1.1rem;
+	flex-shrink: 0;
+}
+
+.vital-trace path {
+	fill: none;
+	stroke-width: 2.25;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	vector-effect: non-scaling-stroke;
+}
+
+/* The full beat, faint, always there */
+.vital-trace-base {
+	stroke: rgb(var(--tone) / 0.4);
+	transition: stroke 0.6s var(--ease-smooth);
+}
+
+.vital:hover .vital-trace-base,
+.vital-mini:hover .vital-trace-base {
+	stroke: rgb(var(--tone) / 0.6);
+}
+
+/* The bright sweep that redraws it, like a monitor */
+.vital-trace-beat {
+	stroke: rgb(var(--tone));
+	stroke-dasharray: 14 100;
+	stroke-dashoffset: 14;
+	animation: vital-sweep 3s linear infinite;
+	transition: stroke 0.6s var(--ease-smooth);
+}
+
+@keyframes vital-sweep {
+	0% {
+		stroke-dashoffset: 14;
+		opacity: 1;
+	}
+	75% {
+		stroke-dashoffset: -100;
+		opacity: 1;
+	}
+	76%,
+	100% {
+		stroke-dashoffset: -100;
+		opacity: 0;
+	}
+}
+
+.vital-readings {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.5rem;
+	font-size: 0.8rem;
+	font-variant-numeric: tabular-nums;
+}
+
+.vital-readings > span {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.3;
+}
+
+/* Phone dock */
+.vital-mini {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	height: 3.5rem;
+	padding: 0 0.4rem;
+	min-width: 0;
+}
+
+.vital-mini-text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.2;
+	font-size: 0.9rem;
+}
+
+.vital-mini-reading {
+	font-size: 0.75rem;
+	font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Music line (see components/home/MusicLink.tsx) ---------- */
+
+.music-line {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	margin-top: 1rem;
+	font-size: 0.85rem;
+	color: rgb(var(--ro-text) / 0.85);
+	text-decoration: none;
+	transition: color 0.4s var(--ease-smooth);
+}
+
+.music-line:hover,
+.music-line:focus-visible {
+	color: rgb(var(--ro-text));
+}
+
+.music-line:focus-visible {
+	outline: 2px solid rgb(var(--ro-cold));
+	outline-offset: 3px;
+	border-radius: 6px;
+}
+
+.music-handle {
+	color: rgb(var(--ro-muted));
+	transition: color 0.4s var(--ease-smooth);
+}
+
+.music-line:hover .music-handle {
+	color: rgb(var(--ro-text));
+}
+
+/* Four slow equaliser bars */
+.music-eq {
+	display: flex;
+	align-items: flex-end;
+	gap: 2px;
+	height: 0.85rem;
+}
+
+.music-eq span {
+	width: 3px;
+	height: 100%;
+	border-radius: 1px;
+	background: rgb(var(--ro-cold) / 0.8);
+	transform-origin: bottom;
+	animation: music-eq 1.6s ease-in-out infinite;
+}
+
+.music-eq span:nth-child(1) {
+	animation-delay: -0.4s;
+}
+.music-eq span:nth-child(2) {
+	animation-delay: -1.1s;
+	animation-duration: 1.9s;
+}
+.music-eq span:nth-child(3) {
+	animation-delay: -0.7s;
+	animation-duration: 1.4s;
+}
+.music-eq span:nth-child(4) {
+	animation-delay: -1.4s;
+	animation-duration: 2.1s;
+}
+
+@keyframes music-eq {
+	0%,
+	100% {
+		transform: scaleY(0.3);
+	}
+	50% {
+		transform: scaleY(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.vital-trace-beat {
+		animation: none;
+		stroke-dasharray: none;
+	}
+	.music-eq span {
+		animation: none;
+		transform: scaleY(0.6);
 	}
 }

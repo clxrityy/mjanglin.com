@@ -1,11 +1,11 @@
 import { DescriptionCard } from "@/components/cards/DescriptionCard";
-import { MiniMusicCard, MusicCard } from "@/components/cards/MusicCard";
 import { MiniTimeCard, TimeCard } from "@/components/cards/TimeCard";
 import { ProjectDashboard } from "@/components/dashboard/ProjectDashboard";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { HeroCard } from "@/components/Hero";
 import { FitScript } from "@/components/home/Fit";
 import { HomeShell } from "@/components/home/HomeShell";
+import { MiniVitalSign, VitalSign } from "@/components/home/VitalsLink";
 import { projects } from "@/config";
 import { shuffleArray } from "@/utils/randomize";
 
@@ -28,9 +28,9 @@ export default async function Page() {
 						<TimeCard />
 					</ErrorBoundary>
 				}
-				music={<MusicCard />}
+				vitals={<VitalSign />}
 				miniTime={<MiniTimeCard />}
-				miniMusic={<MiniMusicCard />}
+				miniVitals={<MiniVitalSign />}
 				about={<DescriptionCard />}
 				projects={
 					<ErrorBoundary>

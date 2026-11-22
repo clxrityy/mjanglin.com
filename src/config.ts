@@ -22,6 +22,7 @@ export const IMAGES = {
 export const URLS = {
 	github: "https://github.com/clxrityy",
 	instagram: "https://instagram.com/mjxnglin",
+	youtube: "https://www.youtube.com/@clxrity_",
 	spotify: "https://open.spotify.com/artist/0HaFO6TLXEZ2De3d67dThV",
 	soundcloud: "https://soundcloud.com/clxrityy",
 	discord: "https://discord.gg/RnwJEdsmy2",

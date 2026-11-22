@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Background } from "@/components/layout/Background";
 import { GlassPointer } from "@/components/layout/GlassPointer";
-import { exo } from "@/styles/fonts";
+import { dmSans, exo } from "@/styles/fonts";
 import { CONSTANTS } from "@/utils/constants";
 import "./globals.css";
 
@@ -19,11 +19,13 @@ export const metadata: Metadata = {
 		emails: ["contact@mjanglin.com"],
 		siteName: "MJ Anglin",
 		countryName: "United States of America",
+		images: ["/apple-touch-icon.png"],
 	},
 	twitter: {
 		card: "summary",
 		title: "MJ Anglin",
 		description: "Developer & Creator",
+		images: ["/apple-touch-icon.png"],
 	},
 	pinterest: {
 		richPin: true,
@@ -32,7 +34,11 @@ export const metadata: Metadata = {
 	manifest: "/site.webmanifest",
 	metadataBase: new URL("https://mjanglin.com"),
 	icons: {
-		icon: "/favicon.ico",
+		// The SVG adapts to light and dark browser themes; the rest are fallbacks
+		icon: [
+			{ url: "/icon.svg", type: "image/svg+xml" },
+			{ url: "/favicon.ico", sizes: "48x48" },
+		],
 		apple: [
 			{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
 		],
@@ -88,7 +94,8 @@ export default async function RootLayout({
 	return (
 		<html lang="en" data-scroll-behavior="smooth">
 			<head>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="/icon.svg" type="image/svg+xml" />
+				<link rel="icon" href="/favicon.ico" sizes="48x48" />
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
@@ -116,24 +123,9 @@ export default async function RootLayout({
 					strategy="lazyOnload"
 					src={`https://www.googletagmanager.com/gtag/js?id=${CONSTANTS.GOOGLE_ANALYTICS_ID}`}
 				/>
-				<meta property="og:url" content="https://mjanglin.com" />
-				<meta
-					property="twitter:image"
-					content="https://mjanglin.com/apple-touch-icon.png"
-				/>
-				<meta
-					property="og:image"
-					content="https://mjanglin.com/apple-touch-icon.png"
-				/>
-				{/* <meta property="twitter:card" /> */}
-				<meta property="og:site_name" content="MJ Anglin" />
-				<meta property="og:title" content="MJ Anglin" />
-				<meta property="og:description" content="Developer & Creator" />
-				<meta property="twitter:description" content="Developer & Creator" />
-				<meta property="twitter:title" content="MJ Anglin" />
 			</head>
 
-			<body className={`${exo.variable}`}>
+			<body className={`${exo.variable} ${dmSans.variable}`}>
 				{/* <Navbar /> */}
 				<main className="w-full h-full relative z-10 max-w-screen overflow-y-scroll">
 					{children}

@@ -1,32 +1,38 @@
+import {
+	FaDiscord,
+	FaGithub,
+	FaInstagram,
+	FaLinkedin,
+	FaYoutube,
+} from "react-icons/fa";
 import { URLS } from "@/config";
-import "@/styles/buttons/socials.css";
-import Link from "next/link";
-import { FaDiscord, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const SOCIALS = [
-	{ label: "linkedin", href: URLS.linkedin, Icon: FaLinkedin },
-	{ label: "github", href: URLS.github, Icon: FaGithub },
-	{ label: "instagram", href: URLS.instagram, Icon: FaInstagram },
-	{ label: "discord", href: URLS.discord, Icon: FaDiscord },
+	{ label: "LinkedIn", href: URLS.linkedin, Icon: FaLinkedin },
+	{ label: "GitHub", href: URLS.github, Icon: FaGithub },
+	{ label: "YouTube", href: URLS.youtube, Icon: FaYoutube },
+	{ label: "Instagram", href: URLS.instagram, Icon: FaInstagram },
+	{ label: "Discord", href: URLS.discord, Icon: FaDiscord },
 ] as const;
 
+/** A row of square icon buttons, one per profile. Styles live in home.css. */
 export function SocialsMenu() {
 	return (
-		/* From Uiverse.io by akshat-patel28 */
-		<div className="socials-button-container z-50">
+		<ul className="socials" aria-label="Elsewhere">
 			{SOCIALS.map(({ label, href, Icon }) => (
-				<Link
-					key={label}
-					href={href}
-					prefetch={false}
-					rel="noopener noreferrer"
-					target="_blank"
-					className="socials-button text-inherit hover:text-inherit"
-					aria-label={label}
-				>
-					<Icon className="socials-icon" aria-hidden="true" />
-				</Link>
+				<li key={label}>
+					<a
+						href={href}
+						rel="noopener noreferrer"
+						target="_blank"
+						className="social"
+						aria-label={label}
+						title={label}
+					>
+						<Icon aria-hidden="true" />
+					</a>
+				</li>
 			))}
-		</div>
+		</ul>
 	);
 }
