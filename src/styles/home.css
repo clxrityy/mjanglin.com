@@ -1,4 +1,5 @@
-/* Home page: always one screen, no scrolling. */
+/* Home page: one screen, no scrolling, on tablets and up. Phones get the
+ * content at its natural size and scroll instead of shrinking it to fit. */
 
 .home {
 	position: relative;
@@ -121,7 +122,7 @@
 	color: #fff;
 }
 
-/* Both panels share one cell, so switching never changes the page height. */
+/* Both panels share one cell and cross-fade in place. */
 .home-panel {
 	grid-area: panel;
 	display: flex;
@@ -144,6 +145,32 @@
 	visibility: hidden;
 	transform: translateY(10px);
 	pointer-events: none;
+}
+
+/* Phones: natural size, normal scrolling. Scaling the whole page down to fit
+ * one screen made everything look zoomed out, so only the visible tab panel
+ * takes up room and the page scrolls if it needs to. */
+@media (max-width: 767px) {
+	.home {
+		height: auto;
+		min-height: 100dvh;
+		overflow: visible;
+	}
+
+	.fit-inner {
+		transform: none;
+	}
+
+	.home-stage {
+		padding-bottom: 2.5rem;
+	}
+
+	/* The hidden panel collapses, so the page is only as tall as the tab shown */
+	.home[data-tab="about"] [data-panel="projects"],
+	.home[data-tab="projects"] [data-panel="about"] {
+		height: 0;
+		overflow: hidden;
+	}
 }
 
 /* ---------- Tablet: hero beside time + vitals, projects strip at the bottom ---------- */
