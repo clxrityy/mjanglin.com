@@ -28,26 +28,25 @@ function CopyButton({
 	);
 }
 
-/** Markdown badges served from /api/vitals/:metric through shields.io. */
+/**
+ * Markdown badges served from /api/vitals/:metric through shields.io, folded
+ * away until opened. The images are lazy, so they load only once it's open.
+ */
 export function BadgeShelf() {
 	return (
-		<section aria-labelledby="vt-badges">
-			<h2 id="vt-badges" className="ro-h2">
-				Badges
-				<span className="ro-muted">
-					{" "}
-					· JSON at{" "}
-					<a href="/api/vitals" className="ro-link">
-						/api/vitals
-					</a>
-				</span>
-			</h2>
+		<details className="vt-spoiler">
+			<summary className="ro-h2 vt-summary">Badges</summary>
 			<ul className="vt-badges">
 				{BADGE_IDS.map((id) => (
 					<li key={id}>
 						<span className="vt-badge">
 							{/* biome-ignore lint/performance/noImgElement: remote SVG of unknown width */}
-							<img src={badgeImage(id)} alt={`${id} badge`} height={20} />
+							<img
+								src={badgeImage(id)}
+								alt={`${id} badge`}
+								height={20}
+								loading="lazy"
+							/>
 						</span>
 						<CopyButton
 							text={badgeMarkdown(id)}
@@ -56,6 +55,6 @@ export function BadgeShelf() {
 					</li>
 				))}
 			</ul>
-		</section>
+		</details>
 	);
 }

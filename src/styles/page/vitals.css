@@ -28,6 +28,35 @@
 	font-size: 0.8rem;
 }
 
+/* Badges fold away behind their heading */
+.vt-summary {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	list-style: none;
+	transition: color 0.3s var(--ease-smooth);
+}
+.vt-summary::-webkit-details-marker {
+	display: none;
+}
+.vt-summary::after {
+	content: "+";
+	color: rgb(var(--ro-muted));
+	font-weight: 400;
+}
+.vt-spoiler[open] .vt-summary::after {
+	content: "−";
+}
+.vt-summary:hover::after {
+	color: rgb(var(--ro-text));
+}
+.vt-summary:focus-visible {
+	outline: 2px solid rgb(var(--ro-cold));
+	outline-offset: 4px;
+	border-radius: 4px;
+}
+
 /* Fixed slots, so badge images loading in (and [copy] -> [copied]) move nothing */
 .vt-badges {
 	display: grid;
